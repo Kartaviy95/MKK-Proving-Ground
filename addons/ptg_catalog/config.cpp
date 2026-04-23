@@ -3,7 +3,7 @@
 class CfgPatches {
     class mkk_ptg_catalog {
         name = "MKK PTG Catalog";
-        author = "OpenAI";
+        author = "Kartaviy";
         requiredVersion = 2.14;
         requiredAddons[] = {"cba_main", "mkk_ptg_common"};
         units[] = {};

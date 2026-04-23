@@ -3,7 +3,7 @@
 class CfgPatches {
     class mkk_ptg_core {
         name = "MKK PTG Core";
-        author = "OpenAI";
+        author = "Kartaviy";
         requiredVersion = 2.14;
         requiredAddons[] = {
             "cba_main",

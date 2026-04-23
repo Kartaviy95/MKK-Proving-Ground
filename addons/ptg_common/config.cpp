@@ -3,7 +3,7 @@
 class CfgPatches {
     class mkk_ptg_common {
         name = "MKK PTG Common";
-        author = "OpenAI";
+        author = "Kartaviy";
         requiredVersion = 2.14;
         requiredAddons[] = {"cba_main"};
         units[] = {};
