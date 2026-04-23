@@ -1,0 +1,12 @@
+.vscode
+
+**/config.bin
+**/*.sqfc
+**/*.log
+
+.hemttout
+
+release
+
+*.hemttprivatekey
+*.biprivatekey

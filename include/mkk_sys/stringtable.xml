@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="MKK">
+    <Package name="Sys">
+        <Key ID="STR_MKK_Sys_author">
+            <Original>MKK Group</Original>
+            <Russian>MKK Group</Russian>
+        </Key>
+    </Package>
+</Project>

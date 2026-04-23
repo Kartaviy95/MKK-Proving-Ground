@@ -1,0 +1,18 @@
+name = "MKK Proving Ground"
+prefix = "mkk"
+mainprefix = "x"
+
+[version]
+path = "include/mkk_sys/script_version.hpp"
+git_hash = 0
+
+[files]
+exclude = ["*.md", "*c4d", "*.xcf", "*.pptx"]
+include = ["./include", "mod.paa"]
+
+[hemtt.build]
+optional_mod_folders = false # Default: true
+
+[hemtt.release]
+sign = false    # Default: true
+archive = false # Default: true
