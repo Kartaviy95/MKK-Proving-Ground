@@ -1,9 +1,9 @@
 name = "MKK Proving Ground"
-prefix = "mkk"
+prefix = "ptg"
 mainprefix = "x"
 
 [version]
-path = "include/mkk_sys/script_version.hpp"
+path = "addons/main/script_version.hpp"
 git_hash = 0
 
 [files]

@@ -1,0 +1,2 @@
+PREP(isAuthorized);
+PREP(openMainUI);

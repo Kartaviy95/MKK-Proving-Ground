@@ -1,0 +1,31 @@
+[default]
+workshop = [
+    "463939057", # ACE3
+    "450814997", # CBA_A3
+    "3499977893", # Advanced Developer Tools
+]
+mission = "test_ptg.VR"
+
+[rhs]
+extends = "default"
+workshop = [
+    "843425103",  # RHSAFRF
+    "843577117",  # RHSUSAF
+    "843593391",  # RHSGREF
+    "843632231",  # RHSSAF
+]
+
+[mkk]
+workshop = [
+    "583496184",  # CUP Terrains - Core
+    "843425103",  # RHSAFRF
+    "843577117",  # RHSUSAF
+    "843593391",  # RHSGREF
+    "843632231",  # RHSSAF
+    "3499977893", # Advanced Developer Tools
+]
+parameters = [
+    "-mod=\"E:\\SteamLibrary\\steamapps\\common\\Arma 3\\solid\\@sg_core;E:\\SteamLibrary\\steamapps\\common\\Arma 3\\solid\\@sg_islands;E:\\SteamLibrary\\steamapps\\common\\Arma 3\\solid\\@sg_mods;E:\\SteamLibrary\\steamapps\\common\\Arma 3\\solid\\@sg_connect;\"",
+    # E:\\SteamLibrary\\steamapps\\common\\Arma 3\\solid\\@sg_server;
+]
+
