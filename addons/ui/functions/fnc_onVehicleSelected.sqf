@@ -14,3 +14,4 @@ private _className = _control lbData _selectedIndex;
 missionNamespace setVariable ["mkk_ptg_currentSelection", _className];
 
 [] call FUNC(updateVehicleCard);
+[] call FUNC(refreshStaticAmmoBoxes);

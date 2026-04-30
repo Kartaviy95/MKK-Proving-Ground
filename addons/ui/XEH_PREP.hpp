@@ -3,6 +3,7 @@ PREP(onCleanupPressed);
 PREP(onSpawnPressed);
 PREP(onVehicleSelected);
 PREP(refreshFilters);
+PREP(refreshStaticAmmoBoxes);
 PREP(refreshVehicleList);
 PREP(showDashboardView);
 PREP(showVehicleView);

@@ -9,7 +9,8 @@ params [
     ["_requestor", objNull],
     ["_withCrew", false],
     ["_distance", 30],
-    ["_directionOffset", 0]
+    ["_directionOffset", 0],
+    ["_ammoBoxClass", ""]
 ];
 
 if (_className isEqualTo "") exitWith {};
@@ -32,3 +33,16 @@ if (_withCrew) then {
 };
 
 [_vehicle, "vehicle"] call FUNC(registerSpawnedEntity);
+
+if (_ammoBoxClass isNotEqualTo "" && {
+    _className isKindOf "StaticWeapon"
+    && {isClass (configFile >> "CfgVehicles" >> _ammoBoxClass)}
+    && {_ammoBoxClass isKindOf "ReammoBox_F" || {_ammoBoxClass isKindOf "ReammoBox"}}
+}) then {
+    private _boxPos = _spawnPos getPos [2.5, (_vehicleDir + 90) % 360];
+    private _ammoBox = createVehicle [_ammoBoxClass, _boxPos, [], 0, "NONE"];
+    _ammoBox setDir _vehicleDir;
+    _ammoBox setPosATL _boxPos;
+
+    [_ammoBox, "object"] call FUNC(registerSpawnedEntity);
+};

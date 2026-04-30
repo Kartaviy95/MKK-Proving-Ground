@@ -37,6 +37,10 @@
             <English>Close</English>
             <Russian>Закрыть</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_COMPATIBLE_AMMO_BOX">
+            <English>Compatible Ammo Box</English>
+            <Russian>Совместимый ящик БК</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_CREATE_TEST_TARGET">
             <English>Create Test Target</English>
             <Russian>Создать тестовую цель</Russian>
@@ -196,6 +200,14 @@
         <Key ID="STR_MKK_PTG_NO_ACCESS">
             <English>No access to the proving ground.</English>
             <Russian>Нет доступа к полигону.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_NO_AMMO_BOX">
+            <English>No ammo box</English>
+            <Russian>Без ящика БК</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_NO_COMPATIBLE_AMMO_BOXES">
+            <English>No compatible ammo boxes found.</English>
+            <Russian>Совместимые ящики БК не найдены.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_NO_CREW">
             <English>No crew.</English>

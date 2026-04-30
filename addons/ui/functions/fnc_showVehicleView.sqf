@@ -18,3 +18,5 @@ if (isNull _display) exitWith {};
 ];
 
 (_display displayCtrl 88003) ctrlSetText localize "STR_MKK_PTG_VEHICLE_SPAWN";
+
+[] call FUNC(refreshStaticAmmoBoxes);

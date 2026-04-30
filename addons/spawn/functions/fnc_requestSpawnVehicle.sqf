@@ -7,7 +7,8 @@ params [
     ["_requestor", objNull],
     ["_withCrew", false],
     ["_distance", missionNamespace getVariable ["mkk_ptg_spawnDefaultDistance", 30]],
-    ["_directionOffset", 0]
+    ["_directionOffset", 0],
+    ["_ammoBoxClass", ""]
 ];
 
 if (_className isEqualTo "") exitWith {};
@@ -20,10 +21,19 @@ private _maxDistance = missionNamespace getVariable ["mkk_ptg_spawnMaxDistance",
 _distance = (_distance max 1) min _maxDistance;
 _directionOffset = _directionOffset % 360;
 
+if (_ammoBoxClass isNotEqualTo "" && {
+    !(_className isKindOf "StaticWeapon")
+    || {!isClass (configFile >> "CfgVehicles" >> _ammoBoxClass)}
+    || {!(_ammoBoxClass isKindOf "ReammoBox_F" || {_ammoBoxClass isKindOf "ReammoBox"})}
+}) then {
+    _ammoBoxClass = "";
+};
+
 [
     _className,
     _requestor,
     _withCrew,
     _distance,
-    _directionOffset
+    _directionOffset,
+    _ammoBoxClass
 ] remoteExecCall [QFUNC(serverSpawnVehicle), 2];

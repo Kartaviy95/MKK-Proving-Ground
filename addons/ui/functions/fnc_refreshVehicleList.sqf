@@ -47,4 +47,5 @@ if ((count _filtered) > 0) then {
 } else {
     missionNamespace setVariable ["mkk_ptg_currentSelection", ""];
     [] call FUNC(updateVehicleCard);
+    [] call FUNC(refreshStaticAmmoBoxes);
 };

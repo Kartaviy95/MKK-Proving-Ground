@@ -361,8 +361,25 @@ class MKK_PTG_MainDisplay {
             x = 0.25;
             y = 0.17;
             w = 0.38;
-            h = 0.49;
+            h = 0.44;
             onLBSelChanged = QUOTE(_this call FUNC(onVehicleSelected));
+        };
+
+        class StaticAmmoBoxLabel: MKK_PTG_RscText {
+            idc = 88057;
+            x = 0.25;
+            y = 0.62;
+            w = 0.24;
+            h = 0.025;
+            text = "$STR_MKK_PTG_COMPATIBLE_AMMO_BOX";
+        };
+
+        class StaticAmmoBoxCombo: MKK_PTG_RscCombo {
+            idc = 88017;
+            x = 0.25;
+            y = 0.645;
+            w = 0.38;
+            h = 0.04;
         };
 
         class SpawnBtn: MKK_PTG_RscButton {
