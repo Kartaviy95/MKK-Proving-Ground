@@ -26,6 +26,9 @@ _vehicle setPosATL _spawnPos;
 
 if (_withCrew) then {
     [_vehicle] call FUNC(spawnCrew);
+
+    _vehicle setVehicleAmmo 0;
+    _vehicle setFuel 0;
 };
 
 [_vehicle, "vehicle"] call FUNC(registerSpawnedEntity);
