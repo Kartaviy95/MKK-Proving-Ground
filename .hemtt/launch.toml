@@ -16,16 +16,14 @@ workshop = [
 ]
 
 [mkk]
+extends = "default"
 workshop = [
     "583496184",  # CUP Terrains - Core
     "843425103",  # RHSAFRF
     "843577117",  # RHSUSAF
     "843593391",  # RHSGREF
     "843632231",  # RHSSAF
-    "3499977893", # Advanced Developer Tools
 ]
 parameters = [
-    "-mod=\"F:\\SteamLibrary\\steamapps\\common\\Arma 3\\SolidGames\\@sg_core;F:\\SteamLibrary\\steamapps\\common\\Arma 3\\SolidGames\\@sg_islands;F:\\SteamLibrary\\steamapps\\common\\Arma 3\\SolidGames\\@sg_mods;F:\\SteamLibrary\\steamapps\\common\\Arma 3\\SolidGames\\@sg_connect;\"",
-    # F:\\SteamLibrary\\steamapps\\common\\Arma 3\\SolidGames\\@sg_server;
+    "-mod=F:\\SteamLibrary\\steamapps\\common\\Arma 3\\SolidGames\\@sg_core;F:\\SteamLibrary\\steamapps\\common\\Arma 3\\SolidGames\\@sg_islands;F:\\SteamLibrary\\steamapps\\common\\Arma 3\\SolidGames\\@sg_mods;F:\\SteamLibrary\\steamapps\\common\\Arma 3\\SolidGames\\@sg_server;"
 ]
-
