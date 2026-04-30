@@ -4,6 +4,7 @@
 */
 if !(hasInterface) exitWith {};
 
+closeDialog 0;
 openMap true;
 hint localize "STR_MKK_PTG_SELECT_TELEPORT_POINT";
 missionNamespace setVariable ["mkk_ptg_teleportDoneText", localize "STR_MKK_PTG_TELEPORT_DONE"];
