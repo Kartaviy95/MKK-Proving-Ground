@@ -10,5 +10,6 @@ release
 
 *.hemttprivatekey
 *.biprivatekey
+*.sqm
 
 backup
