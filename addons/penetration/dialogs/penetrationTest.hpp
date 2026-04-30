@@ -113,7 +113,7 @@ class MKK_PTG_PenetrationDisplay {
             idc = 88940;
             x = 0.06;
             y = 0.73;
-            w = 0.17;
+            w = 0.16;
             h = 0.04;
             text = "$STR_MKK_PTG_CREATE_TEST_TARGET";
             action = QUOTE([] call FUNC(serverCreateTarget));
@@ -121,9 +121,9 @@ class MKK_PTG_PenetrationDisplay {
 
         class CameraBtn: MKK_PTG_RscButton {
             idc = 88941;
-            x = 0.24;
+            x = 0.23;
             y = 0.73;
-            w = 0.17;
+            w = 0.16;
             h = 0.04;
             text = "$STR_MKK_PTG_ORBIT_CAMERA";
             action = QUOTE([] call FUNC(startOrbitCamera));
@@ -131,9 +131,9 @@ class MKK_PTG_PenetrationDisplay {
 
         class FireBtn: MKK_PTG_RscButton {
             idc = 88942;
-            x = 0.42;
+            x = 0.40;
             y = 0.73;
-            w = 0.17;
+            w = 0.16;
             h = 0.04;
             text = "$STR_MKK_PTG_FIRE_TEST_ROUND";
             action = QUOTE([] call FUNC(createTestShot));
@@ -141,9 +141,9 @@ class MKK_PTG_PenetrationDisplay {
 
         class ResetBtn: MKK_PTG_RscButton {
             idc = 88943;
-            x = 0.60;
+            x = 0.57;
             y = 0.73;
-            w = 0.14;
+            w = 0.16;
             h = 0.04;
             text = "$STR_MKK_PTG_RESET_TEST";
             action = QUOTE([] call FUNC(resetTest));
@@ -151,9 +151,9 @@ class MKK_PTG_PenetrationDisplay {
 
         class CloseBtn: MKK_PTG_RscButton {
             idc = 88944;
-            x = 0.75;
+            x = 0.74;
             y = 0.73;
-            w = 0.15;
+            w = 0.16;
             h = 0.04;
             text = "$STR_MKK_PTG_CLOSE";
             action = "closeDialog 0";

@@ -98,8 +98,8 @@ class MKK_PTG_MainDisplay {
 
         class DashboardTrackingBtn: MKK_PTG_RscButton {
             idc = 88102;
-            x = 0.66;
-            y = 0.19;
+            x = 0.10;
+            y = 0.41;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_PROJECTILE_TRACKING";
@@ -109,7 +109,7 @@ class MKK_PTG_MainDisplay {
         class DashboardStaticTargetBtn: MKK_PTG_RscButton {
             idc = 88103;
             x = 0.10;
-            y = 0.32;
+            y = 0.30;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_STATIC_TARGET";
@@ -119,7 +119,7 @@ class MKK_PTG_MainDisplay {
         class DashboardInfantryTargetBtn: MKK_PTG_RscButton {
             idc = 88104;
             x = 0.38;
-            y = 0.32;
+            y = 0.30;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_INFANTRY_TARGET";
@@ -129,7 +129,7 @@ class MKK_PTG_MainDisplay {
         class DashboardCleanupBtn: MKK_PTG_RscButton {
             idc = 88105;
             x = 0.66;
-            y = 0.32;
+            y = 0.30;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_CLEANUP_RANGE";
@@ -140,8 +140,8 @@ class MKK_PTG_MainDisplay {
 
         class DashboardPenetrationBtn: MKK_PTG_RscButton {
             idc = 88109;
-            x = 0.10;
-            y = 0.45;
+            x = 0.66;
+            y = 0.19;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_PENETRATION_TEST";
@@ -153,7 +153,7 @@ class MKK_PTG_MainDisplay {
         class DashboardTrajectoryBtn: MKK_PTG_RscButton {
             idc = 88110;
             x = 0.38;
-            y = 0.45;
+            y = 0.41;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_TRAJECTORY_LINES";
@@ -162,30 +162,30 @@ class MKK_PTG_MainDisplay {
 
         class DashboardRefreshBtn: MKK_PTG_RscButton {
             idc = 88106;
-            x = 0.66;
-            y = 0.45;
+            x = 0.38;
+            y = 0.52;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_REFRESH_CATALOG";
-            action = QUOTE([] call FUNC(refreshFilters));
+            action = QUOTE([true] call FUNC(refreshFilters));
         };
 
         class DashboardMapMarkerBtn: MKK_PTG_RscButton {
             idc = 88111;
-            x = 0.10;
-            y = 0.56;
+            x = 0.66;
+            y = 0.41;
             w = 0.24;
-            h = 0.06;
+            h = 0.08;
             text = "$STR_MKK_PTG_MAP_PROJECTILE_MARKERS";
             action = QUOTE([] call EFUNC(tracking,toggleMapProjectileMarkers));
         };
 
         class DashboardMapMarkerAmmoBtn: MKK_PTG_RscButton {
             idc = 88112;
-            x = 0.38;
-            y = 0.56;
+            x = 0.10;
+            y = 0.52;
             w = 0.24;
-            h = 0.06;
+            h = 0.08;
             text = "$STR_MKK_PTG_MAP_MARKER_AMMO";
             action = QUOTE([] call EFUNC(tracking,toggleMapProjectileMarkerAmmo));
         };
@@ -193,9 +193,9 @@ class MKK_PTG_MainDisplay {
         class DashboardCloseBtn: MKK_PTG_RscButton {
             idc = 88107;
             x = 0.66;
-            y = 0.75;
+            y = 0.52;
             w = 0.24;
-            h = 0.06;
+            h = 0.08;
             text = "$STR_MKK_PTG_CLOSE";
             action = "closeDialog 0";
         };
@@ -205,7 +205,7 @@ class MKK_PTG_MainDisplay {
             x = 0.10;
             y = 0.65;
             w = 0.80;
-            h = 0.10;
+            h = 0.11;
             text = "$STR_MKK_PTG_DASHBOARD_INFO";
         };
 
@@ -341,76 +341,76 @@ class MKK_PTG_MainDisplay {
             x = 0.25;
             y = 0.17;
             w = 0.38;
-            h = 0.59;
+            h = 0.49;
             onLBSelChanged = QUOTE(_this call FUNC(onVehicleSelected));
         };
 
         class SpawnBtn: MKK_PTG_RscButton {
             idc = 88040;
             x = 0.06;
-            y = 0.72;
-            w = 0.16;
-            h = 0.04;
+            y = 0.70;
+            w = 0.26;
+            h = 0.045;
             text = "$STR_MKK_PTG_SPAWN_EMPTY";
             action = QUOTE([false] call FUNC(onSpawnPressed));
         };
 
         class SpawnCrewBtn: MKK_PTG_RscButton {
             idc = 88041;
-            x = 0.06;
-            y = 0.77;
-            w = 0.16;
-            h = 0.04;
+            x = 0.35;
+            y = 0.70;
+            w = 0.26;
+            h = 0.045;
             text = "$STR_MKK_PTG_SPAWN_WITH_CREW";
             action = QUOTE([true] call FUNC(onSpawnPressed));
         };
 
         class StaticTargetBtn: MKK_PTG_RscButton {
             idc = 88042;
-            x = 0.25;
-            y = 0.77;
-            w = 0.18;
-            h = 0.04;
+            x = 0.64;
+            y = 0.70;
+            w = 0.26;
+            h = 0.045;
             text = "$STR_MKK_PTG_SPAWN_STATIC_TARGET";
             action = QUOTE([player] remoteExecCall [ARR_2(QQEFUNC(targets,spawnStaticTarget),2)]);
         };
 
         class InfantryTargetBtn: MKK_PTG_RscButton {
             idc = 88043;
-            x = 0.44;
-            y = 0.77;
-            w = 0.19;
-            h = 0.04;
+            x = 0.06;
+            y = 0.755;
+            w = 0.26;
+            h = 0.045;
             text = "$STR_MKK_PTG_SPAWN_INFANTRY_TARGET";
             action = QUOTE([player] remoteExecCall [ARR_2(QQEFUNC(targets,spawnInfantryTarget),2)]);
         };
 
         class CleanupBtn: MKK_PTG_RscButton {
             idc = 88044;
-            x = 0.67;
-            y = 0.72;
-            w = 0.23;
-            h = 0.04;
+            x = 0.35;
+            y = 0.755;
+            w = 0.26;
+            h = 0.045;
             text = "$STR_MKK_PTG_CLEANUP_RANGE";
             action = QUOTE([] call FUNC(onCleanupPressed));
         };
 
         class RefreshBtn: MKK_PTG_RscButton {
             idc = 88045;
-            x = 0.67;
-            y = 0.77;
-            w = 0.11;
-            h = 0.04;
+            x = 0.64;
+            y = 0.755;
+            w = 0.26;
+            h = 0.045;
             text = "$STR_MKK_PTG_REFRESH";
-            action = QUOTE([] call FUNC(refreshFilters));
+            action = QUOTE([true] call FUNC(refreshFilters));
         };
 
         class BackBtn: MKK_PTG_RscButton {
             idc = 88046;
-            x = 0.79;
-            y = 0.77;
-            w = 0.11;
-            h = 0.04;
+            x = 0.35;
+            y = 0.81;
+            w = 0.26;
+            h = 0.045;
             text = "$STR_MKK_PTG_BACK";
             action = QUOTE([] call FUNC(showDashboardView));
         };

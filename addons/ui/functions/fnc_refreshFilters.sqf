@@ -2,11 +2,15 @@
 /*
     Заполняет фильтры и обновляет список техники.
 */
+params [
+    ["_forceRebuild", false]
+];
+
 private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
 if (isNull _display) exitWith {};
 
 private _catalog = missionNamespace getVariable ["mkk_ptg_catalogCache", []];
-if (_catalog isEqualTo []) then {
+if (_forceRebuild || {_catalog isEqualTo []}) then {
     [] call EFUNC(catalog,buildVehicleCatalog);
     _catalog = missionNamespace getVariable ["mkk_ptg_catalogCache", []];
 };

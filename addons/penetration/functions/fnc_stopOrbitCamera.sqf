@@ -23,5 +23,14 @@ if !(isNull _camera) then {
     camDestroy _camera;
 };
 
-titleCut ["", "PLAIN"];
+private _hud = uiNamespace getVariable ["mkk_ptg_penetrationHud", displayNull];
+if !(isNull _hud) then {
+    (_hud displayCtrl 88980) ctrlSetStructuredText parseText "";
+    (_hud displayCtrl 88981) ctrlSetStructuredText parseText "";
+};
+
+private _hudLayer = "mkk_ptg_penetrationHudLayer" call BIS_fnc_rscLayer;
+_hudLayer cutText ["", "PLAIN"];
+uiNamespace setVariable ["mkk_ptg_penetrationHud", displayNull];
+
 missionNamespace setVariable ["mkk_ptg_penetrationCameraState", createHashMap];

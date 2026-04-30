@@ -37,7 +37,9 @@ missionNamespace setVariable ["mkk_ptg_penetrationClosingForCamera", true];
 private _camera = "camera" camCreate (_target modelToWorld [0, -9, 3]);
 _camera cameraEffect ["Internal", "Back"];
 showCinemaBorder false;
-titleRsc ["MKK_PTG_PenetrationReportHUD", "PLAIN"];
+
+private _hudLayer = "mkk_ptg_penetrationHudLayer" call BIS_fnc_rscLayer;
+_hudLayer cutRsc ["MKK_PTG_PenetrationReportHUD", "PLAIN"];
 
 missionNamespace setVariable ["mkk_ptg_penetrationCameraState", createHashMapFromArray [
     ["camera", _camera],
@@ -50,6 +52,7 @@ missionNamespace setVariable ["mkk_ptg_penetrationCameraState", createHashMapFro
 missionNamespace setVariable ["mkk_ptg_penetrationCameraRunning", true];
 [] call FUNC(registerAimClick);
 [] call FUNC(registerOrbitControls);
+[] call FUNC(updateReport);
 hint localize "STR_MKK_PTG_PENETRATION_AIM_HINT";
 
 [] spawn {

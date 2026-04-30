@@ -21,30 +21,6 @@
             <English>BLUFOR</English>
             <Russian>BLUFOR</Russian>
         </Key>
-        <Key ID="STR_MKK_PTG_CATEGORY_ACCESS">
-            <English>Access</English>
-            <Russian>Доступ</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_CATEGORY_CORE">
-            <English>Core</English>
-            <Russian>Ядро</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_CATEGORY_DEBUG">
-            <English>Debug</English>
-            <Russian>Отладка</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_CATEGORY_SPAWN">
-            <English>Spawn</English>
-            <Russian>Спавн</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_CATEGORY_TARGETS">
-            <English>Targets</English>
-            <Russian>Мишени</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_CATEGORY_TRACKING">
-            <English>Tracking</English>
-            <Russian>Слежение</Russian>
-        </Key>
         <Key ID="STR_MKK_PTG_CIVILIAN">
             <English>Civilian</English>
             <Russian>Гражданские</Russian>
@@ -165,6 +141,26 @@
             <English>Nation</English>
             <Russian>Нация</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_NATION_GERMANY">
+            <English>Germany</English>
+            <Russian>Германия</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_NATION_INDEPENDENT">
+            <English>Independent</English>
+            <Russian>Независимые</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_NATION_RUSSIA">
+            <English>Russia</English>
+            <Russian>Россия</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_NATION_UK">
+            <English>United Kingdom</English>
+            <Russian>Великобритания</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_NATION_USA">
+            <English>USA</English>
+            <Russian>США</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_NO_ACCESS">
             <English>No access to the proving ground.</English>
             <Russian>Нет доступа к полигону.</Russian>
@@ -248,110 +244,6 @@
         <Key ID="STR_MKK_PTG_SELECT_VEHICLE_FIRST">
             <English>Select a vehicle first.</English>
             <Russian>Сначала выберите технику.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_ALLOW_ALL_DESC">
-            <English>If enabled, all players can use the proving ground.</English>
-            <Russian>Если включено, полигон доступен всем игрокам.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_ALLOW_ALL_NAME">
-            <English>Allow all users</English>
-            <Russian>Разрешить всем</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_DEBUG_DESC">
-            <English>Enables service debug information.</English>
-            <Russian>Включает служебную отладочную информацию.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_DEBUG_NAME">
-            <English>Show debug</English>
-            <Russian>Показывать debug</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_ENABLE_DESC">
-            <English>Main proving ground system switch.</English>
-            <Russian>Главный переключатель системы полигона.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_ENABLE_NAME">
-            <English>Enable MKK PTG</English>
-            <Russian>Включить MKK PTG</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_MAX_TARGETS_DESC">
-            <English>Maximum number of proving ground targets.</English>
-            <Russian>Максимальное количество целей полигона.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_MAX_TARGETS_NAME">
-            <English>Target limit</English>
-            <Russian>Лимит мишеней</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_MAX_VEHICLES_DESC">
-            <English>Maximum number of proving ground vehicles.</English>
-            <Russian>Максимальное количество техники полигона.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_MAX_VEHICLES_NAME">
-            <English>Vehicle limit</English>
-            <Russian>Лимит техники</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_PENETRATION_DISTANCE_DESC">
-            <English>Distance from player to the armor test target.</English>
-            <Russian>Дистанция от игрока до цели теста пробития.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_PENETRATION_DISTANCE_NAME">
-            <English>Armor test target distance</English>
-            <Russian>Дистанция цели теста пробития</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_PENETRATION_SHOT_DISTANCE_DESC">
-            <English>Distance from impact point where the test projectile is created.</English>
-            <Russian>Дистанция от точки попадания, на которой создается тестовый снаряд.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_PENETRATION_SHOT_DISTANCE_NAME">
-            <English>Armor test shot distance</English>
-            <Russian>Дистанция тестового выстрела</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_SPAWN_DISTANCE_DESC">
-            <English>Default vehicle spawn distance from player.</English>
-            <Russian>Базовая дистанция спавна техники от игрока.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_SPAWN_DISTANCE_NAME">
-            <English>Spawn distance</English>
-            <Russian>Дистанция спавна</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_SPAWN_MAX_DISTANCE_DESC">
-            <English>Maximum allowed spawn distance.</English>
-            <Russian>Максимально допустимая дистанция спавна.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_SPAWN_MAX_DISTANCE_NAME">
-            <English>Distance limit</English>
-            <Russian>Лимит дистанции</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_TRACKING_COOLDOWN_DESC">
-            <English>Delay between automatic tracking starts.</English>
-            <Russian>Задержка между автозапусками слежки.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_TRACKING_COOLDOWN_NAME">
-            <English>Tracking cooldown</English>
-            <Russian>Кулдаун tracking</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_TRACKING_ENABLE_DESC">
-            <English>Allows the local projectile tracking system.</English>
-            <Russian>Разрешает локальную систему слежки за projectile.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_TRACKING_ENABLE_NAME">
-            <English>Enable tracking</English>
-            <Russian>Включить tracking</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_TRACKING_MAX_TIME_DESC">
-            <English>Maximum tracking duration in seconds.</English>
-            <Russian>Максимальная длительность слежки в секундах.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_TRACKING_MAX_TIME_NAME">
-            <English>Tracking max time</English>
-            <Russian>Максимум времени tracking</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_TRACKING_MODE_DESC">
-            <English>Default tracking mode.</English>
-            <Russian>Режим tracking по умолчанию.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SETTING_TRACKING_MODE_NAME">
-            <English>Tracking mode</English>
-            <Russian>Режим tracking</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_SIDE">
             <English>Side</English>
