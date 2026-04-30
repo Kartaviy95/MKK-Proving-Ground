@@ -69,6 +69,22 @@
             <English>dead</English>
             <Russian>мертв</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_DELETE_CURSOR_OBJECT">
+            <English>Delete Cursor Object</English>
+            <Russian>Удалить объект под прицелом</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DELETE_CURSOR_OBJECT_DONE">
+            <English>Object deleted.</English>
+            <Russian>Объект удален.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DELETE_CURSOR_OBJECT_NONE">
+            <English>No object under cursor.</English>
+            <Russian>Под прицелом нет объекта.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DELETE_CURSOR_OBJECT_PLAYER">
+            <English>Player objects cannot be deleted.</English>
+            <Russian>Объекты игроков нельзя удалить.</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_DIRECTION_OFFSET">
             <English>Direction Offset, deg.</English>
             <Russian>Угол разворота, град.</Russian>
@@ -196,6 +212,10 @@
         <Key ID="STR_MKK_PTG_OPEN_SHORT">
             <English>Open Proving Ground</English>
             <Russian>Открыть полигон</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_OPEN_VIRTUAL_ARSENAL">
+            <English>Open Virtual Arsenal</English>
+            <Russian>Открыть виртуальный арсенал</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_OPFOR">
             <English>OPFOR</English>
