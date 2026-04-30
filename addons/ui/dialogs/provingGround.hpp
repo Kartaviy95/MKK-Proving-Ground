@@ -19,10 +19,20 @@ class MKK_PTG_MainDisplay {
             idc = 88001;
             x = 0.06;
             y = 0.06;
-            w = 0.50;
+            w = 0.38;
             h = 0.04;
             text = "$STR_MKK_PTG_MOD_NAME";
             colorText[] = {1,1,1,1};
+        };
+
+        class Author: MKK_PTG_RscText {
+            idc = 88004;
+            x = 0.45;
+            y = 0.06;
+            w = 0.20;
+            h = 0.04;
+            text = "$STR_MKK_PTG_AUTHOR";
+            colorText[] = {0.65,0.78,0.86,1};
         };
 
         class SectionTitle: MKK_PTG_RscText {

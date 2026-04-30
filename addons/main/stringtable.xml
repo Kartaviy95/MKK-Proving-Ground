@@ -5,6 +5,10 @@
             <English>All</English>
             <Russian>Все</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_AUTHOR">
+            <English>by Kartaviy</English>
+            <Russian>by Kartaviy</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_BACK">
             <English>Back</English>
             <Russian>Назад</Russian>
