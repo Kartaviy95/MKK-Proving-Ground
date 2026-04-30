@@ -31,7 +31,7 @@ lbClear _ctrlList;
 
 {
     private _className = _x # 0;
-    private _displayName = _x # 1;
+    private _displayName = [_x # 1] call EFUNC(common,localizeString);
     private _vehicleType = _x # 5;
     private _vehicleTypeLabel = [_vehicleType] call EFUNC(common,localizeString);
     private _factionDisplayName = _x param [12, _x # 3];

@@ -15,6 +15,6 @@ if (isNull _display) exitWith {};
 
 {
     (_display displayCtrl _x) ctrlShow true;
-} forEach [88100, 88101, 88102, 88103, 88104, 88105, 88106, 88107, 88108];
+} forEach [88100, 88101, 88102, 88103, 88104, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88112];
 
 (_display displayCtrl 88003) ctrlSetText localize "STR_MKK_PTG_SELECT_FUNCTION";

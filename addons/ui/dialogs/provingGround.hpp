@@ -138,14 +138,56 @@ class MKK_PTG_MainDisplay {
             colorBackgroundActive[] = {0.38,0.10,0.10,1};
         };
 
-        class DashboardRefreshBtn: MKK_PTG_RscButton {
-            idc = 88106;
+        class DashboardPenetrationBtn: MKK_PTG_RscButton {
+            idc = 88109;
             x = 0.10;
             y = 0.45;
             w = 0.24;
-            h = 0.06;
+            h = 0.08;
+            text = "$STR_MKK_PTG_PENETRATION_TEST";
+            action = QUOTE([] call EFUNC(penetration,openDisplay));
+            colorBackground[] = {0.08,0.18,0.24,0.95};
+            colorBackgroundActive[] = {0.10,0.30,0.40,1};
+        };
+
+        class DashboardTrajectoryBtn: MKK_PTG_RscButton {
+            idc = 88110;
+            x = 0.38;
+            y = 0.45;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_TRAJECTORY_LINES";
+            action = QUOTE([] call EFUNC(tracking,toggleTrajectoryLines));
+        };
+
+        class DashboardRefreshBtn: MKK_PTG_RscButton {
+            idc = 88106;
+            x = 0.66;
+            y = 0.45;
+            w = 0.24;
+            h = 0.08;
             text = "$STR_MKK_PTG_REFRESH_CATALOG";
             action = QUOTE([] call FUNC(refreshFilters));
+        };
+
+        class DashboardMapMarkerBtn: MKK_PTG_RscButton {
+            idc = 88111;
+            x = 0.10;
+            y = 0.56;
+            w = 0.24;
+            h = 0.06;
+            text = "$STR_MKK_PTG_MAP_PROJECTILE_MARKERS";
+            action = QUOTE([] call EFUNC(tracking,toggleMapProjectileMarkers));
+        };
+
+        class DashboardMapMarkerAmmoBtn: MKK_PTG_RscButton {
+            idc = 88112;
+            x = 0.38;
+            y = 0.56;
+            w = 0.24;
+            h = 0.06;
+            text = "$STR_MKK_PTG_MAP_MARKER_AMMO";
+            action = QUOTE([] call EFUNC(tracking,toggleMapProjectileMarkerAmmo));
         };
 
         class DashboardCloseBtn: MKK_PTG_RscButton {
@@ -161,7 +203,7 @@ class MKK_PTG_MainDisplay {
         class DashboardInfo: MKK_PTG_RscStructuredText {
             idc = 88108;
             x = 0.10;
-            y = 0.56;
+            y = 0.65;
             w = 0.80;
             h = 0.10;
             text = "$STR_MKK_PTG_DASHBOARD_INFO";

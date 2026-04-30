@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="MKK Proving Ground">
     <Package name="MKK_PTG">
+        <Key ID="STR_MKK_PTG_ALIVE">
+            <English>alive</English>
+            <Russian>жив</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_ALL">
             <English>All</English>
             <Russian>Все</Russian>
@@ -57,13 +61,37 @@
             <English>Close</English>
             <Russian>Закрыть</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_CREATE_TEST_TARGET">
+            <English>Create Test Target</English>
+            <Russian>Создать тестовую цель</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CREATE_TEST_TARGET_FIRST">
+            <English>Create a test target first.</English>
+            <Russian>Сначала создайте тестовую цель.</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_CREW">
             <English>Crew</English>
             <Russian>Экипаж</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_DAMAGE">
+            <English>Damage</English>
+            <Russian>Повреждение</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DAMAGE_REPORT">
+            <English>Damage Report</English>
+            <Russian>Отчет о повреждениях</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DAMAGE_REPORT_EMPTY">
+            <English>Create a test target and fire a selected round to see damage data.</English>
+            <Russian>Создайте тестовую цель и выпустите выбранный снаряд, чтобы увидеть данные повреждений.</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_INFO">
             <English>Select the proving ground module. The vehicle catalog opens only when requested.</English>
             <Russian>Выберите нужный модуль полигона. Каталог техники открывается только по запросу.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DEAD">
+            <English>dead</English>
+            <Russian>мертв</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_DIRECTION_OFFSET">
             <English>Direction Offset, deg.</English>
@@ -81,6 +109,10 @@
             <English>Faction</English>
             <Russian>Фракция</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_FIRE_TEST_ROUND">
+            <English>Fire Test Round</English>
+            <Russian>Выстрелить снарядом</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_FOUND">
             <English>Found: %1</English>
             <Russian>Найдено: %1</Russian>
@@ -92,6 +124,10 @@
         <Key ID="STR_MKK_PTG_GROUP">
             <English>Group</English>
             <Russian>Группа</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HITPOINTS">
+            <English>Hitpoints</English>
+            <Russian>Hitpoints</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_INDEPENDENT">
             <English>Independent</English>
@@ -105,6 +141,22 @@
             <English>Information not found</English>
             <Russian>Информация не найдена</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_MAP_MARKERS_STATUS">
+            <English>Projectile map markers: %1</English>
+            <Russian>Маркеры снарядов на карте: %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO">
+            <English>Ammo Class on Marker</English>
+            <Russian>Класс ammo на маркере</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO_STATUS">
+            <English>Ammo class on marker: %1</English>
+            <Russian>Класс ammo на маркере: %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_PROJECTILE_MARKERS">
+            <English>Projectile Map Markers</English>
+            <Russian>Маркеры снарядов на карте</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_MOD_NAME">
             <English>MKK Proving Ground</English>
             <Russian>MKK Proving Ground</Russian>
@@ -116,6 +168,14 @@
         <Key ID="STR_MKK_PTG_NO_ACCESS">
             <English>No access to the proving ground.</English>
             <Russian>Нет доступа к полигону.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_NO_CREW">
+            <English>No crew.</English>
+            <Russian>Экипажа нет.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_NO_HITPOINT_DAMAGE">
+            <English>No hitpoint damage recorded.</English>
+            <Russian>Повреждения hitpoints не зафиксированы.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_OPEN">
             <English>Open MKK Proving Ground</English>
@@ -129,6 +189,26 @@
             <English>OPFOR</English>
             <Russian>OPFOR</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_ORBIT_CAMERA">
+            <English>Orbit Camera</English>
+            <Russian>Камера вокруг цели</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_ORBIT_EXIT_HINT">
+            <English>Mouse: rotate / wheel: zoom / ESC: exit camera</English>
+            <Russian>Мышь: вращать / колесо: зум / ESC: выйти из камеры</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_PENETRATION_AIM_HINT">
+            <English>Aim at the vehicle and left-click to fire the selected round.</English>
+            <Russian>Наведите курсор на технику и нажмите ЛКМ, чтобы выпустить выбранный снаряд.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_PENETRATION_NOTE">
+            <English>MVP mode: the round is fired at the target center, then vehicle hitpoints and crew state are reported.</English>
+            <Russian>MVP-режим: снаряд выпускается в центр цели, затем показываются hitpoints техники и состояние экипажа.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_PENETRATION_TEST">
+            <English>Armor Test</English>
+            <Russian>Тест пробития</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_PROJECTILE_TRACKING">
             <English>Projectile Tracking</English>
             <Russian>Слежение за пулей</Russian>
@@ -141,9 +221,17 @@
             <English>Refresh Catalog</English>
             <Russian>Обновить каталог</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_RESET_TEST">
+            <English>Reset Test</English>
+            <Russian>Сбросить тест</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_SEARCH">
             <English>Search</English>
             <Russian>Поиск</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SELECT_AMMO_FIRST">
+            <English>Select ammo first.</English>
+            <Russian>Сначала выберите боеприпас.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_SELECT_FUNCTION">
             <English>Select proving ground function</English>
@@ -200,6 +288,22 @@
         <Key ID="STR_MKK_PTG_SETTING_MAX_VEHICLES_NAME">
             <English>Vehicle limit</English>
             <Russian>Лимит техники</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_PENETRATION_DISTANCE_DESC">
+            <English>Distance from player to the armor test target.</English>
+            <Russian>Дистанция от игрока до цели теста пробития.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_PENETRATION_DISTANCE_NAME">
+            <English>Armor test target distance</English>
+            <Russian>Дистанция цели теста пробития</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_PENETRATION_SHOT_DISTANCE_DESC">
+            <English>Distance from impact point where the test projectile is created.</English>
+            <Russian>Дистанция от точки попадания, на которой создается тестовый снаряд.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_PENETRATION_SHOT_DISTANCE_NAME">
+            <English>Armor test shot distance</English>
+            <Russian>Дистанция тестового выстрела</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_SETTING_SPAWN_DISTANCE_DESC">
             <English>Default vehicle spawn distance from player.</English>
@@ -289,6 +393,14 @@
             <English>Teleport complete.</English>
             <Russian>Телепорт выполнен.</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_TEST_AMMO">
+            <English>Ammo</English>
+            <Russian>Боеприпас</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TEST_VEHICLE">
+            <English>Test Vehicle</English>
+            <Russian>Тестовая техника</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_TRACKING_HUD">
             <English>MKK Projectile Tracking\nAmmo: %1\nFlight time: %2 sec\nDistance: %3 m\nMode: %4</English>
             <Russian>MKK Projectile Tracking\nБоеприпас: %1\nВремя полета: %2 сек\nДистанция: %3 м\nРежим: %4</Russian>
@@ -296,6 +408,14 @@
         <Key ID="STR_MKK_PTG_TRACKING_STATUS">
             <English>Tracking: %1</English>
             <Russian>Tracking: %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TRAJECTORY_LINES">
+            <English>Bullet Trajectory Line</English>
+            <Russian>Линия траектории пули</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TRAJECTORY_STATUS">
+            <English>Trajectory line: %1</English>
+            <Russian>Линия траектории: %1</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE">
             <English>Type</English>

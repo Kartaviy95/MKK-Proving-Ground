@@ -19,7 +19,7 @@ if (_info isEqualTo []) exitWith {
     [] call FUNC(updateVehiclePreview);
 };
 
-private _displayName = _info # 1;
+private _displayName = [_info # 1] call EFUNC(common,localizeString);
 private _sideId = _info # 2;
 private _faction = _info # 3;
 private _nation = _info # 4;

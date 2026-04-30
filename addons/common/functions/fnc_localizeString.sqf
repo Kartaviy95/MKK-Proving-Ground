@@ -9,9 +9,14 @@ params [
 if !(_value isEqualType "") exitWith {""};
 if (_value isEqualTo "") exitWith {""};
 
-if ((_value select [0, 1]) isEqualTo "$") then {
-    private _localized = localize (_value select [1]);
-    if (_localized != "") exitWith {_localized};
+private _key = _value;
+if ((_key select [0, 1]) isEqualTo "$") then {
+    _key = _key select [1];
+};
+
+if ((toUpperANSI (_key select [0, 4])) isEqualTo "STR_") then {
+    private _localized = localize _key;
+    if (_localized != "" && {_localized != _key && {_localized != _value}}) exitWith {_localized};
 };
 
 _value

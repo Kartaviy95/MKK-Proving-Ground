@@ -1,6 +1,13 @@
 PREP(canTrackProjectile);
 PREP(drawTrackingHud);
+PREP(drawTrajectoryLines);
 PREP(registerTrackingEH);
+PREP(recordTrajectory);
+PREP(recordMapProjectileMarker);
+PREP(registerTrajectoryDraw);
 PREP(startProjectileTrack);
 PREP(stopProjectileTrack);
+PREP(toggleMapProjectileMarkerAmmo);
+PREP(toggleMapProjectileMarkers);
+PREP(toggleTrajectoryLines);
 PREP(updateProjectileTrack);

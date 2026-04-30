@@ -1,0 +1,14 @@
+PREP(collectDamageReport);
+PREP(createTestShot);
+PREP(initDisplay);
+PREP(openDisplay);
+PREP(registerAimClick);
+PREP(registerOrbitControls);
+PREP(refreshAmmoList);
+PREP(refreshVehicleList);
+PREP(resetTest);
+PREP(serverCreateTarget);
+PREP(serverFireTestShot);
+PREP(startOrbitCamera);
+PREP(stopOrbitCamera);
+PREP(updateReport);

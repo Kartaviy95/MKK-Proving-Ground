@@ -15,7 +15,7 @@ private _catalog = missionNamespace getVariable ["mkk_ptg_catalogCache", []];
 
 private _filtered = _catalog select {
     private _className = _x # 0;
-    private _displayName = _x # 1;
+    private _displayName = [_x # 1] call EFUNC(common,localizeString);
     private _sideId = _x # 2;
     private _faction = _x # 3;
     private _nation = _x # 4;
