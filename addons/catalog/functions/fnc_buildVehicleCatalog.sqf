@@ -38,7 +38,6 @@ private _cfgVehicles = configFile >> "CfgVehicles";
     };
     if (_factionDisplayName isEqualTo "") then {_factionDisplayName = _faction;};
 
-    private _nation = [_faction] call FUNC(getNationFromFaction);
     private _vehicleType = [_className] call FUNC(detectVehicleType);
     private _crewClass = [_cfg, "crew", ""] call EFUNC(common,getSafeConfigText);
     private _previewPath = [_cfg] call EFUNC(common,getPreviewPath);
@@ -59,7 +58,6 @@ private _cfgVehicles = configFile >> "CfgVehicles";
         _displayName,
         _sideId,
         _faction,
-        _nation,
         _vehicleType,
         _crewClass,
         _previewPath,

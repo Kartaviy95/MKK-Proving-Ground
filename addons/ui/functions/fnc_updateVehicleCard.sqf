@@ -22,12 +22,11 @@ if (_info isEqualTo []) exitWith {
 private _displayName = [_info # 1] call EFUNC(common,localizeString);
 private _sideId = _info # 2;
 private _faction = _info # 3;
-private _nation = _info # 4;
-private _vehicleType = _info # 5;
-private _crewClass = _info # 6;
-private _modSource = _info # 10;
-private _factionDisplayName = _info param [12, _faction];
-private _groupDisplayName = _info param [13, _info # 9];
+private _vehicleType = _info # 4;
+private _crewClass = _info # 5;
+private _modSource = _info # 9;
+private _factionDisplayName = _info param [11, _faction];
+private _groupDisplayName = _info param [12, _info # 8];
 
 private _sideText = switch (_sideId) do {
     case 0: {localize "STR_MKK_PTG_OPFOR"};
@@ -38,12 +37,11 @@ private _sideText = switch (_sideId) do {
 };
 
 private _text = format [
-    "<t size='1.1'>%1</t><br/><br/>%10: %2<br/>%11: %3<br/>%12: %4<br/>%13: %5<br/>%14: %6<br/>%15: %7<br/>%16: %8<br/>%17: %9",
+    "<t size='1.1'>%1</t><br/><br/>%9: %2<br/>%10: %3<br/>%11: %4<br/>%12: %5<br/>%13: %6<br/>%14: %7<br/>%15: %8",
     _displayName,
     _className,
     _sideText,
     _factionDisplayName,
-    [_nation] call EFUNC(common,localizeString),
     [_vehicleType] call EFUNC(common,localizeString),
     _groupDisplayName,
     _crewClass,
@@ -51,7 +49,6 @@ private _text = format [
     localize "STR_MKK_PTG_CLASS",
     localize "STR_MKK_PTG_SIDE",
     localize "STR_MKK_PTG_FACTION",
-    localize "STR_MKK_PTG_NATION",
     localize "STR_MKK_PTG_TYPE",
     localize "STR_MKK_PTG_GROUP",
     localize "STR_MKK_PTG_CREW",

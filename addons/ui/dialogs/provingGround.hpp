@@ -284,28 +284,10 @@ class MKK_PTG_MainDisplay {
             onLBSelChanged = QUOTE([] call FUNC(refreshVehicleList));
         };
 
-        class NationLabel: MKK_PTG_RscText {
-            idc = 88053;
-            x = 0.06;
-            y = 0.355;
-            w = 0.16;
-            h = 0.025;
-            text = "$STR_MKK_PTG_NATION";
-        };
-
-        class NationCombo: MKK_PTG_RscCombo {
-            idc = 88013;
-            x = 0.06;
-            y = 0.38;
-            w = 0.16;
-            h = 0.04;
-            onLBSelChanged = QUOTE([] call FUNC(refreshVehicleList));
-        };
-
         class TypeLabel: MKK_PTG_RscText {
             idc = 88054;
             x = 0.06;
-            y = 0.425;
+            y = 0.355;
             w = 0.16;
             h = 0.025;
             text = "$STR_MKK_PTG_TYPE";
@@ -314,7 +296,7 @@ class MKK_PTG_MainDisplay {
         class TypeCombo: MKK_PTG_RscCombo {
             idc = 88014;
             x = 0.06;
-            y = 0.45;
+            y = 0.38;
             w = 0.16;
             h = 0.04;
             onLBSelChanged = QUOTE([] call FUNC(refreshVehicleList));

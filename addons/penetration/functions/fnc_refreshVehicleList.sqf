@@ -20,8 +20,8 @@ lbClear _ctrlList;
 {
     private _className = _x # 0;
     private _displayName = [_x # 1] call EFUNC(common,localizeString);
-    private _vehicleType = [_x # 5] call EFUNC(common,localizeString);
-    private _faction = _x param [12, _x # 3];
+    private _vehicleType = [_x # 4] call EFUNC(common,localizeString);
+    private _faction = _x param [11, _x # 3];
 
     if (_search isEqualTo "" || {(toLowerANSI _displayName) find _search > -1 || {(toLowerANSI _className) find _search > -1}}) then {
         private _idx = _ctrlList lbAdd format ["%1 | %2 | %3", _displayName, _vehicleType, _faction];

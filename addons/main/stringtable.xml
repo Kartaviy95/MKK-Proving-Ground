@@ -173,30 +173,6 @@
             <English>MKK Proving Ground</English>
             <Russian>MKK Proving Ground</Russian>
         </Key>
-        <Key ID="STR_MKK_PTG_NATION">
-            <English>Nation</English>
-            <Russian>Нация</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_NATION_GERMANY">
-            <English>Germany</English>
-            <Russian>Германия</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_NATION_INDEPENDENT">
-            <English>Independent</English>
-            <Russian>Независимые</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_NATION_RUSSIA">
-            <English>Russia</English>
-            <Russian>Россия</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_NATION_UK">
-            <English>United Kingdom</English>
-            <Russian>Великобритания</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_NATION_USA">
-            <English>USA</English>
-            <Russian>США</Russian>
-        </Key>
         <Key ID="STR_MKK_PTG_NO_ACCESS">
             <English>No access to the proving ground.</English>
             <Russian>Нет доступа к полигону.</Russian>
