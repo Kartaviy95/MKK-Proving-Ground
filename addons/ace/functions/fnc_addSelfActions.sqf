@@ -7,7 +7,7 @@ if (isNil "ace_interact_menu_fnc_createAction") exitWith {};
 
 private _action = [
     "mkk_ptg_open_ui",
-    "Open Proving Ground",
+    localize "STR_MKK_PTG_OPEN_SHORT",
     "",
     {
         [] call EFUNC(main,openMainUI);

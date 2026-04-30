@@ -5,7 +5,7 @@
 */
 if !(hasInterface) exitWith {};
 if !([player] call FUNC(isAuthorized)) exitWith {
-    hint "Нет доступа к полигону.";
+    hint localize "STR_MKK_PTG_NO_ACCESS";
 };
 
 if !(isNull (findDisplay 88000)) exitWith {

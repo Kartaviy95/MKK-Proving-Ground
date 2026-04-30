@@ -33,13 +33,14 @@ lbClear _ctrlList;
     private _className = _x # 0;
     private _displayName = _x # 1;
     private _vehicleType = _x # 5;
-    private _faction = _x # 3;
+    private _vehicleTypeLabel = [_vehicleType] call EFUNC(common,localizeString);
+    private _factionDisplayName = _x param [12, _x # 3];
 
-    private _idx = _ctrlList lbAdd format ["%1 | %2 | %3", _displayName, _vehicleType, _faction];
+    private _idx = _ctrlList lbAdd format ["%1 | %2 | %3", _displayName, _vehicleTypeLabel, _factionDisplayName];
     _ctrlList lbSetData [_idx, _className];
 } forEach _filtered;
 
-_ctrlCount ctrlSetText format ["Найдено: %1", count _filtered];
+_ctrlCount ctrlSetText format [localize "STR_MKK_PTG_FOUND", count _filtered];
 
 if ((count _filtered) > 0) then {
     _ctrlList lbSetCurSel 0;

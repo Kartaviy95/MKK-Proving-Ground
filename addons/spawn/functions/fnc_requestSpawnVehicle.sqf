@@ -5,22 +5,25 @@
 params [
     ["_className", ""],
     ["_requestor", objNull],
-    ["_withCrew", false]
+    ["_withCrew", false],
+    ["_distance", missionNamespace getVariable ["mkk_ptg_spawnDefaultDistance", 30]],
+    ["_directionOffset", 0]
 ];
 
 if (_className isEqualTo "") exitWith {};
 if (isNull _requestor) exitWith {};
 if !([_requestor] call EFUNC(main,isAuthorized)) exitWith {
-    hint "Нет доступа к полигону.";
+    hint localize "STR_MKK_PTG_NO_ACCESS";
 };
 
-private _distance = missionNamespace getVariable ["mkk_ptg_spawnDefaultDistance", 30];
 private _maxDistance = missionNamespace getVariable ["mkk_ptg_spawnMaxDistance", 250];
-_distance = _distance min _maxDistance;
+_distance = (_distance max 1) min _maxDistance;
+_directionOffset = _directionOffset % 360;
 
 [
     _className,
     _requestor,
     _withCrew,
-    _distance
+    _distance,
+    _directionOffset
 ] remoteExecCall [QFUNC(serverSpawnVehicle), 2];

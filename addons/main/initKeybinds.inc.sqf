@@ -1,10 +1,10 @@
 [
-    "MKK PTG",
+    localize "STR_MKK_PTG_MOD_NAME",
     "mkk_ptg_open_ui",
-    "Открыть MKK Proving Ground",
+    localize "STR_MKK_PTG_OPEN",
     {
         [] call FUNC(openMainUI);
     },
     {},
-    [0x19, [false, true, false]]
+    [0xC7, [false, false, false]]
 ] call CBA_fnc_addKeybind;

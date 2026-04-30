@@ -16,7 +16,7 @@ if (_state isEqualType createHashMap && {count _state > 0}) then {
     private _mode = missionNamespace getVariable ["mkk_ptg_trackingModeDefault", "TACTICAL"];
 
     hintSilent format [
-        "MKK Projectile Tracking\nБоеприпас: %1\nВремя полета: %2 сек\nДистанция: %3 м\nРежим: %4",
+        localize "STR_MKK_PTG_TRACKING_HUD",
         _ammoClass,
         [_flightTime, 2] call BIS_fnc_cutDecimals,
         round _distance,

@@ -76,6 +76,7 @@ class MKK_PTG_RscEdit {
     font = "RobotoCondensed";
     shadow = 0;
     colorText[] = {1,1,1,1};
+    colorDisabled[] = {0.5,0.5,0.5,1};
     colorSelection[] = {0.2,0.2,0.2,1};
     autocomplete = "";
     colorBackground[] = {0.1,0.1,0.1,0.9};
@@ -138,6 +139,8 @@ class MKK_PTG_RscCombo {
     soundExpand[] = {"",0.1,1};
     soundCollapse[] = {"",0.1,1};
     wholeHeight = 0.45;
+    arrowEmpty = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_ca.paa";
+    arrowFull = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_active_ca.paa";
     font = "RobotoCondensed";
     sizeEx = 0.032;
     shadow = 0;
@@ -147,6 +150,20 @@ class MKK_PTG_RscCombo {
     h = 0.04;
     class ComboScrollBar {
         color[] = {1,1,1,1};
+        colorActive[] = {1,1,1,1};
+        colorDisabled[] = {1,1,1,0.25};
+        thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
+        arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
+        arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
+        border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
+        shadow = 0;
+        scrollSpeed = 0.06;
+        width = 0;
+        height = 0;
+        autoScrollEnabled = 0;
+        autoScrollSpeed = -1;
+        autoScrollDelay = 5;
+        autoScrollRewind = 0;
     };
 };
 
@@ -169,6 +186,23 @@ class MKK_PTG_RscListbox {
     autoScrollDelay = 5;
     autoScrollRewind = 0;
     colorDisabled[] = {1,1,1,0.25};
+    class ListScrollBar {
+        color[] = {1,1,1,1};
+        colorActive[] = {1,1,1,1};
+        colorDisabled[] = {1,1,1,0.25};
+        thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
+        arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
+        arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
+        border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
+        shadow = 0;
+        scrollSpeed = 0.06;
+        width = 0;
+        height = 0;
+        autoScrollEnabled = 0;
+        autoScrollSpeed = -1;
+        autoScrollDelay = 5;
+        autoScrollRewind = 0;
+    };
 };
 
 #include "dialogs\\provingGround.hpp"

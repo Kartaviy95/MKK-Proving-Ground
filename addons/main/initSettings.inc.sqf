@@ -1,8 +1,8 @@
 [
     "mkk_ptg_enable",
     "CHECKBOX",
-    ["Включить MKK PTG", "Главный переключатель системы полигона."],
-    ["MKK PTG", "Core"],
+    [localize "STR_MKK_PTG_SETTING_ENABLE_NAME", localize "STR_MKK_PTG_SETTING_ENABLE_DESC"],
+    [localize "STR_MKK_PTG_MOD_NAME", localize "STR_MKK_PTG_CATEGORY_CORE"],
     true,
     1
 ] call CBA_fnc_addSetting;
@@ -10,8 +10,8 @@
 [
     "mkk_ptg_allowAllUsers",
     "CHECKBOX",
-    ["Разрешить всем", "Если включено, полигон доступен всем игрокам."],
-    ["MKK PTG", "Access"],
+    [localize "STR_MKK_PTG_SETTING_ALLOW_ALL_NAME", localize "STR_MKK_PTG_SETTING_ALLOW_ALL_DESC"],
+    [localize "STR_MKK_PTG_MOD_NAME", localize "STR_MKK_PTG_CATEGORY_ACCESS"],
     true,
     1
 ] call CBA_fnc_addSetting;
@@ -19,8 +19,8 @@
 [
     "mkk_ptg_trackingEnabled",
     "CHECKBOX",
-    ["Включить tracking", "Разрешает локальную систему слежки за projectile."],
-    ["MKK PTG", "Tracking"],
+    [localize "STR_MKK_PTG_SETTING_TRACKING_ENABLE_NAME", localize "STR_MKK_PTG_SETTING_TRACKING_ENABLE_DESC"],
+    [localize "STR_MKK_PTG_MOD_NAME", localize "STR_MKK_PTG_CATEGORY_TRACKING"],
     true,
     1
 ] call CBA_fnc_addSetting;
@@ -28,8 +28,8 @@
 [
     "mkk_ptg_trackingModeDefault",
     "LIST",
-    ["Режим tracking", "Режим tracking по умолчанию."],
-    ["MKK PTG", "Tracking"],
+    [localize "STR_MKK_PTG_SETTING_TRACKING_MODE_NAME", localize "STR_MKK_PTG_SETTING_TRACKING_MODE_DESC"],
+    [localize "STR_MKK_PTG_MOD_NAME", localize "STR_MKK_PTG_CATEGORY_TRACKING"],
     [["SIMPLE", "TACTICAL", "CINEMATIC"], ["Simple", "Tactical", "Cinematic"], 1],
     1
 ] call CBA_fnc_addSetting;
@@ -37,8 +37,8 @@
 [
     "mkk_ptg_trackingMaxTime",
     "SLIDER",
-    ["Максимум времени tracking", "Максимальная длительность слежки в секундах."],
-    ["MKK PTG", "Tracking"],
+    [localize "STR_MKK_PTG_SETTING_TRACKING_MAX_TIME_NAME", localize "STR_MKK_PTG_SETTING_TRACKING_MAX_TIME_DESC"],
+    [localize "STR_MKK_PTG_MOD_NAME", localize "STR_MKK_PTG_CATEGORY_TRACKING"],
     [1, 20, 8, 0],
     1
 ] call CBA_fnc_addSetting;
@@ -46,8 +46,8 @@
 [
     "mkk_ptg_trackingCooldown",
     "SLIDER",
-    ["Кулдаун tracking", "Задержка между автозапусками слежки."],
-    ["MKK PTG", "Tracking"],
+    [localize "STR_MKK_PTG_SETTING_TRACKING_COOLDOWN_NAME", localize "STR_MKK_PTG_SETTING_TRACKING_COOLDOWN_DESC"],
+    [localize "STR_MKK_PTG_MOD_NAME", localize "STR_MKK_PTG_CATEGORY_TRACKING"],
     [0, 10, 1, 1],
     1
 ] call CBA_fnc_addSetting;
@@ -55,8 +55,8 @@
 [
     "mkk_ptg_spawnDefaultDistance",
     "SLIDER",
-    ["Дистанция спавна", "Базовая дистанция спавна техники от игрока."],
-    ["MKK PTG", "Spawn"],
+    [localize "STR_MKK_PTG_SETTING_SPAWN_DISTANCE_NAME", localize "STR_MKK_PTG_SETTING_SPAWN_DISTANCE_DESC"],
+    [localize "STR_MKK_PTG_MOD_NAME", localize "STR_MKK_PTG_CATEGORY_SPAWN"],
     [5, 500, 30, 0],
     1
 ] call CBA_fnc_addSetting;
@@ -64,8 +64,8 @@
 [
     "mkk_ptg_spawnMaxDistance",
     "SLIDER",
-    ["Лимит дистанции", "Максимально допустимая дистанция спавна."],
-    ["MKK PTG", "Spawn"],
+    [localize "STR_MKK_PTG_SETTING_SPAWN_MAX_DISTANCE_NAME", localize "STR_MKK_PTG_SETTING_SPAWN_MAX_DISTANCE_DESC"],
+    [localize "STR_MKK_PTG_MOD_NAME", localize "STR_MKK_PTG_CATEGORY_SPAWN"],
     [10, 1000, 250, 0],
     1
 ] call CBA_fnc_addSetting;
@@ -73,8 +73,8 @@
 [
     "mkk_ptg_maxVehicles",
     "SLIDER",
-    ["Лимит техники", "Максимальное количество техники полигона."],
-    ["MKK PTG", "Spawn"],
+    [localize "STR_MKK_PTG_SETTING_MAX_VEHICLES_NAME", localize "STR_MKK_PTG_SETTING_MAX_VEHICLES_DESC"],
+    [localize "STR_MKK_PTG_MOD_NAME", localize "STR_MKK_PTG_CATEGORY_SPAWN"],
     [1, 200, 50, 0],
     1
 ] call CBA_fnc_addSetting;
@@ -82,8 +82,8 @@
 [
     "mkk_ptg_maxTargets",
     "SLIDER",
-    ["Лимит мишеней", "Максимальное количество целей полигона."],
-    ["MKK PTG", "Targets"],
+    [localize "STR_MKK_PTG_SETTING_MAX_TARGETS_NAME", localize "STR_MKK_PTG_SETTING_MAX_TARGETS_DESC"],
+    [localize "STR_MKK_PTG_MOD_NAME", localize "STR_MKK_PTG_CATEGORY_TARGETS"],
     [1, 200, 50, 0],
     1
 ] call CBA_fnc_addSetting;
@@ -91,8 +91,8 @@
 [
     "mkk_ptg_showDebugInfo",
     "CHECKBOX",
-    ["Показывать debug", "Включает служебную отладочную информацию."],
-    ["MKK PTG", "Debug"],
+    [localize "STR_MKK_PTG_SETTING_DEBUG_NAME", localize "STR_MKK_PTG_SETTING_DEBUG_DESC"],
+    [localize "STR_MKK_PTG_MOD_NAME", localize "STR_MKK_PTG_CATEGORY_DEBUG"],
     false,
     1
 ] call CBA_fnc_addSetting;

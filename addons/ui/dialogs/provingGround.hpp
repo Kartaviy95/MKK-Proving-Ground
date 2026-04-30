@@ -21,23 +21,33 @@ class MKK_PTG_MainDisplay {
             y = 0.06;
             w = 0.50;
             h = 0.04;
-            text = "MKK Proving Ground";
+            text = "$STR_MKK_PTG_MOD_NAME";
             colorText[] = {1,1,1,1};
+        };
+
+        class SectionTitle: MKK_PTG_RscText {
+            idc = 88003;
+            x = 0.06;
+            y = 0.105;
+            w = 0.40;
+            h = 0.035;
+            text = "$STR_MKK_PTG_SELECT_FUNCTION";
+            colorText[] = {0.72,0.88,1,1};
         };
 
         class ResultCount: MKK_PTG_RscText {
             idc = 88002;
             x = 0.42;
-            y = 0.16;
+            y = 0.135;
             w = 0.18;
             h = 0.03;
-            text = "Найдено: 0";
+            text = "$STR_MKK_PTG_FOUND_ZERO";
         };
 
         class VehicleImage: MKK_PTG_RscPicture {
             idc = 88030;
             x = 0.67;
-            y = 0.16;
+            y = 0.17;
             w = 0.23;
             h = 0.18;
             text = "";
@@ -46,35 +56,137 @@ class MKK_PTG_MainDisplay {
         class VehicleInfo: MKK_PTG_RscStructuredText {
             idc = 88031;
             x = 0.67;
-            y = 0.35;
+            y = 0.36;
             w = 0.23;
             h = 0.32;
-            text = "Выберите технику";
+            text = "$STR_MKK_PTG_SELECT_VEHICLE";
         };
     };
 
     class controls {
+        class DashboardVehicleBtn: MKK_PTG_RscButton {
+            idc = 88100;
+            x = 0.10;
+            y = 0.19;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_VEHICLE_SPAWN";
+            action = QUOTE([] call FUNC(showVehicleView));
+            colorBackground[] = {0.08,0.18,0.24,0.95};
+            colorBackgroundActive[] = {0.10,0.30,0.40,1};
+        };
+
+        class DashboardTeleportBtn: MKK_PTG_RscButton {
+            idc = 88101;
+            x = 0.38;
+            y = 0.19;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_TELEPORT";
+            action = QUOTE([] call FUNC(startTeleport));
+        };
+
+        class DashboardTrackingBtn: MKK_PTG_RscButton {
+            idc = 88102;
+            x = 0.66;
+            y = 0.19;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_PROJECTILE_TRACKING";
+            action = QUOTE([] call FUNC(toggleTracking));
+        };
+
+        class DashboardStaticTargetBtn: MKK_PTG_RscButton {
+            idc = 88103;
+            x = 0.10;
+            y = 0.32;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_STATIC_TARGET";
+            action = QUOTE([player] remoteExecCall [ARR_2(QQEFUNC(targets,spawnStaticTarget),2)]);
+        };
+
+        class DashboardInfantryTargetBtn: MKK_PTG_RscButton {
+            idc = 88104;
+            x = 0.38;
+            y = 0.32;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_INFANTRY_TARGET";
+            action = QUOTE([player] remoteExecCall [ARR_2(QQEFUNC(targets,spawnInfantryTarget),2)]);
+        };
+
+        class DashboardCleanupBtn: MKK_PTG_RscButton {
+            idc = 88105;
+            x = 0.66;
+            y = 0.32;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_CLEANUP_RANGE";
+            action = QUOTE([] call FUNC(onCleanupPressed));
+            colorBackground[] = {0.24,0.08,0.08,0.95};
+            colorBackgroundActive[] = {0.38,0.10,0.10,1};
+        };
+
+        class DashboardRefreshBtn: MKK_PTG_RscButton {
+            idc = 88106;
+            x = 0.10;
+            y = 0.45;
+            w = 0.24;
+            h = 0.06;
+            text = "$STR_MKK_PTG_REFRESH_CATALOG";
+            action = QUOTE([] call FUNC(refreshFilters));
+        };
+
+        class DashboardCloseBtn: MKK_PTG_RscButton {
+            idc = 88107;
+            x = 0.66;
+            y = 0.75;
+            w = 0.24;
+            h = 0.06;
+            text = "$STR_MKK_PTG_CLOSE";
+            action = "closeDialog 0";
+        };
+
+        class DashboardInfo: MKK_PTG_RscStructuredText {
+            idc = 88108;
+            x = 0.10;
+            y = 0.56;
+            w = 0.80;
+            h = 0.10;
+            text = "$STR_MKK_PTG_DASHBOARD_INFO";
+        };
+
+        class SearchLabel: MKK_PTG_RscText {
+            idc = 88050;
+            x = 0.06;
+            y = 0.145;
+            w = 0.16;
+            h = 0.025;
+            text = "$STR_MKK_PTG_SEARCH";
+        };
+
         class SearchEdit: MKK_PTG_RscEdit {
             idc = 88010;
             x = 0.06;
-            y = 0.12;
+            y = 0.17;
             w = 0.18;
             h = 0.04;
             text = "";
             onKeyUp = QUOTE([] call FUNC(refreshVehicleList));
         };
 
-        class SideCombo: MKK_PTG_RscCombo {
-            idc = 88011;
+        class SideLabel: MKK_PTG_RscText {
+            idc = 88051;
             x = 0.06;
-            y = 0.18;
+            y = 0.215;
             w = 0.16;
-            h = 0.04;
-            onLBSelChanged = QUOTE([] call FUNC(refreshVehicleList));
+            h = 0.025;
+            text = "$STR_MKK_PTG_SIDE";
         };
 
-        class FactionCombo: MKK_PTG_RscCombo {
-            idc = 88012;
+        class SideCombo: MKK_PTG_RscCombo {
+            idc = 88011;
             x = 0.06;
             y = 0.24;
             w = 0.16;
@@ -82,30 +194,102 @@ class MKK_PTG_MainDisplay {
             onLBSelChanged = QUOTE([] call FUNC(refreshVehicleList));
         };
 
-        class NationCombo: MKK_PTG_RscCombo {
-            idc = 88013;
+        class FactionLabel: MKK_PTG_RscText {
+            idc = 88052;
             x = 0.06;
-            y = 0.30;
+            y = 0.285;
+            w = 0.16;
+            h = 0.025;
+            text = "$STR_MKK_PTG_FACTION";
+        };
+
+        class FactionCombo: MKK_PTG_RscCombo {
+            idc = 88012;
+            x = 0.06;
+            y = 0.31;
             w = 0.16;
             h = 0.04;
             onLBSelChanged = QUOTE([] call FUNC(refreshVehicleList));
+        };
+
+        class NationLabel: MKK_PTG_RscText {
+            idc = 88053;
+            x = 0.06;
+            y = 0.355;
+            w = 0.16;
+            h = 0.025;
+            text = "$STR_MKK_PTG_NATION";
+        };
+
+        class NationCombo: MKK_PTG_RscCombo {
+            idc = 88013;
+            x = 0.06;
+            y = 0.38;
+            w = 0.16;
+            h = 0.04;
+            onLBSelChanged = QUOTE([] call FUNC(refreshVehicleList));
+        };
+
+        class TypeLabel: MKK_PTG_RscText {
+            idc = 88054;
+            x = 0.06;
+            y = 0.425;
+            w = 0.16;
+            h = 0.025;
+            text = "$STR_MKK_PTG_TYPE";
         };
 
         class TypeCombo: MKK_PTG_RscCombo {
             idc = 88014;
             x = 0.06;
-            y = 0.36;
+            y = 0.45;
             w = 0.16;
             h = 0.04;
             onLBSelChanged = QUOTE([] call FUNC(refreshVehicleList));
         };
 
+        class DistanceLabel: MKK_PTG_RscText {
+            idc = 88055;
+            x = 0.06;
+            y = 0.515;
+            w = 0.16;
+            h = 0.025;
+            text = "$STR_MKK_PTG_SPAWN_DISTANCE";
+        };
+
+        class SpawnDistanceEdit: MKK_PTG_RscEdit {
+            idc = 88015;
+            x = 0.06;
+            y = 0.54;
+            w = 0.16;
+            h = 0.04;
+            text = "30";
+        };
+
+        class DirectionLabel: MKK_PTG_RscText {
+            idc = 88056;
+            x = 0.06;
+            y = 0.585;
+            w = 0.16;
+            h = 0.025;
+            text = "$STR_MKK_PTG_DIRECTION_OFFSET";
+        };
+
+        class SpawnDirectionEdit: MKK_PTG_RscEdit {
+            idc = 88016;
+            x = 0.06;
+            y = 0.61;
+            w = 0.16;
+            h = 0.04;
+            text = "0";
+        };
+
         class VehicleList: MKK_PTG_RscListbox {
             idc = 88020;
             x = 0.25;
-            y = 0.12;
+            y = 0.17;
             w = 0.38;
-            h = 0.64;
+            h = 0.59;
             onLBSelChanged = QUOTE(_this call FUNC(onVehicleSelected));
         };
 
@@ -115,7 +299,7 @@ class MKK_PTG_MainDisplay {
             y = 0.72;
             w = 0.16;
             h = 0.04;
-            text = "Spawn Empty";
+            text = "$STR_MKK_PTG_SPAWN_EMPTY";
             action = QUOTE([false] call FUNC(onSpawnPressed));
         };
 
@@ -125,7 +309,7 @@ class MKK_PTG_MainDisplay {
             y = 0.77;
             w = 0.16;
             h = 0.04;
-            text = "Spawn With Crew";
+            text = "$STR_MKK_PTG_SPAWN_WITH_CREW";
             action = QUOTE([true] call FUNC(onSpawnPressed));
         };
 
@@ -135,8 +319,8 @@ class MKK_PTG_MainDisplay {
             y = 0.77;
             w = 0.18;
             h = 0.04;
-            text = "Spawn Static Target";
-            action = QUOTE([player] remoteExecCall [ARR_2(QQEFUNC(targets,spawnInfantryTarget),2)]);
+            text = "$STR_MKK_PTG_SPAWN_STATIC_TARGET";
+            action = QUOTE([player] remoteExecCall [ARR_2(QQEFUNC(targets,spawnStaticTarget),2)]);
         };
 
         class InfantryTargetBtn: MKK_PTG_RscButton {
@@ -145,7 +329,7 @@ class MKK_PTG_MainDisplay {
             y = 0.77;
             w = 0.19;
             h = 0.04;
-            text = "Spawn Infantry Target";
+            text = "$STR_MKK_PTG_SPAWN_INFANTRY_TARGET";
             action = QUOTE([player] remoteExecCall [ARR_2(QQEFUNC(targets,spawnInfantryTarget),2)]);
         };
 
@@ -155,7 +339,7 @@ class MKK_PTG_MainDisplay {
             y = 0.72;
             w = 0.23;
             h = 0.04;
-            text = "Cleanup Range";
+            text = "$STR_MKK_PTG_CLEANUP_RANGE";
             action = QUOTE([] call FUNC(onCleanupPressed));
         };
 
@@ -165,18 +349,18 @@ class MKK_PTG_MainDisplay {
             y = 0.77;
             w = 0.11;
             h = 0.04;
-            text = "Refresh";
+            text = "$STR_MKK_PTG_REFRESH";
             action = QUOTE([] call FUNC(refreshFilters));
         };
 
-        class CloseBtn: MKK_PTG_RscButton {
+        class BackBtn: MKK_PTG_RscButton {
             idc = 88046;
             x = 0.79;
             y = 0.77;
             w = 0.11;
             h = 0.04;
-            text = "Close";
-            action = "closeDialog 0";
+            text = "$STR_MKK_PTG_BACK";
+            action = QUOTE([] call FUNC(showDashboardView));
         };
     };
 };

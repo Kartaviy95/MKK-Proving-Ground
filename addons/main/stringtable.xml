@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="MKK Proving Ground">
+    <Package name="MKK_PTG">
+        <Key ID="STR_MKK_PTG_ALL">
+            <English>All</English>
+            <Russian>Все</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_BACK">
+            <English>Back</English>
+            <Russian>Назад</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_BLUFOR">
+            <English>BLUFOR</English>
+            <Russian>BLUFOR</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CATEGORY_ACCESS">
+            <English>Access</English>
+            <Russian>Доступ</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CATEGORY_CORE">
+            <English>Core</English>
+            <Russian>Ядро</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CATEGORY_DEBUG">
+            <English>Debug</English>
+            <Russian>Отладка</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CATEGORY_SPAWN">
+            <English>Spawn</English>
+            <Russian>Спавн</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CATEGORY_TARGETS">
+            <English>Targets</English>
+            <Russian>Мишени</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CATEGORY_TRACKING">
+            <English>Tracking</English>
+            <Russian>Слежение</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CIVILIAN">
+            <English>Civilian</English>
+            <Russian>Гражданские</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CLASS">
+            <English>Class</English>
+            <Russian>Класс</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CLEANUP_RANGE">
+            <English>Cleanup Range</English>
+            <Russian>Очистить полигон</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CLOSE">
+            <English>Close</English>
+            <Russian>Закрыть</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CREW">
+            <English>Crew</English>
+            <Russian>Экипаж</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_INFO">
+            <English>Select the proving ground module. The vehicle catalog opens only when requested.</English>
+            <Russian>Выберите нужный модуль полигона. Каталог техники открывается только по запросу.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DIRECTION_OFFSET">
+            <English>Direction Offset, deg.</English>
+            <Russian>Угол разворота, град.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DISABLED">
+            <English>disabled</English>
+            <Russian>выключен</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_ENABLED">
+            <English>enabled</English>
+            <Russian>включен</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_FACTION">
+            <English>Faction</English>
+            <Russian>Фракция</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_FOUND">
+            <English>Found: %1</English>
+            <Russian>Найдено: %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_FOUND_ZERO">
+            <English>Found: 0</English>
+            <Russian>Найдено: 0</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_GROUP">
+            <English>Group</English>
+            <Russian>Группа</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_INDEPENDENT">
+            <English>Independent</English>
+            <Russian>Независимые</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_INFANTRY_TARGET">
+            <English>Infantry Target</English>
+            <Russian>Пехотная цель</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_INFO_NOT_FOUND">
+            <English>Information not found</English>
+            <Russian>Информация не найдена</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_MOD_NAME">
+            <English>MKK Proving Ground</English>
+            <Russian>MKK Proving Ground</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_NATION">
+            <English>Nation</English>
+            <Russian>Нация</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_NO_ACCESS">
+            <English>No access to the proving ground.</English>
+            <Russian>Нет доступа к полигону.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_OPEN">
+            <English>Open MKK Proving Ground</English>
+            <Russian>Открыть MKK Proving Ground</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_OPEN_SHORT">
+            <English>Open Proving Ground</English>
+            <Russian>Открыть полигон</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_OPFOR">
+            <English>OPFOR</English>
+            <Russian>OPFOR</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_PROJECTILE_TRACKING">
+            <English>Projectile Tracking</English>
+            <Russian>Слежение за пулей</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REFRESH">
+            <English>Refresh</English>
+            <Russian>Обновить</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REFRESH_CATALOG">
+            <English>Refresh Catalog</English>
+            <Russian>Обновить каталог</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SEARCH">
+            <English>Search</English>
+            <Russian>Поиск</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SELECT_FUNCTION">
+            <English>Select proving ground function</English>
+            <Russian>Выберите функцию полигона</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SELECT_TELEPORT_POINT">
+            <English>Select teleport point on the map.</English>
+            <Russian>Выберите точку телепорта на карте.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SELECT_VEHICLE">
+            <English>Select a vehicle</English>
+            <Russian>Выберите технику</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SELECT_VEHICLE_FIRST">
+            <English>Select a vehicle first.</English>
+            <Russian>Сначала выберите технику.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_ALLOW_ALL_DESC">
+            <English>If enabled, all players can use the proving ground.</English>
+            <Russian>Если включено, полигон доступен всем игрокам.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_ALLOW_ALL_NAME">
+            <English>Allow all users</English>
+            <Russian>Разрешить всем</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_DEBUG_DESC">
+            <English>Enables service debug information.</English>
+            <Russian>Включает служебную отладочную информацию.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_DEBUG_NAME">
+            <English>Show debug</English>
+            <Russian>Показывать debug</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_ENABLE_DESC">
+            <English>Main proving ground system switch.</English>
+            <Russian>Главный переключатель системы полигона.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_ENABLE_NAME">
+            <English>Enable MKK PTG</English>
+            <Russian>Включить MKK PTG</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_MAX_TARGETS_DESC">
+            <English>Maximum number of proving ground targets.</English>
+            <Russian>Максимальное количество целей полигона.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_MAX_TARGETS_NAME">
+            <English>Target limit</English>
+            <Russian>Лимит мишеней</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_MAX_VEHICLES_DESC">
+            <English>Maximum number of proving ground vehicles.</English>
+            <Russian>Максимальное количество техники полигона.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_MAX_VEHICLES_NAME">
+            <English>Vehicle limit</English>
+            <Russian>Лимит техники</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_SPAWN_DISTANCE_DESC">
+            <English>Default vehicle spawn distance from player.</English>
+            <Russian>Базовая дистанция спавна техники от игрока.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_SPAWN_DISTANCE_NAME">
+            <English>Spawn distance</English>
+            <Russian>Дистанция спавна</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_SPAWN_MAX_DISTANCE_DESC">
+            <English>Maximum allowed spawn distance.</English>
+            <Russian>Максимально допустимая дистанция спавна.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_SPAWN_MAX_DISTANCE_NAME">
+            <English>Distance limit</English>
+            <Russian>Лимит дистанции</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_TRACKING_COOLDOWN_DESC">
+            <English>Delay between automatic tracking starts.</English>
+            <Russian>Задержка между автозапусками слежки.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_TRACKING_COOLDOWN_NAME">
+            <English>Tracking cooldown</English>
+            <Russian>Кулдаун tracking</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_TRACKING_ENABLE_DESC">
+            <English>Allows the local projectile tracking system.</English>
+            <Russian>Разрешает локальную систему слежки за projectile.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_TRACKING_ENABLE_NAME">
+            <English>Enable tracking</English>
+            <Russian>Включить tracking</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_TRACKING_MAX_TIME_DESC">
+            <English>Maximum tracking duration in seconds.</English>
+            <Russian>Максимальная длительность слежки в секундах.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_TRACKING_MAX_TIME_NAME">
+            <English>Tracking max time</English>
+            <Russian>Максимум времени tracking</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_TRACKING_MODE_DESC">
+            <English>Default tracking mode.</English>
+            <Russian>Режим tracking по умолчанию.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SETTING_TRACKING_MODE_NAME">
+            <English>Tracking mode</English>
+            <Russian>Режим tracking</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SIDE">
+            <English>Side</English>
+            <Russian>Сторона</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SOURCE">
+            <English>Source</English>
+            <Russian>Источник</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SPAWN_DISTANCE">
+            <English>Spawn Distance, m</English>
+            <Russian>Дистанция спавна, м</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SPAWN_EMPTY">
+            <English>Spawn Empty</English>
+            <Russian>Создать пустую</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SPAWN_INFANTRY_TARGET">
+            <English>Spawn Infantry Target</English>
+            <Russian>Создать пехотную цель</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SPAWN_STATIC_TARGET">
+            <English>Spawn Static Target</English>
+            <Russian>Создать статичную мишень</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_SPAWN_WITH_CREW">
+            <English>Spawn With Crew</English>
+            <Russian>Создать с экипажем</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATIC_TARGET">
+            <English>Static Target</English>
+            <Russian>Статичная мишень</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TELEPORT">
+            <English>Teleport</English>
+            <Russian>Телепорт</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TELEPORT_DONE">
+            <English>Teleport complete.</English>
+            <Russian>Телепорт выполнен.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TRACKING_HUD">
+            <English>MKK Projectile Tracking\nAmmo: %1\nFlight time: %2 sec\nDistance: %3 m\nMode: %4</English>
+            <Russian>MKK Projectile Tracking\nБоеприпас: %1\nВремя полета: %2 сек\nДистанция: %3 м\nРежим: %4</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TRACKING_STATUS">
+            <English>Tracking: %1</English>
+            <Russian>Tracking: %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE">
+            <English>Type</English>
+            <Russian>Тип</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE_APC">
+            <English>APC</English>
+            <Russian>БТР</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE_BOAT">
+            <English>Boat</English>
+            <Russian>Лодка</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE_CAR">
+            <English>Car</English>
+            <Russian>Автомобиль</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE_HELICOPTER">
+            <English>Helicopter</English>
+            <Russian>Вертолет</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE_IFV">
+            <English>IFV</English>
+            <Russian>БМП</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE_OTHER">
+            <English>Other</English>
+            <Russian>Другое</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE_PLANE">
+            <English>Plane</English>
+            <Russian>Самолет</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE_STATIC">
+            <English>Static</English>
+            <Russian>Статичное</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE_TANK">
+            <English>Tank</English>
+            <Russian>Танк</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE_TRUCK">
+            <English>Truck</English>
+            <Russian>Грузовик</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPE_UAV">
+            <English>UAV</English>
+            <Russian>БПЛА</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_UNKNOWN">
+            <English>Unknown</English>
+            <Russian>Неизвестно</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_VEHICLE_SPAWN">
+            <English>Vehicle Spawner</English>
+            <Russian>Создание техники</Russian>
+        </Key>
+    </Package>
+</Project>

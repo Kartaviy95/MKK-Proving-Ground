@@ -6,11 +6,11 @@ params [
     ["_cfg", configNull]
 ];
 
-if (isNull _cfg) exitWith {"Unknown"};
+if (isNull _cfg) exitWith {localize "STR_MKK_PTG_UNKNOWN"};
 
 private _source = configSourceMod _cfg;
 if (_source == "") then {
-    _source = "Unknown";
+    _source = localize "STR_MKK_PTG_UNKNOWN";
 };
 
 _source
