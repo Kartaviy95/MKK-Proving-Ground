@@ -9,6 +9,7 @@
 - `mkk_ptg_spawn`
 - `mkk_ptg_targets`
 - `mkk_ptg_tracking`
+- `mkk_ptg_player`
 - `mkk_ptg_ace`
 - `mkk_ptg_common`
 
@@ -25,6 +26,7 @@
 - серверный спавн техники;
 - базовые цели;
 - локальный tracking projectile;
+- локальные инструменты игрока: бесконечные патроны и режим бога;
 - ACE self-action и action на терминале;
 - заготовка `CfgRemoteExec`.
 

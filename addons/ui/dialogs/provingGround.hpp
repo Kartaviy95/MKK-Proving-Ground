@@ -162,8 +162,8 @@ class MKK_PTG_MainDisplay {
 
         class DashboardRefreshBtn: MKK_PTG_RscButton {
             idc = 88106;
-            x = 0.38;
-            y = 0.52;
+            x = 0.24;
+            y = 0.63;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_REFRESH_CATALOG";
@@ -190,10 +190,30 @@ class MKK_PTG_MainDisplay {
             action = QUOTE([] call EFUNC(tracking,toggleMapProjectileMarkerAmmo));
         };
 
-        class DashboardCloseBtn: MKK_PTG_RscButton {
-            idc = 88107;
+        class DashboardInfiniteAmmoBtn: MKK_PTG_RscButton {
+            idc = 88113;
+            x = 0.38;
+            y = 0.52;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_INFINITE_AMMO";
+            action = QUOTE([] call EFUNC(player,toggleInfiniteAmmo));
+        };
+
+        class DashboardGodModeBtn: MKK_PTG_RscButton {
+            idc = 88114;
             x = 0.66;
             y = 0.52;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_GOD_MODE";
+            action = QUOTE([] call EFUNC(player,toggleGodMode));
+        };
+
+        class DashboardCloseBtn: MKK_PTG_RscButton {
+            idc = 88107;
+            x = 0.52;
+            y = 0.63;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_CLOSE";
@@ -203,9 +223,9 @@ class MKK_PTG_MainDisplay {
         class DashboardInfo: MKK_PTG_RscStructuredText {
             idc = 88108;
             x = 0.10;
-            y = 0.65;
+            y = 0.74;
             w = 0.80;
-            h = 0.11;
+            h = 0.08;
             text = "$STR_MKK_PTG_DASHBOARD_INFO";
         };
 

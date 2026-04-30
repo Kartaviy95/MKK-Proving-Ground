@@ -97,6 +97,14 @@
             <English>Found: 0</English>
             <Russian>Найдено: 0</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_GOD_MODE">
+            <English>God Mode</English>
+            <Russian>Режим бога</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_GOD_MODE_STATUS">
+            <English>God mode: %1</English>
+            <Russian>Режим бога: %1</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_GROUP">
             <English>Group</English>
             <Russian>Группа</Russian>
@@ -112,6 +120,14 @@
         <Key ID="STR_MKK_PTG_INFANTRY_TARGET">
             <English>Infantry Target</English>
             <Russian>Пехотная цель</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_INFINITE_AMMO">
+            <English>Infinite Ammo</English>
+            <Russian>Бесконечные патроны</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_INFINITE_AMMO_STATUS">
+            <English>Infinite ammo: %1</English>
+            <Russian>Бесконечные патроны: %1</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_INFO_NOT_FOUND">
             <English>Information not found</English>

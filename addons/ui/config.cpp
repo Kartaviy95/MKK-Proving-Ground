@@ -7,7 +7,9 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            QUOTE(MAIN_ADDON)};
+            QUOTE(MAIN_ADDON),
+            QUOTE(DOUBLES(PREFIX,player))
+        };
         VERSION_CONFIG;
     };
 };

@@ -7,7 +7,7 @@ if (isNull _display) exitWith {};
 
 {
     (_display displayCtrl _x) ctrlShow false;
-} forEach [88100, 88101, 88102, 88103, 88104, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88112];
+} forEach [88100, 88101, 88102, 88103, 88104, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88112, 88113, 88114];
 
 {
     (_display displayCtrl _x) ctrlShow true;
