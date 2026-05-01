@@ -165,10 +165,6 @@
             <English>indirectHitRange</English>
             <Russian>indirectHitRange</Russian>
         </Key>
-        <Key ID="STR_MKK_PTG_INFANTRY_TARGET">
-            <English>Infantry Target</English>
-            <Russian>Пехотная цель</Russian>
-        </Key>
         <Key ID="STR_MKK_PTG_INFINITE_AMMO">
             <English>Infinite Ammo</English>
             <Russian>Бесконечные патроны</Russian>
@@ -317,21 +313,9 @@
             <English>Spawn Empty</English>
             <Russian>Создать пустую</Russian>
         </Key>
-        <Key ID="STR_MKK_PTG_SPAWN_INFANTRY_TARGET">
-            <English>Spawn Infantry Target</English>
-            <Russian>Создать пехотную цель</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_SPAWN_STATIC_TARGET">
-            <English>Spawn Static Target</English>
-            <Russian>Создать статичную мишень</Russian>
-        </Key>
         <Key ID="STR_MKK_PTG_SPAWN_WITH_CREW">
             <English>Spawn With Crew</English>
             <Russian>Создать с экипажем</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_STATIC_TARGET">
-            <English>Static Target</English>
-            <Russian>Статичная мишень</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_SUBMUNITION_AMMO">
             <English>submunitionAmmo</English>

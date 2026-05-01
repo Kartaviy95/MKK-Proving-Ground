@@ -11,5 +11,4 @@ PREP_RECOMPILE_END;
 ADDON = true;
 
 GVAR(spawnedObjects) = [];
-GVAR(spawnedTargets) = [];
 GVAR(spawnedVehicles) = [];

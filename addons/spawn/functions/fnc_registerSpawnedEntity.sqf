@@ -17,11 +17,6 @@ switch (toLowerANSI _kind) do {
         _arr pushBackUnique _entity;
         missionNamespace setVariable ["mkk_ptg_spawnedVehicles", _arr];
     };
-    case "target": {
-        private _arr = missionNamespace getVariable ["mkk_ptg_spawnedTargets", []];
-        _arr pushBackUnique _entity;
-        missionNamespace setVariable ["mkk_ptg_spawnedTargets", _arr];
-    };
     default {
         private _arr = missionNamespace getVariable ["mkk_ptg_spawnedObjects", []];
         _arr pushBackUnique _entity;

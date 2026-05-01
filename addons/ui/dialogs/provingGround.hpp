@@ -99,37 +99,17 @@ class MKK_PTG_MainDisplay {
         class DashboardTrackingBtn: MKK_PTG_RscButton {
             idc = 88102;
             x = 0.10;
-            y = 0.41;
+            y = 0.30;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_PROJECTILE_TRACKING";
             action = QUOTE([] call FUNC(toggleTracking));
         };
 
-        class DashboardStaticTargetBtn: MKK_PTG_RscButton {
-            idc = 88103;
-            x = 0.10;
-            y = 0.30;
-            w = 0.24;
-            h = 0.08;
-            text = "$STR_MKK_PTG_STATIC_TARGET";
-            action = QUOTE([player] remoteExecCall [ARR_2(QQEFUNC(targets,spawnStaticTarget),2)]);
-        };
-
-        class DashboardInfantryTargetBtn: MKK_PTG_RscButton {
-            idc = 88104;
-            x = 0.38;
-            y = 0.30;
-            w = 0.24;
-            h = 0.08;
-            text = "$STR_MKK_PTG_INFANTRY_TARGET";
-            action = QUOTE([player] remoteExecCall [ARR_2(QQEFUNC(targets,spawnInfantryTarget),2)]);
-        };
-
         class DashboardCleanupBtn: MKK_PTG_RscButton {
             idc = 88105;
-            x = 0.66;
-            y = 0.30;
+            x = 0.10;
+            y = 0.52;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_CLEANUP_RANGE";
@@ -153,7 +133,7 @@ class MKK_PTG_MainDisplay {
         class DashboardTrajectoryBtn: MKK_PTG_RscButton {
             idc = 88110;
             x = 0.38;
-            y = 0.41;
+            y = 0.30;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_TRAJECTORY_LINES";
@@ -162,8 +142,8 @@ class MKK_PTG_MainDisplay {
 
         class DashboardRefreshBtn: MKK_PTG_RscButton {
             idc = 88106;
-            x = 0.24;
-            y = 0.63;
+            x = 0.38;
+            y = 0.52;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_REFRESH_CATALOG";
@@ -173,7 +153,7 @@ class MKK_PTG_MainDisplay {
         class DashboardMapMarkerBtn: MKK_PTG_RscButton {
             idc = 88111;
             x = 0.66;
-            y = 0.41;
+            y = 0.30;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_MAP_PROJECTILE_MARKERS";
@@ -183,7 +163,7 @@ class MKK_PTG_MainDisplay {
         class DashboardMapMarkerAmmoBtn: MKK_PTG_RscButton {
             idc = 88112;
             x = 0.10;
-            y = 0.52;
+            y = 0.41;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_MAP_MARKER_AMMO";
@@ -193,7 +173,7 @@ class MKK_PTG_MainDisplay {
         class DashboardInfiniteAmmoBtn: MKK_PTG_RscButton {
             idc = 88113;
             x = 0.38;
-            y = 0.52;
+            y = 0.41;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_INFINITE_AMMO";
@@ -203,7 +183,7 @@ class MKK_PTG_MainDisplay {
         class DashboardGodModeBtn: MKK_PTG_RscButton {
             idc = 88114;
             x = 0.66;
-            y = 0.52;
+            y = 0.41;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_GOD_MODE";
@@ -212,8 +192,8 @@ class MKK_PTG_MainDisplay {
 
         class DashboardCloseBtn: MKK_PTG_RscButton {
             idc = 88107;
-            x = 0.52;
-            y = 0.63;
+            x = 0.66;
+            y = 0.52;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_CLOSE";
@@ -384,30 +364,10 @@ class MKK_PTG_MainDisplay {
             action = QUOTE([true] call FUNC(onSpawnPressed));
         };
 
-        class StaticTargetBtn: MKK_PTG_RscButton {
-            idc = 88042;
-            x = 0.64;
-            y = 0.70;
-            w = 0.26;
-            h = 0.045;
-            text = "$STR_MKK_PTG_SPAWN_STATIC_TARGET";
-            action = QUOTE([player] remoteExecCall [ARR_2(QQEFUNC(targets,spawnStaticTarget),2)]);
-        };
-
-        class InfantryTargetBtn: MKK_PTG_RscButton {
-            idc = 88043;
-            x = 0.06;
-            y = 0.755;
-            w = 0.26;
-            h = 0.045;
-            text = "$STR_MKK_PTG_SPAWN_INFANTRY_TARGET";
-            action = QUOTE([player] remoteExecCall [ARR_2(QQEFUNC(targets,spawnInfantryTarget),2)]);
-        };
-
         class CleanupBtn: MKK_PTG_RscButton {
             idc = 88044;
-            x = 0.35;
-            y = 0.755;
+            x = 0.64;
+            y = 0.70;
             w = 0.26;
             h = 0.045;
             text = "$STR_MKK_PTG_CLEANUP_RANGE";
@@ -416,7 +376,7 @@ class MKK_PTG_MainDisplay {
 
         class RefreshBtn: MKK_PTG_RscButton {
             idc = 88045;
-            x = 0.64;
+            x = 0.20;
             y = 0.755;
             w = 0.26;
             h = 0.045;
@@ -426,8 +386,8 @@ class MKK_PTG_MainDisplay {
 
         class BackBtn: MKK_PTG_RscButton {
             idc = 88046;
-            x = 0.35;
-            y = 0.81;
+            x = 0.52;
+            y = 0.755;
             w = 0.26;
             h = 0.045;
             text = "$STR_MKK_PTG_BACK";
