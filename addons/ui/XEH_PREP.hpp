@@ -1,13 +1,16 @@
+PREP(drawObjectStatusDisplay);
 PREP(initDisplay);
 PREP(onCleanupPressed);
 PREP(onSpawnPressed);
 PREP(onVehicleSelected);
+PREP(registerObjectStatusDisplay);
 PREP(refreshFilters);
 PREP(refreshStaticAmmoBoxes);
 PREP(refreshVehicleList);
 PREP(showDashboardView);
 PREP(showVehicleView);
 PREP(startTeleport);
+PREP(toggleObjectStatusDisplay);
 PREP(toggleTracking);
 PREP(updateVehicleCard);
 PREP(updateVehiclePreview);

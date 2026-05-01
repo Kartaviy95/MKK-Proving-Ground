@@ -208,3 +208,54 @@ class MKK_PTG_RscListbox {
 };
 
 #include "dialogs\\provingGround.hpp"
+
+class RscTitles {
+    class MKK_PTG_ObjectStatusDisplayHUD {
+        idd = -1;
+        movingEnable = 0;
+        duration = 100000;
+        fadeIn = 0;
+        fadeOut = 0;
+        onLoad = "uiNamespace setVariable ['mkk_ptg_objectStatusDisplayHud', _this # 0]; {((_this # 0) displayCtrl _x) ctrlShow false;} forEach [88200,88201,88202,88203];";
+        onUnload = "uiNamespace setVariable ['mkk_ptg_objectStatusDisplayHud', displayNull];";
+
+        class controls {
+            class Panel: MKK_PTG_RscText {
+                idc = 88200;
+                x = 0.70;
+                y = 0.54;
+                w = 0.27;
+                h = 0.24;
+                colorBackground[] = {0.02,0.035,0.045,0.86};
+            };
+
+            class AccentTop: MKK_PTG_RscText {
+                idc = 88201;
+                x = 0.70;
+                y = 0.54;
+                w = 0.27;
+                h = 0.004;
+                colorBackground[] = {0.10,0.72,0.92,0.95};
+            };
+
+            class AccentSide: MKK_PTG_RscText {
+                idc = 88202;
+                x = 0.70;
+                y = 0.54;
+                w = 0.004;
+                h = 0.24;
+                colorBackground[] = {0.10,0.72,0.92,0.95};
+            };
+
+            class StatusText: MKK_PTG_RscStructuredText {
+                idc = 88203;
+                x = 0.715;
+                y = 0.555;
+                w = 0.24;
+                h = 0.21;
+                text = "";
+                colorText[] = {1,1,1,1};
+            };
+        };
+    };
+};

@@ -108,7 +108,7 @@ class MKK_PTG_MainDisplay {
 
         class DashboardCleanupBtn: MKK_PTG_RscButton {
             idc = 88105;
-            x = 0.10;
+            x = 0.38;
             y = 0.52;
             w = 0.24;
             h = 0.08;
@@ -142,7 +142,7 @@ class MKK_PTG_MainDisplay {
 
         class DashboardRefreshBtn: MKK_PTG_RscButton {
             idc = 88106;
-            x = 0.38;
+            x = 0.66;
             y = 0.52;
             w = 0.24;
             h = 0.08;
@@ -192,12 +192,24 @@ class MKK_PTG_MainDisplay {
 
         class DashboardCloseBtn: MKK_PTG_RscButton {
             idc = 88107;
-            x = 0.66;
-            y = 0.52;
+            x = 0.38;
+            y = 0.63;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_CLOSE";
             action = "closeDialog 0";
+        };
+
+        class DashboardObjectStatusBtn: MKK_PTG_RscButton {
+            idc = 88115;
+            x = 0.10;
+            y = 0.52;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_OBJECT_STATUS_DISPLAY";
+            action = QUOTE([] call FUNC(toggleObjectStatusDisplay));
+            colorBackground[] = {0.08,0.18,0.24,0.95};
+            colorBackgroundActive[] = {0.10,0.30,0.40,1};
         };
 
         class DashboardInfo: MKK_PTG_RscStructuredText {

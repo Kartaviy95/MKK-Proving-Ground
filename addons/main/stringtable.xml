@@ -113,6 +113,10 @@
             <English>disabled</English>
             <Russian>выключен</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_DISTANCE">
+            <English>Distance</English>
+            <Russian>Дистанция</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_ENABLED">
             <English>enabled</English>
             <Russian>включен</Russian>
@@ -193,6 +197,10 @@
             <English>Projectile Map Markers</English>
             <Russian>Маркеры снарядов на карте</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_METERS_SHORT">
+            <English>m</English>
+            <Russian>м</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_MOD_NAME">
             <English>MKK Proving Ground</English>
             <Russian>MKK Proving Ground</Russian>
@@ -220,6 +228,18 @@
         <Key ID="STR_MKK_PTG_NO_HITPOINT_DAMAGE">
             <English>No hitpoint damage recorded.</English>
             <Russian>Повреждения hitpoints не зафиксированы.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_OBJECT_STATUS_DISPLAY">
+            <English>Object Status Display</English>
+            <Russian>Статус-дисплей объектов</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_OBJECT_STATUS_DISPLAY_STATUS">
+            <English>Object status display: %1</English>
+            <Russian>Статус-дисплей объектов: %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_OBJECT_STATUS_TITLE">
+            <English>Object Status</English>
+            <Russian>Статус объекта</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_OPEN">
             <English>Open MKK Proving Ground</English>
@@ -336,6 +356,10 @@
         <Key ID="STR_MKK_PTG_TEST_VEHICLE">
             <English>Test Vehicle</English>
             <Russian>Тестовая техника</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TOTAL_DAMAGE">
+            <English>Total Damage Received</English>
+            <Russian>Общий полученный урон</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_TRACKING_HUD">
             <English>MKK Projectile Tracking\nAmmo: %1\nFlight time: %2 sec\nDistance: %3 m\nMode: %4</English>
