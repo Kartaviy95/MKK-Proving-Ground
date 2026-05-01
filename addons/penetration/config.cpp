@@ -22,6 +22,7 @@ class CfgPatches {
 class MKK_PTG_RscButton;
 class MKK_PTG_RscEdit;
 class MKK_PTG_RscListbox;
+class MKK_PTG_RscPicture;
 class MKK_PTG_RscStructuredText;
 class MKK_PTG_RscText;
 

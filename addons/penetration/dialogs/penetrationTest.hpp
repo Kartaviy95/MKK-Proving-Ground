@@ -46,9 +46,9 @@ class MKK_PTG_PenetrationDisplay {
 
         class AmmoLabel: MKK_PTG_RscText {
             idc = -1;
-            x = 0.36;
+            x = 0.35;
             y = 0.12;
-            w = 0.24;
+            w = 0.26;
             h = 0.03;
             text = "$STR_MKK_PTG_TEST_AMMO";
         };
@@ -77,16 +77,27 @@ class MKK_PTG_PenetrationDisplay {
         class VehicleList: MKK_PTG_RscListbox {
             idc = 88920;
             x = 0.06;
+            y = 0.41;
+            w = 0.26;
+            h = 0.29;
+            onLBSelChanged = QUOTE(_this call FUNC(onVehicleSelected));
+        };
+
+        class VehiclePreview: MKK_PTG_RscPicture {
+            idc = 88930;
+            style = 2096;
+            x = 0.06;
             y = 0.20;
             w = 0.26;
-            h = 0.50;
+            h = 0.20;
+            text = "";
         };
 
         class AmmoSearch: MKK_PTG_RscEdit {
             idc = 88911;
-            x = 0.36;
+            x = 0.35;
             y = 0.15;
-            w = 0.24;
+            w = 0.26;
             h = 0.04;
             text = "";
             onKeyUp = QUOTE([] call FUNC(refreshAmmoList));
@@ -94,10 +105,20 @@ class MKK_PTG_PenetrationDisplay {
 
         class AmmoList: MKK_PTG_RscListbox {
             idc = 88921;
-            x = 0.36;
+            x = 0.35;
+            y = 0.41;
+            w = 0.26;
+            h = 0.29;
+            onLBSelChanged = QUOTE(_this call FUNC(onAmmoSelected));
+        };
+
+        class AmmoInfo: MKK_PTG_RscStructuredText {
+            idc = 88933;
+            x = 0.35;
             y = 0.20;
-            w = 0.24;
-            h = 0.50;
+            w = 0.26;
+            h = 0.20;
+            text = "$STR_MKK_PTG_AMMO_PARAMS_EMPTY";
         };
 
         class Report: MKK_PTG_RscStructuredText {

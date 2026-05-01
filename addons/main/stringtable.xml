@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="MKK Proving Ground">
     <Package name="MKK_PTG">
+        <Key ID="STR_MKK_PTG_AIR_FRICTION">
+            <English>airFriction</English>
+            <Russian>airFriction</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_ALIVE">
             <English>alive</English>
             <Russian>жив</Russian>
@@ -8,6 +12,14 @@
         <Key ID="STR_MKK_PTG_ALL">
             <English>All</English>
             <Russian>Все</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_AMMO_PARAMS">
+            <English>Ammo Parameters</English>
+            <Russian>Параметры боеприпаса</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_AMMO_PARAMS_EMPTY">
+            <English>Select ammo to see its config parameters.</English>
+            <Russian>Выберите боеприпас, чтобы увидеть параметры конфига.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_AUTHOR">
             <English>by Kartaviy</English>
@@ -20,6 +32,10 @@
         <Key ID="STR_MKK_PTG_BLUFOR">
             <English>BLUFOR</English>
             <Russian>BLUFOR</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CALIBER">
+            <English>caliber</English>
+            <Russian>caliber</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_CIVILIAN">
             <English>Civilian</English>
@@ -129,6 +145,10 @@
             <English>Group</English>
             <Russian>Группа</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_HIT">
+            <English>hit</English>
+            <Russian>hit</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_HITPOINTS">
             <English>Hitpoints</English>
             <Russian>Hitpoints</Russian>
@@ -136,6 +156,14 @@
         <Key ID="STR_MKK_PTG_INDEPENDENT">
             <English>Independent</English>
             <Russian>Независимые</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_INDIRECT_HIT">
+            <English>indirectHit</English>
+            <Russian>indirectHit</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_INDIRECT_HIT_RANGE">
+            <English>indirectHitRange</English>
+            <Russian>indirectHitRange</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_INFANTRY_TARGET">
             <English>Infantry Target</English>
@@ -172,6 +200,10 @@
         <Key ID="STR_MKK_PTG_MOD_NAME">
             <English>MKK Proving Ground</English>
             <Russian>MKK Proving Ground</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_NO">
+            <English>No</English>
+            <Russian>Нет</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_NO_ACCESS">
             <English>No access to the proving ground.</English>
@@ -301,6 +333,10 @@
             <English>Static Target</English>
             <Russian>Статичная мишень</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_SUBMUNITION_AMMO">
+            <English>submunitionAmmo</English>
+            <Russian>submunitionAmmo</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_TELEPORT">
             <English>Teleport</English>
             <Russian>Телепорт</Russian>
@@ -388,6 +424,10 @@
         <Key ID="STR_MKK_PTG_VEHICLE_SPAWN">
             <English>Vehicle Spawner</English>
             <Russian>Создание техники</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_YES">
+            <English>Yes</English>
+            <Russian>Да</Russian>
         </Key>
     </Package>
 </Project>

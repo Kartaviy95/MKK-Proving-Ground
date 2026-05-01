@@ -1,6 +1,8 @@
 PREP(collectDamageReport);
 PREP(createTestShot);
 PREP(initDisplay);
+PREP(onAmmoSelected);
+PREP(onVehicleSelected);
 PREP(openDisplay);
 PREP(registerAimClick);
 PREP(registerOrbitControls);
@@ -11,4 +13,6 @@ PREP(serverCreateTarget);
 PREP(serverFireTestShot);
 PREP(startOrbitCamera);
 PREP(stopOrbitCamera);
+PREP(updateAmmoInfo);
 PREP(updateReport);
+PREP(updateVehiclePreview);

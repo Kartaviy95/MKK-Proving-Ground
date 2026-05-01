@@ -35,4 +35,8 @@ lbClear _ctrlList;
 
 if ((lbSize _ctrlList) > 0) then {
     _ctrlList lbSetCurSel 0;
+    [_ctrlList, 0] call FUNC(onAmmoSelected);
+} else {
+    missionNamespace setVariable ["mkk_ptg_penetrationAmmoClass", ""];
+    [] call FUNC(updateAmmoInfo);
 };

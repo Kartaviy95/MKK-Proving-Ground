@@ -16,8 +16,8 @@ if (_info isEqualTo []) exitWith {
     _ctrlImage ctrlSetText "";
 };
 
-private _previewPath = _info # 7;
-private _picturePath = _info # 8;
+private _previewPath = _info # 6;
+private _picturePath = _info # 7;
 private _finalPath = _previewPath;
 
 if (_finalPath isEqualTo "") then {_finalPath = _picturePath;};

@@ -19,6 +19,13 @@ lbClear _ctrlList;
 
 {
     private _className = _x # 0;
+    private _isVehicle =
+        _className isKindOf "LandVehicle"
+        || {_className isKindOf "Air"}
+        || {_className isKindOf "Ship"};
+
+    if (!_isVehicle || {_className isKindOf "StaticWeapon"}) then {continue};
+
     private _displayName = [_x # 1] call EFUNC(common,localizeString);
     private _vehicleType = [_x # 4] call EFUNC(common,localizeString);
     private _faction = _x param [11, _x # 3];
@@ -31,4 +38,8 @@ lbClear _ctrlList;
 
 if ((lbSize _ctrlList) > 0) then {
     _ctrlList lbSetCurSel 0;
+    [_ctrlList, 0] call FUNC(onVehicleSelected);
+} else {
+    missionNamespace setVariable ["mkk_ptg_penetrationVehicleClass", ""];
+    [] call FUNC(updateVehiclePreview);
 };
