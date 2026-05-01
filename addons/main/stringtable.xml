@@ -53,9 +53,41 @@
             <English>Close</English>
             <Russian>Закрыть</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_COLOR">
+            <English>Color</English>
+            <Russian>Цвет</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_COLOR_CYAN">
+            <English>Cyan</English>
+            <Russian>Голубой</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_COLOR_GREEN">
+            <English>Green</English>
+            <Russian>Зеленый</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_COLOR_MAGENTA">
+            <English>Magenta</English>
+            <Russian>Пурпурный</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_COLOR_RED">
+            <English>Red</English>
+            <Russian>Красный</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_COLOR_WHITE">
+            <English>White</English>
+            <Russian>Белый</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_COLOR_YELLOW">
+            <English>Yellow</English>
+            <Russian>Желтый</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_COMPATIBLE_AMMO_BOX">
             <English>Compatible Ammo Box</English>
             <Russian>Совместимый ящик БК</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CONDITION">
+            <English>Condition</English>
+            <Russian>Состояние</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_CREATE_TEST_TARGET">
             <English>Create Test Target</English>
@@ -157,6 +189,110 @@
             <English>Hitpoints</English>
             <Russian>Hitpoints</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR">
+            <English>Hitpoint Inspector</English>
+            <Russian>Инспектор hitpoints</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_DISPLAY_MISSING">
+            <English>Main game display is not available.</English>
+            <Russian>Основной игровой дисплей недоступен.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_PLAYER_REQUIRED">
+            <English>Enter a player unit before enabling hitpoint inspector.</English>
+            <Russian>Сначала войдите в юнита, затем включите инспектор hitpoints.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_STATUS">
+            <English>Hitpoint inspector: %1</English>
+            <Russian>Инспектор hitpoints: %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_TARGET">
+            <English>TARGET</English>
+            <Russian>ЦЕЛЬ</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_TITLE">
+            <English>HITPOINT INSPECTOR</English>
+            <Russian>ИНСПЕКТОР HITPOINTS</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING">
+            <English>Waiting...</English>
+            <Russian>Ожидание...</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_AVIONICS">
+            <English>Avionics</English>
+            <Russian>Авионика</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_ENGINE">
+            <English>Engine</English>
+            <Russian>Двигатель</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_ENGINE_NUMBER">
+            <English>Engine %1</English>
+            <Russian>Двигатель %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_FUEL">
+            <English>Fuel</English>
+            <Russian>Топливо</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_FUEL_NUMBER">
+            <English>Fuel %1</English>
+            <Russian>Топливо %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_GLASS_NUMBER">
+            <English>Glass %1</English>
+            <Russian>Стекло %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_GUN">
+            <English>Gun</English>
+            <Russian>Пушка</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_GUN_NUMBER">
+            <English>Gun %1</English>
+            <Russian>Пушка %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_HULL">
+            <English>Hull</English>
+            <Russian>Корпус</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_LEFT_FRONT_WHEEL">
+            <English>Left front wheel</English>
+            <Russian>Левое переднее колесо</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_LEFT_REAR_WHEEL">
+            <English>Left rear wheel</English>
+            <Russian>Левое заднее колесо</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_LEFT_TRACK">
+            <English>Left track</English>
+            <Russian>Левая гусеница</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_MAIN_ROTOR">
+            <English>Main rotor</English>
+            <Russian>Главный ротор</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_RIGHT_FRONT_WHEEL">
+            <English>Right front wheel</English>
+            <Russian>Правое переднее колесо</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_RIGHT_REAR_WHEEL">
+            <English>Right rear wheel</English>
+            <Russian>Правое заднее колесо</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_RIGHT_TRACK">
+            <English>Right track</English>
+            <Russian>Правая гусеница</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_TAIL_ROTOR">
+            <English>Tail rotor</English>
+            <Russian>Хвостовой ротор</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_TURRET">
+            <English>Turret</English>
+            <Russian>Башня</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_TURRET_NUMBER">
+            <English>Turret %1</English>
+            <Russian>Башня %1</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_INDEPENDENT">
             <English>Independent</English>
             <Russian>Независимые</Russian>
@@ -181,6 +317,14 @@
             <English>Information not found</English>
             <Russian>Информация не найдена</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_LINE_WIDTH">
+            <English>Line width</English>
+            <Russian>Толщина линии</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_LINE_WIDTH_VALUE">
+            <English>Width %1</English>
+            <Russian>Толщина %1</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_MAP_MARKERS_STATUS">
             <English>Projectile map markers: %1</English>
             <Russian>Маркеры снарядов на карте: %1</Russian>
@@ -192,6 +336,10 @@
         <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO_STATUS">
             <English>Ammo class on marker: %1</English>
             <Russian>Класс ammo на маркере: %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_MARKER_SETTINGS">
+            <English>Map marker settings</English>
+            <Russian>Настройки маркеров на карте</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_PROJECTILE_MARKERS">
             <English>Projectile Map Markers</English>
@@ -236,6 +384,18 @@
         <Key ID="STR_MKK_PTG_OBJECT_STATUS_DISPLAY_STATUS">
             <English>Object status display: %1</English>
             <Russian>Статус-дисплей объектов: %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_OBJECT_STATUS_FIELDS">
+            <English>Displayed fields</English>
+            <Russian>Показываемые поля</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_OBJECT_STATUS_HITPOINTS">
+            <English>Hitpoint fields</English>
+            <Russian>Hitpoint-поля</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_OBJECT_STATUS_SETTINGS">
+            <English>Status display settings</English>
+            <Russian>Настройки статус-дисплея</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_OBJECT_STATUS_TITLE">
             <English>Object Status</English>
@@ -337,6 +497,22 @@
             <English>Spawn With Crew</English>
             <Russian>Создать с экипажем</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_STATE_CRITICAL">
+            <English>CRITICAL</English>
+            <Russian>КРИТИЧНО</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATE_DAMAGED">
+            <English>DAMAGED</English>
+            <Russian>ПОВРЕЖДЕНО</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATE_HEAVY_DAMAGE">
+            <English>HEAVY DAMAGE</English>
+            <Russian>СИЛЬНО ПОВРЕЖДЕНО</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATE_NOMINAL">
+            <English>NOMINAL</English>
+            <Russian>НОРМА</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_SUBMUNITION_AMMO">
             <English>submunitionAmmo</English>
             <Russian>submunitionAmmo</Russian>
@@ -361,6 +537,10 @@
             <English>Total Damage Received</English>
             <Russian>Общий полученный урон</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_TOTAL_DAMAGE_SHORT">
+            <English>Total Damage</English>
+            <Russian>Общий урон</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_TRACKING_HUD">
             <English>MKK Projectile Tracking\nAmmo: %1\nFlight time: %2 sec\nDistance: %3 m\nMode: %4</English>
             <Russian>MKK Projectile Tracking\nБоеприпас: %1\nВремя полета: %2 сек\nДистанция: %3 м\nРежим: %4</Russian>
@@ -372,6 +552,10 @@
         <Key ID="STR_MKK_PTG_TRAJECTORY_LINES">
             <English>Bullet Trajectory Line</English>
             <Russian>Линия траектории пули</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TRAJECTORY_SETTINGS">
+            <English>Trajectory line settings</English>
+            <Russian>Настройки линии траектории</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_TRAJECTORY_STATUS">
             <English>Trajectory line: %1</English>

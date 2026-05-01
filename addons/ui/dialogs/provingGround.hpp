@@ -134,10 +134,20 @@ class MKK_PTG_MainDisplay {
             idc = 88110;
             x = 0.38;
             y = 0.30;
-            w = 0.24;
+            w = 0.205;
             h = 0.08;
             text = "$STR_MKK_PTG_TRAJECTORY_LINES";
             action = QUOTE([] call EFUNC(tracking,toggleTrajectoryLines));
+        };
+
+        class DashboardTrajectorySettingsBtn: MKK_PTG_RscPictureButton {
+            idc = 88118;
+            x = 0.59;
+            y = 0.30;
+            w = 0.03;
+            h = 0.08;
+            text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
+            action = QUOTE([] call FUNC(toggleTrajectorySettings));
         };
 
         class DashboardRefreshBtn: MKK_PTG_RscButton {
@@ -154,10 +164,20 @@ class MKK_PTG_MainDisplay {
             idc = 88111;
             x = 0.66;
             y = 0.30;
-            w = 0.24;
+            w = 0.205;
             h = 0.08;
             text = "$STR_MKK_PTG_MAP_PROJECTILE_MARKERS";
             action = QUOTE([] call EFUNC(tracking,toggleMapProjectileMarkers));
+        };
+
+        class DashboardMapMarkerSettingsBtn: MKK_PTG_RscPictureButton {
+            idc = 88119;
+            x = 0.87;
+            y = 0.30;
+            w = 0.03;
+            h = 0.08;
+            text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
+            action = QUOTE([] call FUNC(toggleMapProjectileMarkerSettings));
         };
 
         class DashboardMapMarkerAmmoBtn: MKK_PTG_RscButton {
@@ -190,6 +210,18 @@ class MKK_PTG_MainDisplay {
             action = QUOTE([] call EFUNC(player,toggleGodMode));
         };
 
+        class DashboardHitpointInspectorBtn: MKK_PTG_RscButton {
+            idc = 88116;
+            x = 0.10;
+            y = 0.63;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_HITPOINT_INSPECTOR";
+            action = QUOTE([] call FUNC(toggleHitpointInspector));
+            colorBackground[] = {0.08,0.18,0.24,0.95};
+            colorBackgroundActive[] = {0.10,0.30,0.40,1};
+        };
+
         class DashboardCloseBtn: MKK_PTG_RscButton {
             idc = 88107;
             x = 0.38;
@@ -204,10 +236,23 @@ class MKK_PTG_MainDisplay {
             idc = 88115;
             x = 0.10;
             y = 0.52;
-            w = 0.24;
+            w = 0.205;
             h = 0.08;
             text = "$STR_MKK_PTG_OBJECT_STATUS_DISPLAY";
             action = QUOTE([] call FUNC(toggleObjectStatusDisplay));
+            colorBackground[] = {0.08,0.18,0.24,0.95};
+            colorBackgroundActive[] = {0.10,0.30,0.40,1};
+        };
+
+        class DashboardObjectStatusSettingsBtn: MKK_PTG_RscButton {
+            idc = 88117;
+            x = 0.31;
+            y = 0.52;
+            w = 0.03;
+            h = 0.08;
+            text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
+            action = QUOTE([] call FUNC(toggleObjectStatusSettings));
+            style = 48 + 0x800;
             colorBackground[] = {0.08,0.18,0.24,0.95};
             colorBackgroundActive[] = {0.10,0.30,0.40,1};
         };

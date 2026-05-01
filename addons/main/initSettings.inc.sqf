@@ -13,7 +13,7 @@ private _setDefault = {
 {
     _x call _setDefault;
 } forEach [
-    ["mkk_ptg_trackingEnabled", true],
+    ["mkk_ptg_trackingEnabled", false],
     ["mkk_ptg_trackingModeDefault", "TACTICAL"],
     ["mkk_ptg_trackingMaxTime", 8],
     ["mkk_ptg_trackingCooldown", 1],

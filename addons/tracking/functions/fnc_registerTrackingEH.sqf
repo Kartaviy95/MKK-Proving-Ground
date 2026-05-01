@@ -1,25 +1,31 @@
 #include "..\script_component.hpp"
 /*
-    Регистрирует FiredMan EH у локального игрока.
+    Registers local fired handlers for the player and the vehicle/static weapon he controls.
 */
 if !(hasInterface) exitWith {};
-if (!alive player) exitWith {};
+if (isNull player || {!alive player}) exitWith {};
 
-if (player getVariable ["mkk_ptg_trackingEHAdded", false]) exitWith {};
+if !(player getVariable ["mkk_ptg_trackingEHAdded", false]) then {
+    player addEventHandler ["FiredMan", {
+        params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
 
-player addEventHandler ["FiredMan", {
-    params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
+        if (_unit isNotEqualTo player) exitWith {};
+        [_projectile, _ammo, _weapon, true, true] call FUNC(handleProjectileFired);
+    }];
 
-    if (missionNamespace getVariable ["mkk_ptg_trajectoryEnabled", false]) then {
-        [_projectile, _ammo] spawn FUNC(recordTrajectory);
-    };
+    player setVariable ["mkk_ptg_trackingEHAdded", true];
+};
 
-    if (missionNamespace getVariable ["mkk_ptg_mapProjectileMarkersEnabled", false]) then {
-        [_projectile, _ammo] spawn FUNC(recordMapProjectileMarker);
-    };
+private _vehicle = vehicle player;
+if (_vehicle isEqualTo player) exitWith {};
+if (_vehicle getVariable ["mkk_ptg_trackingFiredEHAdded", false]) exitWith {};
 
-    if !([_projectile, _ammo] call FUNC(canTrackProjectile)) exitWith {};
-    [_projectile, _ammo, _weapon] spawn FUNC(startProjectileTrack);
+_vehicle addEventHandler ["Fired", {
+    params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile", ["_gunner", objNull]];
+
+    if (_unit isNotEqualTo vehicle player) exitWith {};
+    if (!isNull _gunner && {_gunner isNotEqualTo player}) exitWith {};
+    [_projectile, _ammo, _weapon, true, true] call FUNC(handleProjectileFired);
 }];
 
-player setVariable ["mkk_ptg_trackingEHAdded", true];
+_vehicle setVariable ["mkk_ptg_trackingFiredEHAdded", true];

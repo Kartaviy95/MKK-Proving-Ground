@@ -22,6 +22,10 @@ class MKK_PTG_RscText {
     type = 0;
     idc = -1;
     style = 0;
+    x = 0;
+    y = 0;
+    w = 0.1;
+    h = 0.1;
     linespacing = 1;
     colorBackground[] = {0,0,0,0};
     colorText[] = {1,1,1,1};
@@ -55,6 +59,10 @@ class MKK_PTG_RscPicture {
     type = 0;
     idc = -1;
     style = 48;
+    x = 0;
+    y = 0;
+    w = 0.1;
+    h = 0.1;
     colorBackground[] = {0,0,0,0};
     colorText[] = {1,1,1,1};
     font = "RobotoCondensed";
@@ -113,6 +121,13 @@ class MKK_PTG_RscButton {
     offsetPressedX = 0;
     offsetPressedY = 0;
     borderSize = 0;
+};
+
+class MKK_PTG_RscPictureButton: MKK_PTG_RscButton {
+    style = 48 + 0x800;
+    colorText[] = {0.85,0.95,1,1};
+    colorBackground[] = {0.08,0.18,0.24,0.95};
+    colorBackgroundActive[] = {0.10,0.30,0.40,1};
 };
 
 class MKK_PTG_RscCombo {

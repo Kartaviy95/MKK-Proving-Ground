@@ -1,0 +1,25 @@
+#include "..\script_component.hpp"
+/*
+    Hides dashboard controls while a settings popup is open.
+*/
+disableSerialization;
+
+private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
+if (isNull _display) exitWith {};
+
+private _dashboardVisible = uiNamespace getVariable ["mkk_ptg_dashboardVisible", false];
+private _blocked = (uiNamespace getVariable ["mkk_ptg_objectStatusSettingsVisible", false])
+    || {uiNamespace getVariable ["mkk_ptg_trajectorySettingsVisible", false]}
+    || {uiNamespace getVariable ["mkk_ptg_mapProjectileMarkerSettingsVisible", false]};
+
+{
+    private _ctrl = _display displayCtrl _x;
+    if (!isNull _ctrl) then {
+        _ctrl ctrlShow (_dashboardVisible && {!_blocked});
+    };
+} forEach [88100, 88101, 88102, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88113, 88114, 88115, 88116, 88117, 88118, 88119];
+
+private _ammoClassButton = _display displayCtrl 88112;
+if (!isNull _ammoClassButton) then {
+    _ammoClassButton ctrlShow false;
+};

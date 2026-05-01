@@ -39,5 +39,8 @@ _projectile setPosASL _startPos;
 _projectile setVectorDirAndUp [_dir, [0,0,1]];
 _projectile setVelocity (_dir vectorMultiply _speed);
 
-[_projectile, _ammoClass] remoteExec [QEFUNC(tracking,recordMapProjectileMarker), 0];
+[_projectile, _ammoClass, "", false, true] remoteExec [QEFUNC(tracking,handleProjectileFired), 0];
+if (!isNull _requestor) then {
+    [_projectile, _ammoClass, "", true, false] remoteExec [QEFUNC(tracking,handleProjectileFired), _requestor];
+};
 missionNamespace setVariable ["mkk_ptg_penetrationLastAmmo", _ammoClass, true];
