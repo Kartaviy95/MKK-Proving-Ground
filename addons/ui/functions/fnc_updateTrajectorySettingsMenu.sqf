@@ -71,12 +71,12 @@ private _fncCreateSection = {
 
 private _colorIndex = missionNamespace getVariable ["mkk_ptg_trajectoryColorIndex", 0];
 private _colors = [
-    [localize "STR_MKK_PTG_COLOR_CYAN", [0.10, 0.85, 1.00, 0.95]],
-    [localize "STR_MKK_PTG_COLOR_RED", [1.00, 0.12, 0.10, 0.95]],
-    [localize "STR_MKK_PTG_COLOR_YELLOW", [1.00, 0.86, 0.05, 0.95]],
-    [localize "STR_MKK_PTG_COLOR_GREEN", [0.20, 1.00, 0.25, 0.95]],
-    [localize "STR_MKK_PTG_COLOR_MAGENTA", [1.00, 0.16, 0.95, 0.95]],
-    [localize "STR_MKK_PTG_COLOR_WHITE", [1.00, 1.00, 1.00, 0.95]]
+    [localize "STR_MKK_PTG_COLOR_CYAN", [0.10, 0.85, 1.00, 1.00]],
+    [localize "STR_MKK_PTG_COLOR_RED", [1.00, 0.00, 0.00, 1.00]],
+    [localize "STR_MKK_PTG_COLOR_YELLOW", [1.00, 1.00, 0.00, 1.00]],
+    [localize "STR_MKK_PTG_COLOR_GREEN", [0.20, 1.00, 0.25, 1.00]],
+    [localize "STR_MKK_PTG_COLOR_MAGENTA", [1.00, 0.00, 1.00, 1.00]],
+    [localize "STR_MKK_PTG_COLOR_WHITE", [1.00, 1.00, 1.00, 1.00]]
 ];
 
 [localize "STR_MKK_PTG_COLOR"] call _fncCreateSection;

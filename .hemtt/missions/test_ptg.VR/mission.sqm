@@ -8,33 +8,50 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=2;
+		nextID=6;
 	};
 	class Camera
 	{
 		pos[]={2098.5139,15,1782.1282};
-		dir[]={0.93961501,-0.17364818,-0.29490659};
-		up[]={0.16567947,0.98480767,-0.051999982};
-		aside[]={-0.29945597,0,-0.95410997};
+		dir[]={-0.30258074,-0.93246722,-0.19735759};
+		up[]={-0.78101796,0.36125466,-0.50941718};
+		aside[]={-0.54631114,-2.9802322e-08,0.83758229};
 	};
 };
 binarizationWanted=0;
 sourceName="test_ptg";
 addons[]=
 {
-	"A3_Characters_F"
+	"A3_Characters_F",
+	"A3_Armor_F_Beta_APC_Wheeled_01",
+	"ace_realisticnames",
+	"ace_vehicle_damage"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=1;
+		items=3;
 		class Item0
 		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
+		};
+		class Item1
+		{
+			className="A3_Armor_F_Beta";
+			name="Arma 3 Beta - Armored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item2
+		{
+			className="ace_vehicle_damage";
+			name="ACE3 - Vehicle Damage";
+			author="Команда ACE";
+			url="https://ace3.acemod.org/";
 		};
 	};
 };
@@ -66,7 +83,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=1;
+		items=2;
 		class Item0
 		{
 			dataType="Group";
@@ -79,22 +96,90 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2121.7573,5.0014391,1772.2341};
+						position[]={2125.8389,7.5408168,1773.9727};
 					};
 					side="West";
-					flags=7;
+					flags=2;
 					class Attributes
 					{
 						isPlayer=1;
 					};
-					id=1;
-					type="B_Soldier_GL_F";
+					id=4;
+					type="B_crew_F";
+					atlOffset=2.539;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="Male05ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									singleType="SCALAR";
+									value=0.99000001;
+								};
+							};
+						};
+						nAttributes=2;
+					};
 				};
 			};
 			class Attributes
 			{
 			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=4;
+						item1=2;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
 			id=0;
+		};
+		class Item1
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2125.8389,7.5393777,1773.9226};
+			};
+			side="West";
+			flags=6;
+			class Attributes
+			{
+			};
+			id=2;
+			type="B_APC_Wheeled_01_cannon_F";
 		};
 	};
 };
