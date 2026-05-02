@@ -542,8 +542,8 @@
             <Russian>Общий урон</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_TRACKING_HUD">
-            <English>MKK Projectile Tracking\nAmmo: %1\nFlight time: %2 sec\nDistance: %3 m\nMode: %4</English>
-            <Russian>MKK Projectile Tracking\nБоеприпас: %1\nВремя полета: %2 сек\nДистанция: %3 м\nРежим: %4</Russian>
+            <English>MKK Projectile Tracking&lt;br/&gt;Ammo class: %1&lt;br/&gt;Flight time: %2 sec&lt;br/&gt;Distance: %3 m&lt;br/&gt;Mode: %4&lt;br/&gt;Speed: %5 m/s</English>
+            <Russian>MKK Projectile Tracking&lt;br/&gt;Класс боеприпаса: %1&lt;br/&gt;Время полета: %2 сек&lt;br/&gt;Дистанция: %3 м&lt;br/&gt;Режим: %4&lt;br/&gt;Скорость: %5 м/с</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_TRACKING_STATUS">
             <English>Tracking: %1</English>
