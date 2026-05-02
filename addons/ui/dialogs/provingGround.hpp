@@ -108,7 +108,7 @@ class MKK_PTG_MainDisplay {
 
         class DashboardCleanupBtn: MKK_PTG_RscButton {
             idc = 88105;
-            x = 0.38;
+            x = 0.10;
             y = 0.52;
             w = 0.24;
             h = 0.08;
@@ -152,7 +152,7 @@ class MKK_PTG_MainDisplay {
 
         class DashboardRefreshBtn: MKK_PTG_RscButton {
             idc = 88106;
-            x = 0.66;
+            x = 0.38;
             y = 0.52;
             w = 0.24;
             h = 0.08;
@@ -212,8 +212,8 @@ class MKK_PTG_MainDisplay {
 
         class DashboardHitpointInspectorBtn: MKK_PTG_RscButton {
             idc = 88116;
-            x = 0.10;
-            y = 0.63;
+            x = 0.66;
+            y = 0.52;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_HITPOINT_INSPECTOR";
@@ -235,7 +235,7 @@ class MKK_PTG_MainDisplay {
         class DashboardObjectStatusBtn: MKK_PTG_RscButton {
             idc = 88115;
             x = 0.10;
-            y = 0.52;
+            y = 0.41;
             w = 0.205;
             h = 0.08;
             text = "$STR_MKK_PTG_OBJECT_STATUS_DISPLAY";
@@ -247,7 +247,7 @@ class MKK_PTG_MainDisplay {
         class DashboardObjectStatusSettingsBtn: MKK_PTG_RscButton {
             idc = 88117;
             x = 0.31;
-            y = 0.52;
+            y = 0.41;
             w = 0.03;
             h = 0.08;
             text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";

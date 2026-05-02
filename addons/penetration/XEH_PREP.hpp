@@ -2,6 +2,7 @@ PREP(collectDamageReport);
 PREP(createTestShot);
 PREP(initDisplay);
 PREP(onAmmoSelected);
+PREP(onCopyAmmoClassPressed);
 PREP(onVehicleSelected);
 PREP(openDisplay);
 PREP(registerAimClick);

@@ -133,8 +133,8 @@ class MKK_PTG_PenetrationDisplay {
         class SpawnTargetBtn: MKK_PTG_RscButton {
             idc = 88940;
             x = 0.06;
-            y = 0.73;
-            w = 0.16;
+            y = 0.71;
+            w = 0.26;
             h = 0.04;
             text = "$STR_MKK_PTG_CREATE_TEST_TARGET";
             action = QUOTE([] call FUNC(serverCreateTarget));
@@ -142,9 +142,9 @@ class MKK_PTG_PenetrationDisplay {
 
         class CameraBtn: MKK_PTG_RscButton {
             idc = 88941;
-            x = 0.23;
-            y = 0.73;
-            w = 0.16;
+            x = 0.35;
+            y = 0.71;
+            w = 0.26;
             h = 0.04;
             text = "$STR_MKK_PTG_ORBIT_CAMERA";
             action = QUOTE([] call FUNC(startOrbitCamera));
@@ -152,19 +152,29 @@ class MKK_PTG_PenetrationDisplay {
 
         class FireBtn: MKK_PTG_RscButton {
             idc = 88942;
-            x = 0.40;
-            y = 0.73;
-            w = 0.16;
+            x = 0.64;
+            y = 0.71;
+            w = 0.26;
             h = 0.04;
             text = "$STR_MKK_PTG_FIRE_TEST_ROUND";
             action = QUOTE([] call FUNC(createTestShot));
         };
 
+        class CopyAmmoClassBtn: MKK_PTG_RscButton {
+            idc = 88945;
+            x = 0.06;
+            y = 0.76;
+            w = 0.26;
+            h = 0.04;
+            text = "$STR_MKK_PTG_COPY_AMMO_CLASS";
+            action = QUOTE([] call FUNC(onCopyAmmoClassPressed));
+        };
+
         class ResetBtn: MKK_PTG_RscButton {
             idc = 88943;
-            x = 0.57;
-            y = 0.73;
-            w = 0.16;
+            x = 0.35;
+            y = 0.76;
+            w = 0.26;
             h = 0.04;
             text = "$STR_MKK_PTG_RESET_TEST";
             action = QUOTE([] call FUNC(resetTest));
@@ -172,9 +182,9 @@ class MKK_PTG_PenetrationDisplay {
 
         class CloseBtn: MKK_PTG_RscButton {
             idc = 88944;
-            x = 0.74;
-            y = 0.73;
-            w = 0.16;
+            x = 0.64;
+            y = 0.76;
+            w = 0.26;
             h = 0.04;
             text = "$STR_MKK_PTG_CLOSE";
             action = "closeDialog 0";
@@ -183,7 +193,7 @@ class MKK_PTG_PenetrationDisplay {
         class Note: MKK_PTG_RscStructuredText {
             idc = 88932;
             x = 0.06;
-            y = 0.79;
+            y = 0.82;
             w = 0.84;
             h = 0.06;
             text = "$STR_MKK_PTG_PENETRATION_NOTE";
