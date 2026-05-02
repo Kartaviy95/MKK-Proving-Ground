@@ -15,7 +15,7 @@ if (missionNamespace getVariable ["mkk_ptg_penetrationAimEHAdded", false]) exitW
 
     private _ammoClass = missionNamespace getVariable ["mkk_ptg_penetrationAmmoClass", ""];
     if (_ammoClass isEqualTo "") exitWith {
-        hint localize "STR_MKK_PTG_SELECT_AMMO_FIRST";
+        [localize "STR_MKK_PTG_SELECT_AMMO_FIRST"] call EFUNC(main,showTimedHint);
         true
     };
 

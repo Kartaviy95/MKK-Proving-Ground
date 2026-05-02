@@ -8,7 +8,7 @@ params [
 
 private _className = missionNamespace getVariable ["mkk_ptg_currentSelection", ""];
 if (_className isEqualTo "") exitWith {
-    hint localize "STR_MKK_PTG_SELECT_VEHICLE_FIRST";
+    [localize "STR_MKK_PTG_SELECT_VEHICLE_FIRST"] call EFUNC(main,showTimedHint);
 };
 
 private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];

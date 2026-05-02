@@ -45,17 +45,17 @@ if (!_enabled) exitWith {
     [_hudVarName, _targetVarName, _visibleVarName, _workDataVarName] call _fncDestroyHud;
 
     private _status = [localize "STR_MKK_PTG_DISABLED", localize "STR_MKK_PTG_ENABLED"] select false;
-    hint format [localize "STR_MKK_PTG_HITPOINT_INSPECTOR_STATUS", _status];
+    [format [localize "STR_MKK_PTG_HITPOINT_INSPECTOR_STATUS", _status]] call EFUNC(main,showTimedHint);
 };
 
 if (isNull player) exitWith {
     missionNamespace setVariable [_enabledVarName, false];
-    hint localize "STR_MKK_PTG_HITPOINT_INSPECTOR_PLAYER_REQUIRED";
+    [localize "STR_MKK_PTG_HITPOINT_INSPECTOR_PLAYER_REQUIRED"] call EFUNC(main,showTimedHint);
 };
 
 if (isNull (findDisplay 46)) exitWith {
     missionNamespace setVariable [_enabledVarName, false];
-    hint localize "STR_MKK_PTG_HITPOINT_INSPECTOR_DISPLAY_MISSING";
+    [localize "STR_MKK_PTG_HITPOINT_INSPECTOR_DISPLAY_MISSING"] call EFUNC(main,showTimedHint);
 };
 
 [_pfhVarName] call _fncRemovePFH;
@@ -911,4 +911,4 @@ private _pfh = [{
 missionNamespace setVariable [_pfhVarName, _pfh];
 
 private _status = [localize "STR_MKK_PTG_DISABLED", localize "STR_MKK_PTG_ENABLED"] select true;
-hint format [localize "STR_MKK_PTG_HITPOINT_INSPECTOR_STATUS", _status];
+[format [localize "STR_MKK_PTG_HITPOINT_INSPECTOR_STATUS", _status]] call EFUNC(main,showTimedHint);

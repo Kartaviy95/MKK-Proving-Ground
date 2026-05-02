@@ -6,7 +6,7 @@
 if !(hasInterface) exitWith {};
 if (isNull player || {!alive player}) exitWith {};
 if !([player] call FUNC(isAuthorized)) exitWith {
-    hint localize "STR_MKK_PTG_NO_ACCESS";
+    [localize "STR_MKK_PTG_NO_ACCESS"] call FUNC(showTimedHint);
 };
 if (isNil "BIS_fnc_arsenal") exitWith {};
 

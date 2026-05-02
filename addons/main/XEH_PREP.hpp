@@ -4,3 +4,4 @@ PREP(isAuthorized);
 PREP(openMainUI);
 PREP(openVirtualArsenal);
 PREP(serverDeleteObject);
+PREP(showTimedHint);

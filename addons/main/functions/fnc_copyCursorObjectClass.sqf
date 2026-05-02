@@ -5,7 +5,7 @@
 */
 if !(hasInterface) exitWith {};
 if !([player] call FUNC(isAuthorized)) exitWith {
-    hint localize "STR_MKK_PTG_NO_ACCESS";
+    [localize "STR_MKK_PTG_NO_ACCESS"] call FUNC(showTimedHint);
 };
 
 private _entity = cursorObject;
@@ -14,13 +14,13 @@ if (isNull _entity) then {
 };
 
 if (isNull _entity || {_entity isEqualTo player}) exitWith {
-    hint localize "STR_MKK_PTG_COPY_CURSOR_OBJECT_CLASS_NONE";
+    [localize "STR_MKK_PTG_COPY_CURSOR_OBJECT_CLASS_NONE"] call FUNC(showTimedHint);
 };
 
 private _className = typeOf _entity;
 if (_className isEqualTo "") exitWith {
-    hint localize "STR_MKK_PTG_INFO_NOT_FOUND";
+    [localize "STR_MKK_PTG_INFO_NOT_FOUND"] call FUNC(showTimedHint);
 };
 
 copyToClipboard _className;
-hint format [localize "STR_MKK_PTG_CLASS_COPIED", _className];
+[format [localize "STR_MKK_PTG_CLASS_COPIED", _className]] call FUNC(showTimedHint);

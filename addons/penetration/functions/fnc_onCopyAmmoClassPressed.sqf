@@ -4,8 +4,8 @@
 */
 private _ammoClass = missionNamespace getVariable ["mkk_ptg_penetrationAmmoClass", ""];
 if (_ammoClass isEqualTo "") exitWith {
-    hint localize "STR_MKK_PTG_SELECT_AMMO_FIRST";
+    [localize "STR_MKK_PTG_SELECT_AMMO_FIRST"] call EFUNC(main,showTimedHint);
 };
 
 copyToClipboard _ammoClass;
-hint format [localize "STR_MKK_PTG_AMMO_CLASS_COPIED", _ammoClass];
+[format [localize "STR_MKK_PTG_AMMO_CLASS_COPIED", _ammoClass]] call EFUNC(main,showTimedHint);

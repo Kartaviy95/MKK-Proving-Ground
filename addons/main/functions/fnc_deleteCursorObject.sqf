@@ -5,7 +5,7 @@
 */
 if !(hasInterface) exitWith {};
 if !([player] call FUNC(isAuthorized)) exitWith {
-    hint localize "STR_MKK_PTG_NO_ACCESS";
+    [localize "STR_MKK_PTG_NO_ACCESS"] call FUNC(showTimedHint);
 };
 
 private _entity = cursorObject;
@@ -14,12 +14,12 @@ if (isNull _entity) then {
 };
 
 if (isNull _entity || {_entity isEqualTo player}) exitWith {
-    hint localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_NONE";
+    [localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_NONE"] call FUNC(showTimedHint);
 };
 
 if (isPlayer _entity || {(crew _entity) findIf {isPlayer _x} >= 0}) exitWith {
-    hint localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_PLAYER";
+    [localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_PLAYER"] call FUNC(showTimedHint);
 };
 
 [_entity, player] remoteExecCall [QFUNC(serverDeleteObject), 2];
-hint localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_DONE";
+[localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_DONE"] call FUNC(showTimedHint);

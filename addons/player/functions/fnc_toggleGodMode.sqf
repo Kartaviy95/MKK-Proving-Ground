@@ -10,4 +10,4 @@ missionNamespace setVariable ["mkk_ptg_godModeEnabled", _enabled];
 [player, _enabled] call FUNC(applyGodMode);
 
 private _status = [localize "STR_MKK_PTG_DISABLED", localize "STR_MKK_PTG_ENABLED"] select _enabled;
-hint format [localize "STR_MKK_PTG_GOD_MODE_STATUS", _status];
+[format [localize "STR_MKK_PTG_GOD_MODE_STATUS", _status]] call EFUNC(main,showTimedHint);

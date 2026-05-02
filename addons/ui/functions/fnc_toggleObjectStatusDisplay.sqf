@@ -18,4 +18,4 @@ if (_enabled) then {
 };
 
 private _status = [localize "STR_MKK_PTG_DISABLED", localize "STR_MKK_PTG_ENABLED"] select _enabled;
-hint format [localize "STR_MKK_PTG_OBJECT_STATUS_DISPLAY_STATUS", _status];
+[format [localize "STR_MKK_PTG_OBJECT_STATUS_DISPLAY_STATUS", _status]] call EFUNC(main,showTimedHint);

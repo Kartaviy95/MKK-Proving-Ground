@@ -14,7 +14,9 @@ if (hasInterface && {_className isEqualTo ""}) exitWith {
 
     private _ctrlList = _display displayCtrl 88920;
     private _idx = lbCurSel _ctrlList;
-    if (_idx < 0) exitWith {hint localize "STR_MKK_PTG_SELECT_VEHICLE_FIRST"};
+    if (_idx < 0) exitWith {
+        [localize "STR_MKK_PTG_SELECT_VEHICLE_FIRST"] call EFUNC(main,showTimedHint);
+    };
 
     private _selectedClass = _ctrlList lbData _idx;
     [_selectedClass, player, _withCrew] remoteExecCall [QFUNC(serverCreateTarget), 2];

@@ -13,7 +13,7 @@ if (isNull _target) exitWith {
         };
 
         if (isNull (missionNamespace getVariable ["mkk_ptg_penetrationTarget", objNull])) exitWith {
-            hint localize "STR_MKK_PTG_CREATE_TEST_TARGET_FIRST";
+            [localize "STR_MKK_PTG_CREATE_TEST_TARGET_FIRST"] call EFUNC(main,showTimedHint);
         };
 
         [] call FUNC(startOrbitCamera);
@@ -53,7 +53,7 @@ missionNamespace setVariable ["mkk_ptg_penetrationCameraRunning", true];
 [] call FUNC(registerAimClick);
 [] call FUNC(registerOrbitControls);
 [] call FUNC(updateReport);
-hint localize "STR_MKK_PTG_PENETRATION_AIM_HINT";
+[localize "STR_MKK_PTG_PENETRATION_AIM_HINT"] call EFUNC(main,showTimedHint);
 
 [] spawn {
     while {missionNamespace getVariable ["mkk_ptg_penetrationCameraRunning", false]} do {

@@ -7,13 +7,13 @@ if (isNull _display) exitWith {};
 
 private _target = missionNamespace getVariable ["mkk_ptg_penetrationTarget", objNull];
 if (isNull _target) exitWith {
-    hint localize "STR_MKK_PTG_CREATE_TEST_TARGET_FIRST";
+    [localize "STR_MKK_PTG_CREATE_TEST_TARGET_FIRST"] call EFUNC(main,showTimedHint);
 };
 
 private _ctrlAmmo = _display displayCtrl 88921;
 private _idx = lbCurSel _ctrlAmmo;
 if (_idx < 0) exitWith {
-    hint localize "STR_MKK_PTG_SELECT_AMMO_FIRST";
+    [localize "STR_MKK_PTG_SELECT_AMMO_FIRST"] call EFUNC(main,showTimedHint);
 };
 
 private _ammoClass = _ctrlAmmo lbData _idx;

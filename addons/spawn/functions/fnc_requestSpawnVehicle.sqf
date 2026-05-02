@@ -14,7 +14,7 @@ params [
 if (_className isEqualTo "") exitWith {};
 if (isNull _requestor) exitWith {};
 if !([_requestor] call EFUNC(main,isAuthorized)) exitWith {
-    hint localize "STR_MKK_PTG_NO_ACCESS";
+    [localize "STR_MKK_PTG_NO_ACCESS"] call EFUNC(main,showTimedHint);
 };
 
 private _maxDistance = missionNamespace getVariable ["mkk_ptg_spawnMaxDistance", 250];
