@@ -9,6 +9,8 @@ Use this when changing vehicle discovery, filters, compatible ammo boxes, spawn 
 Не допускается жестко прописывать конкретные фракции из отдельных модов.
 Проект должен корректно видеть технику из кастомных модов, если она зарегистрирована в конфиге Arma 3.
 
+Текущая реализация `fnc_buildVehicleCatalog` добавляет только классы с `scope >= 2`, пропускает simulation `soldier`, `thing`, `fire`, `house` и берет только `LandVehicle`, `Air`, `Ship` и `StaticWeapon`.
+
 Для каждой единицы техники сохраняются:
 
 classname;
@@ -16,13 +18,30 @@ displayName техники;
 сторона;
 classname фракции;
 displayName фракции;
-тип техники;
+ключ типа техники из stringtable;
 класс экипажа;
 editorPreview;
 picture;
 editorSubcategory;
 displayName группы / подкатегории;
-источник мода.
+источник мода;
+config entry.
+
+Фактический порядок полей в записи каталога:
+
+0 `classname`;
+1 `displayName`;
+2 `side`;
+3 `faction`;
+4 `vehicleType` как `STR_MKK_PTG_TYPE_*`;
+5 `crewClass`;
+6 `editorPreview`;
+7 `picture`;
+8 `editorSubcategory`;
+9 `modSource`;
+10 `cfg`;
+11 `factionDisplayName`;
+12 `editorSubcategoryDisplayName`.
 
 Названия техники, фракций и групп должны проходить через локализацию:
 
@@ -38,7 +57,7 @@ displayName группы / подкатегории;
 
 фильтр фракции хранит classname фракции;
 в UI показывается displayName фракции;
-фильтр типа хранит ключ типа;
+фильтр типа хранит ключ `STR_MKK_PTG_TYPE_*`;
 в UI показывается локализованное название типа.
 
 Такой подход нужен, чтобы фильтрация не ломалась при смене языка игры.
@@ -52,21 +71,21 @@ displayName группы / подкатегории;
 
 11. Типы техники
 
-Типы техники определяются автоматически по наследованию classname.
+Типы техники определяются автоматически по наследованию classname. В каталоге хранится не текст, а stringtable key `STR_MKK_PTG_TYPE_*`.
 
-Поддерживаемые типы:
+Текущий порядок проверки:
 
-Tank;
-IFV;
-APC;
-Car;
-Truck;
-Static;
-Helicopter;
-Plane;
-Boat;
-UAV;
-Other.
+`Tank`;
+`Wheeled_APC_F`;
+`Tracked_APC_F`;
+`Car`;
+`Truck_F`;
+`StaticWeapon`;
+`Helicopter`;
+`Plane`;
+`Ship_F`;
+`UAV_01_base_F`, `UAV_06_base_F`, `UAV`;
+fallback `Other`.
 
 В UI типы должны отображаться через stringtable:
 
@@ -136,14 +155,22 @@ picture;
 если выбрана статика и совместимый ящик БК, создает ящик рядом со статикой;
 регистрирует созданный объект в реестре полигона.
 
-Дистанция ограничивается настройкой максимальной дистанции.
+Клиентский запрос проверяет доступ через `ptg_main_fnc_isAuthorized`, ограничивает дистанцию диапазоном от 1 до `mkk_ptg_spawnMaxDistance`, нормализует угол через `% 360` и отправляет `remoteExecCall` на сервер.
+
+Текущие дефолты:
+
+`mkk_ptg_spawnDefaultDistance` = 30;
+`mkk_ptg_spawnMaxDistance` = 250.
 
 Совместимые ящики БК для статики определяются динамически:
 
 берутся weapons выбранной статики;
+рекурсивно просматриваются Turrets;
 по ним собираются применяемые magazines;
-в CfgVehicles ищутся ReammoBox-классы, у которых в содержимом есть совпадающие магазины;
-в список показываются только подходящие ящики.
+в CfgVehicles ищутся `ReammoBox_F` / `ReammoBox` классы со `scope >= 2`;
+совпадение ищется в `TransportMagazines`;
+в список показываются только подходящие ящики с displayName, source и списком совпавших magazines;
+результаты кэшируются в `mkk_ptg_staticAmmoBoxCache`.
 
 15. Очистка полигона
 
@@ -154,3 +181,4 @@ picture;
 
 Удаление выполняется сервером.
 
+Реестр очистки хранится в `mkk_ptg_spawnedVehicles` и `mkk_ptg_spawnedObjects`.
