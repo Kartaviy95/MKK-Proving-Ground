@@ -81,9 +81,25 @@
             <English>Yellow</English>
             <Russian>Желтый</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_CLASS_COPIED">
+            <English>Class copied: %1</English>
+            <Russian>Класс скопирован: %1</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_COMPATIBLE_AMMO_BOX">
             <English>Compatible Ammo Box</English>
             <Russian>Совместимый ящик БК</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_COPY_CLASS">
+            <English>Copy Class</English>
+            <Russian>Скопировать класс</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_COPY_CURSOR_OBJECT_CLASS">
+            <English>Copy Cursor Object Class</English>
+            <Russian>Скопировать класс объекта под прицелом</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_COPY_CURSOR_OBJECT_CLASS_NONE">
+            <English>No object under cursor.</English>
+            <Russian>Под прицелом нет объекта.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_CONDITION">
             <English>Condition</English>

@@ -1,6 +1,7 @@
 PREP(drawObjectStatusDisplay);
 PREP(initDisplay);
 PREP(onCleanupPressed);
+PREP(onCopyClassPressed);
 PREP(onSpawnPressed);
 PREP(onVehicleSelected);
 PREP(registerObjectStatusDisplay);

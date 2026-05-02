@@ -1,3 +1,4 @@
+PREP(copyCursorObjectClass);
 PREP(deleteCursorObject);
 PREP(isAuthorized);
 PREP(openMainUI);

@@ -433,7 +433,7 @@ class MKK_PTG_MainDisplay {
 
         class RefreshBtn: MKK_PTG_RscButton {
             idc = 88045;
-            x = 0.20;
+            x = 0.06;
             y = 0.755;
             w = 0.26;
             h = 0.045;
@@ -441,9 +441,19 @@ class MKK_PTG_MainDisplay {
             action = QUOTE([true] call FUNC(refreshFilters));
         };
 
+        class CopyClassBtn: MKK_PTG_RscButton {
+            idc = 88047;
+            x = 0.35;
+            y = 0.755;
+            w = 0.26;
+            h = 0.045;
+            text = "$STR_MKK_PTG_COPY_CLASS";
+            action = QUOTE([] call FUNC(onCopyClassPressed));
+        };
+
         class BackBtn: MKK_PTG_RscButton {
             idc = 88046;
-            x = 0.52;
+            x = 0.64;
             y = 0.755;
             w = 0.26;
             h = 0.045;
