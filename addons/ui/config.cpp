@@ -137,6 +137,7 @@ class MKK_PTG_RscCombo {
     colorSelect[] = {1,1,1,1};
     colorText[] = {1,1,1,1};
     colorBackground[] = {0.1,0.1,0.1,0.95};
+    colorSelectBackground[] = {0.08,0.18,0.24,1};
     colorScrollbar[] = {1,0,0,1};
     colorDisabled[] = {0.5,0.5,0.5,1};
     colorPicture[] = {1,1,1,1};
