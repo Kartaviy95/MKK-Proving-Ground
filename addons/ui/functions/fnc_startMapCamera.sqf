@@ -33,12 +33,12 @@ missionNamespace setVariable ["mkk_ptg_mapCameraHintVisible", true];
 private _hintDisplay = findDisplay 46;
 if !(isNull _hintDisplay) then {
     private _bg = _hintDisplay ctrlCreate ["RscText", -1];
-    _bg ctrlSetPosition [safeZoneX + safeZoneW - 0.36, safeZoneY + 0.12, 0.34, 0.42];
+    _bg ctrlSetPosition [safeZoneX + safeZoneW - 0.36, safeZoneY + 0.12, 0.34, 0.45];
     _bg ctrlSetBackgroundColor [0, 0, 0, 0.68];
     _bg ctrlCommit 0;
 
     private _text = _hintDisplay ctrlCreate ["RscStructuredText", -1];
-    _text ctrlSetPosition [safeZoneX + safeZoneW - 0.35, safeZoneY + 0.13, 0.32, 0.42];
+    _text ctrlSetPosition [safeZoneX + safeZoneW - 0.35, safeZoneY + 0.13, 0.32, 0.45];
     _text ctrlSetStructuredText parseText format [
         "<t align='center' size='1.18' font='RobotoCondensedBold' color='#F2F2F2'>%1</t><br/>" +
         "<t size='0.95' color='#FFFFFF'>W / S</t><t size='0.95' color='#CFCFCF'>    %2</t><br/>" +
