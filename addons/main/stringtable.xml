@@ -509,6 +509,10 @@
             <English>Object Status Display</English>
             <Russian>Статус-дисплей объектов</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_ALLOW_DAMAGE">
+            <English>Get Damage:</English>
+            <Russian>Получать урон:</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_OBJECT_STATUS_DISPLAY_STATUS">
             <English>Object status display: %1</English>
             <Russian>Статус-дисплей объектов: %1</Russian>

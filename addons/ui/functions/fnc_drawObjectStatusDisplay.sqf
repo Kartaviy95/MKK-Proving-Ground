@@ -90,6 +90,9 @@ if (_displayName isEqualTo "") then {
     _displayName = _className;
 };
 private _damage = damage _target;
+private _damageAllowed = isDamageAllowed _target;
+private _damageAllowedText = [localize "STR_MKK_PTG_DISABLED", localize "STR_MKK_PTG_ENABLED"] select _damageAllowed;
+private _damageAllowedColor = ["#FF6B5E", "#67E58B"] select _damageAllowed;
 private _damageValue = [_damage, 3] call BIS_fnc_cutDecimals;
 private _damagePercent = round (_damage * 100);
 private _damageColor = "#67E58B";
@@ -134,6 +137,15 @@ if (_showDamage) then {
         _damageValue,
         _damagePercent,
         _damageColor,
+        [0.64] call _fmtSize,
+        [0.80] call _fmtSize
+    ];
+
+    _lines pushBack format [
+        "<t size='%4' color='#9FB6C2'>%1</t> <t size='%5' color='%3'>%2</t>",
+        localize "STR_MKK_PTG_ALLOW_DAMAGE",
+        _damageAllowedText,
+        _damageAllowedColor,
         [0.64] call _fmtSize,
         [0.80] call _fmtSize
     ];
