@@ -62,6 +62,13 @@ private _fncSlotName = {
         if ((getNumber (_cfg >> "primaryGunner")) > 0) then {_role = localize "STR_MKK_PTG_REARM_GUNNER"};
         if ((getNumber (_cfg >> "primaryObserver")) > 0) then {_role = localize "STR_MKK_PTG_REARM_COMMANDER"};
         if ((getNumber (_cfg >> "primaryCommander")) > 0) then {_role = localize "STR_MKK_PTG_REARM_COMMANDER"};
+
+        private _lowerName = toLower _name;
+        private _lowerCfgName = toLower configName _cfg;
+        if (_role isEqualTo "" && {(_lowerName find "loader") >= 0 || {(_lowerCfgName find "loader") >= 0} || {(_lowerName find "заряжа") >= 0}}) then {
+            _role = "Заряжающий";
+        };
+
         if (_role != "" && {(_name find _role) < 0}) then {
             _name = format ["%1 - %2", _role, _name];
         };
@@ -74,16 +81,46 @@ private _fncSlotName = {
     _name
 };
 
+private _fncCollectTurretPaths = {
+    params ["_cfg", ["_basePath", []]];
+
+    private _paths = [];
+    private _turretsCfg = _cfg >> "Turrets";
+    for "_i" from 0 to ((count _turretsCfg) - 1) do {
+        private _childCfg = _turretsCfg select _i;
+        private _path = _basePath + [_i];
+        _paths pushBack _path;
+        _paths append ([_childCfg, _path] call _fncCollectTurretPaths);
+    };
+
+    _paths
+};
+
+private _turretPaths = [];
+{
+    if (!(_x in _turretPaths)) then {
+        _turretPaths pushBack _x;
+    };
+} forEach ([_vehicleCfg, []] call _fncCollectTurretPaths);
+
+{
+    if (!(_x in _turretPaths)) then {
+        _turretPaths pushBack _x;
+    };
+} forEach (allTurrets [_vehicle, true]);
+
 private _turretRows = [];
 {
     private _path = _x;
+    private _cfg = [_vehicleCfg, _path] call _fncTurretConfig;
     private _weapons = (_vehicle weaponsTurret _path) select {_x != ""};
-    if (_driverWeapons isNotEqualTo [])  then {
-        private _cfg = [_vehicleCfg, _path] call _fncTurretConfig;
+    private _unit = _vehicle turretUnit _path;
+
+    if (!isNull _cfg || {_weapons isNotEqualTo []} || {!isNull _unit}) then {
         private _name = [_cfg, _path] call _fncSlotName;
         _turretRows pushBack [_name, _path, _weapons];
     };
-} forEach (allTurrets [_vehicle, true]);
+} forEach _turretPaths;
 
 private _driverWeapons = (_vehicle weaponsTurret [-1]) select {_x != ""};
 if (_driverWeapons isNotEqualTo []) then {
