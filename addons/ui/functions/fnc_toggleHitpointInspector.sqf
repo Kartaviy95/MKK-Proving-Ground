@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Toggles a local HUD that scans damage values for the vehicle under the player's aim.
+    Переключает локальный HUD, который сканирует значения damage для техники под прицелом игрока.
 */
 if !(hasInterface) exitWith {};
 

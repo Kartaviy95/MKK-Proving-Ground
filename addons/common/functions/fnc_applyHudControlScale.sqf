@@ -1,8 +1,8 @@
 #include "..\script_component.hpp"
 /*
-    Applies scaled position and font height to a control. The original 0..1
-    rectangle is cached on the control, so changing interface size can safely
-    re-apply the scale without compounding previous scaling.
+    Применяет масштабированную позицию и высоту шрифта к control. Исходный
+    прямоугольник 0..1 кэшируется на control, поэтому при смене размера
+    интерфейса масштаб можно безопасно применить повторно без накопления ошибок.
 */
 params ["_ctrl", ["_baseRect", []], ["_fontHeight", 0.034], ["_scale", -1], ["_fontScale", -1]];
 if (isNull _ctrl) exitWith {};

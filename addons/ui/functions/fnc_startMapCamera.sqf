@@ -1,8 +1,8 @@
 #include "..\script_component.hpp"
 /*
-    Starts a simple free camera.
-    Controls: W/S/A/D move, Q up, Z down, mouse look, mouse wheel speed, Shift faster.
-    F1 toggles the control overlay. Close key is configured through CBA keybinds.
+    Запускает простую свободную камеру.
+    Управление: W/S/A/D движение, Q вверх, Z вниз, мышь для взгляда, колесо мыши для скорости, Shift для ускорения.
+    F1 переключает overlay управления. Клавиша закрытия задается через CBA keybinds.
 */
 if !(hasInterface) exitWith {};
 

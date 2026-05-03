@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Sets trajectory line color preset.
+    Задает preset цвета линии траектории.
 */
 params [["_index", 0, [0]]];
 
@@ -14,15 +14,15 @@ private _colors = [
 ];
 
 private _safeIndex = (_index max 0) min ((count _colors) - 1);
-// store globally (broadcast) so all clients use same color for Draw3D
+// сохранить глобально (broadcast), чтобы все клиенты использовали один цвет для Draw3D
 missionNamespace setVariable ["mkk_ptg_trajectoryColorIndex", _safeIndex, true];
 missionNamespace setVariable ["mkk_ptg_trajectoryColor", _colors # _safeIndex, true];
 
-// mirror into uiNamespace so UI and local Draw3D handlers see the selection reliably
+// продублировать в uiNamespace, чтобы UI и локальные Draw3D handlers надежно видели выбор
 uiNamespace setVariable ["mkk_ptg_trajectoryColorIndex", _safeIndex];
 uiNamespace setVariable ["mkk_ptg_trajectoryColor", _colors # _safeIndex];
 
-// debug hint to confirm selection (temporary)
-// hint format ["Trajectory color set: %1 (idx %2)", _colors # _safeIndex, _safeIndex];
+// отладочная подсказка для подтверждения выбора (временно)
+// формат подсказки: ["Цвет траектории установлен: %1 (idx %2)", _colors # _safeIndex, _safeIndex];
 
 [] call FUNC(updateTrajectorySettingsMenu);

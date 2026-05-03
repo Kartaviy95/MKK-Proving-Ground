@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Refreshes the centered popup for object status display settings.
+    Обновляет центрированный popup настроек статус-дисплея объектов.
 */
 disableSerialization;
 

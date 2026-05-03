@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Starts enabled local tracking features for a fired projectile.
+    Запускает включенные локальные функции tracking для выпущенного projectile.
 */
 params [
     ["_projectile", objNull],

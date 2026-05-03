@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Sets trajectory line width.
+    Задает толщину линии траектории.
 */
 params [["_width", 3, [0]]];
 

@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Requests global clearing of all compatible magazines for the selected rearm weapon.
+    Запрашивает глобальную очистку всех совместимых магазинов выбранного оружия перевооружения.
 */
 private _vehicle = uiNamespace getVariable ["mkk_ptg_rearmVehicle", objNull];
 private _turret = uiNamespace getVariable ["mkk_ptg_rearmSelectedTurret", []];

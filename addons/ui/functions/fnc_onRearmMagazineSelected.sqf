@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Stores selected rearm magazine class and updates magazine information panel.
+    Сохраняет classname выбранного магазина перевооружения и обновляет информационную панель магазина.
 */
 disableSerialization;
 params ["_control", "_selectedIndex"];

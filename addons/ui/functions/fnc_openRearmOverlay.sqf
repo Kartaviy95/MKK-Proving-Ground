@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Opens the vehicle rearm overlay above the main menu.
+    Открывает overlay перевооружения техники поверх главного меню.
 */
 disableSerialization;
 

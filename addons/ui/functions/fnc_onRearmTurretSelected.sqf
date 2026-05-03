@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Handles selected rearm crew position / turret / pylon.
+    Обрабатывает выбранную позицию экипажа, турель или пилон для перевооружения.
 */
 disableSerialization;
 params ["_control", "_selectedIndex"];

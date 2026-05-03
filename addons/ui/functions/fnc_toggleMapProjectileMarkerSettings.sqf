@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Opens or closes projectile map marker settings popup.
+    Открывает или закрывает popup настроек маркеров projectile на карте.
 */
 private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
 if (isNull _display) exitWith {};

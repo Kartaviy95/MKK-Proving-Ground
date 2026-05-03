@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Applies pylon loadout on the machine where the vehicle is local.
+    Применяет loadout пилона на машине, где техника local.
 */
 params ["_vehicle", "_pylonIndex", ["_magazine", ""], ["_turretPath", []]];
 

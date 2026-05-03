@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 
 /*
-    Requests unlocking of the vehicle under player's cursor.
+    Запрашивает разблокировку техники под курсором игрока.
 */
 if !(hasInterface) exitWith {};
 if !([player] call FUNC(isAuthorized)) exitWith {

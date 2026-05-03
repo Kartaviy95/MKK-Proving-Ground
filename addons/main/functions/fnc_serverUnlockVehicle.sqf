@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 
 /*
-    Validates a vehicle unlock request on server and applies it globally.
+    Проверяет серверный запрос разблокировки техники и применяет результат глобально.
 */
 if !(isServer) exitWith {};
 

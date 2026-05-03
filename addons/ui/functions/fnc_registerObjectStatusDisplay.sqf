@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Registers the local Draw3D updater for object status display.
+    Регистрирует локальный Draw3D updater для статус-дисплея объектов.
 */
 if !(hasInterface) exitWith {};
 if (missionNamespace getVariable ["mkk_ptg_objectStatusDisplayDrawEHAdded", false]) exitWith {};

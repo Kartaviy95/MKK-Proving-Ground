@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Copies only the magazine class selected by the user in the rearm menu.
+    Копирует только classname магазина, выбранного пользователем в меню перевооружения.
 */
 private _magazine = uiNamespace getVariable ["mkk_ptg_rearmSelectedMagazine", ""];
 if (_magazine isEqualTo "") exitWith {

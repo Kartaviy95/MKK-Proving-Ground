@@ -1,62 +1,73 @@
-# AGENTS.md - Codex guidance for MKK Proving Ground
+# AGENTS.md — руководство для Codex по MKK Proving Ground
 
-## Token-saving rule
-Keep this file short. Do not read every file in `docs/ptg/` by default. Open only the document that is directly relevant to the current task.
+## Правило экономии токенов
 
-## Project identity
-- Project: MKK Proving Ground
-- Technical name: `mkk_ptg`
-- Build prefix: `ptg`
-- Target: modular Arma 3 proving ground for vehicle, weapon, projectile, penetration, teleport, and player utility testing.
+Держать этот файл коротким. Не читать все файлы из `docs/ptg/` по умолчанию. Открывать только тот документ, который напрямую относится к текущей задаче.
 
-## Default working rules
-- Prefer minimal diffs.
-- Work only in files relevant to the requested task.
-- Do not reformat unrelated files.
-- Do not hardcode mod-specific factions, vehicles, ammo, or UI strings.
-- Keep the start menu clean; add large features as separate modules or screens.
-- Spawn, delete, and cleanup gameplay objects through the server-side flow.
-- Keep client-only UI, cameras, HUDs, and draw handlers behind `hasInterface`.
-- Keep server authority checks and object creation/removal behind `isServer` or a server `remoteExecCall`.
-- Put every user-visible string into `addons/main/stringtable.xml`.
-- Support at least English and Russian for visible addon text.
-- Use safe fallbacks for missing config values, missing images, and unresolved localized names.
-- Treat module READMEs as rough notes; prefer `docs/ptg/*.md` and current code when they disagree.
+## Идентичность проекта
 
-## Module map
-- `ptg_main`: internal config, keybinds, UI entry, virtual arsenal, delete object under cursor.
-- `ptg_common`: helpers, safe config reads, localization helpers.
-- `ptg_catalog`: dynamic `CfgVehicles` catalog, filtering, compatible static ammo boxes.
-- `ptg_ui`: dialogs, start menu, vehicle screen, button handlers, object status HUD.
-- `ptg_spawn`: server spawn flow and spawned-object registry.
-- `ptg_tracking`: projectile tracking.
-- `ptg_penetration`: penetration test target, projectile, damage/hitpoint/crew report, ammo parameters.
-- `ptg_player`: infinite ammo, god mode, respawn and fired handlers.
-- `ptg_player_ace`: ACE medical damage blocking for god mode.
-- `ptg_ace`: ACE self actions and terminal actions.
-- `extra/intercept`: optional/experimental intercept area; do not make core addons depend on it unless requested.
+- Проект: MKK Proving Ground.
+- Техническое имя: `mkk_ptg`.
+- Префикс сборки: `ptg`.
+- Назначение: модульный полигон Arma 3 для проверки техники, вооружения, projectile, пробития, телепортации, камеры, перевооружения и утилит игрока.
 
-## Coding patterns
-- Add SQF functions as `addons/<module>/functions/fnc_name.sqf` and register them in that module's `XEH_PREP.hpp`.
-- Keep each addon in the existing CBA layout: `script_component.hpp`, `XEH_PREP.hpp`, XEH init files, `CfgEventHandlers.hpp`, and `config.cpp`.
-- Use existing macros such as `FUNC`, `EFUNC`, `QFUNC`, `GVAR`, and `QGVAR` instead of hand-built function or variable names.
-- Store runtime state with the existing `mkk_ptg_` mission/ui namespace keys and clean it on stop: event handlers, cameras, HUD layers, draw handlers, markers, and spawned objects.
-- Add remote-callable functions to the relevant config/remote execution surface when needed; do not expose broad remote execution casually.
-- Use CBA settings and keybind patterns for configurable behavior. Read setting values with safe defaults.
+## Рабочие правила по умолчанию
 
-## Read only when relevant
-- Product idea, visual style, principles: `docs/ptg/overview.md`
-- Dialogs, layout, UX, vehicle card: `docs/ptg/ui-ux.md`
-- Dynamic vehicle catalog, filters, spawn, cleanup: `docs/ptg/catalog-and-spawn.md`
-- Teleport, tracking, trajectory, markers, status display, penetration test, keybinds, player modes: `docs/ptg/features.md`
-- Module boundaries and localization rules: `docs/ptg/architecture-and-localization.md`
-- Full original design text, only if the split docs are insufficient: `docs/ptg/design-full.md`
+- Предпочитать минимальные diff.
+- Работать только с файлами, относящимися к задаче.
+- Не форматировать несвязанные файлы.
+- Не хардкодить модовые фракции, технику, боеприпасы или UI-строки.
+- Держать стартовое меню чистым; крупные функции добавлять как отдельные модули, экраны или оверлей.
+- Создание, удаление и очистку игровых объектов проводить через серверный поток.
+- Клиентские UI, камеры, HUD и draw-обработчики держать за `hasInterface`.
+- Серверные проверки полномочий и создание/удаление объектов держать за `isServer` или серверным `remoteExecCall`.
+- Каждый видимый пользователю текст помещать в `addons/main/stringtable.xml`.
+- Поддерживать как минимум English и Russian для видимого текста аддона.
+- Для отсутствующих config-значений, изображений и неразрешенных локализованных имен использовать безопасные резервные варианты.
+- README модулей считать грубыми заметками; при расхождениях предпочитать `docs/ptg/*.md` и текущий код.
 
-## Before coding
-For tasks that touch UI, catalog, spawn, tracking, penetration, player modes, ACE, or localization, read the matching doc above first. Do not read unrelated docs.
+## Карта модулей
 
-## Validation preference
-Run the smallest relevant check available. Avoid broad test/build commands unless the task requires them or the user asks for them.
-- For localization changes, verify every new `STR_MKK_PTG_*` key has English and Russian text.
-- For new SQF functions, verify the file, `XEH_PREP.hpp`, and any call sites use the same function name.
-- For UI/HUD changes, verify IDC/layer names are unique within the affected dialog/title.
+- `ptg_main`: внутренняя конфигурация, keybinds, вход в UI, виртуальный/ACE арсенал, копирование classname, удаление и разблокировка объекта под прицелом.
+- `ptg_common`: helpers, безопасное чтение конфигов, локализация, масштабирование UI/HUD.
+- `ptg_catalog`: динамический каталог `CfgVehicles`, фильтрация, совместимые ящики БК для статики.
+- `ptg_ui`: диалоги, стартовое меню, экран техники, свободная камера, телепорт, перевооружение, тестовые цели, обработчики кнопок, HUD статуса объекта.
+- `ptg_spawn`: серверный поток спавна, реестр созданных объектов, создание/удаление тестовых целей.
+- `ptg_tracking`: projectile tracking, линии траектории, маркеры снарядов на карте.
+- `ptg_penetration`: тест пробития, orbit-камера, тестовый projectile, damage/hitpoint/crew отчет, параметры боеприпасов.
+- `ptg_player`: бесконечные патроны, режим бога, respawn и fired-обработчики.
+- `ptg_player_ace`: блокировка ACE medical damage для режима бога.
+- `ptg_ace`: ACE self actions и terminal actions.
+- `extra/intercept`: опциональная/экспериментальная область intercept; не делать core addons зависимыми от нее без запроса.
+
+## Шаблоны кодирования
+
+- SQF-функции добавлять как `addons/<module>/functions/fnc_name.sqf` и регистрировать в `XEH_PREP.hpp` соответствующего модуля.
+- Сохранять существующую CBA-структуру каждого addon: `script_component.hpp`, `XEH_PREP.hpp`, XEH init-файлы, `CfgEventHandlers.hpp`, `config.cpp`.
+- Использовать существующие macros `FUNC`, `EFUNC`, `QFUNC`, `GVAR`, `QGVAR` вместо ручной сборки имен функций или переменных.
+- Runtime-состояние хранить существующими ключами `mkk_ptg_` в `missionNamespace`/`uiNamespace` и очищать при остановке: обработчики событий, камеры, слои HUD, draw-обработчики, markers и созданные объекты.
+- Remote-callable функции добавлять в соответствующую config/remote execution поверхность только при необходимости; не открывать широкий remote execution без причины.
+- Для настраиваемого поведения использовать CBA settings/keybind шаблоны. Значения настроек читать с безопасными дефолтами.
+
+## Читать только когда релевантно
+
+- Идея продукта, визуальный стиль, принципы: `docs/ptg/overview.md`.
+- Диалоги, компоновка, UX, карточка техники, камера, перевооружение: `docs/ptg/ui-ux.md`.
+- Динамический каталог техники, фильтры, спавн, очистка: `docs/ptg/catalog-and-spawn.md`.
+- Телепорт, камера, tracking, trajectory, markers, status display, penetration test, keybinds, режимы игрока: `docs/ptg/features.md`.
+- Границы модулей и правила локализации: `docs/ptg/architecture-and-локализацию.md`.
+- Полный исходный дизайн: `docs/ptg/design-full.md`, только если раздельных документов недостаточно.
+
+## Перед правками кода
+
+Для задач, затрагивающих UI, catalog, spawn, tracking, penetration, режимы игрока, ACE, камеру, перевооружение или локализацию, сначала читать соответствующий документ выше. Несвязанные документы не читать.
+
+## Предпочтительная проверка
+
+Запускать минимальную релевантную проверку. Не запускать широкие build/test-команды, если задача этого не требует или пользователь не попросил.
+
+- Для изменений локализации проверить, что каждый новый `STR_MKK_PTG_*` key имеет English и Russian text.
+- Для новых SQF-функций проверить, что файл, `XEH_PREP.hpp` и места вызова используют одно имя функции.
+- Для UI/HUD изменений проверить, что IDC/layer names уникальны внутри затронутого dialog/title.
+- Для камеры, tracking и HUD проверить, что клиентская логика защищена `hasInterface` и очистка удаляет runtime-состояние.
+- Для спавн/delete/цели/rearm проверить, что действия с объектами выполняются на машине-владельце объекта или через серверный поток.

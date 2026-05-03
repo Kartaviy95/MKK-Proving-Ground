@@ -22,7 +22,7 @@
 #define AVAR(name) DOUBLES(PREFIX,name)
 #define QAVAR(name) QUOTE(AVAR(name))
 
-// ACE3 reference macros
+// Справочные macros ACE3
 #define ACE_PREFIX ace
 
 #define ACEGVAR(module,var)         TRIPLES(ACE_PREFIX,module,var)

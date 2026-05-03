@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Refreshes the vehicle rearm overlay lists.
+    Обновляет списки overlay перевооружения техники.
 */
 disableSerialization;
 

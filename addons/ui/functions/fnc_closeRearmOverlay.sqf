@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Hides the vehicle rearm overlay.
+    Скрывает overlay перевооружения техники.
 */
 disableSerialization;
 

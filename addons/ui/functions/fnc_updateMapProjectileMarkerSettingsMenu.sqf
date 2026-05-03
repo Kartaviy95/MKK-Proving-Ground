@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Refreshes the centered popup for projectile map marker settings.
+    Обновляет центрированный popup настроек маркеров projectile на карте.
 */
 disableSerialization;
 

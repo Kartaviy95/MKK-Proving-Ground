@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Refreshes the centered popup for trajectory line settings.
+    Обновляет центрированный popup настроек линии траектории.
 */
 disableSerialization;
 

@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Adds and loads the selected magazine into the selected vehicle turret weapon.
+    Добавляет и заряжает выбранный магазин в выбранное оружие турели техники.
 */
 private _vehicle = uiNamespace getVariable ["mkk_ptg_rearmVehicle", objNull];
 private _turret = uiNamespace getVariable ["mkk_ptg_rearmSelectedTurret", []];

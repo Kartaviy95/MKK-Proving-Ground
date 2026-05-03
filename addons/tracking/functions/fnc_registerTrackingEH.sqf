@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Registers local fired handlers for the player and the vehicle/static weapon he controls.
+    Регистрирует локальные fired handlers для игрока и техники/статики, которой он управляет.
 */
 if !(hasInterface) exitWith {};
 if (isNull player || {!alive player}) exitWith {};

@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
-    Scales all controls in a display. Safe to call repeatedly after the player
-    changes interface size because base rectangles are cached per control.
+    Масштабирует все controls в display. Безопасно вызывать повторно после изменения
+    размера интерфейса, потому что базовые прямоугольники кэшируются на каждом control.
 */
 params ["_display"];
 if (isNull _display) exitWith {};

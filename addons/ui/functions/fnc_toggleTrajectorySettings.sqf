@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Opens or closes trajectory line settings popup.
+    Открывает или закрывает popup настроек линии траектории.
 */
 private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
 if (isNull _display) exitWith {};

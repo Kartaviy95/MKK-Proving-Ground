@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Stops the simple free camera and clears its controls.
+    Останавливает простую свободную камеру и очищает ее controls.
 */
 if !(hasInterface) exitWith {};
 

@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Applies and saves the player-selected interface size.
+    Применяет и сохраняет выбранный игроком размер интерфейса.
 */
 params ["_combo", "_index"];
 if (isNull _combo || {_index < 0}) exitWith {};

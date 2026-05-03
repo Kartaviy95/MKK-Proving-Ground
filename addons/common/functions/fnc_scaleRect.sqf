@@ -1,11 +1,11 @@
 #include "..\script_component.hpp"
 /*
-    Converts legacy 0..1 UI coordinates to current safeZone coordinates.
+    Преобразует старые UI-координаты 0..1 в текущие safeZone-координаты.
 
-    Important: all controls are transformed through the same scaled layout rect
-    instead of being scaled independently around their own centers. This keeps
-    combo boxes/buttons inside the main background and prevents the controls from
-    drifting outside the window when the interface size is increased.
+    Важно: все controls преобразуются через общий масштабированный layout rect,
+    а не масштабируются независимо вокруг собственных центров. Это удерживает
+    combo boxes/buttons внутри основного фона и не дает controls уйти за пределы
+    окна при увеличении размера интерфейса.
 */
 params ["_rect", ["_scale", -1], ["_clamp", true], ["_baseLayout", [0.05, 0.05, 0.90, 0.85]]];
 _rect params ["_x", "_y", "_w", "_h"];

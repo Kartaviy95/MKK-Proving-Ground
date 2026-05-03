@@ -7,10 +7,10 @@ if !(missionNamespace getVariable ["mkk_ptg_trajectoryEnabled", false]) exitWith
 private _lines = missionNamespace getVariable ["mkk_ptg_trajectoryLines", []];
 private _now = diag_tickTime;
 private _aliveLines = [];
-// Prefer uiNamespace (UI selection), fallback to missionNamespace
+// Предпочитать uiNamespace (выбор UI), fallback — missionNamespace
 private _color = uiNamespace getVariable ["mkk_ptg_trajectoryColor", missionNamespace getVariable ["mkk_ptg_trajectoryColor", []]];
 if (_color isEqualTo []) then {
-    // if explicit color missing, try index from uiNamespace then missionNamespace
+    // если явный цвет отсутствует, попробовать индекс из uiNamespace, затем из missionNamespace
     private _idx = uiNamespace getVariable ["mkk_ptg_trajectoryColorIndex", missionNamespace getVariable ["mkk_ptg_trajectoryColorIndex", 0]];
     private _palette = [
         [0.10, 0.85, 1.00, 1.00],

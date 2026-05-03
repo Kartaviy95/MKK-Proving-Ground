@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Handles selected rearm weapon and lists compatible magazines from CfgWeapons.
+    Обрабатывает выбранное оружие перевооружения и выводит совместимые магазины из CfgWeapons.
 */
 disableSerialization;
 params ["_control", "_selectedIndex"];
@@ -71,7 +71,7 @@ private _fncAddMagazine = {
     };
 };
 
-// Use the selected weapon config as the source of truth. Vehicle magazines are intentionally not read here.
+// Использовать config выбранного оружия как источник истины. Магазины техники здесь намеренно не читаются.
 {[_x] call _fncAddMagazine} forEach getArray (_weaponCfg >> "magazines");
 
 {

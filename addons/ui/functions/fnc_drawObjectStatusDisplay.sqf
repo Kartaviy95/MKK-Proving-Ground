@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Updates the local object status HUD while enabled.
+    Обновляет локальный HUD статуса объекта, пока режим включен.
 */
 private _hideHud = {
     params [["_hud", displayNull]];
@@ -237,8 +237,8 @@ private _panelX = 0.75;
 private _panelW = 0.20;
 private _panelBottom = 0.82;
 
-// Base height is only a first pass. The final height is measured from the rendered StructuredText below,
-// so long object names/classes that wrap to several lines automatically expand the frame.
+// Базовая высота — только первый проход. Итоговая высота измеряется по отрисованному StructuredText ниже,
+// поэтому длинные имена/классы объектов, перенесенные на несколько строк, автоматически расширяют рамку.
 private _panelMinH = 0.22;
 private _panelMaxH = 0.70;
 private _panelH = ((0.11 + (_lineCount * 0.030)) min _panelMaxH) max _panelMinH;
@@ -260,7 +260,7 @@ if !(isNull _statusText) then {
     _statusText ctrlSetStructuredText parseText (_lines joinString "<br/>");
     _statusText ctrlCommit 0;
 
-    // Measure the real rendered text height after wrapping. This is safer than estimating by character count.
+    // Измерить реальную высоту отрисованного текста после переноса. Это надежнее, чем оценка по числу символов.
     private _requiredTextH = ctrlTextHeight _statusText;
     private _requiredPanelH = _requiredTextH + (_padY * 2);
 

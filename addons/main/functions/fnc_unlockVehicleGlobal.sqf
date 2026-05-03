@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 
 /*
-    Unlocks a vehicle and removes the engine lock EH on every machine.
+    Разблокирует технику и удаляет engine lock EH на каждой машине.
 */
 params [
     ["_vehicle", objNull, [objNull]]

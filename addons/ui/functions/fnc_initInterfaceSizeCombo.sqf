@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Populates the interface size combo in the main dashboard.
+    Заполняет combo размера интерфейса в основном dashboard.
 */
 private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
 if (isNull _display) exitWith {};

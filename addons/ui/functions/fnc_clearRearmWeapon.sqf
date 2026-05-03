@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Removes compatible magazines from the selected vehicle turret weapon on the vehicle owner.
+    Удаляет совместимые магазины из выбранного оружия турели на владельце техники.
 */
 params ["_vehicle", "_turret", "_magazines"];
 

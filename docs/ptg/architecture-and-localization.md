@@ -1,6 +1,6 @@
-# MKK Proving Ground - architecture and localization
+# MKK Proving Ground — архитектура и локализация
 
-Use this when adding modules, moving code between addons, adding strings, or changing localization behavior.
+Использовать при добавлении модулей, переносе кода между аддонами, добавлении строк или изменении поведения локализации.
 
 23. Локализация
 
@@ -20,24 +20,24 @@ Russian.
 не хранить пользовательский текст напрямую в action-строках;
 для динамического текста использовать format [localize "...", ...];
 для displayName из чужих модов использовать общий helper локализации;
-если строка из чужого мода не локализуется, показывать безопасный fallback.
+если строка из чужого мода не локализуется, показывать безопасный резервный вариант.
 
 Текущее состояние stringtable:
 
 ключи имеют префикс `STR_MKK_PTG_`;
-в `addons/main/stringtable.xml` сейчас 161 key;
+в `addons/main/stringtable.xml` сейчас 234 key;
 у всех текущих key есть English и Russian.
 
 24. Внутренняя архитектура
 
 Технические константы проекта:
 
-project technical name: `mkk_ptg`;
-build prefix: `ptg`;
+техническое имя проекта: `mkk_ptg`;
+префикс сборки: `ptg`;
 `PREFIX` в коде: `ptg`;
 версия из `script_version.hpp`: 1.0.0.0;
 `REQUIRED_VERSION`: 2.20;
-author: Tarantino.
+автор: Tarantino.
 
 Фактические модули проекта:
 
@@ -54,11 +54,11 @@ ptg_ace.
 
 Назначение модулей:
 
-main — внутренняя конфигурация, keybind, открытие UI, виртуальный арсенал, удаление объекта под прицелом;
-common — общие helpers, безопасное чтение конфигов, локализация строк;
+main — внутренняя конфигурация, keybind, открытие UI, виртуальный/ACE арсенал, копирование classname, удаление и разблокировка объекта под прицелом;
+common — общие helpers, безопасное чтение конфигов, локализация строк, масштабирование UI/HUD;
 catalog — сбор, фильтрация и описание техники, поиск совместимых ящиков БК для статики;
-ui — диалог, стартовое меню, экран техники, обработчики кнопок, локальный статус-дисплей объектов при наведении;
-spawn — серверный спавн и реестр созданных объектов;
+ui — диалог, стартовое меню, экран техники, свободная камера, телепорт, перевооружение техники, тестовые цели, обработчики кнопок, локальный статус-дисплей объектов при наведении;
+spawn — серверный спавн, создание/удаление тестовых целей и реестр созданных объектов;
 tracking — слежение за projectile;
 penetration — тест пробития техники, тестовый projectile, отчет damage/hitpoints/crew, preview техники, параметры CfgAmmo;
 player — бесконечные патроны, режим бога, обработчики респавна и выстрелов;
@@ -68,24 +68,29 @@ ace — ACE self actions и terminal actions.
 Фактические зависимости:
 
 `ptg_main` требует `cba_main`;
-`ptg_common`, `ptg_catalog`, `ptg_spawn`, `ptg_tracking`, `ptg_player` требуют `ptg_main`;
+`ptg_common`, `ptg_catalog`, `ptg_spawn`, `ptg_player` требуют `ptg_main`;
+`ptg_tracking` требует `ptg_main` и `ptg_common`;
 `ptg_ui` требует `ptg_main` и `ptg_player`;
 `ptg_penetration` требует `ptg_main`, `ptg_ui`, `ptg_catalog`, `ptg_spawn`, `ptg_tracking`;
 `ptg_ace` требует `ptg_main` и `ace_interact_menu`;
 `ptg_player_ace` требует `ptg_player` и `ace_medical_damage`, использует `skipWhenMissingDependencies = 1`.
 
-Основные UI surfaces:
+Основные UI-поверхности:
 
 `MKK_PTG_MainDisplay` idd 88000;
-`MKK_PTG_ObjectStatusDisplayHUD` RscTitles layer, idc 88200-88203;
-`MKK_PTG_TrackingHUD` RscTitles layer, idc 88300-88302;
+оверлей перевооружения в `MKK_PTG_MainDisplay` использует idc 88201, 88220-88233, 88290-88292;
+оверлей целей в `MKK_PTG_MainDisplay` использует idc 88201, 88400-88443;
+`MKK_PTG_ObjectStatusDisplayHUD` слой RscTitles, idc 88200-88203;
+`MKK_PTG_TrackingHUD` слой RscTitles, idc 88300-88302;
 `MKK_PTG_PenetrationDisplay` idd 88900;
-`MKK_PTG_PenetrationReportHUD` RscTitles layer, idc 88980-88981.
+`MKK_PTG_PenetrationReportHUD` слой RscTitles, idc 88980-88981.
 
-Серверные gameplay flows:
+Серверные игровые потоки:
 
-спавн техники: клиентский `ptg_spawn_fnc_requestSpawnVehicle` → server `ptg_spawn_fnc_serverSpawnVehicle`;
-очистка полигона: UI → server `ptg_spawn_fnc_cleanupRange`;
-удаление объекта под прицелом: client `ptg_main_fnc_deleteCursorObject` → server `ptg_main_fnc_serverDeleteObject`;
-тестовая цель: UI/client wrapper `ptg_penetration_fnc_serverCreateTarget` → server same function;
-тестовый projectile: client `ptg_penetration_fnc_createTestShot` или orbit click → server `ptg_penetration_fnc_serverFireTestShot`.
+спавн техники: клиентский `ptg_spawn_fnc_requestSpawnVehicle` → сервер `ptg_spawn_fnc_serverSpawnVehicle`;
+очистка полигона: UI → сервер `ptg_spawn_fnc_очисткаRange`;
+удаление объекта под прицелом: клиент `ptg_main_fnc_deleteCursorObject` → сервер `ptg_main_fnc_serverDeleteObject`;
+тестовая цель в тесте пробития: UI/client-обертка `ptg_penetration_fnc_serverCreateTarget` → серверная часть той же функции;
+тестовый projectile: клиент `ptg_penetration_fnc_createTestShot` или клик в orbit-камере → сервер `ptg_penetration_fnc_serverFireTestShot`;
+тестовые цели из оверлея: клиент `ptg_spawn_fnc_requestSpawnTarget` / `ptg_spawn_fnc_requestDeleteTargets` → сервер `ptg_spawn_fnc_serverSpawnTarget` / `ptg_spawn_fnc_serverDeleteTargets`;
+перевооружение: turret magazines меняются на владельце техники через remoteExec к объекту, pylon loadout применяется через `setPylonLoadout` на машине, где техника local.

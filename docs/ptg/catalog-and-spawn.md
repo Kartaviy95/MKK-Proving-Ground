@@ -1,6 +1,6 @@
-# MKK Proving Ground - catalog, filters, and server spawn
+# MKK Proving Ground — каталог, фильтры и серверный спавн
 
-Use this when changing vehicle discovery, filters, compatible ammo boxes, spawn logic, registry, or cleanup.
+Использовать при изменении поиска техники, фильтров, совместимых ящиков БК, логики спавна, реестра или очистки.
 
 9. Каталог техники
 
@@ -47,7 +47,7 @@ config entry.
 
 если displayName содержит обычный текст, он используется напрямую;
 если displayName содержит $STR_..., он должен быть преобразован через localize;
-если значение отсутствует, используется безопасный fallback.
+если значение отсутствует, используется безопасный резервный вариант.
 
 10. Фильтрация каталога
 
@@ -85,7 +85,7 @@ config entry.
 `Plane`;
 `Ship_F`;
 `UAV_01_base_F`, `UAV_06_base_F`, `UAV`;
-fallback `Other`.
+резервный вариант `Other`.
 
 В UI типы должны отображаться через stringtable:
 

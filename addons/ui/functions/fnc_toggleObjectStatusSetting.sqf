@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Toggles one object status display setting.
+    Переключает одну настройку статус-дисплея объектов.
 */
 params [["_setting", "", [""]]];
 

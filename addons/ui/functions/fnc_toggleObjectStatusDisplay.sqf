@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Toggles object status display shown for the object under cursor.
+    Переключает статус-дисплей объекта под курсором.
 */
 if !(hasInterface) exitWith {};
 

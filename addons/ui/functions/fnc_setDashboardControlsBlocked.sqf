@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Hides dashboard controls while a settings popup is open.
+    Скрывает controls dashboard, пока открыт popup настроек.
 */
 disableSerialization;
 

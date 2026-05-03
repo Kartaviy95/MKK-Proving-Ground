@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Opens or closes the object status display settings popup.
+    Открывает или закрывает popup настроек статус-дисплея объектов.
 */
 private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
 if (isNull _display) exitWith {};
