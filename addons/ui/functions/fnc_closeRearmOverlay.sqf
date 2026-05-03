@@ -21,3 +21,4 @@ uiNamespace setVariable ["mkk_ptg_rearmSelectedTurret", []];
 uiNamespace setVariable ["mkk_ptg_rearmSelectedWeapon", ""];
 uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazine", ""];
 uiNamespace setVariable ["mkk_ptg_rearmCompatibleMagazines", []];
+[] call FUNC(setDashboardControlsBlocked);

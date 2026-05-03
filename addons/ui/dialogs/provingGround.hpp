@@ -124,10 +124,13 @@ class MKK_PTG_MainDisplay {
             y = 0.19;
             w = 0.24;
             h = 0.08;
-            text = "$STR_MKK_PTG_PENETRATION_TEST";
-            action = QUOTE([] call EFUNC(penetration,openDisplay));
-            colorBackground[] = {0.08,0.18,0.24,0.95};
-            colorBackgroundActive[] = {0.10,0.30,0.40,1};
+            text = "$STR_MKK_PTG_PENETRATION_TEST_DEV";
+            action = "";
+            enabled = 0;
+            colorText[] = {0.65,0.65,0.65,1};
+            colorDisabled[] = {0.65,0.65,0.65,1};
+            colorBackground[] = {0.08,0.08,0.08,0.65};
+            colorBackgroundActive[] = {0.08,0.08,0.08,0.65};
         };
 
         class DashboardTrajectoryBtn: MKK_PTG_RscButton {

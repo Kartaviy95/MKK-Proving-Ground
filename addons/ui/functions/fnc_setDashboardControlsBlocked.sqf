@@ -11,14 +11,15 @@ private _dashboardVisible = uiNamespace getVariable ["mkk_ptg_dashboardVisible",
 private _blocked = (uiNamespace getVariable ["mkk_ptg_objectStatusSettingsVisible", false])
     || {uiNamespace getVariable ["mkk_ptg_trajectorySettingsVisible", false]}
     || {uiNamespace getVariable ["mkk_ptg_mapProjectileMarkerSettingsVisible", false]}
-    || {uiNamespace getVariable ["mkk_ptg_targetOverlayVisible", false]};
+    || {uiNamespace getVariable ["mkk_ptg_targetOverlayVisible", false]}
+    || {uiNamespace getVariable ["mkk_ptg_rearmOverlayVisible", false]};
 
 {
     private _ctrl = _display displayCtrl _x;
     if (!isNull _ctrl) then {
         _ctrl ctrlShow (_dashboardVisible && {!_blocked});
     };
-} forEach [88100, 88101, 88102, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88113, 88114, 88115, 88116, 88117, 88118, 88119, 88120, 88121, 88122];
+} forEach [88100, 88101, 88102, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88113, 88114, 88115, 88116, 88117, 88118, 88119, 88120, 88121, 88122, 88130, 88131];
 
 
 private _rearmButton = _display displayCtrl 88121;

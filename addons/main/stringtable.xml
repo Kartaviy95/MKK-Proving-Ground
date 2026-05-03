@@ -557,6 +557,10 @@
             <English>Armor Test</English>
             <Russian>Тест пробития</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_PENETRATION_TEST_DEV">
+            <English>Armor Test (DEV)</English>
+            <Russian>Тест пробития (DEV)</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_PROJECTILE_TRACKING">
             <English>Projectile Tracking</English>
             <Russian>Слежение за пулей</Russian>
