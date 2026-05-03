@@ -17,7 +17,13 @@ private _blocked = (uiNamespace getVariable ["mkk_ptg_objectStatusSettingsVisibl
     if (!isNull _ctrl) then {
         _ctrl ctrlShow (_dashboardVisible && {!_blocked});
     };
-} forEach [88100, 88101, 88102, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88113, 88114, 88115, 88116, 88117, 88118, 88119];
+} forEach [88100, 88101, 88102, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88113, 88114, 88115, 88116, 88117, 88118, 88119, 88120, 88121];
+
+
+private _rearmButton = _display displayCtrl 88121;
+if (!isNull _rearmButton) then {
+    _rearmButton ctrlEnable !(isNull objectParent player);
+};
 
 private _ammoClassButton = _display displayCtrl 88112;
 if (!isNull _ammoClassButton) then {

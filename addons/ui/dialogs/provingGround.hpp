@@ -244,6 +244,19 @@ class MKK_PTG_MainDisplay {
             action = "closeDialog 0";
         };
 
+        class DashboardRearmBtn: MKK_PTG_RscButton {
+            idc = 88121;
+            x = 0.66;
+            y = 0.63;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_REARM";
+            action = QUOTE([] call FUNC(openRearmOverlay));
+            colorBackground[] = {0.08,0.18,0.24,0.95};
+            colorBackgroundActive[] = {0.10,0.30,0.40,1};
+        };
+
+
         class DashboardObjectStatusBtn: MKK_PTG_RscButton {
             idc = 88115;
             x = 0.10;
@@ -472,5 +485,189 @@ class MKK_PTG_MainDisplay {
             text = "$STR_MKK_PTG_BACK";
             action = QUOTE([] call FUNC(showDashboardView));
         };
+
+        class RearmOverlayBackground: MKK_PTG_RscText {
+            idc = 88200;
+            x = 0.05;
+            y = 0.05;
+            w = 0.90;
+            h = 0.85;
+            colorBackground[] = {0.03,0.03,0.03,0.97};
+        };
+
+        class RearmOverlayHeader: MKK_PTG_RscText {
+            idc = 88201;
+            x = 0.06;
+            y = 0.06;
+            w = 0.62;
+            h = 0.04;
+            text = "$STR_MKK_PTG_REARM";
+            colorText[] = {1,1,1,1};
+        };
+
+        class RearmOverlayAuthor: MKK_PTG_RscText {
+            idc = 88202;
+            x = 0.70;
+            y = 0.06;
+            w = 0.20;
+            h = 0.04;
+            text = "$STR_MKK_PTG_AUTHOR";
+            colorText[] = {0.65,0.78,0.86,1};
+        };
+
+        class RearmVehicleLabel: MKK_PTG_RscText {
+            idc = 88203;
+            x = 0.06;
+            y = 0.12;
+            w = 0.26;
+            h = 0.03;
+            text = "$STR_MKK_PTG_REARM_CURRENT_VEHICLE";
+        };
+
+        class RearmSlotLabel: MKK_PTG_RscText {
+            idc = 88204;
+            x = 0.35;
+            y = 0.12;
+            w = 0.15;
+            h = 0.03;
+            text = "$STR_MKK_PTG_REARM_CREW_POSITION";
+        };
+
+        class RearmWeaponLabel: MKK_PTG_RscText {
+            idc = 88205;
+            x = 0.51;
+            y = 0.12;
+            w = 0.15;
+            h = 0.03;
+            text = "$STR_MKK_PTG_REARM_WEAPONS";
+        };
+
+        class RearmMagazineLabel: MKK_PTG_RscText {
+            idc = 88206;
+            x = 0.67;
+            y = 0.12;
+            w = 0.23;
+            h = 0.03;
+            text = "$STR_MKK_PTG_REARM_MAGAZINES";
+        };
+
+        class RearmHint: MKK_PTG_RscStructuredText {
+            idc = 88207;
+            x = 0.06;
+            y = 0.82;
+            w = 0.84;
+            h = 0.06;
+            text = "$STR_MKK_PTG_REARM_NOTE";
+        };
+
+        class RearmVehiclePreview: MKK_PTG_RscPicture {
+            idc = 88230;
+            style = 2096;
+            x = 0.06;
+            y = 0.15;
+            w = 0.26;
+            h = 0.20;
+            text = "";
+        };
+
+        class RearmVehicleInfo: MKK_PTG_RscStructuredText {
+            idc = 88231;
+            x = 0.06;
+            y = 0.37;
+            w = 0.26;
+            h = 0.23;
+            text = "";
+        };
+
+        class RearmSlotList: MKK_PTG_RscListbox {
+            idc = 88220;
+            x = 0.35;
+            y = 0.15;
+            w = 0.15;
+            h = 0.29;
+            onLBSelChanged = QUOTE(_this call FUNC(onRearmTurretSelected));
+        };
+
+        class RearmWeaponList: MKK_PTG_RscListbox {
+            idc = 88221;
+            x = 0.51;
+            y = 0.15;
+            w = 0.15;
+            h = 0.29;
+            onLBSelChanged = QUOTE(_this call FUNC(onRearmWeaponSelected));
+        };
+
+        class RearmMagazineList: MKK_PTG_RscListbox {
+            idc = 88222;
+            x = 0.67;
+            y = 0.15;
+            w = 0.23;
+            h = 0.45;
+            onLBSelChanged = QUOTE(_this call FUNC(onRearmMagazineSelected));
+        };
+
+        class RearmMagazineInfo: MKK_PTG_RscStructuredText {
+            idc = 88232;
+            x = 0.35;
+            y = 0.46;
+            w = 0.31;
+            h = 0.14;
+            text = "$STR_MKK_PTG_REARM_MAGAZINE_INFO_EMPTY";
+            colorBackground[] = {0.08,0.08,0.08,0.95};
+        };
+
+        class RearmMagazineStatus: MKK_PTG_RscStructuredText {
+            idc = 88233;
+            x = 0.67;
+            y = 0.61;
+            w = 0.23;
+            h = 0.06;
+            text = "";
+        };
+
+        class RearmLoadBtn: MKK_PTG_RscButton {
+            idc = 88240;
+            x = 0.35;
+            y = 0.70;
+            w = 0.13;
+            h = 0.05;
+            text = "$STR_MKK_PTG_REARM_LOAD_NOW";
+            action = QUOTE([] call FUNC(loadSelectedRearmMagazine));
+            colorBackground[] = {0.08,0.18,0.24,0.95};
+            colorBackgroundActive[] = {0.10,0.30,0.40,1};
+        };
+
+        class RearmClearWeaponBtn: MKK_PTG_RscButton {
+            idc = 88243;
+            x = 0.49;
+            y = 0.70;
+            w = 0.13;
+            h = 0.05;
+            text = "$STR_MKK_PTG_REARM_CLEAR_WEAPON";
+            action = QUOTE([] call FUNC(clearSelectedRearmWeapon));
+            colorBackground[] = {0.24,0.08,0.08,0.95};
+            colorBackgroundActive[] = {0.38,0.10,0.10,1};
+        };
+
+        class RearmCopyMagazineClassBtn: MKK_PTG_RscButton {
+            idc = 88241;
+            x = 0.63;
+            y = 0.70;
+            w = 0.13;
+            h = 0.05;
+            text = "$STR_MKK_PTG_REARM_MAGAZINE_CLASS";
+            action = QUOTE([] call FUNC(copySelectedRearmMagazineClass));
+        };
+
+        class RearmCloseBtn: MKK_PTG_RscButton {
+            idc = 88242;
+            x = 0.77;
+            y = 0.70;
+            w = 0.13;
+            h = 0.05;
+            text = "$STR_MKK_PTG_CLOSE";
+            action = QUOTE([] call FUNC(closeRearmOverlay));
+        };
+
     };
 };

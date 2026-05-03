@@ -1,5 +1,15 @@
 PREP(drawObjectStatusDisplay);
 PREP(initDisplay);
+PREP(closeRearmOverlay);
+PREP(copySelectedRearmMagazineClass);
+PREP(clearSelectedRearmWeapon);
+PREP(clearRearmWeapon);
+PREP(loadSelectedRearmMagazine);
+PREP(onRearmMagazineSelected);
+PREP(onRearmTurretSelected);
+PREP(onRearmWeaponSelected);
+PREP(openRearmOverlay);
+PREP(refreshRearmOverlay);
 PREP(onCleanupPressed);
 PREP(onCopyClassPressed);
 PREP(onSpawnPressed);

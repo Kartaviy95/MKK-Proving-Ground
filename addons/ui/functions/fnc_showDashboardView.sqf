@@ -13,12 +13,13 @@ uiNamespace setVariable ["mkk_ptg_dashboardVisible", true];
     88002, 88010, 88011, 88012, 88014, 88015, 88016, 88017, 88020, 88030, 88031,
     88040, 88041, 88044, 88045, 88046, 88047,
     88050, 88051, 88052, 88054, 88055, 88056, 88057,
-    88112
+    88112,
+    88200, 88201, 88202, 88203, 88204, 88205, 88206, 88207, 88220, 88221, 88222, 88230, 88231, 88240, 88241, 88242
 ];
 
 {
     (_display displayCtrl _x) ctrlShow true;
-} forEach [88100, 88101, 88102, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88113, 88114, 88115, 88116, 88117, 88118, 88119];
+} forEach [88100, 88101, 88102, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88113, 88114, 88115, 88116, 88117, 88118, 88119, 88120, 88121];
 
 (_display displayCtrl 88003) ctrlSetText localize "STR_MKK_PTG_SELECT_FUNCTION";
 uiNamespace setVariable ["mkk_ptg_objectStatusSettingsVisible", false];
@@ -27,4 +28,5 @@ uiNamespace setVariable ["mkk_ptg_mapProjectileMarkerSettingsVisible", false];
 [] call FUNC(updateObjectStatusSettingsMenu);
 [] call FUNC(updateTrajectorySettingsMenu);
 [] call FUNC(updateMapProjectileMarkerSettingsMenu);
+[] call FUNC(closeRearmOverlay);
 [] call FUNC(setDashboardControlsBlocked);

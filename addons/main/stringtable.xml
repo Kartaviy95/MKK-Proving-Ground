@@ -405,6 +405,10 @@
             <English>Width %1</English>
             <Russian>Толщина %1</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_MAGAZINE_CLASS_COPIED">
+            <English>Magazine class copied: %1</English>
+            <Russian>Класс магазина скопирован: %1</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_MAP_CAMERA_HINT">
             <English>Camera mode: WASD fly, Q up, Z down, Shift speed, mouse look, mouse wheel speed. Close camera key is configurable in addon controls.</English>
             <Russian>Режим камеры: WASD полёт, Q вверх, Z вниз, Shift ускорение, мышь обзор, колесо скорость. Кнопка закрытия настраивается в управлении аддона.</Russian>
@@ -489,6 +493,10 @@
             <English>Open MKK Proving Ground</English>
             <Russian>Открыть MKK Proving Ground</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_OPEN_ACE_ARSENAL">
+            <English>Open ACE3 Arsenal</English>
+            <Russian>Открыть ACE3 арсенал</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_OPEN_SHORT">
             <English>Open Proving Ground</English>
             <Russian>Открыть полигон</Russian>
@@ -496,10 +504,6 @@
         <Key ID="STR_MKK_PTG_OPEN_VIRTUAL_ARSENAL">
             <English>Open Virtual Arsenal</English>
             <Russian>Открыть виртуальный арсенал</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_OPEN_ACE_ARSENAL">
-            <English>Open ACE3 Arsenal</English>
-            <Russian>Открыть ACE3 арсенал</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_OPFOR">
             <English>OPFOR</English>
@@ -528,6 +532,106 @@
         <Key ID="STR_MKK_PTG_PROJECTILE_TRACKING">
             <English>Projectile Tracking</English>
             <Russian>Слежение за пулей</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM">
+            <English>Rearm</English>
+            <Russian>Перевооружение</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_CLEAR_WEAPON">
+            <English>Clear weapon</English>
+            <Russian>Очистить орудие</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_COMMANDER">
+            <English>Commander</English>
+            <Russian>Командир</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_CREW_POSITION">
+            <English>Crew position</English>
+            <Russian>Место экипажа</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_CURRENT_VEHICLE">
+            <English>Current vehicle</English>
+            <Russian>Текущая техника</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_DRIVER">
+            <English>Driver / pilot</English>
+            <Russian>Водитель / пилот</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_ENTER_VEHICLE">
+            <English>Enter a vehicle or static weapon first.</English>
+            <Russian>Сначала сядьте в технику или статику.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_GUNNER">
+            <English>Gunner</English>
+            <Russian>Стрелок</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_LOADED">
+            <English>Magazine loaded: %1</English>
+            <Russian>Магазин заряжен: %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_LOAD_NOW">
+            <English>Load now</English>
+            <Russian>Зарядить сейчас</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_MAGAZINES">
+            <English>Magazines</English>
+            <Russian>Магазины</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_MAGAZINE_AMMO">
+            <English>ammo</English>
+            <Russian>Боеприпас</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_MAGAZINE_CLASS">
+            <English>Magazine class</English>
+            <Russian>Класс магазина</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_MAGAZINE_CLASSNAME">
+            <English>className</English>
+            <Russian>Класс</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_MAGAZINE_COUNT">
+            <English>count</English>
+            <Russian>Количество</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_MAGAZINE_INFO">
+            <English>Magazine information</English>
+            <Russian>Информация о магазине</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_MAGAZINE_INFO_EMPTY">
+            <English>Select a magazine to see className, ammo, and count.</English>
+            <Russian>Выберите магазин, чтобы увидеть className, ammo и count.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_NOTE">
+            <English>Select a crew position, weapon, and compatible magazine. The magazine list uses displayName; the class-copy button copies only the selected magazine class.</English>
+            <Russian>Выберите место экипажа, оружие и совместимый магазин. Список магазинов использует displayName; кнопка копирования копирует только выбранный класс магазина.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_NO_MAGAZINES">
+            <English>No compatible magazines found for this weapon.</English>
+            <Russian>Для этого оружия не найдены совместимые магазины.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_NO_WEAPONS">
+            <English>No turret weapons found in this vehicle.</English>
+            <Russian>В этой технике не найдены орудия на местах экипажа.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_SELECT_MAGAZINE">
+            <English>Select a magazine first.</English>
+            <Russian>Сначала выберите магазин.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_SELECT_WEAPON">
+            <English>Select a weapon first.</English>
+            <Russian>Сначала выберите оружие.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_TURRET">
+            <English>Turret</English>
+            <Russian>Турель</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_WEAPONS">
+            <English>Weapons</English>
+            <Russian>Оружие</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_WEAPON_CLEARED">
+            <English>Selected weapon magazines removed globally.</English>
+            <Russian>Магазины выбранного орудия удалены глобально.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_REFRESH">
             <English>Refresh</English>
