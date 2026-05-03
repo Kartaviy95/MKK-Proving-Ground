@@ -813,5 +813,61 @@
             <English>Yes</English>
             <Russian>Да</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_CREATE_TARGET">
+            <English>Create Target</English>
+            <Russian>Создать цель</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DELETE_TARGETS">
+            <English>Delete Targets</English>
+            <Russian>Удалить мишени</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_TYPE">
+            <English>Target Type</English>
+            <Russian>Тип цели</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_BOTS">
+            <English>Bots</English>
+            <Russian>Боты</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_GROUND">
+            <English>Ground Vehicles</English>
+            <Russian>Наземная техника</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_AIR">
+            <English>Air Targets</English>
+            <Russian>Воздушные цели</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_SELECT">
+            <English>Select Target</English>
+            <Russian>Выбор цели</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_SELECT_FIRST">
+            <English>Select a target first.</English>
+            <Russian>Сначала выберите цель.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_RED_BOT">
+            <English>Red bot — O_Survivor_F</English>
+            <Russian>Красный бот — O_Survivor_F</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_BLUE_BOT">
+            <English>Blue bot — B_Survivor_F</English>
+            <Russian>Синий бот — B_Survivor_F</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_GREEN_BOT">
+            <English>Green bot — I_Survivor_F</English>
+            <Russian>Зеленый бот — I_Survivor_F</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_MOVE_SECTOR">
+            <English>Movement Sector</English>
+            <Russian>Сектор движения</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_AIR_RADIUS">
+            <English>Movement Radius</English>
+            <Russian>Радиус движения</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_AIR_HEIGHT">
+            <English>Flight Height</English>
+            <Russian>Высота полета</Russian>
+        </Key>
     </Package>
 </Project>

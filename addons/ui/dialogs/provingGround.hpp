@@ -236,8 +236,8 @@ class MKK_PTG_MainDisplay {
 
         class DashboardCloseBtn: MKK_PTG_RscButton {
             idc = 88107;
-            x = 0.38;
-            y = 0.63;
+            x = 0.10;
+            y = 0.74;
             w = 0.24;
             h = 0.08;
             text = "$STR_MKK_PTG_CLOSE";
@@ -252,6 +252,18 @@ class MKK_PTG_MainDisplay {
             h = 0.08;
             text = "$STR_MKK_PTG_REARM";
             action = QUOTE([] call FUNC(openRearmOverlay));
+            colorBackground[] = {0.08,0.18,0.24,0.95};
+            colorBackgroundActive[] = {0.10,0.30,0.40,1};
+        };
+
+        class DashboardTargetBtn: MKK_PTG_RscButton {
+            idc = 88122;
+            x = 0.38;
+            y = 0.63;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_CREATE_TARGET";
+            action = QUOTE([] call FUNC(openTargetOverlay));
             colorBackground[] = {0.08,0.18,0.24,0.95};
             colorBackgroundActive[] = {0.10,0.30,0.40,1};
         };
@@ -284,9 +296,9 @@ class MKK_PTG_MainDisplay {
 
         class DashboardInfo: MKK_PTG_RscStructuredText {
             idc = 88108;
-            x = 0.10;
+            x = 0.38;
             y = 0.74;
-            w = 0.80;
+            w = 0.52;
             h = 0.08;
             text = "$STR_MKK_PTG_DASHBOARD_INFO";
         };
@@ -484,6 +496,213 @@ class MKK_PTG_MainDisplay {
             h = 0.045;
             text = "$STR_MKK_PTG_BACK";
             action = QUOTE([] call FUNC(showDashboardView));
+        };
+
+        class TargetOverlayBackground: MKK_PTG_RscText {
+            idc = 88300;
+            x = 0.05;
+            y = 0.05;
+            w = 0.90;
+            h = 0.85;
+            colorBackground[] = {0.03,0.03,0.03,0.97};
+        };
+
+        class TargetOverlayHeader: MKK_PTG_RscText {
+            idc = 88301;
+            x = 0.06;
+            y = 0.06;
+            w = 0.62;
+            h = 0.04;
+            text = "$STR_MKK_PTG_CREATE_TARGET";
+            colorText[] = {1,1,1,1};
+        };
+
+        class TargetOverlayAuthor: MKK_PTG_RscText {
+            idc = 88302;
+            x = 0.70;
+            y = 0.06;
+            w = 0.20;
+            h = 0.04;
+            text = "$STR_MKK_PTG_AUTHOR";
+            colorText[] = {0.65,0.78,0.86,1};
+        };
+
+        class TargetModeLabel: MKK_PTG_RscText {
+            idc = 88303;
+            x = 0.06;
+            y = 0.12;
+            w = 0.18;
+            h = 0.03;
+            text = "$STR_MKK_PTG_TARGET_TYPE";
+        };
+
+        class TargetModeCombo: MKK_PTG_RscCombo {
+            idc = 88310;
+            x = 0.06;
+            y = 0.15;
+            w = 0.18;
+            h = 0.04;
+            onLBSelChanged = QUOTE([] call FUNC(refreshTargetList));
+        };
+
+        class TargetSearchLabel: MKK_PTG_RscText {
+            idc = 88304;
+            x = 0.06;
+            y = 0.205;
+            w = 0.18;
+            h = 0.03;
+            text = "$STR_MKK_PTG_SEARCH";
+        };
+
+        class TargetSearchEdit: MKK_PTG_RscEdit {
+            idc = 88311;
+            x = 0.06;
+            y = 0.235;
+            w = 0.18;
+            h = 0.04;
+            text = "";
+            onKeyUp = QUOTE([] call FUNC(refreshTargetList));
+        };
+
+        class TargetDistanceLabel: MKK_PTG_RscText {
+            idc = 88308;
+            x = 0.06;
+            y = 0.29;
+            w = 0.18;
+            h = 0.03;
+            text = "$STR_MKK_PTG_SPAWN_DISTANCE";
+        };
+
+        class TargetDistanceEdit: MKK_PTG_RscEdit {
+            idc = 88315;
+            x = 0.06;
+            y = 0.32;
+            w = 0.18;
+            h = 0.04;
+            text = "5";
+        };
+
+        class TargetSectorLabel: MKK_PTG_RscText {
+            idc = 88305;
+            x = 0.06;
+            y = 0.375;
+            w = 0.18;
+            h = 0.03;
+            text = "$STR_MKK_PTG_TARGET_MOVE_SECTOR";
+        };
+
+        class TargetSectorEdit: MKK_PTG_RscEdit {
+            idc = 88316;
+            x = 0.06;
+            y = 0.405;
+            w = 0.18;
+            h = 0.04;
+            text = "50";
+        };
+
+        class TargetAirRadiusLabel: MKK_PTG_RscText {
+            idc = 88306;
+            x = 0.06;
+            y = 0.375;
+            w = 0.18;
+            h = 0.03;
+            text = "$STR_MKK_PTG_TARGET_AIR_RADIUS";
+        };
+
+        class TargetAirRadiusEdit: MKK_PTG_RscEdit {
+            idc = 88317;
+            x = 0.06;
+            y = 0.405;
+            w = 0.18;
+            h = 0.04;
+            text = "150";
+        };
+
+        class TargetAirHeightLabel: MKK_PTG_RscText {
+            idc = 88307;
+            x = 0.06;
+            y = 0.46;
+            w = 0.18;
+            h = 0.03;
+            text = "$STR_MKK_PTG_TARGET_AIR_HEIGHT";
+        };
+
+        class TargetAirHeightEdit: MKK_PTG_RscEdit {
+            idc = 88318;
+            x = 0.06;
+            y = 0.49;
+            w = 0.18;
+            h = 0.04;
+            text = "100";
+        };
+
+        class TargetListLabel: MKK_PTG_RscText {
+            idc = 88309;
+            x = 0.27;
+            y = 0.12;
+            w = 0.36;
+            h = 0.03;
+            text = "$STR_MKK_PTG_TARGET_SELECT";
+        };
+
+        class TargetList: MKK_PTG_RscListbox {
+            idc = 88320;
+            x = 0.27;
+            y = 0.15;
+            w = 0.36;
+            h = 0.50;
+            onLBSelChanged = QUOTE(_this call FUNC(onTargetSelected));
+        };
+
+        class TargetPreview: MKK_PTG_RscPicture {
+            idc = 88330;
+            style = 2096;
+            x = 0.67;
+            y = 0.15;
+            w = 0.23;
+            h = 0.20;
+            text = "";
+        };
+
+        class TargetInfo: MKK_PTG_RscStructuredText {
+            idc = 88331;
+            x = 0.67;
+            y = 0.37;
+            w = 0.23;
+            h = 0.28;
+            text = "$STR_MKK_PTG_TARGET_SELECT_FIRST";
+        };
+
+        class TargetCreateBtn: MKK_PTG_RscButton {
+            idc = 88340;
+            x = 0.27;
+            y = 0.70;
+            w = 0.18;
+            h = 0.05;
+            text = "$STR_MKK_PTG_CREATE_TARGET";
+            action = QUOTE([] call FUNC(onTargetSpawnPressed));
+        };
+
+        class TargetDeleteBtn: MKK_PTG_RscButton {
+            idc = 88341;
+            x = 0.48;
+            y = 0.70;
+            w = 0.18;
+            h = 0.05;
+            text = "$STR_MKK_PTG_DELETE_TARGETS";
+            action = QUOTE([] call FUNC(onDeleteTargetsPressed));
+            colorBackground[] = {0.24,0.08,0.08,0.95};
+            colorBackgroundActive[] = {0.38,0.10,0.10,1};
+        };
+
+        class TargetCloseBtn: MKK_PTG_RscButton {
+            idc = 88342;
+            x = 0.69;
+            y = 0.70;
+            w = 0.18;
+            h = 0.05;
+            text = "$STR_MKK_PTG_CLOSE";
+            action = QUOTE([] call FUNC(closeTargetOverlay));
         };
 
         class RearmOverlayBackground: MKK_PTG_RscText {
