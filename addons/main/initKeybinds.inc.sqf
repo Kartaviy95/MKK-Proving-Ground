@@ -43,3 +43,18 @@
     {},
     [DIK_DELETE, [false, false, false]]
 ] call CBA_fnc_addKeybind;
+
+[
+    localize "STR_MKK_PTG_MOD_NAME",
+    "mkk_ptg_close_map_camera",
+    localize "STR_MKK_PTG_CLOSE_CAMERA",
+    {
+        if (missionNamespace getVariable ["mkk_ptg_mapCameraRunning", false]) exitWith {
+            [] call ptg_ui_fnc_stopMapCamera;
+            true
+        };
+        false
+    },
+    {},
+    [DIK_ESCAPE, [false, false, false]]
+] call CBA_fnc_addKeybind;

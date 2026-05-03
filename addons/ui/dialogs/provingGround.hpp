@@ -222,6 +222,18 @@ class MKK_PTG_MainDisplay {
             colorBackgroundActive[] = {0.10,0.30,0.40,1};
         };
 
+        class DashboardCameraBtn: MKK_PTG_RscButton {
+            idc = 88120;
+            x = 0.10;
+            y = 0.63;
+            w = 0.24;
+            h = 0.08;
+            text = "$STR_MKK_PTG_CAMERA";
+            action = QUOTE([] call FUNC(startMapCamera));
+            colorBackground[] = {0.08,0.18,0.24,0.95};
+            colorBackgroundActive[] = {0.10,0.30,0.40,1};
+        };
+
         class DashboardCloseBtn: MKK_PTG_RscButton {
             idc = 88107;
             x = 0.38;

@@ -13,6 +13,10 @@
             <English>All</English>
             <Russian>Все</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_AMMO_CLASS_COPIED">
+            <English>Ammo class copied: %1</English>
+            <Russian>Класс ammo скопирован: %1</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_AMMO_PARAMS">
             <English>Ammo Parameters</English>
             <Russian>Параметры боеприпаса</Russian>
@@ -20,10 +24,6 @@
         <Key ID="STR_MKK_PTG_AMMO_PARAMS_EMPTY">
             <English>Select ammo to see its config parameters.</English>
             <Russian>Выберите боеприпас, чтобы увидеть параметры конфига.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_AMMO_CLASS_COPIED">
-            <English>Ammo class copied: %1</English>
-            <Russian>Класс ammo скопирован: %1</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_AUTHOR">
             <English>by Kartaviy</English>
@@ -41,6 +41,58 @@
             <English>caliber</English>
             <Russian>caliber</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_CAMERA">
+            <English>Camera</English>
+            <Russian>Камера</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROLS_TITLE">
+            <English>Camera Controls</English>
+            <Russian>Управление камерой</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_CLOSE_NOTE">
+            <English>Close camera key is configurable in addon controls.</English>
+            <Russian>Кнопка закрытия камеры настраивается в управлении аддона.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_DOWN">
+            <English>down</English>
+            <Russian>вниз</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_FORWARD_BACK">
+            <English>forward / back</English>
+            <Russian>вперёд / назад</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_LEFT_RIGHT">
+            <English>left / right</English>
+            <Russian>влево / вправо</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_LOOK">
+            <English>look around</English>
+            <Russian>обзор</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_MOUSE">
+            <English>Mouse</English>
+            <Russian>Мышь</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_SPEED">
+            <English>faster</English>
+            <Russian>ускорение</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_SPEED_CHANGE">
+            <English>change speed</English>
+            <Russian>смена скорости</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_TOGGLE_HINT">
+            <English>show / hide this menu</English>
+            <Russian>показать / скрыть меню</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_UP">
+            <English>up</English>
+            <Russian>вверх</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_WHEEL">
+            <English>Wheel</English>
+            <Russian>Колесо</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_CIVILIAN">
             <English>Civilian</English>
             <Russian>Гражданские</Russian>
@@ -49,6 +101,10 @@
             <English>Class</English>
             <Russian>Класс</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_CLASS_COPIED">
+            <English>Class copied: %1</English>
+            <Russian>Класс скопирован: %1</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_CLEANUP_RANGE">
             <English>Cleanup Range</English>
             <Russian>Очистить полигон</Russian>
@@ -56,6 +112,10 @@
         <Key ID="STR_MKK_PTG_CLOSE">
             <English>Close</English>
             <Russian>Закрыть</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CLOSE_CAMERA">
+            <English>Close Camera</English>
+            <Russian>Закрыть камеру</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_COLOR">
             <English>Color</English>
@@ -85,21 +145,21 @@
             <English>Yellow</English>
             <Russian>Желтый</Russian>
         </Key>
-        <Key ID="STR_MKK_PTG_CLASS_COPIED">
-            <English>Class copied: %1</English>
-            <Russian>Класс скопирован: %1</Russian>
-        </Key>
         <Key ID="STR_MKK_PTG_COMPATIBLE_AMMO_BOX">
             <English>Compatible Ammo Box</English>
             <Russian>Совместимый ящик БК</Russian>
         </Key>
-        <Key ID="STR_MKK_PTG_COPY_CLASS">
-            <English>Copy Class</English>
-            <Russian>Скопировать класс</Russian>
+        <Key ID="STR_MKK_PTG_CONDITION">
+            <English>Condition</English>
+            <Russian>Состояние</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_COPY_AMMO_CLASS">
             <English>Copy Ammo Class</English>
             <Russian>Скопировать класс ammo</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_COPY_CLASS">
+            <English>Copy Class</English>
+            <Russian>Скопировать класс</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_COPY_CURSOR_OBJECT_CLASS">
             <English>Copy Cursor Object Class</English>
@@ -108,10 +168,6 @@
         <Key ID="STR_MKK_PTG_COPY_CURSOR_OBJECT_CLASS_NONE">
             <English>No object under cursor.</English>
             <Russian>Под прицелом нет объекта.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_CONDITION">
-            <English>Condition</English>
-            <Russian>Состояние</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_CREATE_TEST_TARGET">
             <English>Create Test Target</English>
@@ -348,6 +404,10 @@
         <Key ID="STR_MKK_PTG_LINE_WIDTH_VALUE">
             <English>Width %1</English>
             <Russian>Толщина %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_CAMERA_HINT">
+            <English>Camera mode: WASD fly, Q up, Z down, Shift speed, mouse look, mouse wheel speed. Close camera key is configurable in addon controls.</English>
+            <Russian>Режим камеры: WASD полёт, Q вверх, Z вниз, Shift ускорение, мышь обзор, колесо скорость. Кнопка закрытия настраивается в управлении аддона.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_MARKERS_STATUS">
             <English>Projectile map markers: %1</English>
