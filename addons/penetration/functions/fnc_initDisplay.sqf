@@ -5,6 +5,7 @@
 params ["_display"];
 
 uiNamespace setVariable ["mkk_ptg_penetrationDisplay", _display];
+[_display] call EFUNC(common,applyDisplayScale);
 missionNamespace setVariable ["mkk_ptg_penetrationVehicleClass", ""];
 missionNamespace setVariable ["mkk_ptg_penetrationAmmoClass", ""];
 

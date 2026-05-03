@@ -20,7 +20,7 @@ uiNamespace setVariable ["mkk_ptg_dashboardVisible", true];
 
 {
     (_display displayCtrl _x) ctrlShow true;
-} forEach [88100, 88101, 88102, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88113, 88114, 88115, 88116, 88117, 88118, 88119, 88120, 88121, 88122];
+} forEach [88100, 88101, 88102, 88105, 88106, 88107, 88108, 88109, 88110, 88111, 88113, 88114, 88115, 88116, 88117, 88118, 88119, 88120, 88121, 88122, 88130, 88131];
 
 (_display displayCtrl 88003) ctrlSetText localize "STR_MKK_PTG_SELECT_FUNCTION";
 uiNamespace setVariable ["mkk_ptg_objectStatusSettingsVisible", false];

@@ -197,6 +197,26 @@
             <English>Create a test target and fire a selected round to see damage data.</English>
             <Russian>Создайте тестовую цель и выпустите выбранный снаряд, чтобы увидеть данные повреждений.</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_INTERFACE_SIZE">
+            <English>Interface size</English>
+            <Russian>Размер интерфейса</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_INTERFACE_SIZE_SMALL">
+            <English>Small</English>
+            <Russian>Малый</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_INTERFACE_SIZE_NORMAL">
+            <English>Normal</English>
+            <Russian>Обычный</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_INTERFACE_SIZE_LARGE">
+            <English>Large</English>
+            <Russian>Крупный</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_INTERFACE_SIZE_EXTRA_LARGE">
+            <English>Extra large</English>
+            <Russian>Очень крупный</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_INFO">
             <English>Select the proving ground module. The vehicle catalog opens only when requested.</English>
             <Russian>Выберите нужный модуль полигона. Каталог техники открывается только по запросу.</Russian>

@@ -22,5 +22,6 @@ private _setDefault = {
     ["mkk_ptg_spawnMaxDistance", 250],
     ["mkk_ptg_trajectoryEnabled", false],
     ["mkk_ptg_mapProjectileMarkersEnabled", false],
-    ["mkk_ptg_mapProjectileMarkerShowAmmo", false]
+    ["mkk_ptg_mapProjectileMarkerShowAmmo", false],
+    ["mkk_ptg_hudSize", profileNamespace getVariable ["mkk_ptg_hudSize", 1]]
 ];

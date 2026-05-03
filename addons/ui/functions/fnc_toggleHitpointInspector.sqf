@@ -348,6 +348,7 @@ private _pfh = [{
         private _ctrl = _display ctrlCreate [_className, -1];
         _ctrl ctrlSetPosition _pos;
         _ctrl ctrlSetBackgroundColor _bgColor;
+        _ctrl ctrlSetFontHeight (0.038 * _fontScale);
         _ctrl ctrlCommit 0;
 
         _ctrl
@@ -469,7 +470,7 @@ private _pfh = [{
         ] call _fncCreateCtrl;
 
         _titleCtrl ctrlSetStructuredText parseText format [
-            "<t size='0.78' color='#FFFFFF'>%1</t>",
+            "<t size='0.92' color='#FFFFFF'>%1</t>",
             _title
         ];
 
@@ -508,13 +509,17 @@ private _pfh = [{
         private _allControls = [];
         private _hpControls = [];
 
-        private _panelW = 0.34;
-        private _pad = 0.014;
-        private _gap = 0.010;
-        private _headerH = 0.050;
-        private _classH = 0.085;
-        private _vehicleCardH = 0.145;
-        private _hpCardH = 0.145;
+        private _hudScales = [] call EFUNC(common,getHudScale);
+        private _hudScale = _hudScales # 0;
+        private _fontScale = _hudScales # 1;
+
+        private _panelW = 0.34 * _hudScale;
+        private _pad = 0.014 * _hudScale;
+        private _gap = 0.010 * _hudScale;
+        private _headerH = 0.050 * _hudScale;
+        private _classH = 0.085 * _hudScale;
+        private _vehicleCardH = 0.145 * _hudScale;
+        private _hpCardH = 0.145 * _hudScale;
 
         private _hpCount = count _hpList;
         private _hpGapCount = (_hpCount - 1) max 0;
@@ -527,11 +532,11 @@ private _pfh = [{
             + (_hpGapCount * _gap)
             + _pad;
 
-        private _panelX = safeZoneX + safeZoneW - _panelW - 0.025;
+        private _panelX = safeZoneX + safeZoneW - _panelW - (0.025 * _hudScale);
         private _panelY = safeZoneY + ((safeZoneH - _panelH) / 2);
 
-        if (_panelY < (safeZoneY + 0.015)) then {
-            _panelY = safeZoneY + 0.015;
+        if (_panelY < (safeZoneY + (0.015 * _hudScale))) then {
+            _panelY = safeZoneY + (0.015 * _hudScale);
         };
 
         private _bg = [
@@ -546,7 +551,7 @@ private _pfh = [{
         private _accent = [
             _display,
             "RscText",
-            [_panelX, _panelY, 0.0045, _panelH],
+            [_panelX, _panelY, 0.0045 * _hudScale, _panelH],
             [0.20, 0.60, 1.00, 1.00]
         ] call _fncCreateCtrl;
 
@@ -571,7 +576,7 @@ private _pfh = [{
         ] call _fncCreateCtrl;
 
         _title ctrlSetStructuredText parseText format [
-            "<t align='left' size='0.84' color='#7CC8FF'>%1</t>",
+            "<t align='left' size='0.98' color='#7CC8FF'>%1</t>",
             localize "STR_MKK_PTG_HITPOINT_INSPECTOR_TITLE"
         ];
 
@@ -602,7 +607,7 @@ private _pfh = [{
         ] call _fncCreateCtrl;
 
         _classText ctrlSetStructuredText parseText format [
-            "<t size='0.62' color='#A8A8A8'>%1</t><br/><t size='0.72' color='#FFFFFF'>%2</t><br/><t size='0.58' color='#A8A8A8'>%3 | %4 %5/%6</t>",
+            "<t size='0.74' color='#A8A8A8'>%1</t><br/><t size='0.86' color='#FFFFFF'>%2</t><br/><t size='0.70' color='#A8A8A8'>%3 | %4 %5/%6</t>",
             localize "STR_MKK_PTG_HITPOINT_INSPECTOR_TARGET",
             _vehName,
             _vehClass,
@@ -631,7 +636,7 @@ private _pfh = [{
             _panelW - (_pad * 2),
             _vehicleCardH,
             localize "STR_MKK_PTG_TOTAL_DAMAGE",
-            format ["<t size='0.62' color='#A8A8A8'>%1</t>", localize "STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING"],
+            format ["<t size='0.74' color='#A8A8A8'>%1</t>", localize "STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING"],
             _radialSegments,
             _radialOffColor
         ] call _fncCreateRadialBlock;
@@ -663,7 +668,7 @@ private _pfh = [{
                 _panelW - (_pad * 2),
                 _hpCardH,
                 _hpLabel,
-                format ["<t size='0.60' color='#A8A8A8'>%1</t>", localize "STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING"],
+                format ["<t size='0.72' color='#A8A8A8'>%1</t>", localize "STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING"],
                 _radialSegments,
                 _radialOffColor
             ] call _fncCreateRadialBlock;
@@ -840,14 +845,14 @@ private _pfh = [{
     private _vehStateColor = _vehState # 2;
 
     _vehDamageText ctrlSetStructuredText parseText format [
-        "<t size='0.60' color='#A8A8A8'>%1</t><br/><t size='0.72' color='%2'>%3</t>",
+        "<t size='0.72' color='#A8A8A8'>%1</t><br/><t size='0.86' color='%2'>%3</t>",
         localize "STR_MKK_PTG_CONDITION",
         _vehStateHex,
         _vehStateText
     ];
 
     _vehPercentText ctrlSetStructuredText parseText format [
-        "<t align='center' size='0.90' color='#FFFFFF' shadow='1'>%1%%</t>",
+        "<t align='center' size='1.05' color='#FFFFFF' shadow='1'>%1%%</t>",
         _vehPercent
     ];
 
@@ -877,7 +882,7 @@ private _pfh = [{
         private _stateColor = _state # 2;
 
         _statusText ctrlSetStructuredText parseText format [
-            "<t size='0.58' color='#A8A8A8'>%1</t><br/><t size='0.78' color='%2'>%3</t>",
+            "<t size='0.70' color='#A8A8A8'>%1</t><br/><t size='0.92' color='%2'>%3</t>",
             _hpName,
             _stateHex,
             _stateText

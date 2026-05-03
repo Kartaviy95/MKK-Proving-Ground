@@ -57,7 +57,7 @@ private _fncCreateCtrl = {
     params ["_className", "_pos", ["_bgColor", [0, 0, 0, 0]]];
 
     private _ctrl = _display ctrlCreate [_className, -1];
-    _ctrl ctrlSetPosition _pos;
+    [_ctrl, _pos] call EFUNC(common,applyHudControlScale);
     _ctrl ctrlSetBackgroundColor _bgColor;
     _ctrl ctrlCommit 0;
     _allControls pushBack _ctrl;

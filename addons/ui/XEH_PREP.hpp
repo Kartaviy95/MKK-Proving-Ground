@@ -46,3 +46,6 @@ PREP(onTargetSelected);
 PREP(updateTargetPreview);
 PREP(onTargetSpawnPressed);
 PREP(onDeleteTargetsPressed);
+
+PREP(initInterfaceSizeCombo);
+PREP(onInterfaceSizeSelected);

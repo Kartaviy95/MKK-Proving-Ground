@@ -36,6 +36,34 @@ if (_state isEqualType createHashMap && {count _state > 0}) then {
     };
     if (isNull _hud) exitWith {};
 
+    private _hudScales = [] call EFUNC(common,getHudScale);
+    private _hudScale = _hudScales # 0;
+    private _fontScale = _hudScales # 1;
+
+    private _panelRect = [[0.035, 0.055, 0.36, 0.28], _hudScale] call EFUNC(common,scaleRect);
+    _panelRect params ["_panelX", "_panelY", "_panelW", "_panelH"];
+    private _padX = 0.015 * safeZoneW * _hudScale;
+    private _padY = 0.015 * safeZoneH * _hudScale;
+    private _accentH = (0.004 * safeZoneH * _hudScale) max pixelH;
+
+    private _panel = _hud displayCtrl 88300;
+    if !(isNull _panel) then {
+        _panel ctrlSetPosition _panelRect;
+        _panel ctrlCommit 0;
+    };
+
+    private _accent = _hud displayCtrl 88301;
+    if !(isNull _accent) then {
+        _accent ctrlSetPosition [_panelX, _panelY, _panelW, _accentH];
+        _accent ctrlCommit 0;
+    };
+
+    private _textCtrl = _hud displayCtrl 88302;
+    if !(isNull _textCtrl) then {
+        _textCtrl ctrlSetPosition [_panelX + _padX, _panelY + _padY, _panelW - (_padX * 2), _panelH - (_padY * 2)];
+        _textCtrl ctrlCommit 0;
+    };
+
     private _text = format [
         localize "STR_MKK_PTG_TRACKING_HUD",
         _ammoClass,
@@ -45,5 +73,7 @@ if (_state isEqualType createHashMap && {count _state > 0}) then {
         _speed
     ];
 
-    (_hud displayCtrl 88302) ctrlSetStructuredText parseText _text;
+    if !(isNull _textCtrl) then {
+        _textCtrl ctrlSetStructuredText parseText format ["<t size='%1'>%2</t>", str ([1.75 * _fontScale, 2] call BIS_fnc_cutDecimals), _text];
+    };
 };

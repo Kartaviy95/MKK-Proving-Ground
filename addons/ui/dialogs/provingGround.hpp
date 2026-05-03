@@ -299,10 +299,29 @@ class MKK_PTG_MainDisplay {
         class DashboardInfo: MKK_PTG_RscStructuredText {
             idc = 88108;
             x = 0.38;
-            y = 0.74;
-            w = 0.52;
-            h = 0.08;
+            y = 0.735;
+            w = 0.25;
+            h = 0.09;
             text = "$STR_MKK_PTG_DASHBOARD_INFO";
+        };
+
+        class DashboardInterfaceSizeLabel: MKK_PTG_RscText {
+            idc = 88130;
+            x = 0.66;
+            y = 0.725;
+            w = 0.24;
+            h = 0.025;
+            text = "$STR_MKK_PTG_INTERFACE_SIZE";
+            colorText[] = {0.72,0.88,1,1};
+        };
+
+        class DashboardInterfaceSizeCombo: MKK_PTG_RscCombo {
+            idc = 88131;
+            x = 0.66;
+            y = 0.755;
+            w = 0.24;
+            h = 0.045;
+            onLBSelChanged = QUOTE(_this call FUNC(onInterfaceSizeSelected));
         };
 
         class SearchLabel: MKK_PTG_RscText {

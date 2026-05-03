@@ -27,6 +27,14 @@ if (isNull _hud) then {
 };
 if (isNull _hud) exitWith {};
 
+private _hudScales = [] call EFUNC(common,getHudScale);
+private _hudScale = _hudScales # 0;
+private _fontScale = _hudScales # 1;
+private _fmtSize = {
+    params ["_value"];
+    str ([(_value * _fontScale * 1.5), 2] call BIS_fnc_cutDecimals)
+};
+
 if (visibleMap || {!isNull (findDisplay 88000)} || {!isNull (findDisplay 88900)}) exitWith {
     [_hud] call _hideHud;
 };
@@ -81,7 +89,6 @@ if (isClass _cfg) then {
 if (_displayName isEqualTo "") then {
     _displayName = _className;
 };
-
 private _damage = damage _target;
 private _damageValue = [_damage, 3] call BIS_fnc_cutDecimals;
 private _damagePercent = round (_damage * 100);
@@ -95,34 +102,40 @@ if (_damage >= 0.66) then {
 };
 
 private _lines = [
-    format ["<t size='0.70' color='#7FD7FF'>%1</t>", localize "STR_MKK_PTG_OBJECT_STATUS_TITLE"],
-    format ["<t size='0.92' color='#FFFFFF'>%1</t>", _displayName]
+    format ["<t size='%2' color='#7FD7FF'>%1</t>", localize "STR_MKK_PTG_OBJECT_STATUS_TITLE", [0.70] call _fmtSize],
+    format ["<t size='%2' color='#FFFFFF'>%1</t>", _displayName, [0.92] call _fmtSize]
 ];
 
 if (_showDistance) then {
     _lines pushBack format [
-        "<t size='0.64' color='#9FB6C2'>%1</t> <t size='0.80' color='#FFFFFF'>%2 %3</t>",
+        "<t size='%4' color='#9FB6C2'>%1</t> <t size='%5' color='#FFFFFF'>%2 %3</t>",
         localize "STR_MKK_PTG_DISTANCE",
         _distance,
-        localize "STR_MKK_PTG_METERS_SHORT"
+        localize "STR_MKK_PTG_METERS_SHORT",
+        [0.64] call _fmtSize,
+        [0.80] call _fmtSize
     ];
 };
 
 if (_showClass) then {
     _lines pushBack format [
-        "<t size='0.64' color='#9FB6C2'>%1</t> <t size='0.68' color='#D7EEF8'>%2</t>",
+        "<t size='%3' color='#9FB6C2'>%1</t> <t size='%4' color='#D7EEF8'>%2</t>",
         localize "STR_MKK_PTG_CLASS",
-        _className
+        _className,
+        [0.64] call _fmtSize,
+        [0.68] call _fmtSize
     ];
 };
 
 if (_showDamage) then {
     _lines pushBack format [
-        "<t size='0.64' color='#9FB6C2'>%1</t> <t size='0.80' color='%4'>%2 (%3%%)</t>",
+        "<t size='%5' color='#9FB6C2'>%1</t> <t size='%6' color='%4'>%2 (%3%%)</t>",
         localize "STR_MKK_PTG_TOTAL_DAMAGE",
         _damageValue,
         _damagePercent,
-        _damageColor
+        _damageColor,
+        [0.64] call _fmtSize,
+        [0.80] call _fmtSize
     ];
 };
 
@@ -195,11 +208,13 @@ if (_showHitpoints) then {
         private _state = [_damageClamped] call _fncGetState;
 
         _hpRows pushBack format [
-            "<t size='0.66' color='#9FB6C2'>%1</t> <t size='0.70' color='%4'>%2%% %3</t>",
+            "<t size='%5' color='#9FB6C2'>%1</t> <t size='%6' color='%4'>%2%% %3</t>",
             _label,
             _percent,
             _state # 0,
-            _state # 1
+            _state # 1,
+            [0.66] call _fmtSize,
+            [0.70] call _fmtSize
         ];
     };
 
@@ -210,7 +225,7 @@ if (_showHitpoints) then {
     [_showHpGun, ["HitGun", "HitGun1", "HitGun2"], localize "STR_MKK_PTG_HP_GUN"] call _fncAddHitpointRow;
 
     if (_hpRows isNotEqualTo []) then {
-        _lines pushBack format ["<t size='0.64' color='#7FD7FF'>%1</t>", localize "STR_MKK_PTG_HITPOINTS"];
+        _lines pushBack format ["<t size='%2' color='#7FD7FF'>%1</t>", localize "STR_MKK_PTG_HITPOINTS", [0.64] call _fmtSize];
         {
             _lines pushBack _x;
         } forEach _hpRows;
@@ -218,35 +233,68 @@ if (_showHitpoints) then {
 };
 
 private _lineCount = count _lines;
-private _panelX = 0.70;
-private _panelW = 0.27;
+private _panelX = 0.75;
+private _panelW = 0.20;
 private _panelBottom = 0.82;
-private _panelH = (((0.11 + (_lineCount * 0.030)) min 0.58) max 0.22);
+
+// Base height is only a first pass. The final height is measured from the rendered StructuredText below,
+// so long object names/classes that wrap to several lines automatically expand the frame.
+private _panelMinH = 0.22;
+private _panelMaxH = 0.70;
+private _panelH = ((0.11 + (_lineCount * 0.030)) min _panelMaxH) max _panelMinH;
 private _panelY = _panelBottom - _panelH;
+
+private _panelRect = [[_panelX, _panelY, _panelW, _panelH], _hudScale] call EFUNC(common,scaleRect);
+_panelRect params ["_scaledPanelX", "_scaledPanelY", "_scaledPanelW", "_scaledPanelH"];
+private _padX = 0.015 * safeZoneW * _hudScale;
+private _padY = 0.015 * safeZoneH * _hudScale;
+private _accentW = (0.004 * safeZoneW * _hudScale) max pixelW;
+private _accentH = (0.004 * safeZoneH * _hudScale) max pixelH;
+
+private _statusText = _hud displayCtrl 88203;
+if !(isNull _statusText) then {
+    private _textW = (_scaledPanelW - (_padX * 2)) max pixelW;
+    private _textH = (_scaledPanelH - (_padY * 2)) max pixelH;
+
+    _statusText ctrlSetPosition [_scaledPanelX + _padX, _scaledPanelY + _padY, _textW, _textH];
+    _statusText ctrlSetStructuredText parseText (_lines joinString "<br/>");
+    _statusText ctrlCommit 0;
+
+    // Measure the real rendered text height after wrapping. This is safer than estimating by character count.
+    private _requiredTextH = ctrlTextHeight _statusText;
+    private _requiredPanelH = _requiredTextH + (_padY * 2);
+
+    private _minRect = [[_panelX, _panelBottom - _panelMinH, _panelW, _panelMinH], _hudScale] call EFUNC(common,scaleRect);
+    private _maxRect = [[_panelX, _panelBottom - _panelMaxH, _panelW, _panelMaxH], _hudScale] call EFUNC(common,scaleRect);
+    private _scaledMinH = (_minRect # 3) max pixelH;
+    private _scaledMaxH = (_maxRect # 3) max _scaledMinH;
+
+    private _scaledBottom = _scaledPanelY + _scaledPanelH;
+    _scaledPanelH = ((_requiredPanelH max _scaledMinH) min _scaledMaxH) max pixelH;
+    _scaledPanelY = _scaledBottom - _scaledPanelH;
+
+    _textW = (_scaledPanelW - (_padX * 2)) max pixelW;
+    _textH = (_scaledPanelH - (_padY * 2)) max pixelH;
+    _statusText ctrlSetPosition [_scaledPanelX + _padX, _scaledPanelY + _padY, _textW, _textH];
+    _statusText ctrlCommit 0;
+};
 
 private _panel = _hud displayCtrl 88200;
 if !(isNull _panel) then {
-    _panel ctrlSetPosition [_panelX, _panelY, _panelW, _panelH];
+    _panel ctrlSetPosition [_scaledPanelX, _scaledPanelY, _scaledPanelW, _scaledPanelH];
     _panel ctrlCommit 0;
 };
 
 private _accentTop = _hud displayCtrl 88201;
 if !(isNull _accentTop) then {
-    _accentTop ctrlSetPosition [_panelX, _panelY, _panelW, 0.004];
+    _accentTop ctrlSetPosition [_scaledPanelX, _scaledPanelY, _scaledPanelW, _accentH];
     _accentTop ctrlCommit 0;
 };
 
 private _accentSide = _hud displayCtrl 88202;
 if !(isNull _accentSide) then {
-    _accentSide ctrlSetPosition [_panelX, _panelY, 0.004, _panelH];
+    _accentSide ctrlSetPosition [_scaledPanelX, _scaledPanelY, _accentW, _scaledPanelH];
     _accentSide ctrlCommit 0;
-};
-
-private _statusText = _hud displayCtrl 88203;
-if !(isNull _statusText) then {
-    _statusText ctrlSetPosition [_panelX + 0.015, _panelY + 0.015, _panelW - 0.030, _panelH - 0.030];
-    _statusText ctrlCommit 0;
-    _statusText ctrlSetStructuredText parseText (_lines joinString "<br/>");
 };
 
 private _bounds = boundingBoxReal _target;
@@ -264,7 +312,7 @@ drawIcon3D [
     0,
     ["", format ["%1 %2", _distance, localize "STR_MKK_PTG_METERS_SHORT"]] select _showDistance,
     2,
-    0.035,
+    0.035 * _fontScale,
     "RobotoCondensed",
     "center"
 ];
