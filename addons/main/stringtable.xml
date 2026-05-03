@@ -497,6 +497,10 @@
             <English>Open Virtual Arsenal</English>
             <Russian>Открыть виртуальный арсенал</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_OPEN_ACE_ARSENAL">
+            <English>Open ACE3 Arsenal</English>
+            <Russian>Открыть ACE3 арсенал</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_OPFOR">
             <English>OPFOR</English>
             <Russian>OPFOR</Russian>

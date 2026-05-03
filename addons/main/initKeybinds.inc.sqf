@@ -17,7 +17,18 @@
         [] call FUNC(openVirtualArsenal);
     },
     {},
-    [0xC7, [true, false, false]]
+    [0x16, [true, false, false]]
+] call CBA_fnc_addKeybind;
+
+[
+    localize "STR_MKK_PTG_MOD_NAME",
+    "mkk_ptg_open_ace_arsenal",
+    localize "STR_MKK_PTG_OPEN_ACE_ARSENAL",
+    {
+        [] call FUNC(openAceArsenal);
+    },
+    {},
+    [0x17, [true, false, false]]
 ] call CBA_fnc_addKeybind;
 
 [
