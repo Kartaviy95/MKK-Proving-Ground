@@ -5,6 +5,8 @@
 if !(hasInterface) exitWith {};
 
 missionNamespace setVariable ["mkk_ptg_mapCameraRunning", false];
+missionNamespace setVariable ["mkk_ptg_mapCameraSelecting", false];
+missionNamespace setVariable ["mkk_ptg_mapCameraSelectedPos", []];
 onMapSingleClick "";
 openMap false;
 
@@ -13,8 +15,9 @@ private _ehs = missionNamespace getVariable ["mkk_ptg_mapCameraControlEHs", []];
 if !(isNull _display) then {
     if ((count _ehs) > 0) then {_display displayRemoveEventHandler ["MouseMoving", _ehs # 0];};
     if ((count _ehs) > 1) then {_display displayRemoveEventHandler ["MouseZChanged", _ehs # 1];};
-    if ((count _ehs) > 2) then {_display displayRemoveEventHandler ["KeyDown", _ehs # 2];};
-    if ((count _ehs) > 3) then {_display displayRemoveEventHandler ["KeyUp", _ehs # 3];};
+    if ((count _ehs) > 2) then {_display displayRemoveEventHandler ["MouseButtonDown", _ehs # 2];};
+    if ((count _ehs) > 3) then {_display displayRemoveEventHandler ["KeyDown", _ehs # 3];};
+    if ((count _ehs) > 4) then {_display displayRemoveEventHandler ["KeyUp", _ehs # 4];};
 };
 missionNamespace setVariable ["mkk_ptg_mapCameraControlEHs", []];
 missionNamespace setVariable ["mkk_ptg_mapCameraMapKeyEHs", []];

@@ -24,6 +24,40 @@ if (_selectedIndex < 0) exitWith {
     uiNamespace setVariable ["mkk_ptg_rearmSelectedWeapon", ""];
 };
 
+
+private _mode = uiNamespace getVariable ["mkk_ptg_rearmSelectedMode", "turret"];
+if (_mode isEqualTo "pylon") exitWith {
+    private _vehicle = uiNamespace getVariable ["mkk_ptg_rearmVehicle", objNull];
+    private _pylonIndex = uiNamespace getVariable ["mkk_ptg_rearmSelectedPylon", -1];
+    if (isNull _vehicle || {_pylonIndex < 1}) exitWith {};
+
+    private _magazines = _vehicle getCompatiblePylonMagazines _pylonIndex;
+    private _currentMagazine = (getPylonMagazines _vehicle) param [_pylonIndex - 1, ""];
+    if (_currentMagazine != "" && {!(_currentMagazine in _magazines)}) then {
+        _magazines pushBack _currentMagazine;
+    };
+    _magazines sort true;
+    uiNamespace setVariable ["mkk_ptg_rearmSelectedWeapon", _control lbData _selectedIndex];
+    uiNamespace setVariable ["mkk_ptg_rearmCompatibleMagazines", _magazines];
+
+    {
+        private _cfg = configFile >> "CfgMagazines" >> _x;
+        private _displayName = [getText (_cfg >> "displayName")] call EFUNC(common,localizeString);
+        if (_displayName isEqualTo "") then {_displayName = _x};
+        private _index = _magCtrl lbAdd _displayName;
+        _magCtrl lbSetData [_index, _x];
+    } forEach _magazines;
+
+    if ((lbSize _magCtrl) > 0) then {
+        if (!isNull _statusCtrl) then {_statusCtrl ctrlSetStructuredText parseText "";};
+        _magCtrl lbSetCurSel 0;
+    } else {
+        if (!isNull _statusCtrl) then {
+            _statusCtrl ctrlSetStructuredText parseText format ["<t color='#FFB8B8'>%1</t>", localize "STR_MKK_PTG_REARM_NO_PYLON_MAGAZINES"];
+        };
+    };
+};
+
 private _weapon = _control lbData _selectedIndex;
 uiNamespace setVariable ["mkk_ptg_rearmSelectedWeapon", _weapon];
 

@@ -65,6 +65,10 @@
             <English>left / right</English>
             <Russian>влево / вправо</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_LMB">
+            <English>LMB</English>
+            <Russian>ЛКМ</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_LOOK">
             <English>look around</English>
             <Russian>обзор</Russian>
@@ -72,6 +76,10 @@
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_MOUSE">
             <English>Mouse</English>
             <Russian>Мышь</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_RELOCATE">
+            <English>move camera to clicked area</English>
+            <Russian>перенести камеру в выбранную область</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_SPEED">
             <English>faster</English>
@@ -92,6 +100,10 @@
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_WHEEL">
             <English>Wheel</English>
             <Russian>Колесо</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_SELECT_MAP_POINT">
+            <English>Open the map and left-click the area where the camera should appear.</English>
+            <Russian>Откройте карту и нажмите ЛКМ по области, где должна появиться камера.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_CIVILIAN">
             <English>Civilian</English>
@@ -634,16 +646,36 @@
             <Russian>Выберите магазин, чтобы увидеть className, ammo и count.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_NOTE">
-            <English>Select a crew position, weapon, and compatible magazine. The magazine list uses displayName; the class-copy button copies only the selected magazine class.</English>
-            <Russian>Выберите место экипажа, оружие и совместимый магазин. Список магазинов использует displayName; кнопка копирования копирует только выбранный класс магазина.</Russian>
+            <English>Select a crew position, weapon/pylon, and compatible magazine. For pylons the list uses getCompatiblePylonMagazines and applies the loadout to the selected pylon.</English>
+            <Russian>Выберите место экипажа, оружие/пилон и совместимый магазин. Для пилонов список берётся через getCompatiblePylonMagazines, а выбранный loadout применяется к выбранному пилону.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_NO_MAGAZINES">
             <English>No compatible magazines found for this weapon.</English>
             <Russian>Для этого оружия не найдены совместимые магазины.</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_REARM_NO_PYLON_MAGAZINES">
+            <English>No compatible pylon magazines found for this pylon.</English>
+            <Russian>Для этого пилона не найдены совместимые pylon-магазины.</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_REARM_NO_WEAPONS">
             <English>No turret weapons found in this vehicle.</English>
             <Russian>В этой технике не найдены орудия на местах экипажа.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_PYLON">
+            <English>Pylon %1</English>
+            <Russian>Пилон %1</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_PYLON_CLEARED">
+            <English>Selected pylon cleared.</English>
+            <Russian>Выбранный пилон очищен.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_PYLON_CURRENT">
+            <English>Pylon %1 current: %2</English>
+            <Russian>Пилон %1 сейчас: %2</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_PYLON_EMPTY">
+            <English>empty</English>
+            <Russian>пусто</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_SELECT_MAGAZINE">
             <English>Select a magazine first.</English>

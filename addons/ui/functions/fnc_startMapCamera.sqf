@@ -6,10 +6,47 @@
 */
 if !(hasInterface) exitWith {};
 
-closeDialog 0;
+params [
+    ["_selectedMapPos", [], [[]]]
+];
+
+if (_selectedMapPos isEqualTo []) exitWith {
+    [] call FUNC(stopMapCamera);
+    closeDialog 0;
+
+    missionNamespace setVariable ["mkk_ptg_mapCameraSelecting", true];
+    missionNamespace setVariable ["mkk_ptg_mapCameraSelectedPos", []];
+
+    hint localize "STR_MKK_PTG_CAMERA_SELECT_MAP_POINT";
+    openMap [true, false];
+
+    onMapSingleClick "
+        if !(missionNamespace getVariable ['mkk_ptg_mapCameraSelecting', false]) exitWith {false};
+        missionNamespace setVariable ['mkk_ptg_mapCameraSelectedPos', _pos];
+        missionNamespace setVariable ['mkk_ptg_mapCameraSelecting', false];
+        onMapSingleClick '';
+        openMap [false, false];
+        true
+    ";
+
+    [] spawn {
+        waitUntil {
+            uiSleep 0.05;
+            !(missionNamespace getVariable ['mkk_ptg_mapCameraSelecting', false]) || {!visibleMap}
+        };
+
+        private _selectedPos = missionNamespace getVariable ["mkk_ptg_mapCameraSelectedPos", []];
+        missionNamespace setVariable ["mkk_ptg_mapCameraSelecting", false];
+        onMapSingleClick "";
+
+        if (_selectedPos isEqualTo []) exitWith {};
+        [_selectedPos] call ptg_ui_fnc_startMapCamera;
+    };
+};
+
 [] call FUNC(stopMapCamera);
 
-private _startPos = getPosATLVisual player;
+private _startPos = [_selectedMapPos # 0, _selectedMapPos # 1, 0];
 private _camera = "camera" camCreate [_startPos # 0, _startPos # 1, ((_startPos # 2) max 0) + 20];
 _camera cameraEffect ["Internal", "Back"];
 showCinemaBorder false;
@@ -24,6 +61,7 @@ missionNamespace setVariable ["mkk_ptg_mapCameraState", createHashMapFromArray [
     ["dir", _dir],
     ["pitch", -20],
     ["speed", 45],
+    ["height", 20],
     ["keys", []]
 ]];
 missionNamespace setVariable ["mkk_ptg_mapCameraRunning", true];
@@ -49,16 +87,17 @@ if !(isNull _hintDisplay) then {
     private _rowSize = str ([0.95 * _fontScale, 2] call BIS_fnc_cutDecimals);
     private _noteSize = str ([0.86 * _fontScale, 2] call BIS_fnc_cutDecimals);
     _text ctrlSetStructuredText parseText format [
-        "<t align='center' size='%13' font='RobotoCondensedBold' color='#F2F2F2'>%1</t><br/>" +
-        "<t size='%14' color='#FFFFFF'>W / S</t><t size='%14' color='#CFCFCF'>    %2</t><br/>" +
-        "<t size='%14' color='#FFFFFF'>A / D</t><t size='%14' color='#CFCFCF'>    %3</t><br/>" +
-        "<t size='%14' color='#FFFFFF'>Q</t><t size='%14' color='#CFCFCF'>        %4</t><br/>" +
-        "<t size='%14' color='#FFFFFF'>Z</t><t size='%14' color='#CFCFCF'>        %5</t><br/>" +
-        "<t size='%14' color='#FFFFFF'>Shift</t><t size='%14' color='#CFCFCF'>    %6</t><br/>" +
-        "<t size='%14' color='#FFFFFF'>%7</t><t size='%14' color='#CFCFCF'>    %8</t><br/>" +
-        "<t size='%14' color='#FFFFFF'>%9</t><t size='%14' color='#CFCFCF'>   %10</t><br/>" +
-        "<t size='%14' color='#FFFFFF'>F1</t><t size='%14' color='#CFCFCF'>       %11</t><br/>" +
-        "<t align='center' size='%15' color='#DADADA'>%12</t>",
+        "<t align='center' size='%15' font='RobotoCondensedBold' color='#F2F2F2'>%1</t><br/>" +
+        "<t size='%16' color='#FFFFFF'>W / S</t><t size='%16' color='#CFCFCF'>    %2</t><br/>" +
+        "<t size='%16' color='#FFFFFF'>A / D</t><t size='%16' color='#CFCFCF'>    %3</t><br/>" +
+        "<t size='%16' color='#FFFFFF'>Q</t><t size='%16' color='#CFCFCF'>        %4</t><br/>" +
+        "<t size='%16' color='#FFFFFF'>Z</t><t size='%16' color='#CFCFCF'>        %5</t><br/>" +
+        "<t size='%16' color='#FFFFFF'>Shift</t><t size='%16' color='#CFCFCF'>    %6</t><br/>" +
+        "<t size='%16' color='#FFFFFF'>%7</t><t size='%16' color='#CFCFCF'>    %8</t><br/>" +
+        "<t size='%16' color='#FFFFFF'>%9</t><t size='%16' color='#CFCFCF'>   %10</t><br/>" +
+        "<t size='%16' color='#FFFFFF'>%11</t><t size='%16' color='#CFCFCF'>    %12</t><br/>" +
+        "<t size='%16' color='#FFFFFF'>F1</t><t size='%16' color='#CFCFCF'>       %13</t><br/>" +
+        "<t align='center' size='%17' color='#DADADA'>%14</t>",
         localize "STR_MKK_PTG_CAMERA_CONTROLS_TITLE",
         localize "STR_MKK_PTG_CAMERA_CONTROL_FORWARD_BACK",
         localize "STR_MKK_PTG_CAMERA_CONTROL_LEFT_RIGHT",
@@ -69,6 +108,8 @@ if !(isNull _hintDisplay) then {
         localize "STR_MKK_PTG_CAMERA_CONTROL_LOOK",
         localize "STR_MKK_PTG_CAMERA_CONTROL_WHEEL",
         localize "STR_MKK_PTG_CAMERA_CONTROL_SPEED_CHANGE",
+        localize "STR_MKK_PTG_CAMERA_CONTROL_LMB",
+        localize "STR_MKK_PTG_CAMERA_CONTROL_RELOCATE",
         localize "STR_MKK_PTG_CAMERA_CONTROL_TOGGLE_HINT",
         localize "STR_MKK_PTG_CAMERA_CONTROL_CLOSE_NOTE",
         _titleSize,
@@ -102,6 +143,27 @@ if !(isNull _display) then {
         private _state = missionNamespace getVariable ["mkk_ptg_mapCameraState", createHashMap];
         private _speed = ((_state getOrDefault ["speed", 45]) + (_scroll * 5)) max 5 min 250;
         _state set ["speed", _speed];
+    }];
+
+
+    private _mouseButtonEH = _display displayAddEventHandler ["MouseButtonDown", {
+        params ["_display", "_button", "_xPos", "_yPos"];
+        if !(missionNamespace getVariable ["mkk_ptg_mapCameraRunning", false]) exitWith {false};
+        if (_button != 0) exitWith {false};
+
+        private _state = missionNamespace getVariable ["mkk_ptg_mapCameraState", createHashMap];
+        private _camera = _state getOrDefault ["camera", objNull];
+        if (isNull _camera) exitWith {true};
+
+        private _world = screenToWorld [_xPos, _yPos];
+        if (_world isEqualTo [0,0,0]) exitWith {true};
+
+        private _atl = ASLToATL (AGLToASL _world);
+        private _height = ((_state getOrDefault ["height", 20]) max 2) min 3000;
+        private _nextPos = [_atl # 0, _atl # 1, ((_atl # 2) max 0) + _height];
+        _camera setPosATL _nextPos;
+        _camera camCommit 0;
+        true
     }];
 
     private _keyDownEH = _display displayAddEventHandler ["KeyDown", {
@@ -150,7 +212,7 @@ if !(isNull _display) then {
         true
     }];
 
-    missionNamespace setVariable ["mkk_ptg_mapCameraControlEHs", [_mouseEH, _wheelEH, _keyDownEH, _keyUpEH]];
+    missionNamespace setVariable ["mkk_ptg_mapCameraControlEHs", [_mouseEH, _wheelEH, _mouseButtonEH, _keyDownEH, _keyUpEH]];
 };
 
 [] spawn {

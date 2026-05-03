@@ -6,12 +6,13 @@ private _vehicle = uiNamespace getVariable ["mkk_ptg_rearmVehicle", objNull];
 private _turret = uiNamespace getVariable ["mkk_ptg_rearmSelectedTurret", []];
 private _weapon = uiNamespace getVariable ["mkk_ptg_rearmSelectedWeapon", ""];
 private _magazine = uiNamespace getVariable ["mkk_ptg_rearmSelectedMagazine", ""];
+private _mode = uiNamespace getVariable ["mkk_ptg_rearmSelectedMode", "turret"];
 
 if (isNull _vehicle || {_vehicle != objectParent player}) exitWith {
     [localize "STR_MKK_PTG_REARM_ENTER_VEHICLE"] call EFUNC(main,showTimedHint);
 };
 
-if (_weapon isEqualTo "") exitWith {
+if (_weapon isEqualTo "" && {_mode != "pylon"}) exitWith {
     [localize "STR_MKK_PTG_REARM_SELECT_WEAPON"] call EFUNC(main,showTimedHint);
 };
 
@@ -19,8 +20,15 @@ if (_magazine isEqualTo "") exitWith {
     [localize "STR_MKK_PTG_REARM_SELECT_MAGAZINE"] call EFUNC(main,showTimedHint);
 };
 
-_vehicle addMagazineTurret [_magazine, _turret];
-_vehicle loadMagazine [_turret, _weapon, _magazine];
+if (_mode isEqualTo "pylon") then {
+    private _pylonIndex = uiNamespace getVariable ["mkk_ptg_rearmSelectedPylon", -1];
+    private _pylonTurret = uiNamespace getVariable ["mkk_ptg_rearmSelectedPylonTurret", []];
+    if (_pylonIndex < 1) exitWith {};
+    [_vehicle, _pylonIndex, _magazine, _pylonTurret] call FUNC(applyPylonLoadout);
+} else {
+    _vehicle addMagazineTurret [_magazine, _turret];
+    _vehicle loadMagazine [_turret, _weapon, _magazine];
+};
 
 private _displayName = [getText (configFile >> "CfgMagazines" >> _magazine >> "displayName")] call EFUNC(common,localizeString);
 if (_displayName isEqualTo "") then {_displayName = _magazine};

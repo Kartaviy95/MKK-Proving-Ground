@@ -26,7 +26,10 @@ lbClear (_display displayCtrl 88221);
 lbClear (_display displayCtrl 88222);
 (_display displayCtrl 88232) ctrlSetStructuredText parseText localize "STR_MKK_PTG_REARM_MAGAZINE_INFO_EMPTY";
 (_display displayCtrl 88233) ctrlSetStructuredText parseText "";
+uiNamespace setVariable ["mkk_ptg_rearmSelectedMode", "turret"];
 uiNamespace setVariable ["mkk_ptg_rearmSelectedTurret", []];
+uiNamespace setVariable ["mkk_ptg_rearmSelectedPylon", -1];
+uiNamespace setVariable ["mkk_ptg_rearmSelectedPylonTurret", []];
 uiNamespace setVariable ["mkk_ptg_rearmSelectedWeapon", ""];
 uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazine", ""];
 uiNamespace setVariable ["mkk_ptg_rearmCompatibleMagazines", []];
@@ -118,13 +121,32 @@ private _turretRows = [];
 
     if (!isNull _cfg || {_weapons isNotEqualTo []} || {!isNull _unit}) then {
         private _name = [_cfg, _path] call _fncSlotName;
-        _turretRows pushBack [_name, _path, _weapons];
+        _turretRows pushBack [_name, _path, _weapons, "turret"];
     };
 } forEach _turretPaths;
 
 private _driverWeapons = (_vehicle weaponsTurret [-1]) select {_x != ""};
 if (_driverWeapons isNotEqualTo []) then {
-    _turretRows = [[localize "STR_MKK_PTG_REARM_DRIVER", [-1], _driverWeapons]] + _turretRows;
+    _turretRows = [[localize "STR_MKK_PTG_REARM_DRIVER", [-1], _driverWeapons, "turret"]] + _turretRows;
+};
+
+private _pylonMagazines = getPylonMagazines _vehicle;
+if (_pylonMagazines isNotEqualTo []) then {
+    private _pylonCfgs = configProperties [_vehicleCfg >> "Components" >> "TransportPylonsComponent" >> "Pylons", "isClass _x"];
+    {
+        private _pylonIndex = _forEachIndex + 1;
+        private _pylonCfg = configNull;
+        private _pylonTurret = [];
+        if (_forEachIndex < count _pylonCfgs) then {
+            _pylonCfg = _pylonCfgs # _forEachIndex;
+            _pylonTurret = getArray (_pylonCfg >> "turret");
+        };
+        private _pylonName = if (isNull _pylonCfg) then {format [localize "STR_MKK_PTG_REARM_PYLON", _pylonIndex]} else {configName _pylonCfg};
+        private _currentMagazine = _x;
+        private _displayMagazine = _currentMagazine;
+        if (_displayMagazine isEqualTo "") then {_displayMagazine = localize "STR_MKK_PTG_REARM_PYLON_EMPTY"};
+        _turretRows pushBack [format ["%1: %2", _pylonName, _displayMagazine], [_pylonIndex, _pylonTurret], [_currentMagazine], "pylon"];
+    } forEach _pylonMagazines;
 };
 
 uiNamespace setVariable ["mkk_ptg_rearmTurrets", _turretRows];

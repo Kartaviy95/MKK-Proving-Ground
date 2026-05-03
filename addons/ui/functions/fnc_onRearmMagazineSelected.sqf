@@ -21,6 +21,7 @@ uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazine", _magazine];
 private _magCfg = configFile >> "CfgMagazines" >> _magazine;
 private _ammo = getText (_magCfg >> "ammo");
 private _count = getNumber (_magCfg >> "count");
+private _pylonWeapon = getText (_magCfg >> "pylonWeapon");
 private _ammoName = _ammo;
 
 private _ammoCfg = configFile >> "CfgAmmo" >> _ammo;
@@ -32,12 +33,13 @@ if (isClass _ammoCfg) then {
 };
 
 _infoCtrl ctrlSetStructuredText parseText format [
-    "<t color='#B8E0FF'>%1</t><br/><t size='0.85'>%2: %3<br/>%4: %5<br/>%6: %7</t>",
+    "<t color='#B8E0FF'>%1</t><br/><t size='0.85'>%2: %3<br/>%4: %5<br/>%6: %7<br/>pylonWeapon: %8</t>",
     localize "STR_MKK_PTG_REARM_MAGAZINE_INFO",
     localize "STR_MKK_PTG_REARM_MAGAZINE_CLASSNAME",
     _magazine,
     localize "STR_MKK_PTG_REARM_MAGAZINE_AMMO",
     _ammoName,
     localize "STR_MKK_PTG_REARM_MAGAZINE_COUNT",
-    _count
+    _count,
+    _pylonWeapon
 ];
