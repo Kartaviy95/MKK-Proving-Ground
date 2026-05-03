@@ -169,6 +169,10 @@
             <English>No object under cursor.</English>
             <Russian>Под прицелом нет объекта.</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_CREATE_TARGET">
+            <English>Create Target</English>
+            <Russian>Создать цель</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_CREATE_TEST_TARGET">
             <English>Create Test Target</English>
             <Russian>Создать тестовую цель</Russian>
@@ -216,6 +220,10 @@
         <Key ID="STR_MKK_PTG_DELETE_CURSOR_OBJECT_PLAYER">
             <English>Player objects cannot be deleted.</English>
             <Russian>Объекты игроков нельзя удалить.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DELETE_TARGETS">
+            <English>Delete Targets</English>
+            <Russian>Удалить мишени</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_DIRECTION_OFFSET">
             <English>Direction Offset, deg.</English>
@@ -637,10 +645,6 @@
             <English>Refresh</English>
             <Russian>Обновить</Russian>
         </Key>
-        <Key ID="STR_MKK_PTG_REFRESH_CATALOG">
-            <English>Refresh Catalog</English>
-            <Russian>Обновить каталог</Russian>
-        </Key>
         <Key ID="STR_MKK_PTG_RESET_TEST">
             <English>Reset Test</English>
             <Russian>Сбросить тест</Russian>
@@ -708,6 +712,54 @@
         <Key ID="STR_MKK_PTG_SUBMUNITION_AMMO">
             <English>submunitionAmmo</English>
             <Russian>submunitionAmmo</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_AIR">
+            <English>Air Targets</English>
+            <Russian>Воздушные цели</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_AIR_HEIGHT">
+            <English>Flight Height</English>
+            <Russian>Высота полета</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_AIR_RADIUS">
+            <English>Movement Radius</English>
+            <Russian>Радиус движения</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_BLUE_BOT">
+            <English>Blue bot — B_Survivor_F</English>
+            <Russian>Синий бот — B_Survivor_F</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_BOTS">
+            <English>Bots</English>
+            <Russian>Боты</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_GREEN_BOT">
+            <English>Green bot — I_Survivor_F</English>
+            <Russian>Зеленый бот — I_Survivor_F</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_GROUND">
+            <English>Ground Vehicles</English>
+            <Russian>Наземная техника</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_MOVE_SECTOR">
+            <English>Movement Sector</English>
+            <Russian>Сектор движения</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_RED_BOT">
+            <English>Red bot — O_Survivor_F</English>
+            <Russian>Красный бот — O_Survivor_F</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_SELECT">
+            <English>Select Target</English>
+            <Russian>Выбор цели</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_SELECT_FIRST">
+            <English>Select a target first.</English>
+            <Russian>Сначала выберите цель.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TARGET_TYPE">
+            <English>Target Type</English>
+            <Russian>Тип цели</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_TELEPORT">
             <English>Teleport</English>
@@ -805,6 +857,22 @@
             <English>Unknown</English>
             <Russian>Неизвестно</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_UNLOCK_CURSOR_VEHICLE">
+            <English>Unlock Cursor Vehicle</English>
+            <Russian>Разблокировать технику под прицелом</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_UNLOCK_VEHICLE">
+            <English>Unlock Vehicle</English>
+            <Russian>Разблокировать технику</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_UNLOCK_VEHICLE_NONE">
+            <English>No vehicle under cursor.</English>
+            <Russian>Под прицелом нет техники.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_UNLOCK_VEHICLE_REQUESTED">
+            <English>Vehicle unlock requested.</English>
+            <Russian>Разблокировка техники отправлена.</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_VEHICLE_SPAWN">
             <English>Vehicle Spawner</English>
             <Russian>Создание техники</Russian>
@@ -812,62 +880,6 @@
         <Key ID="STR_MKK_PTG_YES">
             <English>Yes</English>
             <Russian>Да</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_CREATE_TARGET">
-            <English>Create Target</English>
-            <Russian>Создать цель</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_DELETE_TARGETS">
-            <English>Delete Targets</English>
-            <Russian>Удалить мишени</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_TYPE">
-            <English>Target Type</English>
-            <Russian>Тип цели</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_BOTS">
-            <English>Bots</English>
-            <Russian>Боты</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_GROUND">
-            <English>Ground Vehicles</English>
-            <Russian>Наземная техника</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_AIR">
-            <English>Air Targets</English>
-            <Russian>Воздушные цели</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_SELECT">
-            <English>Select Target</English>
-            <Russian>Выбор цели</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_SELECT_FIRST">
-            <English>Select a target first.</English>
-            <Russian>Сначала выберите цель.</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_RED_BOT">
-            <English>Red bot — O_Survivor_F</English>
-            <Russian>Красный бот — O_Survivor_F</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_BLUE_BOT">
-            <English>Blue bot — B_Survivor_F</English>
-            <Russian>Синий бот — B_Survivor_F</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_GREEN_BOT">
-            <English>Green bot — I_Survivor_F</English>
-            <Russian>Зеленый бот — I_Survivor_F</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_MOVE_SECTOR">
-            <English>Movement Sector</English>
-            <Russian>Сектор движения</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_AIR_RADIUS">
-            <English>Movement Radius</English>
-            <Russian>Радиус движения</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TARGET_AIR_HEIGHT">
-            <English>Flight Height</English>
-            <Russian>Высота полета</Russian>
         </Key>
     </Package>
 </Project>

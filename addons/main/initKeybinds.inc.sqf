@@ -43,6 +43,19 @@
     [DIK_C, [false, true, false]]
 ] call CBA_fnc_addKeybind;
 
+
+[
+    localize "STR_MKK_PTG_MOD_NAME",
+    "mkk_ptg_unlock_cursor_vehicle",
+    localize "STR_MKK_PTG_UNLOCK_CURSOR_VEHICLE",
+    {
+        [] call FUNC(unlockCursorVehicle);
+        true
+    },
+    {},
+    [DIK_F, [false, true, false]]
+] call CBA_fnc_addKeybind;
+
 [
     localize "STR_MKK_PTG_MOD_NAME",
     "mkk_ptg_delete_cursor_object",

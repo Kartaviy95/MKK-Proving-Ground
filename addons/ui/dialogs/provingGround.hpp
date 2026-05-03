@@ -150,14 +150,16 @@ class MKK_PTG_MainDisplay {
             action = QUOTE([] call FUNC(toggleTrajectorySettings));
         };
 
-        class DashboardRefreshBtn: MKK_PTG_RscButton {
+        class DashboardUnlockVehicleBtn: MKK_PTG_RscButton {
             idc = 88106;
             x = 0.38;
             y = 0.52;
             w = 0.24;
             h = 0.08;
-            text = "$STR_MKK_PTG_REFRESH_CATALOG";
-            action = QUOTE([true] call FUNC(refreshFilters));
+            text = "$STR_MKK_PTG_UNLOCK_VEHICLE";
+            action = QUOTE([] call EFUNC(main,unlockCursorVehicle));
+            colorBackground[] = {0.08,0.18,0.24,0.95};
+            colorBackgroundActive[] = {0.10,0.30,0.40,1};
         };
 
         class DashboardMapMarkerBtn: MKK_PTG_RscButton {

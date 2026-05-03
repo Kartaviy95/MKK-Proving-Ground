@@ -6,3 +6,6 @@ PREP(openAceArsenal);
 PREP(openVirtualArsenal);
 PREP(serverDeleteObject);
 PREP(showTimedHint);
+PREP(unlockCursorVehicle);
+PREP(serverUnlockVehicle);
+PREP(unlockVehicleGlobal);
