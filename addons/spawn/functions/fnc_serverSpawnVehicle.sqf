@@ -1,8 +1,7 @@
 #include "..\script_component.hpp"
 /*
-    Серверный спавн техники.
+    Глобальный спавн техники. Может выполняться на клиенте: createVehicle сам синхронизируется в MP.
 */
-if !(isServer) exitWith {};
 
 params [
     ["_className", ""],

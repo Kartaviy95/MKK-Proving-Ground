@@ -1,6 +1,7 @@
 #include "..\script_component.hpp"
 /*
-    Клиентский запрос серверного спавна цели.
+    Клиентский запрос глобального спавна цели.
+    Важно: не remoteExec на сервер, потому что аддон может быть не загружен на dedicated server.
 */
 params [
     ["_mode", "bot"],
@@ -37,4 +38,4 @@ if (_mode isEqualTo "air" && {!(_className isKindOf "Air")}) exitWith {};
     _sector,
     _airRadius,
     _airHeight
-] remoteExecCall [QFUNC(serverSpawnTarget), 2];
+] call FUNC(serverSpawnTarget);

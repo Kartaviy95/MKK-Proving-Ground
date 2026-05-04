@@ -19,10 +19,9 @@ if (hasInterface && {_className isEqualTo ""}) exitWith {
     };
 
     private _selectedClass = _ctrlList lbData _idx;
-    [_selectedClass, player, _withCrew] remoteExecCall [QFUNC(serverCreateTarget), 2];
+    [_selectedClass, player, _withCrew] call FUNC(serverCreateTarget);
 };
 
-if !(isServer) exitWith {};
 if (_className isEqualTo "") exitWith {};
 if (isNull _requestor) exitWith {};
 

@@ -1,8 +1,7 @@
 #include "..\script_component.hpp"
 /*
-    Серверный спавн целей.
+    Глобальный спавн целей. Может выполняться на клиенте: createVehicle/createUnit синхронизируются в MP.
 */
-if !(isServer) exitWith {};
 
 params [
     ["_mode", "bot"],

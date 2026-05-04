@@ -2,4 +2,4 @@
 /*
     Запрашивает очистку полигона на сервере.
 */
-[] remoteExecCall [QEFUNC(spawn,cleanupRange), 2];
+[] call EFUNC(spawn,cleanupRange);

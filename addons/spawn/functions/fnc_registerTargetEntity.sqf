@@ -9,4 +9,4 @@ params [
 if (isNull _entity) exitWith {};
 private _arr = missionNamespace getVariable ["mkk_ptg_spawnedTargets", []];
 _arr pushBackUnique _entity;
-missionNamespace setVariable ["mkk_ptg_spawnedTargets", _arr];
+missionNamespace setVariable ["mkk_ptg_spawnedTargets", _arr, true];

@@ -2,8 +2,6 @@
 /*
     Удаляет сущность с полигона.
 */
-if !(isServer) exitWith {};
-
 params [
     ["_entity", objNull]
 ];

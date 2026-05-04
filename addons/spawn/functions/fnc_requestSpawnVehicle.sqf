@@ -1,6 +1,7 @@
 #include "..\script_component.hpp"
 /*
-    Клиентский запрос серверного спавна.
+    Клиентский запрос глобального спавна.
+    Важно: не remoteExec на сервер, потому что аддон может быть не загружен на dedicated server.
 */
 params [
     ["_className", ""],
@@ -36,4 +37,4 @@ if (_ammoBoxClass isNotEqualTo "" && {
     _distance,
     _directionOffset,
     _ammoBoxClass
-] remoteExecCall [QFUNC(serverSpawnVehicle), 2];
+] call FUNC(serverSpawnVehicle);
