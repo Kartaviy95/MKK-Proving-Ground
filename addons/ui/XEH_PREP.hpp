@@ -7,6 +7,8 @@ PREP(closeRearmOverlay);
 PREP(copySelectedRearmMagazineClass);
 PREP(clearSelectedRearmWeapon);
 PREP(clearRearmWeapon);
+PREP(getRearmExecutionTarget);
+PREP(applyRearmMagazine);
 PREP(applyPylonLoadout);
 PREP(loadSelectedRearmMagazine);
 PREP(onRearmMagazineSelected);
