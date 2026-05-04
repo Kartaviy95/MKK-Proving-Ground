@@ -62,7 +62,7 @@ HUD tracking показывает:
 
 Текст HUD должен быть локализован через stringtable.
 
-Tracking запускается для локального игрока и техники/статики, которой он управляет, через `FiredMan` и `Fired` handlers. Камера слежения крепится к projectile, выключается по ESC, ограничивается `mkk_ptg_trackingMaxTime` и cooldown `mkk_ptg_trackingCooldown`.
+Tracking запускается для локального игрока и техники/статики, которой он управляет, через `FiredMan` и `Fired` handlers. Камера слежения крепится к projectile и ведет его до исчезновения projectile при столкновении. Во время полета сохраняется траектория; после попадания камера переносится в точку на траектории за 50 метров до последней позиции снаряда, плавно поднимается, смотрит на точку падения и удерживается еще 4 секунды, чтобы было видно взрыв и повреждения. Дистанция остановки задается внутри `fnc_updateProjectileTrack.sqf` переменной `_preImpactStopDistance`. ESC досрочно выключает tracking; `mkk_ptg_trackingCooldown` ограничивает частоту запуска.
 
 18. Линия траектории пули
 
@@ -300,7 +300,7 @@ ACE action на терминалах.
 
 Основные группы внутренних параметров:
 
-Tracking: `mkk_ptg_trackingEnabled`, `mkk_ptg_trackingModeDefault`, `mkk_ptg_trackingMaxTime`, `mkk_ptg_trackingCooldown`, `mkk_ptg_trackingAllowedAmmoKinds`, `mkk_ptg_trajectoryEnabled`, `mkk_ptg_mapProjectileMarkersEnabled`, `mkk_ptg_mapProjectileMarkerShowAmmo`;
+Tracking: `mkk_ptg_trackingEnabled`, `mkk_ptg_trackingModeDefault`, `mkk_ptg_trackingCooldown`, `mkk_ptg_trackingAllowedAmmoKinds`, `mkk_ptg_trajectoryEnabled`, `mkk_ptg_mapProjectileMarkersEnabled`, `mkk_ptg_mapProjectileMarkerShowAmmo`. `mkk_ptg_trackingMaxTime` остается параметром аналитических режимов траектории/маркеров, но tracking-камера больше не обрывает полет по этому таймауту;
 Spawn: `mkk_ptg_spawnDefaultDistance`, `mkk_ptg_spawnMaxDistance`;
 Penetration: `mkk_ptg_penetrationTargetDistance`, `mkk_ptg_penetrationShotDistance`;
 Player: `mkk_ptg_infiniteAmmoEnabled`, `mkk_ptg_godModeEnabled`;
