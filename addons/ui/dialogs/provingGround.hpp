@@ -12,37 +12,40 @@ class MKK_PTG_MainDisplay {
             y = 0.05;
             w = 0.90;
             h = 0.85;
-            colorBackground[] = {0.03,0.03,0.03,0.95};
+            colorBackground[] = {0.015,0.017,0.020,0.97};
         };
 
         class Header: MKK_PTG_RscText {
             idc = 88001;
             x = 0.06;
-            y = 0.06;
-            w = 0.38;
-            h = 0.04;
+            y = 0.055;
+            w = 0.44;
+            h = 0.042;
             text = "$STR_MKK_PTG_MOD_NAME";
-            colorText[] = {1,1,1,1};
+            colorText[] = {0.94,0.98,1,1};
+            sizeEx = 0.038;
         };
 
         class Author: MKK_PTG_RscText {
             idc = 88004;
-            x = 0.45;
-            y = 0.06;
+            x = 0.70;
+            y = 0.060;
             w = 0.20;
-            h = 0.04;
+            h = 0.035;
             text = "$STR_MKK_PTG_AUTHOR";
-            colorText[] = {0.65,0.78,0.86,1};
+            colorText[] = {0.55,0.68,0.76,1};
+            sizeEx = 0.026;
         };
 
         class SectionTitle: MKK_PTG_RscText {
             idc = 88003;
             x = 0.06;
-            y = 0.105;
-            w = 0.40;
-            h = 0.035;
+            y = 0.103;
+            w = 0.55;
+            h = 0.034;
             text = "$STR_MKK_PTG_SELECT_FUNCTION";
             colorText[] = {0.72,0.88,1,1};
+            sizeEx = 0.030;
         };
 
         class ResultCount: MKK_PTG_RscText {
@@ -74,257 +77,340 @@ class MKK_PTG_MainDisplay {
     };
 
     class controls {
-        class DashboardVehicleBtn: MKK_PTG_RscButton {
-            idc = 88100;
-            x = 0.10;
-            y = 0.19;
-            w = 0.24;
-            h = 0.08;
-            text = "$STR_MKK_PTG_VEHICLE_SPAWN";
-            action = QUOTE([] call FUNC(showVehicleView));
-            colorBackground[] = {0.08,0.18,0.24,0.95};
-            colorBackgroundActive[] = {0.10,0.30,0.40,1};
+        class DashboardHeaderAccent: MKK_PTG_RscText {
+            idc = 88132;
+            x = 0.06;
+            y = 0.142;
+            w = 0.84;
+            h = 0.004;
+            colorBackground[] = {0.18,0.58,0.72,0.95};
         };
 
-        class DashboardTeleportBtn: MKK_PTG_RscButton {
+        class DashboardPrepareCard: MKK_PTG_RscDashboardCard {
+            idc = 88140;
+            x = 0.075;
+            y = 0.165;
+            w = 0.270;
+            h = 0.555;
+        };
+
+        class DashboardAnalyzeCard: MKK_PTG_RscDashboardCard {
+            idc = 88141;
+            x = 0.365;
+            y = 0.165;
+            w = 0.270;
+            h = 0.555;
+        };
+
+        class DashboardSystemCard: MKK_PTG_RscDashboardCard {
+            idc = 88142;
+            x = 0.655;
+            y = 0.165;
+            w = 0.270;
+            h = 0.555;
+        };
+
+        class DashboardPrepareTitle: MKK_PTG_RscDashboardLabel {
+            idc = 88143;
+            x = 0.092;
+            y = 0.180;
+            w = 0.236;
+            h = 0.030;
+            text = "$STR_MKK_PTG_DASHBOARD_PREPARE_TITLE";
+        };
+
+        class DashboardAnalyzeTitle: MKK_PTG_RscDashboardLabel {
+            idc = 88144;
+            x = 0.382;
+            y = 0.180;
+            w = 0.236;
+            h = 0.030;
+            text = "$STR_MKK_PTG_DASHBOARD_ANALYZE_TITLE";
+        };
+
+        class DashboardSystemTitle: MKK_PTG_RscDashboardLabel {
+            idc = 88145;
+            x = 0.672;
+            y = 0.180;
+            w = 0.236;
+            h = 0.030;
+            text = "$STR_MKK_PTG_DASHBOARD_SYSTEM_TITLE";
+        };
+
+        class DashboardPrepareHint: MKK_PTG_RscDashboardHint {
+            idc = 88146;
+            x = 0.092;
+            y = 0.210;
+            w = 0.236;
+            h = 0.045;
+            text = "$STR_MKK_PTG_DASHBOARD_PREPARE_HINT";
+        };
+
+        class DashboardAnalyzeHint: MKK_PTG_RscDashboardHint {
+            idc = 88147;
+            x = 0.382;
+            y = 0.210;
+            w = 0.236;
+            h = 0.045;
+            text = "$STR_MKK_PTG_DASHBOARD_ANALYZE_HINT";
+        };
+
+        class DashboardSystemHint: MKK_PTG_RscDashboardHint {
+            idc = 88148;
+            x = 0.672;
+            y = 0.210;
+            w = 0.236;
+            h = 0.045;
+            text = "$STR_MKK_PTG_DASHBOARD_SYSTEM_HINT";
+        };
+
+        class DashboardVehicleBtn: MKK_PTG_RscButtonPrimary {
+            idc = 88100;
+            x = 0.095;
+            y = 0.270;
+            w = 0.230;
+            h = 0.046;
+            text = "$STR_MKK_PTG_VEHICLE_SPAWN";
+            action = QUOTE([] call FUNC(showVehicleView));
+        };
+
+        class DashboardTargetBtn: MKK_PTG_RscButtonPrimary {
+            idc = 88122;
+            x = 0.095;
+            y = 0.326;
+            w = 0.230;
+            h = 0.046;
+            text = "$STR_MKK_PTG_CREATE_TARGET";
+            action = QUOTE([] call FUNC(openTargetOverlay));
+        };
+
+        class DashboardRearmBtn: MKK_PTG_RscButtonPrimary {
+            idc = 88121;
+            x = 0.095;
+            y = 0.382;
+            w = 0.230;
+            h = 0.046;
+            text = "$STR_MKK_PTG_REARM_PYLONS";
+            action = QUOTE([] call FUNC(openRearmOverlay));
+        };
+
+        class DashboardUnlockVehicleBtn: MKK_PTG_RscButtonPrimary {
+            idc = 88106;
+            x = 0.095;
+            y = 0.438;
+            w = 0.230;
+            h = 0.046;
+            text = "$STR_MKK_PTG_UNLOCK_VEHICLE";
+            action = QUOTE([] call EFUNC(main,unlockCursorVehicle));
+        };
+
+        class DashboardTeleportBtn: MKK_PTG_RscButtonSecondary {
             idc = 88101;
-            x = 0.38;
-            y = 0.19;
-            w = 0.24;
-            h = 0.08;
+            x = 0.095;
+            y = 0.494;
+            w = 0.230;
+            h = 0.046;
             text = "$STR_MKK_PTG_TELEPORT";
             action = QUOTE([] call FUNC(startTeleport));
         };
 
-        class DashboardTrackingBtn: MKK_PTG_RscButton {
+        class DashboardPrepareInfo: MKK_PTG_RscDashboardHint {
+            idc = 88149;
+            x = 0.092;
+            y = 0.565;
+            w = 0.236;
+            h = 0.100;
+            text = "$STR_MKK_PTG_DASHBOARD_PREPARE_INFO";
+        };
+
+        class DashboardCameraBtn: MKK_PTG_RscButtonPrimary {
+            idc = 88120;
+            x = 0.385;
+            y = 0.270;
+            w = 0.230;
+            h = 0.046;
+            text = "$STR_MKK_PTG_CAMERA";
+            action = QUOTE([] call FUNC(startMapCamera));
+        };
+
+        class DashboardTrackingBtn: MKK_PTG_RscButtonSecondary {
             idc = 88102;
-            x = 0.10;
-            y = 0.30;
-            w = 0.24;
-            h = 0.08;
+            x = 0.385;
+            y = 0.326;
+            w = 0.230;
+            h = 0.046;
             text = "$STR_MKK_PTG_PROJECTILE_TRACKING";
             action = QUOTE([] call FUNC(toggleTracking));
         };
 
-        class DashboardCleanupBtn: MKK_PTG_RscButton {
-            idc = 88105;
-            x = 0.10;
-            y = 0.52;
-            w = 0.24;
-            h = 0.08;
-            text = "$STR_MKK_PTG_CLEANUP_RANGE";
-            action = QUOTE([] call FUNC(onCleanupPressed));
-            colorBackground[] = {0.24,0.08,0.08,0.95};
-            colorBackgroundActive[] = {0.38,0.10,0.10,1};
-        };
-
-        class DashboardPenetrationBtn: MKK_PTG_RscButton {
-            idc = 88109;
-            x = 0.66;
-            y = 0.19;
-            w = 0.24;
-            h = 0.08;
-            text = "$STR_MKK_PTG_PENETRATION_TEST_DEV";
-            action = "";
-            enabled = 0;
-            colorText[] = {0.65,0.65,0.65,1};
-            colorDisabled[] = {0.65,0.65,0.65,1};
-            colorBackground[] = {0.08,0.08,0.08,0.65};
-            colorBackgroundActive[] = {0.08,0.08,0.08,0.65};
-        };
-
-        class DashboardTrajectoryBtn: MKK_PTG_RscButton {
+        class DashboardTrajectoryBtn: MKK_PTG_RscButtonSecondary {
             idc = 88110;
-            x = 0.38;
-            y = 0.30;
-            w = 0.205;
-            h = 0.08;
+            x = 0.385;
+            y = 0.382;
+            w = 0.190;
+            h = 0.046;
             text = "$STR_MKK_PTG_TRAJECTORY_LINES";
             action = QUOTE([] call EFUNC(tracking,toggleTrajectoryLines));
         };
 
-        class DashboardTrajectorySettingsBtn: MKK_PTG_RscPictureButton {
+        class DashboardTrajectorySettingsBtn: MKK_PTG_RscSettingsButton {
             idc = 88118;
-            x = 0.59;
-            y = 0.30;
-            w = 0.03;
-            h = 0.08;
+            x = 0.580;
+            y = 0.382;
+            w = 0.035;
+            h = 0.046;
             text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
             action = QUOTE([] call FUNC(toggleTrajectorySettings));
         };
 
-        class DashboardUnlockVehicleBtn: MKK_PTG_RscButton {
-            idc = 88106;
-            x = 0.38;
-            y = 0.52;
-            w = 0.24;
-            h = 0.08;
-            text = "$STR_MKK_PTG_UNLOCK_VEHICLE";
-            action = QUOTE([] call EFUNC(main,unlockCursorVehicle));
-            colorBackground[] = {0.08,0.18,0.24,0.95};
-            colorBackgroundActive[] = {0.10,0.30,0.40,1};
-        };
-
-        class DashboardMapMarkerBtn: MKK_PTG_RscButton {
+        class DashboardMapMarkerBtn: MKK_PTG_RscButtonSecondary {
             idc = 88111;
-            x = 0.66;
-            y = 0.30;
-            w = 0.205;
-            h = 0.08;
+            x = 0.385;
+            y = 0.438;
+            w = 0.190;
+            h = 0.046;
             text = "$STR_MKK_PTG_MAP_PROJECTILE_MARKERS";
             action = QUOTE([] call EFUNC(tracking,toggleMapProjectileMarkers));
         };
 
-        class DashboardMapMarkerSettingsBtn: MKK_PTG_RscPictureButton {
+        class DashboardMapMarkerSettingsBtn: MKK_PTG_RscSettingsButton {
             idc = 88119;
-            x = 0.87;
-            y = 0.30;
-            w = 0.03;
-            h = 0.08;
+            x = 0.580;
+            y = 0.438;
+            w = 0.035;
+            h = 0.046;
             text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
             action = QUOTE([] call FUNC(toggleMapProjectileMarkerSettings));
         };
 
-        class DashboardMapMarkerAmmoBtn: MKK_PTG_RscButton {
+        class DashboardObjectStatusBtn: MKK_PTG_RscButtonPrimary {
+            idc = 88115;
+            x = 0.385;
+            y = 0.494;
+            w = 0.190;
+            h = 0.046;
+            text = "$STR_MKK_PTG_OBJECT_STATUS_DISPLAY";
+            action = QUOTE([] call FUNC(toggleObjectStatusDisplay));
+        };
+
+        class DashboardObjectStatusSettingsBtn: MKK_PTG_RscSettingsButton {
+            idc = 88117;
+            x = 0.580;
+            y = 0.494;
+            w = 0.035;
+            h = 0.046;
+            text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
+            action = QUOTE([] call FUNC(toggleObjectStatusSettings));
+        };
+
+        class DashboardHitpointInspectorBtn: MKK_PTG_RscButtonPrimary {
+            idc = 88116;
+            x = 0.385;
+            y = 0.550;
+            w = 0.230;
+            h = 0.046;
+            text = "$STR_MKK_PTG_HITPOINT_INSPECTOR";
+            action = QUOTE([] call FUNC(toggleHitpointInspector));
+        };
+
+        class DashboardPenetrationBtn: MKK_PTG_RscButtonDisabledTile {
+            idc = 88109;
+            x = 0.385;
+            y = 0.606;
+            w = 0.230;
+            h = 0.046;
+            text = "$STR_MKK_PTG_PENETRATION_TEST_DEV";
+            action = "";
+            enabled = 0;
+        };
+
+        class DashboardMapMarkerAmmoBtn: MKK_PTG_RscButtonSecondary {
             idc = 88112;
-            x = 0.10;
-            y = 0.41;
-            w = 0.24;
-            h = 0.08;
+            x = 0.385;
+            y = 0.662;
+            w = 0.230;
+            h = 0.046;
             text = "$STR_MKK_PTG_MAP_MARKER_AMMO";
             action = QUOTE([] call EFUNC(tracking,toggleMapProjectileMarkerAmmo));
         };
 
-        class DashboardInfiniteAmmoBtn: MKK_PTG_RscButton {
+        class DashboardInfiniteAmmoBtn: MKK_PTG_RscButtonToggle {
             idc = 88113;
-            x = 0.38;
-            y = 0.41;
-            w = 0.24;
-            h = 0.08;
+            x = 0.675;
+            y = 0.270;
+            w = 0.230;
+            h = 0.046;
             text = "$STR_MKK_PTG_INFINITE_AMMO";
             action = QUOTE([] call EFUNC(player,toggleInfiniteAmmo));
         };
 
-        class DashboardGodModeBtn: MKK_PTG_RscButton {
+        class DashboardGodModeBtn: MKK_PTG_RscButtonToggle {
             idc = 88114;
-            x = 0.66;
-            y = 0.41;
-            w = 0.24;
-            h = 0.08;
+            x = 0.675;
+            y = 0.326;
+            w = 0.230;
+            h = 0.046;
             text = "$STR_MKK_PTG_GOD_MODE";
             action = QUOTE([] call EFUNC(player,toggleGodMode));
         };
 
-        class DashboardHitpointInspectorBtn: MKK_PTG_RscButton {
-            idc = 88116;
-            x = 0.66;
-            y = 0.52;
-            w = 0.24;
-            h = 0.08;
-            text = "$STR_MKK_PTG_HITPOINT_INSPECTOR";
-            action = QUOTE([] call FUNC(toggleHitpointInspector));
-            colorBackground[] = {0.08,0.18,0.24,0.95};
-            colorBackgroundActive[] = {0.10,0.30,0.40,1};
-        };
-
-        class DashboardCameraBtn: MKK_PTG_RscButton {
-            idc = 88120;
-            x = 0.10;
-            y = 0.63;
-            w = 0.24;
-            h = 0.08;
-            text = "$STR_MKK_PTG_CAMERA";
-            action = QUOTE([] call FUNC(startMapCamera));
-            colorBackground[] = {0.08,0.18,0.24,0.95};
-            colorBackgroundActive[] = {0.10,0.30,0.40,1};
-        };
-
-        class DashboardCloseBtn: MKK_PTG_RscButton {
-            idc = 88107;
-            x = 0.10;
-            y = 0.74;
-            w = 0.24;
-            h = 0.08;
-            text = "$STR_MKK_PTG_CLOSE";
-            action = "closeDialog 0";
-        };
-
-        class DashboardRearmBtn: MKK_PTG_RscButton {
-            idc = 88121;
-            x = 0.66;
-            y = 0.63;
-            w = 0.24;
-            h = 0.08;
-            text = "$STR_MKK_PTG_REARM";
-            action = QUOTE([] call FUNC(openRearmOverlay));
-            colorBackground[] = {0.08,0.18,0.24,0.95};
-            colorBackgroundActive[] = {0.10,0.30,0.40,1};
-        };
-
-        class DashboardTargetBtn: MKK_PTG_RscButton {
-            idc = 88122;
-            x = 0.38;
-            y = 0.63;
-            w = 0.24;
-            h = 0.08;
-            text = "$STR_MKK_PTG_CREATE_TARGET";
-            action = QUOTE([] call FUNC(openTargetOverlay));
-            colorBackground[] = {0.08,0.18,0.24,0.95};
-            colorBackgroundActive[] = {0.10,0.30,0.40,1};
-        };
-
-
-        class DashboardObjectStatusBtn: MKK_PTG_RscButton {
-            idc = 88115;
-            x = 0.10;
-            y = 0.41;
-            w = 0.205;
-            h = 0.08;
-            text = "$STR_MKK_PTG_OBJECT_STATUS_DISPLAY";
-            action = QUOTE([] call FUNC(toggleObjectStatusDisplay));
-            colorBackground[] = {0.08,0.18,0.24,0.95};
-            colorBackgroundActive[] = {0.10,0.30,0.40,1};
-        };
-
-        class DashboardObjectStatusSettingsBtn: MKK_PTG_RscButton {
-            idc = 88117;
-            x = 0.31;
-            y = 0.41;
-            w = 0.03;
-            h = 0.08;
-            text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
-            action = QUOTE([] call FUNC(toggleObjectStatusSettings));
-            style = 48 + 0x800;
-            colorBackground[] = {0.08,0.18,0.24,0.95};
-            colorBackgroundActive[] = {0.10,0.30,0.40,1};
-        };
-
-        class DashboardInfo: MKK_PTG_RscStructuredText {
-            idc = 88108;
-            x = 0.38;
-            y = 0.735;
-            w = 0.25;
-            h = 0.09;
-            text = "$STR_MKK_PTG_DASHBOARD_INFO";
-        };
-
         class DashboardInterfaceSizeLabel: MKK_PTG_RscText {
             idc = 88130;
-            x = 0.66;
-            y = 0.725;
-            w = 0.24;
-            h = 0.025;
+            x = 0.675;
+            y = 0.393;
+            w = 0.230;
+            h = 0.026;
             text = "$STR_MKK_PTG_INTERFACE_SIZE";
             colorText[] = {0.72,0.88,1,1};
+            sizeEx = 0.028;
         };
 
         class DashboardInterfaceSizeCombo: MKK_PTG_RscCombo {
             idc = 88131;
-            x = 0.66;
-            y = 0.755;
-            w = 0.24;
-            h = 0.045;
+            x = 0.675;
+            y = 0.424;
+            w = 0.230;
+            h = 0.042;
             onLBSelChanged = QUOTE(_this call FUNC(onInterfaceSizeSelected));
+        };
+
+        class DashboardSystemInfo: MKK_PTG_RscDashboardHint {
+            idc = 88150;
+            x = 0.672;
+            y = 0.488;
+            w = 0.236;
+            h = 0.095;
+            text = "$STR_MKK_PTG_DASHBOARD_SYSTEM_INFO";
+        };
+
+        class DashboardCleanupBtn: MKK_PTG_RscButtonDanger {
+            idc = 88105;
+            x = 0.675;
+            y = 0.600;
+            w = 0.230;
+            h = 0.046;
+            text = "$STR_MKK_PTG_CLEANUP_RANGE";
+            action = QUOTE([] call FUNC(onCleanupPressed));
+        };
+
+        class DashboardCloseBtn: MKK_PTG_RscButtonSecondary {
+            idc = 88107;
+            x = 0.675;
+            y = 0.656;
+            w = 0.230;
+            h = 0.046;
+            text = "$STR_MKK_PTG_CLOSE";
+            action = "closeDialog 0";
+        };
+
+        class DashboardInfo: MKK_PTG_RscStructuredText {
+            idc = 88108;
+            x = 0.075;
+            y = 0.742;
+            w = 0.850;
+            h = 0.072;
+            text = "$STR_MKK_PTG_DASHBOARD_INFO";
+            colorText[] = {0.78,0.88,0.95,1};
         };
 
         class SearchLabel: MKK_PTG_RscText {
@@ -913,4 +999,15 @@ class MKK_PTG_MainDisplay {
         };
 
     };
+};
+
+class MKK_PTG_SettingsDisplay {
+    idd = 88800;
+    movingEnable = 1;
+    enableSimulation = 1;
+    onLoad = QUOTE(_this call FUNC(initSettingsDisplay));
+    onUnload = "uiNamespace setVariable ['mkk_ptg_settingsDisplay', displayNull]; uiNamespace setVariable ['mkk_ptg_objectStatusSettingsControls', []]; uiNamespace setVariable ['mkk_ptg_mapProjectileMarkerSettingsControls', []]; uiNamespace setVariable ['mkk_ptg_trajectorySettingsControls', []];";
+
+    class controlsBackground {};
+    class controls {};
 };

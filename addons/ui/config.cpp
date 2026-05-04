@@ -99,12 +99,12 @@ class MKK_PTG_RscButton {
     text = "";
     colorText[] = {1,1,1,1};
     colorDisabled[] = {0.5,0.5,0.5,1};
-    colorBackground[] = {0.1,0.1,0.1,0.95};
-    colorBackgroundDisabled[] = {0.2,0.2,0.2,0.8};
-    colorBackgroundActive[] = {0.2,0.2,0.2,1};
-    colorFocused[] = {0.2,0.2,0.2,1};
+    colorBackground[] = {0.075,0.092,0.110,0.96};
+    colorBackgroundDisabled[] = {0.045,0.050,0.056,0.78};
+    colorBackgroundActive[] = {0.115,0.205,0.255,1};
+    colorFocused[] = {0.115,0.205,0.255,1};
     colorShadow[] = {0,0,0,0};
-    colorBorder[] = {0,0,0,1};
+    colorBorder[] = {0.18,0.28,0.34,0.45};
     soundEnter[] = {"",0.09,1};
     soundPush[] = {"",0.09,1};
     soundClick[] = {"",0.09,1};
@@ -121,14 +121,72 @@ class MKK_PTG_RscButton {
     offsetY = 0;
     offsetPressedX = 0;
     offsetPressedY = 0;
-    borderSize = 0;
+    borderSize = 0.001;
 };
 
 class MKK_PTG_RscPictureButton: MKK_PTG_RscButton {
     style = 48 + 0x800;
     colorText[] = {0.85,0.95,1,1};
-    colorBackground[] = {0.08,0.18,0.24,0.95};
-    colorBackgroundActive[] = {0.10,0.30,0.40,1};
+    colorBackground[] = {0.070,0.115,0.135,0.96};
+    colorBackgroundActive[] = {0.115,0.245,0.305,1};
+};
+
+class MKK_PTG_RscDashboardCard: MKK_PTG_RscText {
+    colorBackground[] = {0.036,0.045,0.055,0.90};
+};
+
+class MKK_PTG_RscDashboardLabel: MKK_PTG_RscText {
+    sizeEx = 0.030;
+    colorText[] = {0.84,0.95,1,1};
+};
+
+class MKK_PTG_RscDashboardHint: MKK_PTG_RscStructuredText {
+    size = 0.024;
+    colorText[] = {0.70,0.78,0.84,1};
+    class Attributes {
+        font = "RobotoCondensed";
+        color = "#B3C6D5";
+        align = "left";
+        shadow = 0;
+    };
+};
+
+class MKK_PTG_RscButtonPrimary: MKK_PTG_RscButton {
+    colorBackground[] = {0.060,0.145,0.185,0.97};
+    colorBackgroundActive[] = {0.095,0.275,0.350,1};
+    colorFocused[] = {0.095,0.275,0.350,1};
+    colorText[] = {0.92,0.98,1,1};
+};
+
+class MKK_PTG_RscButtonSecondary: MKK_PTG_RscButton {
+    colorBackground[] = {0.065,0.080,0.095,0.96};
+    colorBackgroundActive[] = {0.105,0.160,0.195,1};
+    colorFocused[] = {0.105,0.160,0.195,1};
+};
+
+class MKK_PTG_RscButtonToggle: MKK_PTG_RscButton {
+    colorBackground[] = {0.075,0.110,0.080,0.96};
+    colorBackgroundActive[] = {0.130,0.220,0.125,1};
+    colorFocused[] = {0.130,0.220,0.125,1};
+};
+
+class MKK_PTG_RscButtonDanger: MKK_PTG_RscButton {
+    colorBackground[] = {0.250,0.075,0.055,0.97};
+    colorBackgroundActive[] = {0.420,0.100,0.075,1};
+    colorFocused[] = {0.420,0.100,0.075,1};
+};
+
+class MKK_PTG_RscButtonDisabledTile: MKK_PTG_RscButton {
+    colorText[] = {0.58,0.62,0.65,1};
+    colorDisabled[] = {0.58,0.62,0.65,1};
+    colorBackground[] = {0.045,0.050,0.056,0.72};
+    colorBackgroundActive[] = {0.045,0.050,0.056,0.72};
+    colorBackgroundDisabled[] = {0.045,0.050,0.056,0.72};
+};
+
+class MKK_PTG_RscSettingsButton: MKK_PTG_RscPictureButton {
+    colorBackground[] = {0.050,0.090,0.105,0.96};
+    colorBackgroundActive[] = {0.095,0.220,0.280,1};
 };
 
 class MKK_PTG_RscCombo {
@@ -137,8 +195,8 @@ class MKK_PTG_RscCombo {
     style = 0;
     colorSelect[] = {1,1,1,1};
     colorText[] = {1,1,1,1};
-    colorBackground[] = {0.1,0.1,0.1,0.95};
-    colorSelectBackground[] = {0.08,0.18,0.24,1};
+    colorBackground[] = {0.045,0.055,0.065,0.96};
+    colorSelectBackground[] = {0.10,0.28,0.36,1};
     colorScrollbar[] = {1,0,0,1};
     colorDisabled[] = {0.5,0.5,0.5,1};
     colorPicture[] = {1,1,1,1};

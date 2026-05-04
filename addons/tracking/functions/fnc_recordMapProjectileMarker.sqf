@@ -33,10 +33,16 @@ private _maxTime = missionNamespace getVariable ["mkk_ptg_trackingMaxTime", 8];
 private _startedAt = diag_tickTime;
 
 while {!(isNull _projectile) && {(diag_tickTime - _startedAt) <= _maxTime}} do {
+    if !(missionNamespace getVariable ["mkk_ptg_mapProjectileMarkersEnabled", false]) exitWith {
+        deleteMarkerLocal _marker;
+    };
+
     _lastPos = getPosATL _projectile;
     _marker setMarkerPosLocal _lastPos;
     uiSleep 0.03;
 };
+
+if !(missionNamespace getVariable ["mkk_ptg_mapProjectileMarkersEnabled", false]) exitWith {};
 
 _marker setMarkerPosLocal _lastPos;
 if (missionNamespace getVariable ["mkk_ptg_mapProjectileMarkerShowAmmo", false]) then {

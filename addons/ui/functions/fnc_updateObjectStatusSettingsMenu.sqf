@@ -1,12 +1,15 @@
 #include "..\script_component.hpp"
 /*
-    Обновляет центрированный popup настроек статус-дисплея объектов.
+    Обновляет отдельное маленькое окно настроек статус-дисплея объектов.
 */
 disableSerialization;
 
-private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
+private _display = findDisplay 88800;
+if (isNull _display) then {
+    _display = uiNamespace getVariable ["mkk_ptg_settingsDisplay", displayNull];
+};
 
-private _fncDestroyPopup = {
+private _fncDestroyControls = {
     private _controls = uiNamespace getVariable ["mkk_ptg_objectStatusSettingsControls", []];
     {
         if (!isNull _x) then {
@@ -17,12 +20,10 @@ private _fncDestroyPopup = {
     uiNamespace setVariable ["mkk_ptg_objectStatusSettingsControls", []];
 };
 
-call _fncDestroyPopup;
+call _fncDestroyControls;
 
 if (isNull _display) exitWith {};
-if !(uiNamespace getVariable ["mkk_ptg_objectStatusSettingsVisible", false]) exitWith {
-    [] call FUNC(setDashboardControlsBlocked);
-};
+if !(uiNamespace getVariable ["mkk_ptg_objectStatusSettingsVisible", false]) exitWith {};
 
 private _fncGetBool = {
     params ["_varName", "_default"];
@@ -33,6 +34,7 @@ private _settings = [
     ["class", "mkk_ptg_objectStatusShowClass", true, localize "STR_MKK_PTG_CLASS", true],
     ["distance", "mkk_ptg_objectStatusShowDistance", true, localize "STR_MKK_PTG_DISTANCE", true],
     ["damage", "mkk_ptg_objectStatusShowDamage", true, localize "STR_MKK_PTG_TOTAL_DAMAGE_SHORT", true],
+    ["allowDamage", "mkk_ptg_objectStatusShowAllowDamage", true, localize "STR_MKK_PTG_ALLOW_DAMAGE", true],
     ["hitpoints", "mkk_ptg_objectStatusShowHitpoints", false, localize "STR_MKK_PTG_HITPOINTS", true],
     ["hpHull", "mkk_ptg_objectStatusHpHull", true, localize "STR_MKK_PTG_HP_HULL", missionNamespace getVariable ["mkk_ptg_objectStatusShowHitpoints", false]],
     ["hpEngine", "mkk_ptg_objectStatusHpEngine", true, localize "STR_MKK_PTG_HP_ENGINE", missionNamespace getVariable ["mkk_ptg_objectStatusShowHitpoints", false]],
@@ -42,10 +44,10 @@ private _settings = [
 ];
 
 private _allControls = [];
-private _panelX = 0.31;
-private _panelY = 0.17;
-private _panelW = 0.38;
-private _panelH = 0.62;
+private _panelX = 0.32;
+private _panelY = 0.16;
+private _panelW = 0.36;
+private _panelH = 0.66;
 private _pad = 0.018;
 private _rowH = 0.038;
 private _rowGap = 0.010;
@@ -65,19 +67,11 @@ private _fncCreateCtrl = {
     _ctrl
 };
 
-private _backdrop = ["MKK_PTG_RscButton", [0.05, 0.05, 0.90, 0.85], [0.00, 0.00, 0.00, 0.46]] call _fncCreateCtrl;
-_backdrop ctrlSetText "";
-_backdrop ctrlSetEventHandler ["ButtonClick", format ["uiNamespace setVariable ['mkk_ptg_objectStatusSettingsVisible', false]; [] call %1", QFUNC(updateObjectStatusSettingsMenu)]];
-
 ["MKK_PTG_RscText", [_panelX, _panelY, _panelW, _panelH], [0.010, 0.016, 0.022, 0.985]] call _fncCreateCtrl;
 ["MKK_PTG_RscText", [_panelX, _panelY, _panelW, 0.004], [0.10, 0.72, 0.92, 0.95]] call _fncCreateCtrl;
 ["MKK_PTG_RscText", [_panelX, _panelY, 0.004, _panelH], [0.10, 0.72, 0.92, 0.95]] call _fncCreateCtrl;
 
-private _title = [
-    "MKK_PTG_RscText",
-    [_panelX + _pad, _panelY + 0.016, _panelW - (_pad * 2), 0.034],
-    [0, 0, 0, 0]
-] call _fncCreateCtrl;
+private _title = ["MKK_PTG_RscText", [_panelX + _pad, _panelY + 0.016, _panelW - (_pad * 2), 0.034]] call _fncCreateCtrl;
 _title ctrlSetText localize "STR_MKK_PTG_OBJECT_STATUS_SETTINGS";
 _title ctrlSetTextColor [0.72, 0.88, 1, 1];
 
@@ -86,12 +80,7 @@ private _curY = _panelY + 0.065;
 private _fncCreateSection = {
     params ["_text"];
 
-    private _ctrl = [
-        "MKK_PTG_RscText",
-        [_panelX + _pad, _curY, _panelW - (_pad * 2), 0.026],
-        [0, 0, 0, 0]
-    ] call _fncCreateCtrl;
-
+    private _ctrl = ["MKK_PTG_RscText", [_panelX + _pad, _curY, _panelW - (_pad * 2), 0.026]] call _fncCreateCtrl;
     _ctrl ctrlSetText _text;
     _ctrl ctrlSetTextColor [0.72, 0.88, 1, 1];
     _curY = _curY + 0.032;
@@ -114,27 +103,17 @@ private _fncCreateToggle = {
         [[0.40, 0.46, 0.50, 1], [0.58, 0.66, 0.70, 1]] select _enabled
     };
 
-    private _row = [
-        "MKK_PTG_RscButton",
-        [_panelX + _pad, _curY, _panelW - (_pad * 2), _rowH],
-        _rowColor
-    ] call _fncCreateCtrl;
+    private _row = ["MKK_PTG_RscButton", [_panelX + _pad, _curY, _panelW - (_pad * 2), _rowH], _rowColor] call _fncCreateCtrl;
     _row ctrlSetText "";
     _row ctrlSetEventHandler ["ButtonClick", _event];
+    _row ctrlEnable _active;
 
-    private _check = [
-        "MKK_PTG_RscPictureButton",
-        [_panelX + _pad + 0.010, _curY + ((_rowH - _checkSize) / 2), _checkSize, _checkSize],
-        [0, 0, 0, 0]
-    ] call _fncCreateCtrl;
+    private _check = ["MKK_PTG_RscPictureButton", [_panelX + _pad + 0.010, _curY + ((_rowH - _checkSize) / 2), _checkSize, _checkSize]] call _fncCreateCtrl;
     _check ctrlSetText _texture;
     _check ctrlSetEventHandler ["ButtonClick", _event];
+    _check ctrlEnable _active;
 
-    private _labelCtrl = [
-        "MKK_PTG_RscText",
-        [_panelX + _pad + 0.044, _curY + 0.005, _panelW - (_pad * 2) - 0.058, _rowH - 0.006],
-        [0, 0, 0, 0]
-    ] call _fncCreateCtrl;
+    private _labelCtrl = ["MKK_PTG_RscText", [_panelX + _pad + 0.044, _curY + 0.005, _panelW - (_pad * 2) - 0.058, _rowH - 0.006]] call _fncCreateCtrl;
     _labelCtrl ctrlSetText _label;
     _labelCtrl ctrlSetTextColor _textColor;
 
@@ -143,7 +122,7 @@ private _fncCreateToggle = {
 
 [localize "STR_MKK_PTG_OBJECT_STATUS_FIELDS"] call _fncCreateSection;
 {
-    if (_forEachIndex < 4) then {
+    if (_forEachIndex < 5) then {
         _x call _fncCreateToggle;
     };
 } forEach _settings;
@@ -151,18 +130,13 @@ private _fncCreateToggle = {
 _curY = _curY + 0.008;
 [localize "STR_MKK_PTG_OBJECT_STATUS_HITPOINTS"] call _fncCreateSection;
 {
-    if (_forEachIndex >= 4) then {
+    if (_forEachIndex >= 5) then {
         _x call _fncCreateToggle;
     };
 } forEach _settings;
 
-private _close = [
-    "MKK_PTG_RscButton",
-    [_panelX + _pad, _panelY + _panelH - 0.052, _panelW - (_pad * 2), 0.036],
-    [0.08, 0.18, 0.24, 0.95]
-] call _fncCreateCtrl;
+private _close = ["MKK_PTG_RscButton", [_panelX + _pad, _panelY + _panelH - 0.052, _panelW - (_pad * 2), 0.036], [0.08, 0.18, 0.24, 0.95]] call _fncCreateCtrl;
 _close ctrlSetText localize "STR_MKK_PTG_CLOSE";
-_close ctrlSetEventHandler ["ButtonClick", format ["uiNamespace setVariable ['mkk_ptg_objectStatusSettingsVisible', false]; [] call %1", QFUNC(updateObjectStatusSettingsMenu)]];
+_close ctrlSetEventHandler ["ButtonClick", format ["[] call %1", QFUNC(closeSettingsDialog)]];
 
 uiNamespace setVariable ["mkk_ptg_objectStatusSettingsControls", _allControls];
-[] call FUNC(setDashboardControlsBlocked);

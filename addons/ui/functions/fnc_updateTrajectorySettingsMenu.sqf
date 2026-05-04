@@ -1,12 +1,15 @@
 #include "..\script_component.hpp"
 /*
-    Обновляет центрированный popup настроек линии траектории.
+    Обновляет отдельное маленькое окно настроек линии траектории.
 */
 disableSerialization;
 
-private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
+private _display = findDisplay 88800;
+if (isNull _display) then {
+    _display = uiNamespace getVariable ["mkk_ptg_settingsDisplay", displayNull];
+};
 
-private _fncDestroyPopup = {
+private _fncDestroyControls = {
     private _controls = uiNamespace getVariable ["mkk_ptg_trajectorySettingsControls", []];
     {
         if (!isNull _x) then {
@@ -17,18 +20,16 @@ private _fncDestroyPopup = {
     uiNamespace setVariable ["mkk_ptg_trajectorySettingsControls", []];
 };
 
-call _fncDestroyPopup;
+call _fncDestroyControls;
 
 if (isNull _display) exitWith {};
-if !(uiNamespace getVariable ["mkk_ptg_trajectorySettingsVisible", false]) exitWith {
-    [] call FUNC(setDashboardControlsBlocked);
-};
+if !(uiNamespace getVariable ["mkk_ptg_trajectorySettingsVisible", false]) exitWith {};
 
 private _allControls = [];
-private _panelX = 0.31;
-private _panelY = 0.10;
-private _panelW = 0.38;
-private _panelH = 0.75;
+private _panelX = 0.32;
+private _panelY = 0.13;
+private _panelW = 0.36;
+private _panelH = 0.72;
 private _pad = 0.018;
 private _rowH = 0.038;
 private _rowGap = 0.010;
@@ -45,10 +46,6 @@ private _fncCreateCtrl = {
 
     _ctrl
 };
-
-private _backdrop = ["MKK_PTG_RscButton", [0.05, 0.05, 0.90, 0.85], [0.00, 0.00, 0.00, 0.46]] call _fncCreateCtrl;
-_backdrop ctrlSetText "";
-_backdrop ctrlSetEventHandler ["ButtonClick", format ["uiNamespace setVariable ['mkk_ptg_trajectorySettingsVisible', false]; [] call %1", QFUNC(updateTrajectorySettingsMenu)]];
 
 ["MKK_PTG_RscText", [_panelX, _panelY, _panelW, _panelH], [0.010, 0.016, 0.022, 0.985]] call _fncCreateCtrl;
 ["MKK_PTG_RscText", [_panelX, _panelY, _panelW, 0.004], [0.10, 0.72, 0.92, 0.95]] call _fncCreateCtrl;
@@ -119,7 +116,6 @@ _curY = _curY + 0.008;
 
 private _close = ["MKK_PTG_RscButton", [_panelX + _pad, _panelY + _panelH - 0.052, _panelW - (_pad * 2), 0.036], [0.08, 0.18, 0.24, 0.95]] call _fncCreateCtrl;
 _close ctrlSetText localize "STR_MKK_PTG_CLOSE";
-_close ctrlSetEventHandler ["ButtonClick", format ["uiNamespace setVariable ['mkk_ptg_trajectorySettingsVisible', false]; [] call %1", QFUNC(updateTrajectorySettingsMenu)]];
+_close ctrlSetEventHandler ["ButtonClick", format ["[] call %1", QFUNC(closeSettingsDialog)]];
 
 uiNamespace setVariable ["mkk_ptg_trajectorySettingsControls", _allControls];
-[] call FUNC(setDashboardControlsBlocked);

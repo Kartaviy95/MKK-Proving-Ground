@@ -1,5 +1,8 @@
 PREP(drawObjectStatusDisplay);
 PREP(initDisplay);
+PREP(openSettingsDialog);
+PREP(initSettingsDisplay);
+PREP(closeSettingsDialog);
 PREP(closeRearmOverlay);
 PREP(copySelectedRearmMagazineClass);
 PREP(clearSelectedRearmWeapon);

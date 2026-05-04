@@ -40,15 +40,21 @@ if !(isNull _display) then {
     missionNamespace setVariable ["mkk_ptg_trackingKeyEH", _keyEH];
 };
 
+private _trackId = missionNamespace getVariable ["mkk_ptg_trackingStateId", 0];
+_trackId = _trackId + 1;
+missionNamespace setVariable ["mkk_ptg_trackingStateId", _trackId];
+
 missionNamespace setVariable ["mkk_ptg_trackingState", createHashMapFromArray [
+    ["id", _trackId],
     ["camera", _camera],
     ["projectile", _projectile],
     ["ammoClass", _ammoClass],
     ["weapon", _weapon],
     ["startTime", diag_tickTime],
-    ["startPos", getPosASL _projectile]
+    ["startPos", getPosASL _projectile],
+    ["lastPos", getPosASL _projectile]
 ]];
 
 missionNamespace setVariable ["mkk_ptg_trackingLastAt", diag_tickTime];
 
-[_projectile] spawn FUNC(updateProjectileTrack);
+[_projectile, _trackId] spawn FUNC(updateProjectileTrack);

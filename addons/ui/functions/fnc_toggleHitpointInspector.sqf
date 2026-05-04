@@ -342,6 +342,23 @@ private _pfh = [{
         [_items, _fullCount]
     };
 
+    private _fncFitStructuredTextSize = {
+        params [
+            "_text",
+            "_baseSize",
+            "_minSize",
+            "_availableW",
+            "_textScale",
+            ["_maxChars", 52]
+        ];
+
+        private _safeText = str _text;
+        private _textLen = count (toArray _safeText);
+        private _fitChars = (((_availableW / (0.0030 * (_textScale max 0.85))) max 8) min _maxChars);
+
+        (((_baseSize * (_fitChars / (_textLen max _fitChars))) max _minSize) min _baseSize)
+    };
+
     private _fncCreateCtrl = {
         params ["_display", "_className", "_pos", "_bgColor"];
 
@@ -405,9 +422,10 @@ private _pfh = [{
         ];
 
         private _xScale = pixelW / pixelH;
-        private _circleH = _cardH - 0.026;
+        private _circleH = (_cardH * 0.64) min (_cardH - 0.034);
+        _circleH = _circleH max (_cardH * 0.54);
         private _circleW = _circleH * _xScale;
-        private _circleX = _cardX + 0.014;
+        private _circleX = _cardX + 0.010;
         private _circleY = _cardY + ((_cardH - _circleH) / 2);
         private _centerX = _circleX + (_circleW / 2);
         private _centerY = _circleY + (_circleH / 2);
@@ -447,31 +465,45 @@ private _pfh = [{
             "RscStructuredText",
             [
                 _centerX - (_circleW / 2),
-                _centerY - (_circleH * 0.105),
+                _centerY - (_circleH * 0.125),
                 _circleW,
-                _circleH * 0.24
+                _circleH * 0.28
             ],
             [0, 0, 0, 0]
         ] call _fncCreateCtrl;
 
-        _percentText ctrlSetStructuredText parseText
-            "<t align='center' size='0.90' color='#FFFFFF' shadow='1'>0%</t>";
+        _percentText ctrlSetStructuredText parseText format [
+    "<t align='center' size='%1' color='#FFFFFF' shadow='1'>0%%</t>",
+    (((1.12 * _uiTextScale) max 1.00) min 1.42) toFixed 2
+];
 
         _allControls pushBack _percentText;
 
-        private _textX = _circleX + _circleW + 0.016;
-        private _textW = _cardW - (_textX - _cardX) - 0.010;
+        private _textX = _circleX + _circleW + 0.010;
+        private _textW = _cardW - (_textX - _cardX) - 0.014;
+        private _titleSize = [
+            _title,
+            1.04 * _uiTextScale,
+            0.64,
+            _textW,
+            _uiTextScale,
+            48
+        ] call _fncFitStructuredTextSize;
+        private _titleH = ((_cardH * 0.30) max (0.030 * _uiTextScale)) min (_cardH * 0.38);
+        private _titleY = _cardY + (0.006 * (_uiTextScale max 0.90));
+        private _statusY = _titleY + _titleH + (0.003 * (_uiTextScale max 0.90));
 
         private _titleCtrl = [
             _display,
             "RscStructuredText",
-            [_textX, _cardY + 0.010, _textW, 0.026],
+            [_textX, _titleY, _textW, _titleH],
             [0, 0, 0, 0]
         ] call _fncCreateCtrl;
 
         _titleCtrl ctrlSetStructuredText parseText format [
-            "<t size='0.92' color='#FFFFFF'>%1</t>",
-            _title
+            "<t size='%2' color='#FFFFFF' shadow='1'>%1</t>",
+            _title,
+            _titleSize toFixed 2
         ];
 
         _allControls pushBack _titleCtrl;
@@ -479,7 +511,7 @@ private _pfh = [{
         private _statusCtrl = [
             _display,
             "RscStructuredText",
-            [_textX, _cardY + 0.038, _textW, _cardH - 0.044],
+            [_textX, _statusY, _textW, (_cardY + _cardH) - _statusY - 0.006],
             [0, 0, 0, 0]
         ] call _fncCreateCtrl;
 
@@ -489,7 +521,8 @@ private _pfh = [{
         [
             _ringSegments,
             _percentText,
-            _statusCtrl
+            _statusCtrl,
+            _textW
         ]
     };
 
@@ -513,26 +546,54 @@ private _pfh = [{
         private _hudScale = _hudScales # 0;
         private _fontScale = _hudScales # 1;
 
-        private _panelW = 0.34 * _hudScale;
-        private _pad = 0.014 * _hudScale;
-        private _gap = 0.010 * _hudScale;
-        private _headerH = 0.050 * _hudScale;
-        private _classH = 0.085 * _hudScale;
-        private _vehicleCardH = 0.145 * _hudScale;
-        private _hpCardH = 0.145 * _hudScale;
+        private _interfaceSize = _hudScales # 3;
+        private _layoutScale = (_hudScale max 0.88) min 1.30;
+        private _textScale = (_fontScale max 1.00) min 1.35;
+        private _uiTextScale = _textScale;
+
+        /*
+            Hit Points Inspector is a free HUD panel, not a child of the main
+            dialog.  The main PTG interface size must therefore drive both the
+            panel rectangle and the text sizes here.  The old layout capped the
+            panel at ~46% safeZoneW, so on Large/Extra Large the font grew but
+            the target card did not have enough room for displayName/classname.
+        */
+        private _panelW = linearConversion [0.85, 1.30, _interfaceSize, 0.42, 0.58, true];
+        _panelW = (_panelW * _layoutScale) max 0.40;
+        _panelW = _panelW min (safeZoneW * 0.68);
+
+        private _pad = 0.016 * _layoutScale;
+        private _gap = 0.012 * _layoutScale;
+        private _headerH = 0.060 * _layoutScale;
+        private _classH = 0.168 * _layoutScale;
+        private _vehicleCardH = 0.164 * _layoutScale;
+        private _hpCardH = 0.164 * _layoutScale;
 
         private _hpCount = count _hpList;
         private _hpGapCount = (_hpCount - 1) max 0;
-        private _panelH =
+        private _fncCalcPanelH = {
             _pad
             + _headerH + _gap
             + _classH + _gap
             + _vehicleCardH + _gap
             + (_hpCount * _hpCardH)
             + (_hpGapCount * _gap)
-            + _pad;
+            + _pad
+        };
 
-        private _panelX = safeZoneX + safeZoneW - _panelW - (0.025 * _hudScale);
+        private _panelH = call _fncCalcPanelH;
+        private _maxPanelH = safeZoneH - (0.030 * _layoutScale);
+        if (_panelH > _maxPanelH) then {
+            private _heightScale = ((_maxPanelH / _panelH) max 0.82) min 1.00;
+            _gap = _gap * _heightScale;
+            _headerH = _headerH * (_heightScale max 0.90);
+            _classH = _classH * (_heightScale max 0.88);
+            _vehicleCardH = _vehicleCardH * _heightScale;
+            _hpCardH = _hpCardH * _heightScale;
+            _panelH = call _fncCalcPanelH;
+        };
+
+        private _panelX = safeZoneX + safeZoneW - _panelW - (0.025 * _layoutScale);
         private _panelY = safeZoneY + ((safeZoneH - _panelH) / 2);
 
         if (_panelY < (safeZoneY + (0.015 * _hudScale))) then {
@@ -571,13 +632,14 @@ private _pfh = [{
         private _title = [
             _display,
             "RscStructuredText",
-            [_panelX + _pad + 0.010, _curY + 0.009, _panelW - (_pad * 2) - 0.020, _headerH - 0.010],
+            [_panelX + _pad + (0.012 * _layoutScale), _curY + (0.010 * _layoutScale), _panelW - (_pad * 2) - (0.024 * _layoutScale), _headerH - (0.012 * _layoutScale)],
             [0, 0, 0, 0]
         ] call _fncCreateCtrl;
 
         _title ctrlSetStructuredText parseText format [
-            "<t align='left' size='0.98' color='#7CC8FF'>%1</t>",
-            localize "STR_MKK_PTG_HITPOINT_INSPECTOR_TITLE"
+            "<t align='left' size='%2' color='#7CC8FF'>%1</t>",
+            localize "STR_MKK_PTG_HITPOINT_INSPECTOR_TITLE",
+            (((1.10 * _uiTextScale) max 0.98) min 1.38) toFixed 2
         ];
 
         _allControls pushBack _title;
@@ -599,21 +661,34 @@ private _pfh = [{
         };
 
         private _shownCount = count _hpList;
+        private _classContentW = _panelW - (_pad * 2) - (0.026 * _layoutScale);
+        private _fitChars = (((_classContentW / (0.0031 * _layoutScale)) max 34) min 132);
+        private _vehNameLen = count (toArray _vehName);
+        private _vehClassLen = count (toArray _vehClass);
+        private _nameTextSize = ((((1.04 * _uiTextScale) * (_fitChars / (_vehNameLen max _fitChars))) max 0.68) min (1.04 * _uiTextScale));
+        private _classTextSize = ((((0.86 * _uiTextScale) * (_fitChars / (_vehClassLen max _fitChars))) max 0.58) min (0.86 * _uiTextScale));
+        private _labelTextSize = (((0.84 * _uiTextScale) max 0.72) min 1.12);
+        private _metaTextSize = (((0.78 * _uiTextScale) max 0.66) min 1.02);
+
         private _classText = [
             _display,
             "RscStructuredText",
-            [_panelX + _pad + 0.012, _curY + 0.008, _panelW - (_pad * 2) - 0.024, _classH - 0.010],
+            [_panelX + _pad + (0.014 * _layoutScale), _curY + (0.010 * _layoutScale), _classContentW, _classH - (0.014 * _layoutScale)],
             [0, 0, 0, 0]
         ] call _fncCreateCtrl;
 
         _classText ctrlSetStructuredText parseText format [
-            "<t size='0.74' color='#A8A8A8'>%1</t><br/><t size='0.86' color='#FFFFFF'>%2</t><br/><t size='0.70' color='#A8A8A8'>%3 | %4 %5/%6</t>",
+            "<t size='%7' color='#A8A8A8'>%1</t><br/><t size='%8' color='#FFFFFF'>%2</t><br/><t size='%9' color='#A8A8A8'>%3</t><br/><t size='%10' color='#A8A8A8'>%4 %5/%6</t>",
             localize "STR_MKK_PTG_HITPOINT_INSPECTOR_TARGET",
             _vehName,
             _vehClass,
             localize "STR_MKK_PTG_HITPOINTS",
             _shownCount,
-            _hpFullCount
+            _hpFullCount,
+            _labelTextSize toFixed 2,
+            _nameTextSize toFixed 2,
+            _classTextSize toFixed 2,
+            _metaTextSize toFixed 2
         ];
 
         _allControls pushBack _classText;
@@ -636,7 +711,7 @@ private _pfh = [{
             _panelW - (_pad * 2),
             _vehicleCardH,
             localize "STR_MKK_PTG_TOTAL_DAMAGE",
-            format ["<t size='0.74' color='#A8A8A8'>%1</t>", localize "STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING"],
+            format ["<t size='%2' color='#A8A8A8'>%1</t>", localize "STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING", (((0.84 * _uiTextScale) max 0.74) min 1.08) toFixed 2],
             _radialSegments,
             _radialOffColor
         ] call _fncCreateRadialBlock;
@@ -644,6 +719,7 @@ private _pfh = [{
         private _vehRingSegments = _vehWidget # 0;
         private _vehPercentText = _vehWidget # 1;
         private _vehDamageText = _vehWidget # 2;
+        private _vehStatusTextW = _vehWidget # 3;
 
         _curY = _curY + _vehicleCardH + _gap;
 
@@ -668,7 +744,7 @@ private _pfh = [{
                 _panelW - (_pad * 2),
                 _hpCardH,
                 _hpLabel,
-                format ["<t size='0.72' color='#A8A8A8'>%1</t>", localize "STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING"],
+                format ["<t size='%2' color='#A8A8A8'>%1</t>", localize "STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING", (((0.82 * _uiTextScale) max 0.72) min 1.06) toFixed 2],
                 _radialSegments,
                 _radialOffColor
             ] call _fncCreateRadialBlock;
@@ -676,13 +752,15 @@ private _pfh = [{
             private _ringSegments = _widget # 0;
             private _percentText = _widget # 1;
             private _statusText = _widget # 2;
+            private _statusTextW = _widget # 3;
 
             _hpControls pushBack [
                 _hpName,
                 _hpLabel,
                 _statusText,
                 _ringSegments,
-                _percentText
+                _percentText,
+                _statusTextW
             ];
 
             _curY = _curY + _hpCardH + _gap;
@@ -697,7 +775,9 @@ private _pfh = [{
             _vehDamageText,
             _vehRingSegments,
             _vehPercentText,
-            _hpControls
+            _vehStatusTextW,
+            _hpControls,
+            _interfaceSize
         ]
     };
 
@@ -800,8 +880,11 @@ private _pfh = [{
     };
 
     private _workData = uiNamespace getVariable [_workDataVarName, []];
+    private _currentInterfaceSize = ([] call EFUNC(common,getHudScale)) # 3;
+    private _builtInterfaceSize = if ((count _workData) > 6) then {_workData # 6} else {-1};
+    private _interfaceScaleChanged = abs (_currentInterfaceSize - _builtInterfaceSize) > 0.01;
 
-    if ((count _workData) == 0 || {_targetVeh isNotEqualTo _currentHudTarget}) then {
+    if ((count _workData) == 0 || {_targetVeh isNotEqualTo _currentHudTarget || {_interfaceScaleChanged}}) then {
         [_hudVarName, _targetVarName, _visibleVarName, _workDataVarName] call _fncDestroyHud;
 
         private _hpData2 = [_targetVeh, _maxHitpointsToShow] call _fncGetHitpoints;
@@ -821,6 +904,8 @@ private _pfh = [{
         ] call _fncBuildHud;
 
         uiNamespace setVariable [_workDataVarName, _workData];
+        _controls = uiNamespace getVariable [_hudVarName, []];
+        _currentHudTarget = uiNamespace getVariable [_targetVarName, objNull];
     };
 
     _workData params [
@@ -828,12 +913,17 @@ private _pfh = [{
         "_vehDamageText",
         "_vehRingSegments",
         "_vehPercentText",
-        "_hpControls"
+        "_vehStatusTextW",
+        "_hpControls",
+        ["_builtInterfaceSize", -1]
     ];
 
     if ((count _allControls) == 0 || {isNull (_allControls # 0)}) exitWith {
         [_hudVarName, _targetVarName, _visibleVarName, _workDataVarName] call _fncDestroyHud;
     };
+
+    private _liveHudScales = [] call EFUNC(common,getHudScale);
+    private _liveTextScale = ((_liveHudScales # 1) max 1.00) min 1.35;
 
     private _vehDamage = damage _targetVeh;
     private _vehDamageClamped = (_vehDamage min 1) max 0;
@@ -844,16 +934,37 @@ private _pfh = [{
     private _vehStateHex = _vehState # 1;
     private _vehStateColor = _vehState # 2;
 
+    private _livePercentSize = (((1.12 * _liveTextScale) max 1.00) min 1.42);
+    private _conditionSize = [
+        localize "STR_MKK_PTG_CONDITION",
+        0.82 * _liveTextScale,
+        0.62,
+        _vehStatusTextW,
+        _liveTextScale,
+        42
+    ] call _fncFitStructuredTextSize;
+    private _vehStateSize = [
+        _vehStateText,
+        1.00 * _liveTextScale,
+        0.70,
+        _vehStatusTextW,
+        _liveTextScale,
+        42
+    ] call _fncFitStructuredTextSize;
+
     _vehDamageText ctrlSetStructuredText parseText format [
-        "<t size='0.72' color='#A8A8A8'>%1</t><br/><t size='0.86' color='%2'>%3</t>",
+        "<t size='%4' color='#A8A8A8'>%1</t><br/><t size='%5' color='%2'>%3</t>",
         localize "STR_MKK_PTG_CONDITION",
         _vehStateHex,
-        _vehStateText
+        _vehStateText,
+        _conditionSize toFixed 2,
+        _vehStateSize toFixed 2
     ];
 
     _vehPercentText ctrlSetStructuredText parseText format [
-        "<t align='center' size='1.05' color='#FFFFFF' shadow='1'>%1%%</t>",
-        _vehPercent
+        "<t align='center' size='%2' color='#FFFFFF' shadow='1'>%1%%</t>",
+        _vehPercent,
+        _livePercentSize toFixed 2
     ];
 
     [
@@ -869,7 +980,8 @@ private _pfh = [{
             "_hpLabel",
             "_statusText",
             "_ringSegments",
-            "_percentText"
+            "_percentText",
+            "_statusTextW"
         ];
 
         private _curDamage = _targetVeh getHitPointDamage _hpName;
@@ -881,16 +993,36 @@ private _pfh = [{
         private _stateHex = _state # 1;
         private _stateColor = _state # 2;
 
+        private _hpNameSize = [
+            _hpName,
+            0.80 * _liveTextScale,
+            0.58,
+            _statusTextW,
+            _liveTextScale,
+            58
+        ] call _fncFitStructuredTextSize;
+        private _hpStateSize = [
+            _stateText,
+            1.02 * _liveTextScale,
+            0.70,
+            _statusTextW,
+            _liveTextScale,
+            42
+        ] call _fncFitStructuredTextSize;
+
         _statusText ctrlSetStructuredText parseText format [
-            "<t size='0.70' color='#A8A8A8'>%1</t><br/><t size='0.92' color='%2'>%3</t>",
+            "<t size='%4' color='#A8A8A8'>%1</t><br/><t size='%5' color='%2'>%3</t>",
             _hpName,
             _stateHex,
-            _stateText
+            _stateText,
+            _hpNameSize toFixed 2,
+            _hpStateSize toFixed 2
         ];
 
         _percentText ctrlSetStructuredText parseText format [
-            "<t align='center' size='0.90' color='#FFFFFF' shadow='1'>%1%%</t>",
-            _percent
+            "<t align='center' size='%2' color='#FFFFFF' shadow='1'>%1%%</t>",
+            _percent,
+            _livePercentSize toFixed 2
         ];
 
         [

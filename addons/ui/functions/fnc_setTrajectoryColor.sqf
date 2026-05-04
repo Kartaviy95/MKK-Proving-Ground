@@ -25,4 +25,8 @@ uiNamespace setVariable ["mkk_ptg_trajectoryColor", _colors # _safeIndex];
 // отладочная подсказка для подтверждения выбора (временно)
 // формат подсказки: ["Цвет траектории установлен: %1 (idx %2)", _colors # _safeIndex, _safeIndex];
 
+if !(isNull (findDisplay 88800)) exitWith {
+    [] call FUNC(updateTrajectorySettingsMenu);
+};
+
 [] call FUNC(updateTrajectorySettingsMenu);
