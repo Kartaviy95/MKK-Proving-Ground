@@ -914,3 +914,14 @@ class MKK_PTG_MainDisplay {
 
     };
 };
+
+class MKK_PTG_SettingsDisplay {
+    idd = 88800;
+    movingEnable = 1;
+    enableSimulation = 1;
+    onLoad = QUOTE(_this call FUNC(initSettingsDisplay));
+    onUnload = "uiNamespace setVariable ['mkk_ptg_settingsDisplay', displayNull]; uiNamespace setVariable ['mkk_ptg_objectStatusSettingsControls', []]; uiNamespace setVariable ['mkk_ptg_mapProjectileMarkerSettingsControls', []]; uiNamespace setVariable ['mkk_ptg_trajectorySettingsControls', []];";
+
+    class controlsBackground {};
+    class controls {};
+};

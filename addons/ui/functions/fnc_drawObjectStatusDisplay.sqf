@@ -68,6 +68,7 @@ private _fncGetBool = {
 private _showClass = ["mkk_ptg_objectStatusShowClass", true] call _fncGetBool;
 private _showDistance = ["mkk_ptg_objectStatusShowDistance", true] call _fncGetBool;
 private _showDamage = ["mkk_ptg_objectStatusShowDamage", true] call _fncGetBool;
+private _showAllowDamage = ["mkk_ptg_objectStatusShowAllowDamage", true] call _fncGetBool;
 private _showHitpoints = ["mkk_ptg_objectStatusShowHitpoints", false] call _fncGetBool;
 private _showHpHull = ["mkk_ptg_objectStatusHpHull", true] call _fncGetBool;
 private _showHpEngine = ["mkk_ptg_objectStatusHpEngine", true] call _fncGetBool;
@@ -141,6 +142,9 @@ if (_showDamage) then {
         [0.80] call _fmtSize
     ];
 
+};
+
+if (_showAllowDamage) then {
     _lines pushBack format [
         "<t size='%4' color='#9FB6C2'>%1</t> <t size='%5' color='%3'>%2</t>",
         localize "STR_MKK_PTG_ALLOW_DAMAGE",

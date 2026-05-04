@@ -8,6 +8,7 @@ private _varName = switch (_setting) do {
     case "class": {"mkk_ptg_objectStatusShowClass"};
     case "distance": {"mkk_ptg_objectStatusShowDistance"};
     case "damage": {"mkk_ptg_objectStatusShowDamage"};
+    case "allowDamage": {"mkk_ptg_objectStatusShowAllowDamage"};
     case "hitpoints": {"mkk_ptg_objectStatusShowHitpoints"};
     case "hpHull": {"mkk_ptg_objectStatusHpHull"};
     case "hpEngine": {"mkk_ptg_objectStatusHpEngine"};
@@ -22,5 +23,9 @@ if (_varName isEqualTo "") exitWith {};
 private _default = !(_setting in ["hitpoints"]);
 private _enabled = !(missionNamespace getVariable [_varName, _default]);
 missionNamespace setVariable [_varName, _enabled];
+
+if !(isNull (findDisplay 88800)) exitWith {
+    [] call FUNC(updateObjectStatusSettingsMenu);
+};
 
 [] call FUNC(updateObjectStatusSettingsMenu);

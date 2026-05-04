@@ -1,12 +1,15 @@
 #include "..\script_component.hpp"
 /*
-    Обновляет центрированный popup настроек маркеров projectile на карте.
+    Обновляет отдельное маленькое окно настроек маркеров projectile на карте.
 */
 disableSerialization;
 
-private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
+private _display = findDisplay 88800;
+if (isNull _display) then {
+    _display = uiNamespace getVariable ["mkk_ptg_settingsDisplay", displayNull];
+};
 
-private _fncDestroyPopup = {
+private _fncDestroyControls = {
     private _controls = uiNamespace getVariable ["mkk_ptg_mapProjectileMarkerSettingsControls", []];
     {
         if (!isNull _x) then {
@@ -17,18 +20,16 @@ private _fncDestroyPopup = {
     uiNamespace setVariable ["mkk_ptg_mapProjectileMarkerSettingsControls", []];
 };
 
-call _fncDestroyPopup;
+call _fncDestroyControls;
 
 if (isNull _display) exitWith {};
-if !(uiNamespace getVariable ["mkk_ptg_mapProjectileMarkerSettingsVisible", false]) exitWith {
-    [] call FUNC(setDashboardControlsBlocked);
-};
+if !(uiNamespace getVariable ["mkk_ptg_mapProjectileMarkerSettingsVisible", false]) exitWith {};
 
 private _allControls = [];
-private _panelX = 0.31;
-private _panelY = 0.28;
-private _panelW = 0.38;
-private _panelH = 0.28;
+private _panelX = 0.34;
+private _panelY = 0.32;
+private _panelW = 0.32;
+private _panelH = 0.24;
 private _pad = 0.018;
 private _rowH = 0.042;
 private _checkSize = 0.026;
@@ -46,10 +47,6 @@ private _fncCreateCtrl = {
 
     _ctrl
 };
-
-private _backdrop = ["MKK_PTG_RscButton", [0.05, 0.05, 0.90, 0.85], [0.00, 0.00, 0.00, 0.46]] call _fncCreateCtrl;
-_backdrop ctrlSetText "";
-_backdrop ctrlSetEventHandler ["ButtonClick", format ["uiNamespace setVariable ['mkk_ptg_mapProjectileMarkerSettingsVisible', false]; [] call %1", QFUNC(updateMapProjectileMarkerSettingsMenu)]];
 
 ["MKK_PTG_RscText", [_panelX, _panelY, _panelW, _panelH], [0.010, 0.016, 0.022, 0.985]] call _fncCreateCtrl;
 ["MKK_PTG_RscText", [_panelX, _panelY, _panelW, 0.004], [0.10, 0.72, 0.92, 0.95]] call _fncCreateCtrl;
@@ -79,7 +76,6 @@ _label ctrlSetTextColor ([[0.78, 0.86, 0.90, 1], [1, 1, 1, 1]] select _enabled);
 
 private _close = ["MKK_PTG_RscButton", [_panelX + _pad, _panelY + _panelH - 0.052, _panelW - (_pad * 2), 0.036], [0.08, 0.18, 0.24, 0.95]] call _fncCreateCtrl;
 _close ctrlSetText localize "STR_MKK_PTG_CLOSE";
-_close ctrlSetEventHandler ["ButtonClick", format ["uiNamespace setVariable ['mkk_ptg_mapProjectileMarkerSettingsVisible', false]; [] call %1", QFUNC(updateMapProjectileMarkerSettingsMenu)]];
+_close ctrlSetEventHandler ["ButtonClick", format ["[] call %1", QFUNC(closeSettingsDialog)]];
 
 uiNamespace setVariable ["mkk_ptg_mapProjectileMarkerSettingsControls", _allControls];
-[] call FUNC(setDashboardControlsBlocked);
