@@ -41,7 +41,7 @@ if (missionNamespace getVariable ["mkk_ptg_penetrationAimEHAdded", false]) exitW
         _impactPosASL = getPosASL _target vectorAdd [0, 0, 1.2];
     };
 
-    [_target, _ammoClass, player, _impactPosASL] remoteExecCall [QFUNC(serverFireTestShot), 2];
+    [_target, _ammoClass, player, _impactPosASL] call FUNC(serverFireTestShot);
 
     [_target, _ammoClass] spawn {
         params ["_target", "_ammoClass"];

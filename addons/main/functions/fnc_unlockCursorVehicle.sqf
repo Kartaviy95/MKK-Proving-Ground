@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 
 /*
-    Запрашивает разблокировку техники под курсором игрока.
+    Разблокирует технику под курсором игрока без зависимости от серверного аддона.
 */
 if !(hasInterface) exitWith {};
 if !([player] call FUNC(isAuthorized)) exitWith {
@@ -17,5 +17,5 @@ if (isNull _vehicle || {!(_vehicle isKindOf "AllVehicles") || {_vehicle isKindOf
     [localize "STR_MKK_PTG_UNLOCK_VEHICLE_NONE"] call FUNC(showTimedHint);
 };
 
-[_vehicle, player] remoteExecCall [QFUNC(serverUnlockVehicle), 2];
+[_vehicle, player] call FUNC(serverUnlockVehicle);
 [localize "STR_MKK_PTG_UNLOCK_VEHICLE_REQUESTED"] call FUNC(showTimedHint);
