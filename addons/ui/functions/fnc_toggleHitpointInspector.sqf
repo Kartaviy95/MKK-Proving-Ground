@@ -473,9 +473,9 @@ private _pfh = [{
         ] call _fncCreateCtrl;
 
         _percentText ctrlSetStructuredText parseText format [
-            "<t align='center' size='%1' color='#FFFFFF' shadow='1'>0%</t>",
-            (((1.12 * _uiTextScale) max 1.00) min 1.42) toFixed 2
-        ];
+    "<t align='center' size='%1' color='#FFFFFF' shadow='1'>0%%</t>",
+    (((1.12 * _uiTextScale) max 1.00) min 1.42) toFixed 2
+];
 
         _allControls pushBack _percentText;
 

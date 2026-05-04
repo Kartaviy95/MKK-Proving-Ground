@@ -13,6 +13,10 @@
             <English>All</English>
             <Russian>Все</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_ALLOW_DAMAGE">
+            <English>Get Damage:</English>
+            <Russian>Получать урон:</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_AMMO_CLASS_COPIED">
             <English>Ammo class copied: %1</English>
             <Russian>Класс ammo скопирован: %1</Russian>
@@ -209,9 +213,41 @@
             <English>Create a test target and fire a selected round to see damage data.</English>
             <Russian>Создайте тестовую цель и выпустите выбранный снаряд, чтобы увидеть данные повреждений.</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_ANALYZE_HINT">
+            <English>Camera, projectile tools, markers, HUD and damage inspection.</English>
+            <Russian>Камера, снаряды, маркеры, HUD и инспектор повреждений.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_ANALYZE_TITLE">
+            <English>Observation and analysis</English>
+            <Russian>Наблюдение и анализ</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_INFO">
-            <English>Select the proving ground module. The vehicle catalog opens only when requested.</English>
-            <Russian>Выберите нужный модуль полигона. Каталог техники открывается только по запросу.</Russian>
+            <English>Workflow: prepare vehicle and targets, enable camera/tracking, analyze trajectories and damage, then clean the range when the test is complete.</English>
+            <Russian>Сценарий работы: подготовьте технику и цели, включите камеру/слежение, проанализируйте траектории и повреждения, затем очистите полигон после теста.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_PREPARE_HINT">
+            <English>Vehicles, targets, pylons and position.</English>
+            <Russian>Техника, цели, пилоны и позиция.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_PREPARE_INFO">
+            <English>Rearm is placed next to vehicle spawn because turret magazines and pylon loadouts are part of test preparation.</English>
+            <Russian>Перевооружение находится рядом со спавном техники, потому что магазины турелей и loadout пилонов относятся к подготовке теста.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_PREPARE_TITLE">
+            <English>Creation and preparation</English>
+            <Russian>Создание и подготовка</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_SYSTEM_HINT">
+            <English>Player assists, interface size and safe exit actions.</English>
+            <Russian>Режимы игрока, размер интерфейса и служебные действия.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_SYSTEM_INFO">
+            <English>Cleanup is isolated as a destructive action. Disabled modules stay visible but muted.</English>
+            <Russian>Очистка отделена как опасное действие. Недоступные модули остаются видимыми, но приглушены.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_SYSTEM_TITLE">
+            <English>Player and system</English>
+            <Russian>Игрок и система</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_DEAD">
             <English>dead</English>
@@ -509,10 +545,6 @@
             <English>Object Status Display</English>
             <Russian>Статус-дисплей объектов</Russian>
         </Key>
-        <Key ID="STR_MKK_PTG_ALLOW_DAMAGE">
-            <English>Get Damage:</English>
-            <Russian>Получать урон:</Russian>
-        </Key>
         <Key ID="STR_MKK_PTG_OBJECT_STATUS_DISPLAY_STATUS">
             <English>Object status display: %1</English>
             <Russian>Статус-дисплей объектов: %1</Russian>
@@ -669,6 +701,10 @@
             <English>Pylon %1</English>
             <Russian>Пилон %1</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_REARM_PYLONS">
+            <English>Rearm / Pylons</English>
+            <Russian>Перевооружение / пилоны</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_REARM_PYLON_CLEARED">
             <English>Selected pylon cleared.</English>
             <Russian>Выбранный пилон очищен.</Russian>
@@ -718,8 +754,8 @@
             <Russian>Сначала выберите боеприпас.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_SELECT_FUNCTION">
-            <English>Select proving ground function</English>
-            <Russian>Выберите функцию полигона</Russian>
+            <English>Dashboard: choose the next test step</English>
+            <Russian>Панель полигона: выберите следующий шаг теста</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_SELECT_TELEPORT_POINT">
             <English>Select teleport point on the map.</English>
