@@ -81,6 +81,10 @@
             <English>Mouse</English>
             <Russian>Мышь</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_NIGHT_VISION">
+            <English>night vision on / off</English>
+            <Russian>ночное видение вкл. / выкл.</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_RELOCATE">
             <English>move camera to clicked area</English>
             <Russian>перенести камеру в выбранную область</Russian>
@@ -108,6 +112,10 @@
         <Key ID="STR_MKK_PTG_CAMERA_SELECT_MAP_POINT">
             <English>Open the map and left-click the area where the camera should appear.</English>
             <Russian>Откройте карту и нажмите ЛКМ по области, где должна появиться камера.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_SPEED_VALUE">
+            <English>Camera speed: %1 m/s</English>
+            <Russian>Скорость камеры: %1 м/с</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_CIVILIAN">
             <English>Civilian</English>

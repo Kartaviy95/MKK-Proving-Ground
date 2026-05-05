@@ -7,6 +7,8 @@ if !(hasInterface) exitWith {};
 missionNamespace setVariable ["mkk_ptg_mapCameraRunning", false];
 missionNamespace setVariable ["mkk_ptg_mapCameraSelecting", false];
 missionNamespace setVariable ["mkk_ptg_mapCameraSelectedPos", []];
+missionNamespace setVariable ["mkk_ptg_mapCameraNightVision", false];
+camUseNVG false;
 onMapSingleClick "";
 openMap false;
 
@@ -31,6 +33,14 @@ private _hintCtrls = missionNamespace getVariable ["mkk_ptg_mapCameraHintCtrls",
 } forEach _hintCtrls;
 missionNamespace setVariable ["mkk_ptg_mapCameraHintCtrls", []];
 missionNamespace setVariable ["mkk_ptg_mapCameraHintVisible", true];
+
+private _speedCtrls = missionNamespace getVariable ["mkk_ptg_mapCameraSpeedCtrls", []];
+{
+    if !(isNull _x) then {
+        ctrlDelete _x;
+    };
+} forEach _speedCtrls;
+missionNamespace setVariable ["mkk_ptg_mapCameraSpeedCtrls", []];
 
 private _state = missionNamespace getVariable ["mkk_ptg_mapCameraState", createHashMap];
 private _camera = _state getOrDefault ["camera", objNull];
