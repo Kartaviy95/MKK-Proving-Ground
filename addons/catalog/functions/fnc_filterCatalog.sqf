@@ -9,7 +9,7 @@ params [
     ["_searchText", ""]
 ];
 
-private _search = toLowerANSI _searchText;
+private _search = toLower _searchText;
 private _catalog = missionNamespace getVariable ["mkk_ptg_catalogCache", []];
 
 private _filtered = _catalog select {
@@ -22,7 +22,7 @@ private _filtered = _catalog select {
     (_sideFilter < 0 || {_sideId isEqualTo _sideFilter})
     && (_factionFilter isEqualTo "" || {_faction isEqualTo _factionFilter})
     && (_typeFilter isEqualTo "" || {_vehicleType isEqualTo _typeFilter})
-    && (_search isEqualTo "" || {(toLowerANSI _displayName) find _search > -1 || {(toLowerANSI _className) find _search > -1}})
+    && (_search isEqualTo "" || {(toLower _displayName) find _search > -1 || {(toLower _className) find _search > -1}})
 };
 
 missionNamespace setVariable ["mkk_ptg_filteredCatalog", _filtered];
