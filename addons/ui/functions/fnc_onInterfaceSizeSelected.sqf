@@ -95,4 +95,5 @@ if ((count _cameraCtrls) >= 2) then {
 [] call FUNC(updateObjectStatusSettingsMenu);
 [] call FUNC(updateTrajectorySettingsMenu);
 [] call FUNC(updateMapProjectileMarkerSettingsMenu);
+[] call FUNC(updateDashboardStatusLine);
 [] call FUNC(setDashboardControlsBlocked);
