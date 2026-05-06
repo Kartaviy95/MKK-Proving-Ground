@@ -552,7 +552,7 @@ class MKK_PTG_MainDisplay {
             y = 0.54;
             w = 0.16;
             h = 0.04;
-            text = "30";
+            text = "10";
         };
 
         class DirectionLabel: MKK_PTG_RscText {

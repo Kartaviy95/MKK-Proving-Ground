@@ -159,8 +159,8 @@ picture;
 
 Текущие дефолты:
 
-`mkk_ptg_spawnDefaultDistance` = 30;
-`mkk_ptg_spawnMaxDistance` = 250.
+`mkk_ptg_spawnDefaultDistance` = 10;
+`mkk_ptg_spawnMaxDistance` = 3500.
 
 Совместимые ящики БК для статики определяются динамически:
 

@@ -7,7 +7,7 @@ params [
     ["_className", ""],
     ["_requestor", objNull],
     ["_withCrew", false],
-    ["_distance", 30],
+    ["_distance", 10],
     ["_directionOffset", 0],
     ["_ammoBoxClass", ""]
 ];

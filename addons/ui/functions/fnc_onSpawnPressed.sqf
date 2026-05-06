@@ -12,7 +12,7 @@ if (_className isEqualTo "") exitWith {
 };
 
 private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
-private _distance = missionNamespace getVariable ["mkk_ptg_spawnDefaultDistance", 30];
+private _distance = missionNamespace getVariable ["mkk_ptg_spawnDefaultDistance", 10];
 private _directionOffset = 0;
 private _ammoBoxClass = "";
 
