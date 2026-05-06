@@ -2,8 +2,6 @@
 /*
     Полная очистка сущностей полигона на сервере.
 */
-if !(isServer) exitWith {};
-
 private _spawnedVehicles = (missionNamespace getVariable ["mkk_ptg_spawnedVehicles", []]) select {!isNull _x};
 private _spawnedObjects = (missionNamespace getVariable ["mkk_ptg_spawnedObjects", []]) select {!isNull _x};
 
@@ -41,6 +39,6 @@ private _spawnedCrew = allUnits select {
     };
 } forEach (missionNamespace getVariable ["mkk_ptg_spawnedTargets", []]);
 
-missionNamespace setVariable ["mkk_ptg_spawnedTargets", []];
-missionNamespace setVariable ["mkk_ptg_spawnedVehicles", []];
-missionNamespace setVariable ["mkk_ptg_spawnedObjects", []];
+missionNamespace setVariable ["mkk_ptg_spawnedTargets", [], true];
+missionNamespace setVariable ["mkk_ptg_spawnedVehicles", [], true];
+missionNamespace setVariable ["mkk_ptg_spawnedObjects", [], true];

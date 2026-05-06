@@ -29,5 +29,11 @@ if (_magazines isEqualTo []) exitWith {
     [localize "STR_MKK_PTG_REARM_NO_MAGAZINES"] call EFUNC(main,showTimedHint);
 };
 
-[_vehicle, _turret, _magazines] remoteExecCall [QFUNC(clearRearmWeapon), _vehicle];
+private _targetUnit = [_vehicle, _turret] call FUNC(getRearmExecutionTarget);
+if (!isNull _targetUnit && {!local _targetUnit}) then {
+    [_vehicle, _turret, _magazines] remoteExecCall [QFUNC(clearRearmWeapon), _targetUnit];
+} else {
+    [_vehicle, _turret, _magazines] call FUNC(clearRearmWeapon);
+};
 [localize "STR_MKK_PTG_REARM_WEAPON_CLEARED"] call EFUNC(main,showTimedHint);
+[] call FUNC(refreshRearmOverlay);

@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Отправляет на сервер запрос тестового выстрела.
+    Создает тестовый выстрел без зависимости от серверного аддона.
 */
 private _display = uiNamespace getVariable ["mkk_ptg_penetrationDisplay", displayNull];
 if (isNull _display) exitWith {};
@@ -26,7 +26,7 @@ if !(isNull _camera) then {
     _impactPosASL = getPosASL _target vectorAdd [0, 0, 1.2];
 };
 
-[_target, _ammoClass, player, _impactPosASL] remoteExecCall [QFUNC(serverFireTestShot), 2];
+[_target, _ammoClass, player, _impactPosASL] call FUNC(serverFireTestShot);
 
 [_target, _ammoClass] spawn {
     params ["_target", "_ammoClass"];

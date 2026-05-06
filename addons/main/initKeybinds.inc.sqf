@@ -77,8 +77,30 @@
             [] call ptg_ui_fnc_stopMapCamera;
             true
         };
+
+        private _trackingState = missionNamespace getVariable ["mkk_ptg_trackingState", createHashMap];
+        if (_trackingState isEqualType createHashMap && {count _trackingState > 0} && {!isNil "ptg_tracking_fnc_stopProjectileTrack"}) exitWith {
+            [] call ptg_tracking_fnc_stopProjectileTrack;
+            true
+        };
+
         false
     },
     {},
     [DIK_ESCAPE, [false, false, false]]
+] call CBA_fnc_addKeybind;
+
+[
+    localize "STR_MKK_PTG_MOD_NAME",
+    "mkk_ptg_start_teleport",
+    localize "STR_MKK_PTG_TELEPORT",
+    {
+        if !(isNil "ptg_ui_fnc_startTeleport") exitWith {
+            [] call ptg_ui_fnc_startTeleport;
+            true
+        };
+        false
+    },
+    {},
+    [DIK_T, [false, false, false]]
 ] call CBA_fnc_addKeybind;

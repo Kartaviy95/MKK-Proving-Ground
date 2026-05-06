@@ -1,12 +1,13 @@
 #include "..\script_component.hpp"
 /*
-    Клиентский запрос серверного спавна.
+    Клиентский запрос глобального спавна.
+    Важно: не remoteExec на сервер, потому что аддон может быть не загружен на dedicated server.
 */
 params [
     ["_className", ""],
     ["_requestor", objNull],
     ["_withCrew", false],
-    ["_distance", missionNamespace getVariable ["mkk_ptg_spawnDefaultDistance", 30]],
+    ["_distance", missionNamespace getVariable ["mkk_ptg_spawnDefaultDistance", 10]],
     ["_directionOffset", 0],
     ["_ammoBoxClass", ""]
 ];
@@ -17,7 +18,7 @@ if !([_requestor] call EFUNC(main,isAuthorized)) exitWith {
     [localize "STR_MKK_PTG_NO_ACCESS"] call EFUNC(main,showTimedHint);
 };
 
-private _maxDistance = missionNamespace getVariable ["mkk_ptg_spawnMaxDistance", 250];
+private _maxDistance = missionNamespace getVariable ["mkk_ptg_spawnMaxDistance", 3500];
 _distance = (_distance max 1) min _maxDistance;
 _directionOffset = _directionOffset % 360;
 
@@ -36,4 +37,4 @@ if (_ammoBoxClass isNotEqualTo "" && {
     _distance,
     _directionOffset,
     _ammoBoxClass
-] remoteExecCall [QFUNC(serverSpawnVehicle), 2];
+] call FUNC(serverSpawnVehicle);

@@ -1,9 +1,8 @@
 #include "..\script_component.hpp"
 /*
-    Создает тестовый projectile, направленный в центр цели.
+    Создает тестовый projectile, направленный в выбранную точку цели.
+    Название оставлено для совместимости, но функция больше не требует сервера.
 */
-if !(isServer) exitWith {};
-
 params [
     ["_target", objNull],
     ["_ammoClass", ""],
@@ -39,7 +38,7 @@ _projectile setPosASL _startPos;
 _projectile setVectorDirAndUp [_dir, [0,0,1]];
 _projectile setVelocity (_dir vectorMultiply _speed);
 
-[_projectile, _ammoClass, "", false, true] remoteExec [QEFUNC(tracking,handleProjectileFired), 0];
+[_projectile, _ammoClass, "", false, true] remoteExec [QEFUNC(tracking,handleProjectileFired), -2];
 if (!isNull _requestor) then {
     [_projectile, _ammoClass, "", true, false] remoteExec [QEFUNC(tracking,handleProjectileFired), _requestor];
 };

@@ -172,6 +172,8 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "$STR_MKK_PTG_VEHICLE_SPAWN";
             action = QUOTE([] call FUNC(showVehicleView));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_VEHICLE'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardTargetBtn: MKK_PTG_RscButtonPrimary {
@@ -182,6 +184,8 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "$STR_MKK_PTG_CREATE_TARGET";
             action = QUOTE([] call FUNC(openTargetOverlay));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_TARGETS'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardRearmBtn: MKK_PTG_RscButtonPrimary {
@@ -192,6 +196,8 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "$STR_MKK_PTG_REARM_PYLONS";
             action = QUOTE([] call FUNC(openRearmOverlay));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_REARM'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardUnlockVehicleBtn: MKK_PTG_RscButtonPrimary {
@@ -202,6 +208,8 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "$STR_MKK_PTG_UNLOCK_VEHICLE";
             action = QUOTE([] call EFUNC(main,unlockCursorVehicle));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_UNLOCK'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardTeleportBtn: MKK_PTG_RscButtonSecondary {
@@ -212,6 +220,8 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "$STR_MKK_PTG_TELEPORT";
             action = QUOTE([] call FUNC(startTeleport));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_TELEPORT'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardPrepareInfo: MKK_PTG_RscDashboardHint {
@@ -231,6 +241,8 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "$STR_MKK_PTG_CAMERA";
             action = QUOTE([] call FUNC(startMapCamera));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_CAMERA'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardTrackingBtn: MKK_PTG_RscButtonSecondary {
@@ -240,7 +252,9 @@ class MKK_PTG_MainDisplay {
             w = 0.230;
             h = 0.046;
             text = "$STR_MKK_PTG_PROJECTILE_TRACKING";
-            action = QUOTE([] call FUNC(toggleTracking));
+            action = QUOTE([] call FUNC(toggleTracking); [] call FUNC(updateDashboardStatusLine));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_TRACKING'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardTrajectoryBtn: MKK_PTG_RscButtonSecondary {
@@ -250,7 +264,9 @@ class MKK_PTG_MainDisplay {
             w = 0.190;
             h = 0.046;
             text = "$STR_MKK_PTG_TRAJECTORY_LINES";
-            action = QUOTE([] call EFUNC(tracking,toggleTrajectoryLines));
+            action = QUOTE([] call EFUNC(tracking,toggleTrajectoryLines); [] call FUNC(updateDashboardStatusLine));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_TRAJECTORY'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardTrajectorySettingsBtn: MKK_PTG_RscSettingsButton {
@@ -261,6 +277,8 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
             action = QUOTE([] call FUNC(toggleTrajectorySettings));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_TRAJECTORY_SETTINGS'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardMapMarkerBtn: MKK_PTG_RscButtonSecondary {
@@ -270,7 +288,9 @@ class MKK_PTG_MainDisplay {
             w = 0.190;
             h = 0.046;
             text = "$STR_MKK_PTG_MAP_PROJECTILE_MARKERS";
-            action = QUOTE([] call EFUNC(tracking,toggleMapProjectileMarkers));
+            action = QUOTE([] call EFUNC(tracking,toggleMapProjectileMarkers); [] call FUNC(updateDashboardStatusLine));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKERS'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardMapMarkerSettingsBtn: MKK_PTG_RscSettingsButton {
@@ -281,6 +301,8 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
             action = QUOTE([] call FUNC(toggleMapProjectileMarkerSettings));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKER_SETTINGS'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardObjectStatusBtn: MKK_PTG_RscButtonPrimary {
@@ -290,7 +312,9 @@ class MKK_PTG_MainDisplay {
             w = 0.190;
             h = 0.046;
             text = "$STR_MKK_PTG_OBJECT_STATUS_DISPLAY";
-            action = QUOTE([] call FUNC(toggleObjectStatusDisplay));
+            action = QUOTE([] call FUNC(toggleObjectStatusDisplay); [] call FUNC(updateDashboardStatusLine));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_OBJECT_STATUS'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardObjectStatusSettingsBtn: MKK_PTG_RscSettingsButton {
@@ -301,6 +325,8 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
             action = QUOTE([] call FUNC(toggleObjectStatusSettings));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_OBJECT_STATUS_SETTINGS'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardHitpointInspectorBtn: MKK_PTG_RscButtonPrimary {
@@ -310,7 +336,9 @@ class MKK_PTG_MainDisplay {
             w = 0.230;
             h = 0.046;
             text = "$STR_MKK_PTG_HITPOINT_INSPECTOR";
-            action = QUOTE([] call FUNC(toggleHitpointInspector));
+            action = QUOTE([] call FUNC(toggleHitpointInspector); [] call FUNC(updateDashboardStatusLine));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_HITPOINT_INSPECTOR'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardPenetrationBtn: MKK_PTG_RscButtonDisabledTile {
@@ -322,6 +350,8 @@ class MKK_PTG_MainDisplay {
             text = "$STR_MKK_PTG_PENETRATION_TEST_DEV";
             action = "";
             enabled = 0;
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_PENETRATION'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardMapMarkerAmmoBtn: MKK_PTG_RscButtonSecondary {
@@ -332,6 +362,8 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "$STR_MKK_PTG_MAP_MARKER_AMMO";
             action = QUOTE([] call EFUNC(tracking,toggleMapProjectileMarkerAmmo));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKER_AMMO'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardInfiniteAmmoBtn: MKK_PTG_RscButtonToggle {
@@ -341,7 +373,9 @@ class MKK_PTG_MainDisplay {
             w = 0.230;
             h = 0.046;
             text = "$STR_MKK_PTG_INFINITE_AMMO";
-            action = QUOTE([] call EFUNC(player,toggleInfiniteAmmo));
+            action = QUOTE([] call EFUNC(player,toggleInfiniteAmmo); [] call FUNC(updateDashboardStatusLine));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_INFINITE_AMMO'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardGodModeBtn: MKK_PTG_RscButtonToggle {
@@ -351,7 +385,9 @@ class MKK_PTG_MainDisplay {
             w = 0.230;
             h = 0.046;
             text = "$STR_MKK_PTG_GOD_MODE";
-            action = QUOTE([] call EFUNC(player,toggleGodMode));
+            action = QUOTE([] call EFUNC(player,toggleGodMode); [] call FUNC(updateDashboardStatusLine));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_GOD_MODE'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardInterfaceSizeLabel: MKK_PTG_RscText {
@@ -391,9 +427,11 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "$STR_MKK_PTG_CLEANUP_RANGE";
             action = QUOTE([] call FUNC(onCleanupPressed));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_CLEANUP'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
-        class DashboardCloseBtn: MKK_PTG_RscButtonSecondary {
+        class DashboardCloseBtn: MKK_PTG_RscButtonDanger {
             idc = 88107;
             x = 0.675;
             y = 0.656;
@@ -401,6 +439,8 @@ class MKK_PTG_MainDisplay {
             h = 0.046;
             text = "$STR_MKK_PTG_CLOSE";
             action = "closeDialog 0";
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_CLOSE'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
         class DashboardInfo: MKK_PTG_RscStructuredText {
@@ -410,6 +450,17 @@ class MKK_PTG_MainDisplay {
             w = 0.850;
             h = 0.072;
             text = "$STR_MKK_PTG_DASHBOARD_INFO";
+            colorText[] = {0.78,0.88,0.95,1};
+        };
+
+        class DashboardStatusLine: MKK_PTG_RscStructuredText {
+            idc = 88151;
+            x = 0.075;
+            y = 0.820;
+            w = 0.850;
+            h = 0.040;
+            text = "";
+            size = 0.023;
             colorText[] = {0.78,0.88,0.95,1};
         };
 
@@ -501,7 +552,7 @@ class MKK_PTG_MainDisplay {
             y = 0.54;
             w = 0.16;
             h = 0.04;
-            text = "30";
+            text = "10";
         };
 
         class DirectionLabel: MKK_PTG_RscText {
@@ -568,7 +619,7 @@ class MKK_PTG_MainDisplay {
             action = QUOTE([true] call FUNC(onSpawnPressed));
         };
 
-        class CleanupBtn: MKK_PTG_RscButton {
+        class CleanupBtn: MKK_PTG_RscButtonDanger {
             idc = 88044;
             x = 0.64;
             y = 0.70;
@@ -793,7 +844,7 @@ class MKK_PTG_MainDisplay {
             action = QUOTE([] call FUNC(onTargetSpawnPressed));
         };
 
-        class TargetDeleteBtn: MKK_PTG_RscButton {
+        class TargetDeleteBtn: MKK_PTG_RscButtonDanger {
             idc = 88341;
             x = 0.48;
             y = 0.70;
@@ -801,11 +852,9 @@ class MKK_PTG_MainDisplay {
             h = 0.05;
             text = "$STR_MKK_PTG_DELETE_TARGETS";
             action = QUOTE([] call FUNC(onDeleteTargetsPressed));
-            colorBackground[] = {0.24,0.08,0.08,0.95};
-            colorBackgroundActive[] = {0.38,0.10,0.10,1};
         };
 
-        class TargetCloseBtn: MKK_PTG_RscButton {
+        class TargetCloseBtn: MKK_PTG_RscButtonDanger {
             idc = 88342;
             x = 0.69;
             y = 0.70;
@@ -962,11 +1011,9 @@ class MKK_PTG_MainDisplay {
             h = 0.05;
             text = "$STR_MKK_PTG_REARM_LOAD_NOW";
             action = QUOTE([] call FUNC(loadSelectedRearmMagazine));
-            colorBackground[] = {0.08,0.18,0.24,0.95};
-            colorBackgroundActive[] = {0.10,0.30,0.40,1};
         };
 
-        class RearmClearWeaponBtn: MKK_PTG_RscButton {
+        class RearmClearWeaponBtn: MKK_PTG_RscButtonDanger {
             idc = 88243;
             x = 0.49;
             y = 0.70;
@@ -974,8 +1021,6 @@ class MKK_PTG_MainDisplay {
             h = 0.05;
             text = "$STR_MKK_PTG_REARM_CLEAR_WEAPON";
             action = QUOTE([] call FUNC(clearSelectedRearmWeapon));
-            colorBackground[] = {0.24,0.08,0.08,0.95};
-            colorBackgroundActive[] = {0.38,0.10,0.10,1};
         };
 
         class RearmCopyMagazineClassBtn: MKK_PTG_RscButton {
@@ -988,7 +1033,7 @@ class MKK_PTG_MainDisplay {
             action = QUOTE([] call FUNC(copySelectedRearmMagazineClass));
         };
 
-        class RearmCloseBtn: MKK_PTG_RscButton {
+        class RearmCloseBtn: MKK_PTG_RscButtonDanger {
             idc = 88242;
             x = 0.77;
             y = 0.70;

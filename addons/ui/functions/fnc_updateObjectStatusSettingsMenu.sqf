@@ -93,9 +93,9 @@ private _fncCreateToggle = {
     private _texture = [_uncheckedTexture, _checkedTexture] select _enabled;
     private _event = format ["['%1'] call %2", _setting, QFUNC(toggleObjectStatusSetting)];
     private _rowColor = if (_active) then {
-        [[0.045, 0.055, 0.070, 0.96], [0.060, 0.110, 0.145, 0.96]] select _enabled
+        [0.105, 0.145, 0.170, 0.98]
     } else {
-        [[0.030, 0.034, 0.040, 0.86], [0.040, 0.052, 0.058, 0.88]] select _enabled
+        [0.045, 0.050, 0.056, 0.78]
     };
     private _textColor = if (_active) then {
         [[0.78, 0.86, 0.90, 1], [1, 1, 1, 1]] select _enabled
@@ -135,7 +135,7 @@ _curY = _curY + 0.008;
     };
 } forEach _settings;
 
-private _close = ["MKK_PTG_RscButton", [_panelX + _pad, _panelY + _panelH - 0.052, _panelW - (_pad * 2), 0.036], [0.08, 0.18, 0.24, 0.95]] call _fncCreateCtrl;
+private _close = ["MKK_PTG_RscButtonDanger", [_panelX + _pad, _panelY + _panelH - 0.052, _panelW - (_pad * 2), 0.036], [0.320, 0.075, 0.065, 0.98]] call _fncCreateCtrl;
 _close ctrlSetText localize "STR_MKK_PTG_CLOSE";
 _close ctrlSetEventHandler ["ButtonClick", format ["[] call %1", QFUNC(closeSettingsDialog)]];
 

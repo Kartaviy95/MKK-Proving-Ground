@@ -7,7 +7,7 @@
 private _target = missionNamespace getVariable ["mkk_ptg_penetrationTarget", objNull];
 private _className = missionNamespace getVariable ["mkk_ptg_penetrationTargetClass", ""];
 if (_className != "") then {
-    [_className, player, true] remoteExecCall [QFUNC(serverCreateTarget), 2];
+    [_className, player, true] call FUNC(serverCreateTarget);
 } else {
     if !(isNull _target) then {
         deleteVehicle _target;

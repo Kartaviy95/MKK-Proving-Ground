@@ -81,7 +81,7 @@ private _colors = [
     private _idx = _forEachIndex;
     _x params ["_label", "_color"];
     private _selected = _idx == _colorIndex;
-    private _rowColor = [[0.045, 0.055, 0.070, 0.96], [0.060, 0.110, 0.145, 0.96]] select _selected;
+    private _rowColor = [0.105, 0.145, 0.170, 0.98];
     private _event = format ["[%1] call %2", _idx, QFUNC(setTrajectoryColor)];
 
     private _row = ["MKK_PTG_RscButton", [_panelX + _pad, _curY, _panelW - (_pad * 2), _rowH], _rowColor] call _fncCreateCtrl;
@@ -103,7 +103,7 @@ _curY = _curY + 0.008;
 [localize "STR_MKK_PTG_LINE_WIDTH"] call _fncCreateSection;
 {
     private _selected = _x == _width;
-    private _rowColor = [[0.045, 0.055, 0.070, 0.96], [0.060, 0.110, 0.145, 0.96]] select _selected;
+    private _rowColor = [0.105, 0.145, 0.170, 0.98];
     private _event = format ["[%1] call %2", _x, QFUNC(setTrajectoryWidth)];
 
     private _row = ["MKK_PTG_RscButton", [_panelX + _pad, _curY, _panelW - (_pad * 2), _rowH], _rowColor] call _fncCreateCtrl;
@@ -114,7 +114,7 @@ _curY = _curY + 0.008;
     _curY = _curY + _rowH + _rowGap;
 } forEach _widths;
 
-private _close = ["MKK_PTG_RscButton", [_panelX + _pad, _panelY + _panelH - 0.052, _panelW - (_pad * 2), 0.036], [0.08, 0.18, 0.24, 0.95]] call _fncCreateCtrl;
+private _close = ["MKK_PTG_RscButtonDanger", [_panelX + _pad, _panelY + _panelH - 0.052, _panelW - (_pad * 2), 0.036], [0.320, 0.075, 0.065, 0.98]] call _fncCreateCtrl;
 _close ctrlSetText localize "STR_MKK_PTG_CLOSE";
 _close ctrlSetEventHandler ["ButtonClick", format ["[] call %1", QFUNC(closeSettingsDialog)]];
 

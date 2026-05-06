@@ -170,7 +170,7 @@ class MKK_PTG_PenetrationDisplay {
             action = QUOTE([] call FUNC(onCopyAmmoClassPressed));
         };
 
-        class ResetBtn: MKK_PTG_RscButton {
+        class ResetBtn: MKK_PTG_RscButtonDanger {
             idc = 88943;
             x = 0.35;
             y = 0.76;
@@ -180,7 +180,7 @@ class MKK_PTG_PenetrationDisplay {
             action = QUOTE([] call FUNC(resetTest));
         };
 
-        class CloseBtn: MKK_PTG_RscButton {
+        class CloseBtn: MKK_PTG_RscButtonDanger {
             idc = 88944;
             x = 0.64;
             y = 0.76;

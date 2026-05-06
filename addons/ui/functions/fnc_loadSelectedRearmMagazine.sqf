@@ -26,10 +26,15 @@ if (_mode isEqualTo "pylon") then {
     if (_pylonIndex < 1) exitWith {};
     [_vehicle, _pylonIndex, _magazine, _pylonTurret] call FUNC(applyPylonLoadout);
 } else {
-    _vehicle addMagazineTurret [_magazine, _turret];
-    _vehicle loadMagazine [_turret, _weapon, _magazine];
+    private _targetUnit = [_vehicle, _turret] call FUNC(getRearmExecutionTarget);
+    if (!isNull _targetUnit && {!local _targetUnit}) then {
+        [_vehicle, _turret, _weapon, _magazine] remoteExecCall [QFUNC(applyRearmMagazine), _targetUnit];
+    } else {
+        [_vehicle, _turret, _weapon, _magazine] call FUNC(applyRearmMagazine);
+    };
 };
 
 private _displayName = [getText (configFile >> "CfgMagazines" >> _magazine >> "displayName")] call EFUNC(common,localizeString);
 if (_displayName isEqualTo "") then {_displayName = _magazine};
 [format [localize "STR_MKK_PTG_REARM_LOADED", _displayName]] call EFUNC(main,showTimedHint);
+[] call FUNC(refreshRearmOverlay);

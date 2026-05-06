@@ -30,8 +30,8 @@
             <Russian>Выберите боеприпас, чтобы увидеть параметры конфига.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_AUTHOR">
-            <English>by Kartaviy</English>
-            <Russian>by Kartaviy</Russian>
+            <English>by Kartaviy, Tarantino</English>
+            <Russian>by Kartaviy, Tarantino</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_BACK">
             <English>Back</English>
@@ -81,6 +81,10 @@
             <English>Mouse</English>
             <Russian>Мышь</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_NIGHT_VISION">
+            <English>night vision on / off</English>
+            <Russian>ночное видение вкл. / выкл.</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_RELOCATE">
             <English>move camera to clicked area</English>
             <Russian>перенести камеру в выбранную область</Russian>
@@ -108,6 +112,10 @@
         <Key ID="STR_MKK_PTG_CAMERA_SELECT_MAP_POINT">
             <English>Open the map and left-click the area where the camera should appear.</English>
             <Russian>Откройте карту и нажмите ЛКМ по области, где должна появиться камера.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CAMERA_SPEED_VALUE">
+            <English>Camera speed: %1 m/s</English>
+            <Russian>Скорость камеры: %1 м/с</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_CIVILIAN">
             <English>Civilian</English>
@@ -220,6 +228,86 @@
         <Key ID="STR_MKK_PTG_DASHBOARD_ANALYZE_TITLE">
             <English>Observation and analysis</English>
             <Russian>Наблюдение и анализ</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_CAMERA">
+            <English>Free camera: pick a map point, then inspect the range from the air.</English>
+            <Russian>Свободная камера: выберите точку на карте и осмотрите полигон с воздуха.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_CLEANUP">
+            <English>Deletes spawned vehicles and targets from the proving ground.</English>
+            <Russian>Удаляет созданную технику и мишени с полигона.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_CLOSE">
+            <English>Closes the proving ground menu.</English>
+            <Russian>Закрывает меню полигона.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_GOD_MODE">
+            <English>Toggles player damage protection, including ACE medical damage.</English>
+            <Russian>Включает или выключает защиту игрока от урона, включая ACE medical.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_HITPOINT_INSPECTOR">
+            <English>Shows compact damage and hitpoint cards for the vehicle under the cursor.</English>
+            <Russian>Показывает компактные карточки урона и hitpoints техники под курсором.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_INFINITE_AMMO">
+            <English>Toggles infinite ammo for the local player.</English>
+            <Russian>Включает или выключает бесконечные патроны для локального игрока.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKERS">
+            <English>Tracks fired projectiles with local markers on the map.</English>
+            <Russian>Показывает выпущенные снаряды локальными маркерами на карте.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKER_AMMO">
+            <English>Toggles ammo classname text on projectile map markers.</English>
+            <Russian>Включает или выключает classname ammo у маркеров снарядов на карте.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKER_SETTINGS">
+            <English>Opens settings for projectile map marker labels.</English>
+            <Russian>Открывает настройки подписей маркеров снарядов на карте.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_OBJECT_STATUS">
+            <English>Shows class, distance, damage and optional hitpoints for the object under the cursor.</English>
+            <Russian>Показывает класс, дистанцию, урон и опциональные hitpoints объекта под курсором.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_OBJECT_STATUS_SETTINGS">
+            <English>Opens field settings for the object status display.</English>
+            <Russian>Открывает настройки полей статус-дисплея объектов.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_PENETRATION">
+            <English>Armor test screen is currently disabled in the dashboard.</English>
+            <Russian>Экран теста пробития сейчас отключен в главном меню.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_REARM">
+            <English>Opens vehicle rearm overlay for the vehicle the player is inside.</English>
+            <Russian>Открывает перевооружение техники, в которой находится игрок.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_TARGETS">
+            <English>Opens the target overlay for bots, ground targets and air targets.</English>
+            <Russian>Открывает оверлей целей: боты, наземные и воздушные цели.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_TELEPORT">
+            <English>Moves the player or current vehicle to a selected map point.</English>
+            <Russian>Переносит игрока или текущую технику в выбранную точку карты.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_TRACKING">
+            <English>Toggles projectile tracking after shots from the player or controlled vehicle.</English>
+            <Russian>Включает или выключает слежение за снарядами после выстрела игрока или техники.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_TRAJECTORY">
+            <English>Draws recent projectile flight paths in the world.</English>
+            <Russian>Рисует последние траектории полета снарядов в мире.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_TRAJECTORY_SETTINGS">
+            <English>Opens trajectory color and line width settings.</English>
+            <Russian>Открывает настройки цвета и толщины линии траектории.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_UNLOCK">
+            <English>Unlocks the vehicle currently under the cursor.</English>
+            <Russian>Разблокирует технику, на которую наведен курсор.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_VEHICLE">
+            <English>Opens the vehicle catalog for search, preview and spawn.</English>
+            <Russian>Открывает каталог техники для поиска, просмотра и спавна.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_INFO">
             <English>Workflow: prepare vehicle and targets, enable camera/tracking, analyze trajectories and damage, then clean the range when the test is complete.</English>
@@ -514,8 +602,8 @@
             <Russian>м</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_MOD_NAME">
-            <English>MKK Proving Ground v1.1</English>
-            <Russian>MKK Proving Ground v1.1</Russian>
+            <English>MKK Proving Ground v1.2</English>
+            <Russian>MKK Proving Ground v1.2</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_NO">
             <English>No</English>
@@ -804,6 +892,42 @@
         <Key ID="STR_MKK_PTG_STATE_NOMINAL">
             <English>NOMINAL</English>
             <Russian>НОРМА</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATUS_GOD_MODE">
+            <English>God</English>
+            <Russian>Бог</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATUS_HITPOINTS">
+            <English>HP</English>
+            <Russian>HP</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATUS_INFINITE_AMMO">
+            <English>Inf. ammo</English>
+            <Russian>Беск. патроны</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATUS_MAP_MARKERS">
+            <English>Markers</English>
+            <Russian>Марк.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATUS_OBJECT_STATUS">
+            <English>Status</English>
+            <Russian>Статус</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATUS_OFF">
+            <English>OFF</English>
+            <Russian>ВЫКЛ</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATUS_ON">
+            <English>ON</English>
+            <Russian>ВКЛ</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATUS_TRACKING">
+            <English>Track</English>
+            <Russian>Слеж.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATUS_TRAJECTORY">
+            <English>Traj.</English>
+            <Russian>Траект.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_SUBMUNITION_AMMO">
             <English>submunitionAmmo</English>

@@ -1,7 +1,10 @@
 #include "..\script_component.hpp"
 
 /*
-    Запрашивает серверное удаление объекта, на который смотрит игрок.
+    Удаляет объект, на который смотрит игрок.
+    Не отправляем запрос на dedicated server: сервер может быть запущен без аддона.
+    deleteVehicle имеет глобальный эффект в MP, поэтому удаление, выполненное клиентом,
+    синхронизируется для остальных машин.
 */
 if !(hasInterface) exitWith {};
 if !([player] call FUNC(isAuthorized)) exitWith {
@@ -21,5 +24,5 @@ if (isPlayer _entity || {(crew _entity) findIf {isPlayer _x} >= 0}) exitWith {
     [localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_PLAYER"] call FUNC(showTimedHint);
 };
 
-[_entity, player] remoteExecCall [QFUNC(serverDeleteObject), 2];
+[_entity, player] call FUNC(serverDeleteObject);
 [localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_DONE"] call FUNC(showTimedHint);

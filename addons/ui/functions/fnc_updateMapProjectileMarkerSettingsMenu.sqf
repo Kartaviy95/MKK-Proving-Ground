@@ -59,7 +59,7 @@ _title ctrlSetTextColor [0.72, 0.88, 1, 1];
 private _enabled = missionNamespace getVariable ["mkk_ptg_mapProjectileMarkerShowAmmo", false];
 private _texture = [_uncheckedTexture, _checkedTexture] select _enabled;
 private _event = format ["[] call %1", QFUNC(toggleMapProjectileMarkerAmmoSetting)];
-private _rowColor = [[0.045, 0.055, 0.070, 0.96], [0.060, 0.110, 0.145, 0.96]] select _enabled;
+private _rowColor = [0.105, 0.145, 0.170, 0.98];
 
 private _rowY = _panelY + 0.080;
 private _row = ["MKK_PTG_RscButton", [_panelX + _pad, _rowY, _panelW - (_pad * 2), _rowH], _rowColor] call _fncCreateCtrl;
@@ -74,7 +74,7 @@ private _label = ["MKK_PTG_RscText", [_panelX + _pad + 0.048, _rowY + 0.006, _pa
 _label ctrlSetText localize "STR_MKK_PTG_MAP_MARKER_AMMO";
 _label ctrlSetTextColor ([[0.78, 0.86, 0.90, 1], [1, 1, 1, 1]] select _enabled);
 
-private _close = ["MKK_PTG_RscButton", [_panelX + _pad, _panelY + _panelH - 0.052, _panelW - (_pad * 2), 0.036], [0.08, 0.18, 0.24, 0.95]] call _fncCreateCtrl;
+private _close = ["MKK_PTG_RscButtonDanger", [_panelX + _pad, _panelY + _panelH - 0.052, _panelW - (_pad * 2), 0.036], [0.320, 0.075, 0.065, 0.98]] call _fncCreateCtrl;
 _close ctrlSetText localize "STR_MKK_PTG_CLOSE";
 _close ctrlSetEventHandler ["ButtonClick", format ["[] call %1", QFUNC(closeSettingsDialog)]];
 

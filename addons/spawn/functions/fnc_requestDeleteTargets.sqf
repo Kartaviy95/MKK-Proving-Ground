@@ -11,4 +11,4 @@ if !([_requestor] call EFUNC(main,isAuthorized)) exitWith {
     [localize "STR_MKK_PTG_NO_ACCESS"] call EFUNC(main,showTimedHint);
 };
 
-[_requestor] remoteExecCall [QFUNC(serverDeleteTargets), 2];
+[_requestor] call FUNC(serverDeleteTargets);

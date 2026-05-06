@@ -2,8 +2,6 @@
 /*
     Удаляет все цели, созданные через меню целей.
 */
-if !(isServer) exitWith {};
-
 {
     if !(isNull _x) then {
         if (_x isKindOf "Man") then {
@@ -15,4 +13,4 @@ if !(isServer) exitWith {};
     };
 } forEach (missionNamespace getVariable ["mkk_ptg_spawnedTargets", []]);
 
-missionNamespace setVariable ["mkk_ptg_spawnedTargets", []];
+missionNamespace setVariable ["mkk_ptg_spawnedTargets", [], true];

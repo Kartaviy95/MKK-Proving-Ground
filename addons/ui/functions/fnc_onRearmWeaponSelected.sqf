@@ -71,6 +71,20 @@ private _fncAddMagazine = {
     };
 };
 
+private _fncAddMagazineWellMagazines = {
+    params ["_cfg"];
+
+    {
+        if (isArray _x) then {
+            {[_x] call _fncAddMagazine} forEach getArray _x;
+        };
+
+        if (isClass _x) then {
+            [_x] call _fncAddMagazineWellMagazines;
+        };
+    } forEach configProperties [_cfg, "true", true];
+};
+
 // Использовать config выбранного оружия как источник истины. Магазины техники здесь намеренно не читаются.
 {[_x] call _fncAddMagazine} forEach getArray (_weaponCfg >> "magazines");
 
@@ -82,7 +96,7 @@ private _fncAddMagazine = {
 {
     private _wellCfg = configFile >> "CfgMagazineWells" >> _x;
     if (isClass _wellCfg) then {
-        {[_x] call _fncAddMagazine} forEach getArray (_wellCfg >> "magazines");
+        [_wellCfg] call _fncAddMagazineWellMagazines;
     };
 } forEach getArray (_weaponCfg >> "magazineWell");
 

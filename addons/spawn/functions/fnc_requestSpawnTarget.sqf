@@ -1,6 +1,7 @@
 #include "..\script_component.hpp"
 /*
-    Клиентский запрос серверного спавна цели.
+    Клиентский запрос глобального спавна цели.
+    Важно: не remoteExec на сервер, потому что аддон может быть не загружен на dedicated server.
 */
 params [
     ["_mode", "bot"],
@@ -18,7 +19,7 @@ if !([_requestor] call EFUNC(main,isAuthorized)) exitWith {
     [localize "STR_MKK_PTG_NO_ACCESS"] call EFUNC(main,showTimedHint);
 };
 
-private _maxDistance = missionNamespace getVariable ["mkk_ptg_spawnMaxDistance", 250];
+private _maxDistance = missionNamespace getVariable ["mkk_ptg_spawnMaxDistance", 3500];
 _distance = (_distance max 1) min _maxDistance;
 _sector = (_sector max 5) min 1000;
 _airRadius = (_airRadius max 25) min 3000;
@@ -37,4 +38,4 @@ if (_mode isEqualTo "air" && {!(_className isKindOf "Air")}) exitWith {};
     _sector,
     _airRadius,
     _airHeight
-] remoteExecCall [QFUNC(serverSpawnTarget), 2];
+] call FUNC(serverSpawnTarget);

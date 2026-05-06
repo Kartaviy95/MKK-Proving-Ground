@@ -20,6 +20,7 @@ class CfgPatches {
 #include "CfgEventHandlers.hpp"
 
 class MKK_PTG_RscButton;
+class MKK_PTG_RscButtonDanger;
 class MKK_PTG_RscEdit;
 class MKK_PTG_RscListbox;
 class MKK_PTG_RscPicture;

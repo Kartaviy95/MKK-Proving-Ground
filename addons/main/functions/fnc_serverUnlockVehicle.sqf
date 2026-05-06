@@ -1,10 +1,9 @@
 #include "..\script_component.hpp"
 
 /*
-    Проверяет серверный запрос разблокировки техники и применяет результат глобально.
+    Проверяет запрос разблокировки и применяет результат на клиентах.
+    Не требует isServer: dedicated server может быть без аддона.
 */
-if !(isServer) exitWith {};
-
 params [
     ["_vehicle", objNull, [objNull]],
     ["_requestor", objNull, [objNull]]
@@ -14,4 +13,5 @@ if (isNull _vehicle || {isNull _requestor}) exitWith {};
 if !([_requestor] call FUNC(isAuthorized)) exitWith {};
 if (!(_vehicle isKindOf "AllVehicles") || {_vehicle isKindOf "CAManBase"}) exitWith {};
 
-[_vehicle] remoteExecCall [QFUNC(unlockVehicleGlobal), 0];
+[_vehicle] call FUNC(unlockVehicleGlobal);
+[_vehicle] remoteExecCall [QFUNC(unlockVehicleGlobal), -2];

@@ -2,7 +2,7 @@
 /*
     Запускает простую свободную камеру.
     Управление: W/S/A/D движение, Q вверх, Z вниз, мышь для взгляда, колесо мыши для скорости, Shift для ускорения.
-    F1 переключает overlay управления. Клавиша закрытия задается через CBA keybinds.
+    N переключает ночное видение. F1 переключает overlay управления. Клавиша закрытия задается через CBA keybinds.
 */
 if !(hasInterface) exitWith {};
 
@@ -50,6 +50,8 @@ private _startPos = [_selectedMapPos # 0, _selectedMapPos # 1, 0];
 private _camera = "camera" camCreate [_startPos # 0, _startPos # 1, ((_startPos # 2) max 0) + 20];
 _camera cameraEffect ["Internal", "Back"];
 showCinemaBorder false;
+camUseNVG false;
+missionNamespace setVariable ["mkk_ptg_mapCameraNightVision", false];
 
 private _dir = getDirVisual player;
 _camera setDir _dir;
@@ -62,7 +64,8 @@ missionNamespace setVariable ["mkk_ptg_mapCameraState", createHashMapFromArray [
     ["pitch", -20],
     ["speed", 45],
     ["height", 20],
-    ["keys", []]
+    ["keys", []],
+    ["speedIndicatorUntil", 0]
 ]];
 missionNamespace setVariable ["mkk_ptg_mapCameraRunning", true];
 
@@ -73,8 +76,8 @@ if !(isNull _hintDisplay) then {
     private _hudScales = [] call EFUNC(common,getHudScale);
     private _hudScale = _hudScales # 0;
     private _fontScale = _hudScales # 1;
-    private _bgRect = [[0.64, 0.12, 0.34, 0.42], _hudScale] call EFUNC(common,scaleRect);
-    private _textRect = [[0.65, 0.13, 0.32, 0.42], _hudScale] call EFUNC(common,scaleRect);
+    private _bgRect = [[0.64, 0.12, 0.34, 0.45], _hudScale] call EFUNC(common,scaleRect);
+    private _textRect = [[0.65, 0.13, 0.32, 0.45], _hudScale] call EFUNC(common,scaleRect);
 
     private _bg = _hintDisplay ctrlCreate ["RscText", -1];
     _bg ctrlSetPosition _bgRect;
@@ -87,17 +90,18 @@ if !(isNull _hintDisplay) then {
     private _rowSize = str ([0.95 * _fontScale, 2] call BIS_fnc_cutDecimals);
     private _noteSize = str ([0.86 * _fontScale, 2] call BIS_fnc_cutDecimals);
     _text ctrlSetStructuredText parseText format [
-        "<t align='center' size='%15' font='RobotoCondensedBold' color='#F2F2F2'>%1</t><br/>" +
-        "<t size='%16' color='#FFFFFF'>W / S</t><t size='%16' color='#CFCFCF'>    %2</t><br/>" +
-        "<t size='%16' color='#FFFFFF'>A / D</t><t size='%16' color='#CFCFCF'>    %3</t><br/>" +
-        "<t size='%16' color='#FFFFFF'>Q</t><t size='%16' color='#CFCFCF'>        %4</t><br/>" +
-        "<t size='%16' color='#FFFFFF'>Z</t><t size='%16' color='#CFCFCF'>        %5</t><br/>" +
-        "<t size='%16' color='#FFFFFF'>Shift</t><t size='%16' color='#CFCFCF'>    %6</t><br/>" +
-        "<t size='%16' color='#FFFFFF'>%7</t><t size='%16' color='#CFCFCF'>    %8</t><br/>" +
-        "<t size='%16' color='#FFFFFF'>%9</t><t size='%16' color='#CFCFCF'>   %10</t><br/>" +
-        "<t size='%16' color='#FFFFFF'>%11</t><t size='%16' color='#CFCFCF'>    %12</t><br/>" +
-        "<t size='%16' color='#FFFFFF'>F1</t><t size='%16' color='#CFCFCF'>       %13</t><br/>" +
-        "<t align='center' size='%17' color='#DADADA'>%14</t>",
+        "<t align='center' size='%16' font='RobotoCondensedBold' color='#F2F2F2'>%1</t><br/>" +
+        "<t size='%17' color='#FFFFFF'>W / S</t><t size='%17' color='#CFCFCF'>    %2</t><br/>" +
+        "<t size='%17' color='#FFFFFF'>A / D</t><t size='%17' color='#CFCFCF'>    %3</t><br/>" +
+        "<t size='%17' color='#FFFFFF'>Q</t><t size='%17' color='#CFCFCF'>        %4</t><br/>" +
+        "<t size='%17' color='#FFFFFF'>Z</t><t size='%17' color='#CFCFCF'>        %5</t><br/>" +
+        "<t size='%17' color='#FFFFFF'>Shift</t><t size='%17' color='#CFCFCF'>    %6</t><br/>" +
+        "<t size='%17' color='#FFFFFF'>%7</t><t size='%17' color='#CFCFCF'>    %8</t><br/>" +
+        "<t size='%17' color='#FFFFFF'>%9</t><t size='%17' color='#CFCFCF'>   %10</t><br/>" +
+        "<t size='%17' color='#FFFFFF'>%11</t><t size='%17' color='#CFCFCF'>    %12</t><br/>" +
+        "<t size='%17' color='#FFFFFF'>N</t><t size='%17' color='#CFCFCF'>        %13</t><br/>" +
+        "<t size='%17' color='#FFFFFF'>F1</t><t size='%17' color='#CFCFCF'>       %14</t><br/>" +
+        "<t align='center' size='%18' color='#DADADA'>%15</t>",
         localize "STR_MKK_PTG_CAMERA_CONTROLS_TITLE",
         localize "STR_MKK_PTG_CAMERA_CONTROL_FORWARD_BACK",
         localize "STR_MKK_PTG_CAMERA_CONTROL_LEFT_RIGHT",
@@ -110,6 +114,7 @@ if !(isNull _hintDisplay) then {
         localize "STR_MKK_PTG_CAMERA_CONTROL_SPEED_CHANGE",
         localize "STR_MKK_PTG_CAMERA_CONTROL_LMB",
         localize "STR_MKK_PTG_CAMERA_CONTROL_RELOCATE",
+        localize "STR_MKK_PTG_CAMERA_CONTROL_NIGHT_VISION",
         localize "STR_MKK_PTG_CAMERA_CONTROL_TOGGLE_HINT",
         localize "STR_MKK_PTG_CAMERA_CONTROL_CLOSE_NOTE",
         _titleSize,
@@ -120,6 +125,23 @@ if !(isNull _hintDisplay) then {
     _text ctrlCommit 0;
 
     missionNamespace setVariable ["mkk_ptg_mapCameraHintCtrls", [_bg, _text]];
+
+    private _speedBgRect = [[0.405, 0.055, 0.19, 0.045], _hudScale] call EFUNC(common,scaleRect);
+    private _speedTextRect = [[0.412, 0.062, 0.176, 0.034], _hudScale] call EFUNC(common,scaleRect);
+
+    private _speedBg = _hintDisplay ctrlCreate ["RscText", -1];
+    _speedBg ctrlSetPosition _speedBgRect;
+    _speedBg ctrlSetBackgroundColor [0, 0, 0, 0.68];
+    _speedBg ctrlShow false;
+    _speedBg ctrlCommit 0;
+
+    private _speedText = _hintDisplay ctrlCreate ["RscStructuredText", -1];
+    _speedText ctrlSetPosition _speedTextRect;
+    _speedText ctrlSetBackgroundColor [0, 0, 0, 0];
+    _speedText ctrlShow false;
+    _speedText ctrlCommit 0;
+
+    missionNamespace setVariable ["mkk_ptg_mapCameraSpeedCtrls", [_speedBg, _speedText]];
 };
 
 private _display = findDisplay 46;
@@ -143,6 +165,24 @@ if !(isNull _display) then {
         private _state = missionNamespace getVariable ["mkk_ptg_mapCameraState", createHashMap];
         private _speed = ((_state getOrDefault ["speed", 45]) + (_scroll * 5)) max 5 min 250;
         _state set ["speed", _speed];
+        _state set ["speedIndicatorUntil", diag_tickTime + 1.2];
+
+        private _speedCtrls = missionNamespace getVariable ["mkk_ptg_mapCameraSpeedCtrls", []];
+        {
+            if !(isNull _x) then {
+                _x ctrlShow true;
+            };
+        } forEach _speedCtrls;
+
+        if ((count _speedCtrls) > 1) then {
+            private _speedText = _speedCtrls # 1;
+            if !(isNull _speedText) then {
+                _speedText ctrlSetStructuredText parseText format [
+                    "<t align='center' size='1.05' font='RobotoCondensedBold' color='#F2F2F2'>%1</t>",
+                    format [localize "STR_MKK_PTG_CAMERA_SPEED_VALUE", round _speed]
+                ];
+            };
+        };
     }];
 
 
@@ -169,6 +209,13 @@ if !(isNull _display) then {
     private _keyDownEH = _display displayAddEventHandler ["KeyDown", {
         params ["_display", "_key"];
         if !(missionNamespace getVariable ["mkk_ptg_mapCameraRunning", false]) exitWith {false};
+
+        if (_key == DIK_N) exitWith {
+            private _enabled = !(missionNamespace getVariable ["mkk_ptg_mapCameraNightVision", false]);
+            missionNamespace setVariable ["mkk_ptg_mapCameraNightVision", _enabled];
+            camUseNVG _enabled;
+            true
+        };
 
         if (_key == DIK_F1) exitWith {
             private _visible = !(missionNamespace getVariable ["mkk_ptg_mapCameraHintVisible", true]);
@@ -231,6 +278,16 @@ if !(isNull _display) then {
         private _pitch = _state getOrDefault ["pitch", -20];
         private _speed = _state getOrDefault ["speed", 45];
         private _keys = _state getOrDefault ["keys", []];
+        private _speedIndicatorUntil = _state getOrDefault ["speedIndicatorUntil", 0];
+        if (_speedIndicatorUntil > 0 && {diag_tickTime > _speedIndicatorUntil}) then {
+            private _speedCtrls = missionNamespace getVariable ["mkk_ptg_mapCameraSpeedCtrls", []];
+            {
+                if !(isNull _x) then {
+                    _x ctrlShow false;
+                };
+            } forEach _speedCtrls;
+            _state set ["speedIndicatorUntil", 0];
+        };
 
         private _multiplier = [1, 3] select (DIK_LSHIFT in _keys || {DIK_RSHIFT in _keys});
         private _step = _speed * _multiplier * _dt;
