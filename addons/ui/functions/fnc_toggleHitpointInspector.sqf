@@ -443,39 +443,24 @@ private _pfh = [{
             _offColor
         ] call _fncCreateSegmentRing;
 
-        private _centerBgH = _circleH * 0.48;
-        private _centerBgW = _centerBgH * _xScale;
-
-        private _centerBg = [
-            _display,
-            "RscText",
-            [
-                _centerX - (_centerBgW / 2),
-                _centerY - (_centerBgH / 2),
-                _centerBgW,
-                _centerBgH
-            ],
-            [0.015, 0.018, 0.025, 0.92]
-        ] call _fncCreateCtrl;
-
-        _allControls pushBack _centerBg;
-
+        private _percentTextH = _circleH * 0.42;
+        private _percentTextY = _centerY - (_percentTextH / 2) - (_circleH * 0.055);
         private _percentText = [
             _display,
             "RscStructuredText",
             [
                 _centerX - (_circleW / 2),
-                _centerY - (_circleH * 0.125),
+                _percentTextY,
                 _circleW,
-                _circleH * 0.28
+                _percentTextH
             ],
             [0, 0, 0, 0]
         ] call _fncCreateCtrl;
 
         _percentText ctrlSetStructuredText parseText format [
-    "<t align='center' size='%1' color='#FFFFFF' shadow='1'>0%%</t>",
-    (((1.12 * _uiTextScale) max 1.00) min 1.42) toFixed 2
-];
+            "<t align='center' size='%1' color='#FFFFFF' shadow='1'>0</t>",
+            (((1.12 * _uiTextScale) max 1.00) min 1.42) toFixed 2
+        ];
 
         _allControls pushBack _percentText;
 
@@ -962,7 +947,7 @@ private _pfh = [{
     ];
 
     _vehPercentText ctrlSetStructuredText parseText format [
-        "<t align='center' size='%2' color='#FFFFFF' shadow='1'>%1%%</t>",
+        "<t align='center' size='%2' color='#FFFFFF' shadow='1'>%1</t>",
         _vehPercent,
         _livePercentSize toFixed 2
     ];
@@ -1020,7 +1005,7 @@ private _pfh = [{
         ];
 
         _percentText ctrlSetStructuredText parseText format [
-            "<t align='center' size='%2' color='#FFFFFF' shadow='1'>%1%%</t>",
+            "<t align='center' size='%2' color='#FFFFFF' shadow='1'>%1</t>",
             _percent,
             _livePercentSize toFixed 2
         ];
