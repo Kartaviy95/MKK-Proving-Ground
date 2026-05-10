@@ -87,7 +87,7 @@
         false
     },
     {},
-    [DIK_ESCAPE, [false, false, false]]
+    [DIK_F, [false, false, false]]
 ] call CBA_fnc_addKeybind;
 
 [
