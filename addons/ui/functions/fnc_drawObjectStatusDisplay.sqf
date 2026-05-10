@@ -35,7 +35,7 @@ private _fmtSize = {
     str ([(_value * _fontScale * 1.5), 2] call BIS_fnc_cutDecimals)
 };
 
-if (visibleMap || {!isNull (findDisplay 88000)} || {!isNull (findDisplay 88900)}) exitWith {
+if (visibleMap || {!isNull (findDisplay 88000)} || {!isNull (findDisplay 88900)} || {!isNull (findDisplay 89000)}) exitWith {
     [_hud] call _hideHud;
 };
 
