@@ -9,6 +9,7 @@ private _varName = switch (_setting) do {
     case "distance": {"mkk_ptg_objectStatusShowDistance"};
     case "damage": {"mkk_ptg_objectStatusShowDamage"};
     case "allowDamage": {"mkk_ptg_objectStatusShowAllowDamage"};
+    case "crew": {"mkk_ptg_objectStatusShowCrew"};
     case "hitpoints": {"mkk_ptg_objectStatusShowHitpoints"};
     case "hpHull": {"mkk_ptg_objectStatusHpHull"};
     case "hpEngine": {"mkk_ptg_objectStatusHpEngine"};

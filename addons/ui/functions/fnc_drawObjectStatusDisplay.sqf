@@ -160,6 +160,7 @@ private _showClass = ["mkk_ptg_objectStatusShowClass", true] call _fncGetBool;
 private _showDistance = ["mkk_ptg_objectStatusShowDistance", true] call _fncGetBool;
 private _showDamage = ["mkk_ptg_objectStatusShowDamage", true] call _fncGetBool;
 private _showAllowDamage = ["mkk_ptg_objectStatusShowAllowDamage", true] call _fncGetBool;
+private _showCrew = ["mkk_ptg_objectStatusShowCrew", true] call _fncGetBool;
 private _showHitpoints = ["mkk_ptg_objectStatusShowHitpoints", false] call _fncGetBool;
 private _showHpHull = ["mkk_ptg_objectStatusHpHull", true] call _fncGetBool;
 private _showHpEngine = ["mkk_ptg_objectStatusHpEngine", true] call _fncGetBool;
@@ -247,6 +248,97 @@ if (_showAllowDamage) then {
         [0.64] call _fmtSize,
         [0.80] call _fmtSize
     ];
+};
+
+if (_showCrew && {_target isKindOf "AllVehicles"} && {!(_target isKindOf "Man")}) then {
+    private _fncGetTurretConfig = {
+        params ["_path"];
+
+        private _slotCfg = configFile >> "CfgVehicles" >> _className >> "Turrets";
+        {
+            if (_x < count _slotCfg) then {
+                _slotCfg = _slotCfg select _x;
+                if (_forEachIndex < ((count _path) - 1)) then {
+                    _slotCfg = _slotCfg >> "Turrets";
+                };
+            } else {
+                _slotCfg = configNull;
+            };
+        } forEach _path;
+
+        _slotCfg
+    };
+
+    private _fncGetCrewRoleText = {
+        params ["_role", "_turretPath"];
+
+        _role = toLowerANSI _role;
+
+        if (_role isEqualTo "driver") exitWith {localize "STR_MKK_PTG_CREW_DRIVER"};
+        if (_role isEqualTo "commander") exitWith {localize "STR_MKK_PTG_CREW_COMMANDER"};
+        if (_role isEqualTo "gunner") exitWith {localize "STR_MKK_PTG_CREW_GUNNER"};
+
+        private _cfg = [_turretPath] call _fncGetTurretConfig;
+        if (isNull _cfg) exitWith {""};
+
+        private _slotName = [getText (_cfg >> "gunnerName")] call EFUNC(common,localizeString);
+        if (_slotName isEqualTo "") then {
+            _slotName = [getText (_cfg >> "displayName")] call EFUNC(common,localizeString);
+        };
+
+        private _lowerName = toLower _slotName;
+        private _lowerCfgName = toLower configName _cfg;
+        if ((_lowerName find "loader") >= 0 || {(_lowerCfgName find "loader") >= 0} || {(_lowerName find "заряжа") >= 0}) exitWith {
+            localize "STR_MKK_PTG_CREW_LOADER"
+        };
+
+        if ((getNumber (_cfg >> "primaryCommander")) > 0 || {(getNumber (_cfg >> "primaryObserver")) > 0}) exitWith {
+            localize "STR_MKK_PTG_CREW_COMMANDER"
+        };
+
+        if ((getNumber (_cfg >> "primaryGunner")) > 0 || {_role isEqualTo "turret"}) exitWith {
+            localize "STR_MKK_PTG_CREW_GUNNER"
+        };
+
+        ""
+    };
+
+    private _crewRows = [];
+    {
+        private _unit = _x param [0, objNull];
+        if (!isNull _unit && {!isPlayer _unit}) then {
+            private _role = _x param [1, ""];
+            private _turretPath = _x param [3, []];
+            private _roleText = [_role, _turretPath] call _fncGetCrewRoleText;
+
+            if (_roleText isNotEqualTo "") then {
+                _crewRows pushBack [_unit, _roleText];
+            };
+        };
+    } forEach (fullCrew [_target, "", false]);
+
+    _lines pushBack format ["<t size='%2' color='#7FD7FF'>%1</t>", localize "STR_MKK_PTG_CREW", [0.64] call _fmtSize];
+
+    if (_crewRows isEqualTo []) then {
+        _lines pushBack format ["<t size='%2' color='#9FB6C2'>%1</t>", localize "STR_MKK_PTG_NO_CREW", [0.66] call _fmtSize];
+    } else {
+        {
+            _x params ["_unit", "_roleText"];
+
+            private _stateAlive = alive _unit;
+            private _stateText = [localize "STR_MKK_PTG_DEAD", localize "STR_MKK_PTG_ALIVE"] select _stateAlive;
+            private _stateColor = ["#FF6B5E", "#67E58B"] select _stateAlive;
+
+            _lines pushBack format [
+                "<t size='%4' color='#9FB6C2'>%1</t> <t size='%5' color='%3'>%2</t>",
+                _roleText,
+                _stateText,
+                _stateColor,
+                [0.66] call _fmtSize,
+                [0.70] call _fmtSize
+            ];
+        } forEach _crewRows;
+    };
 };
 
 if (_showHitpoints) then {
