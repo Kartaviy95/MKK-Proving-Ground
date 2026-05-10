@@ -35,6 +35,7 @@ private _settings = [
     ["distance", "mkk_ptg_objectStatusShowDistance", true, localize "STR_MKK_PTG_DISTANCE", true],
     ["damage", "mkk_ptg_objectStatusShowDamage", true, localize "STR_MKK_PTG_TOTAL_DAMAGE_SHORT", true],
     ["allowDamage", "mkk_ptg_objectStatusShowAllowDamage", true, localize "STR_MKK_PTG_ALLOW_DAMAGE", true],
+    ["crew", "mkk_ptg_objectStatusShowCrew", true, localize "STR_MKK_PTG_CREW", true],
     ["hitpoints", "mkk_ptg_objectStatusShowHitpoints", false, localize "STR_MKK_PTG_HITPOINTS", true],
     ["hpHull", "mkk_ptg_objectStatusHpHull", true, localize "STR_MKK_PTG_HP_HULL", missionNamespace getVariable ["mkk_ptg_objectStatusShowHitpoints", false]],
     ["hpEngine", "mkk_ptg_objectStatusHpEngine", true, localize "STR_MKK_PTG_HP_ENGINE", missionNamespace getVariable ["mkk_ptg_objectStatusShowHitpoints", false]],
@@ -45,12 +46,12 @@ private _settings = [
 
 private _allControls = [];
 private _panelX = 0.32;
-private _panelY = 0.16;
+private _panelY = 0.12;
 private _panelW = 0.36;
-private _panelH = 0.66;
+private _panelH = 0.74;
 private _pad = 0.018;
-private _rowH = 0.038;
-private _rowGap = 0.010;
+private _rowH = 0.034;
+private _rowGap = 0.006;
 private _checkSize = 0.024;
 private _checkedTexture = "\A3\ui_f\data\gui\RscCommon\RscCheckBox\CheckBox_checked_ca.paa";
 private _uncheckedTexture = "\A3\ui_f\data\gui\RscCommon\RscCheckBox\CheckBox_unchecked_ca.paa";
@@ -122,7 +123,7 @@ private _fncCreateToggle = {
 
 [localize "STR_MKK_PTG_OBJECT_STATUS_FIELDS"] call _fncCreateSection;
 {
-    if (_forEachIndex < 5) then {
+    if (_forEachIndex < 6) then {
         _x call _fncCreateToggle;
     };
 } forEach _settings;
@@ -130,7 +131,7 @@ private _fncCreateToggle = {
 _curY = _curY + 0.008;
 [localize "STR_MKK_PTG_OBJECT_STATUS_HITPOINTS"] call _fncCreateSection;
 {
-    if (_forEachIndex >= 5) then {
+    if (_forEachIndex >= 6) then {
         _x call _fncCreateToggle;
     };
 } forEach _settings;

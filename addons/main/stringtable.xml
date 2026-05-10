@@ -213,6 +213,22 @@
             <English>Crew</English>
             <Russian>Экипаж</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_CREW_COMMANDER">
+            <English>Commander</English>
+            <Russian>Командир</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CREW_DRIVER">
+            <English>Driver</English>
+            <Russian>Водитель</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CREW_GUNNER">
+            <English>Gunner</English>
+            <Russian>Стрелок</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_CREW_LOADER">
+            <English>Loader</English>
+            <Russian>Заряжающий</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_DAMAGE">
             <English>Damage</English>
             <Russian>Повреждение</Russian>
