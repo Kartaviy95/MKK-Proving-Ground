@@ -1,3 +1,4 @@
+PREP(backToDashboard);
 PREP(collectDamageReport);
 PREP(createTestShot);
 PREP(buildExplosionAmmoCatalog);

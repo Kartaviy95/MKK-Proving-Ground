@@ -123,9 +123,19 @@ class MKK_PTG_ExplosionDisplay {
             idc = 89032;
             x = 0.325;
             y = 0.842;
-            w = 0.44;
+            w = 0.27;
             h = 0.045;
             text = "$STR_MKK_PTG_EXPLOSION_NOTE";
+        };
+
+        class BackBtn: MKK_PTG_RscButton {
+            idc = 89051;
+            x = 0.615;
+            y = 0.842;
+            w = 0.16;
+            h = 0.04;
+            text = "$STR_MKK_PTG_BACK";
+            action = QUOTE([] call FUNC(backToDashboard));
         };
 
         class CloseBtn: MKK_PTG_RscButtonDanger {
