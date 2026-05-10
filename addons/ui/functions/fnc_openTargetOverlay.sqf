@@ -7,6 +7,7 @@ if (isNull _display) exitWith {};
 
 [] call FUNC(closeRearmOverlay);
 uiNamespace setVariable ["mkk_ptg_targetOverlayVisible", true];
+uiNamespace setVariable ["mkk_ptg_targetOverlayLastMode", ""];
 
 {
     (_display displayCtrl _x) ctrlShow true;

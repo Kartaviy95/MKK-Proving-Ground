@@ -15,8 +15,8 @@ if (_className isEqualTo "") exitWith {
 };
 
 private _distance = parseNumber ctrlText (_display displayCtrl 88315);
-private _sector = parseNumber ctrlText (_display displayCtrl 88316);
+private _patrolRadius = parseNumber ctrlText (_display displayCtrl 88316);
 private _airRadius = parseNumber ctrlText (_display displayCtrl 88317);
 private _airHeight = parseNumber ctrlText (_display displayCtrl 88318);
 
-[_mode, _className, player, _distance, _sector, _airRadius, _airHeight] call EFUNC(spawn,requestSpawnTarget);
+[_mode, _className, player, _distance, _patrolRadius, _airRadius, _airHeight] call EFUNC(spawn,requestSpawnTarget);
