@@ -1061,6 +1061,10 @@
             <English>Teleport complete.</English>
             <Russian>Телепорт выполнен.</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_TELEPORT_CURRENT_LOCATION">
+            <English>Current location: %1</English>
+            <Russian>Текущее местоположение: %1</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_TEST_AMMO">
             <English>Ammo</English>
             <Russian>Боеприпас</Russian>
