@@ -61,11 +61,7 @@ if (!_enabled) exitWith {};
             private _maxAmmo = getNumber (configFile >> "CfgMagazines" >> _magazine >> "count");
             if (_maxAmmo <= 0) exitWith {};
 
-            if !(_magazine in magazines _unit) then {
-                _unit addMagazine _magazine;
-            };
-
-            _unit setAmmo [_weapon, _maxAmmo];
+            [_unit, _weapon, _weapon, _magazine, _maxAmmo] call FUNC(refillWeaponMagazine);
         };
 
         {

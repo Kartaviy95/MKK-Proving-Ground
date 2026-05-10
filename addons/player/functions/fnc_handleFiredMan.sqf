@@ -29,16 +29,7 @@ if (_maxAmmo <= 0) exitWith {};
             _vehicle setVehicleAmmo 1;
         };
 
-        private _weaponToRefill = _weapon;
-        if !(_muzzle in ["", _weapon]) then {
-            _weaponToRefill = _muzzle;
-        };
-
-        if !(_magazine in magazines _unit) then {
-            _unit addMagazine _magazine;
-        };
-
-        _unit setAmmo [_weaponToRefill, _maxAmmo];
+        [_unit, _weapon, _muzzle, _magazine, _maxAmmo] call FUNC(refillWeaponMagazine);
     },
     [_unit, _weapon, _muzzle, _magazine, _maxAmmo]
 ] call CBA_fnc_execNextFrame;
