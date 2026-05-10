@@ -10,20 +10,21 @@ params [
 if (!hasInterface || {isNull _unit}) exitWith {};
 
 private _wasEnabled = _unit getVariable ["mkk_ptg_godModeUnitEnabled", false];
+private _previousAllowDamageKey = "mkk_ptg_godModePreviousDamageAllowed";
 _unit setVariable ["mkk_ptg_godModeUnitEnabled", _enabled, true];
 
 if !(isNil "ace_common_fnc_statusEffect_set") then {
     [_unit, "blockDamage", "mkk_ptg_god_mode", _enabled] call ace_common_fnc_statusEffect_set;
-} else {
-    private _previousAllowDamageKey = "mkk_ptg_godModePreviousDamageAllowed";
+};
 
-    if (_enabled && {!_wasEnabled}) then {
+if (_enabled) then {
+    if !(_wasEnabled) then {
         _unit setVariable [_previousAllowDamageKey, isDamageAllowed _unit];
     };
 
-    if (_enabled) then {
-        _unit allowDamage false;
-    } else {
+    _unit allowDamage false;
+} else {
+    if (_wasEnabled) then {
         _unit allowDamage (_unit getVariable [_previousAllowDamageKey, true]);
         _unit setVariable [_previousAllowDamageKey, nil];
     };
