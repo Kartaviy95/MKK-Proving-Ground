@@ -107,7 +107,7 @@ class MKK_PTG_ExplosionDisplay {
             y = 0.790;
             w = 0.12;
             h = 0.04;
-            text = "300";
+            text = "1000";
         };
 
         class Map: RscMapControl {

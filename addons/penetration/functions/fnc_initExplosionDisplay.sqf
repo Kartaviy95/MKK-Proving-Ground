@@ -9,7 +9,7 @@ uiNamespace setVariable ["mkk_ptg_explosionDisplay", _display];
 missionNamespace setVariable ["mkk_ptg_explosionAmmoClass", ""];
 
 private _ctrlHeight = _display displayCtrl 89031;
-private _restoreHeight = missionNamespace getVariable ["mkk_ptg_explosionRestoreHeight", "300"];
+private _restoreHeight = missionNamespace getVariable ["mkk_ptg_explosionRestoreHeight", "1000"];
 _ctrlHeight ctrlSetText _restoreHeight;
 
 private _ctrlSearch = _display displayCtrl 89010;

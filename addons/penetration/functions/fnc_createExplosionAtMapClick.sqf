@@ -6,7 +6,7 @@
 params [
     ["_ammoClass", ""],
     ["_pos2D", [], [[]]],
-    ["_height", 300, [0]],
+    ["_height", 1000, [0]],
     ["_requestor", objNull]
 ];
 
