@@ -124,7 +124,7 @@ class MKK_PTG_MainDisplay {
         class DashboardPrepareTitle: MKK_PTG_RscDashboardLabel {
             idc = 88143;
             x = 0.092;
-            y = 0.180;
+            y = 0.172;
             w = 0.236;
             h = 0.030;
             text = "$STR_MKK_PTG_DASHBOARD_PREPARE_TITLE";
@@ -133,7 +133,7 @@ class MKK_PTG_MainDisplay {
         class DashboardAnalyzeTitle: MKK_PTG_RscDashboardLabel {
             idc = 88144;
             x = 0.382;
-            y = 0.180;
+            y = 0.172;
             w = 0.236;
             h = 0.030;
             text = "$STR_MKK_PTG_DASHBOARD_ANALYZE_TITLE";
@@ -142,7 +142,7 @@ class MKK_PTG_MainDisplay {
         class DashboardSystemTitle: MKK_PTG_RscDashboardLabel {
             idc = 88145;
             x = 0.672;
-            y = 0.180;
+            y = 0.172;
             w = 0.236;
             h = 0.030;
             text = "$STR_MKK_PTG_DASHBOARD_SYSTEM_TITLE";
@@ -151,27 +151,27 @@ class MKK_PTG_MainDisplay {
         class DashboardPrepareHint: MKK_PTG_RscDashboardHint {
             idc = 88146;
             x = 0.092;
-            y = 0.210;
+            y = 0.202;
             w = 0.236;
-            h = 0.045;
+            h = 0.058;
             text = "$STR_MKK_PTG_DASHBOARD_PREPARE_HINT";
         };
 
         class DashboardAnalyzeHint: MKK_PTG_RscDashboardHint {
             idc = 88147;
             x = 0.382;
-            y = 0.210;
+            y = 0.202;
             w = 0.236;
-            h = 0.045;
+            h = 0.058;
             text = "$STR_MKK_PTG_DASHBOARD_ANALYZE_HINT";
         };
 
         class DashboardSystemHint: MKK_PTG_RscDashboardHint {
             idc = 88148;
             x = 0.672;
-            y = 0.210;
+            y = 0.202;
             w = 0.236;
-            h = 0.045;
+            h = 0.058;
             text = "$STR_MKK_PTG_DASHBOARD_SYSTEM_HINT";
         };
 
