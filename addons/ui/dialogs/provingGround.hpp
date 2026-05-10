@@ -124,7 +124,7 @@ class MKK_PTG_MainDisplay {
         class DashboardPrepareTitle: MKK_PTG_RscDashboardLabel {
             idc = 88143;
             x = 0.092;
-            y = 0.180;
+            y = 0.172;
             w = 0.236;
             h = 0.030;
             text = "$STR_MKK_PTG_DASHBOARD_PREPARE_TITLE";
@@ -133,7 +133,7 @@ class MKK_PTG_MainDisplay {
         class DashboardAnalyzeTitle: MKK_PTG_RscDashboardLabel {
             idc = 88144;
             x = 0.382;
-            y = 0.180;
+            y = 0.172;
             w = 0.236;
             h = 0.030;
             text = "$STR_MKK_PTG_DASHBOARD_ANALYZE_TITLE";
@@ -142,7 +142,7 @@ class MKK_PTG_MainDisplay {
         class DashboardSystemTitle: MKK_PTG_RscDashboardLabel {
             idc = 88145;
             x = 0.672;
-            y = 0.180;
+            y = 0.172;
             w = 0.236;
             h = 0.030;
             text = "$STR_MKK_PTG_DASHBOARD_SYSTEM_TITLE";
@@ -151,27 +151,27 @@ class MKK_PTG_MainDisplay {
         class DashboardPrepareHint: MKK_PTG_RscDashboardHint {
             idc = 88146;
             x = 0.092;
-            y = 0.210;
+            y = 0.202;
             w = 0.236;
-            h = 0.045;
+            h = 0.058;
             text = "$STR_MKK_PTG_DASHBOARD_PREPARE_HINT";
         };
 
         class DashboardAnalyzeHint: MKK_PTG_RscDashboardHint {
             idc = 88147;
             x = 0.382;
-            y = 0.210;
+            y = 0.202;
             w = 0.236;
-            h = 0.045;
+            h = 0.058;
             text = "$STR_MKK_PTG_DASHBOARD_ANALYZE_HINT";
         };
 
         class DashboardSystemHint: MKK_PTG_RscDashboardHint {
             idc = 88148;
             x = 0.672;
-            y = 0.210;
+            y = 0.202;
             w = 0.236;
-            h = 0.045;
+            h = 0.058;
             text = "$STR_MKK_PTG_DASHBOARD_SYSTEM_HINT";
         };
 
@@ -259,7 +259,7 @@ class MKK_PTG_MainDisplay {
         class DashboardTrackingBtn: MKK_PTG_RscButtonSecondary {
             idc = 88102;
             x = 0.385;
-            y = 0.326;
+            y = 0.319;
             w = 0.230;
             h = 0.046;
             text = "$STR_MKK_PTG_PROJECTILE_TRACKING";
@@ -271,7 +271,7 @@ class MKK_PTG_MainDisplay {
         class DashboardTrajectoryBtn: MKK_PTG_RscButtonSecondary {
             idc = 88110;
             x = 0.385;
-            y = 0.382;
+            y = 0.368;
             w = 0.190;
             h = 0.046;
             text = "$STR_MKK_PTG_TRAJECTORY_LINES";
@@ -283,7 +283,7 @@ class MKK_PTG_MainDisplay {
         class DashboardTrajectorySettingsBtn: MKK_PTG_RscSettingsButton {
             idc = 88118;
             x = 0.580;
-            y = 0.382;
+            y = 0.368;
             w = 0.035;
             h = 0.046;
             text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
@@ -295,7 +295,7 @@ class MKK_PTG_MainDisplay {
         class DashboardMapMarkerBtn: MKK_PTG_RscButtonSecondary {
             idc = 88111;
             x = 0.385;
-            y = 0.438;
+            y = 0.417;
             w = 0.190;
             h = 0.046;
             text = "$STR_MKK_PTG_MAP_PROJECTILE_MARKERS";
@@ -307,7 +307,7 @@ class MKK_PTG_MainDisplay {
         class DashboardMapMarkerSettingsBtn: MKK_PTG_RscSettingsButton {
             idc = 88119;
             x = 0.580;
-            y = 0.438;
+            y = 0.417;
             w = 0.035;
             h = 0.046;
             text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
@@ -319,7 +319,7 @@ class MKK_PTG_MainDisplay {
         class DashboardObjectStatusBtn: MKK_PTG_RscButtonPrimary {
             idc = 88115;
             x = 0.385;
-            y = 0.494;
+            y = 0.466;
             w = 0.190;
             h = 0.046;
             text = "$STR_MKK_PTG_OBJECT_STATUS_DISPLAY";
@@ -331,7 +331,7 @@ class MKK_PTG_MainDisplay {
         class DashboardObjectStatusSettingsBtn: MKK_PTG_RscSettingsButton {
             idc = 88117;
             x = 0.580;
-            y = 0.494;
+            y = 0.466;
             w = 0.035;
             h = 0.046;
             text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
@@ -343,7 +343,7 @@ class MKK_PTG_MainDisplay {
         class DashboardHitpointInspectorBtn: MKK_PTG_RscButtonPrimary {
             idc = 88116;
             x = 0.385;
-            y = 0.550;
+            y = 0.515;
             w = 0.230;
             h = 0.046;
             text = "$STR_MKK_PTG_HITPOINT_INSPECTOR";
@@ -355,13 +355,25 @@ class MKK_PTG_MainDisplay {
         class DashboardPenetrationBtn: MKK_PTG_RscButtonDisabledTile {
             idc = 88109;
             x = 0.385;
-            y = 0.606;
+            y = 0.564;
             w = 0.230;
             h = 0.046;
             text = "$STR_MKK_PTG_PENETRATION_TEST_DEV";
             action = "";
             enabled = 0;
             onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_PENETRATION'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
+        };
+
+        class DashboardExplosionBtn: MKK_PTG_RscButtonPrimary {
+            idc = 88123;
+            x = 0.385;
+            y = 0.613;
+            w = 0.230;
+            h = 0.046;
+            text = "$STR_MKK_PTG_CREATE_EXPLOSION";
+            action = QUOTE([] call EFUNC(penetration,openExplosionDisplay));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_EXPLOSION'] call FUNC(setDashboardInfoText));
             onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
