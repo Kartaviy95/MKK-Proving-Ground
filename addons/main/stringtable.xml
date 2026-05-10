@@ -605,10 +605,6 @@
             <English>MKK Proving Ground</English>
             <Russian>MKK Proving Ground</Russian>
         </Key>
-        <Key ID="STR_MKK_PTG_VERSION">
-            <English>Version: %1</English>
-            <Russian>Версия: %1</Russian>
-        </Key>
         <Key ID="STR_MKK_PTG_NO">
             <English>No</English>
             <Russian>Нет</Russian>
@@ -965,9 +961,9 @@
             <English>Ground Vehicles</English>
             <Russian>Наземная техника</Russian>
         </Key>
-        <Key ID="STR_MKK_PTG_TARGET_MOVE_SECTOR">
-            <English>Movement Sector</English>
-            <Russian>Сектор движения</Russian>
+        <Key ID="STR_MKK_PTG_TARGET_PATROL_RADIUS">
+            <English>Patrol Radius</English>
+            <Russian>Радиус патруля</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_RED_BOT">
             <English>Red bot — O_Survivor_F</English>
@@ -1100,6 +1096,10 @@
         <Key ID="STR_MKK_PTG_VEHICLE_SPAWN">
             <English>Vehicle Spawner</English>
             <Russian>Создание техники</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_VERSION">
+            <English>Version: %1</English>
+            <Russian>Версия: %1</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_YES">
             <English>Yes</English>

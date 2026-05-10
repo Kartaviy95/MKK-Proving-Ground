@@ -7,8 +7,8 @@ params [
     ["_mode", "bot"],
     ["_className", ""],
     ["_requestor", objNull],
-    ["_distance", 5],
-    ["_sector", 50],
+    ["_distance", 50],
+    ["_patrolRadius", 50],
     ["_airRadius", 150],
     ["_airHeight", 100]
 ];
@@ -21,7 +21,7 @@ if !([_requestor] call EFUNC(main,isAuthorized)) exitWith {
 
 private _maxDistance = missionNamespace getVariable ["mkk_ptg_spawnMaxDistance", 3500];
 _distance = (_distance max 1) min _maxDistance;
-_sector = (_sector max 5) min 1000;
+_patrolRadius = (_patrolRadius max 5) min 1000;
 _airRadius = (_airRadius max 25) min 3000;
 _airHeight = (_airHeight max 10) min 2000;
 
@@ -35,7 +35,7 @@ if (_mode isEqualTo "air" && {!(_className isKindOf "Air")}) exitWith {};
     _className,
     _requestor,
     _distance,
-    _sector,
+    _patrolRadius,
     _airRadius,
     _airHeight
 ] call FUNC(serverSpawnTarget);

@@ -16,6 +16,11 @@ lbClear _ctrlList;
 
 private _showGround = _mode isEqualTo "ground";
 private _showAir = _mode isEqualTo "air";
+private _lastMode = uiNamespace getVariable ["mkk_ptg_targetOverlayLastMode", ""];
+if (_mode isNotEqualTo _lastMode) then {
+    (_display displayCtrl 88315) ctrlSetText (["50", "5"] select (_mode isEqualTo "bot"));
+    uiNamespace setVariable ["mkk_ptg_targetOverlayLastMode", _mode];
+};
 {
     (_display displayCtrl _x) ctrlShow _showGround;
 } forEach [88305, 88316];

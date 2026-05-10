@@ -760,7 +760,7 @@ class MKK_PTG_MainDisplay {
             y = 0.375;
             w = 0.18;
             h = 0.03;
-            text = "$STR_MKK_PTG_TARGET_MOVE_SECTOR";
+            text = "$STR_MKK_PTG_TARGET_PATROL_RADIUS";
         };
 
         class TargetSectorEdit: MKK_PTG_RscEdit {
