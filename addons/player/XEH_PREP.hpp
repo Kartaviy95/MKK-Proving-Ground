@@ -1,6 +1,7 @@
 PREP(applyGodMode);
 PREP(applyInfiniteAmmo);
 PREP(blockAceMedicalDamage);
+PREP(handleDamage);
 PREP(handleFiredMan);
 PREP(registerPlayerHandlers);
 PREP(refillWeaponMagazine);

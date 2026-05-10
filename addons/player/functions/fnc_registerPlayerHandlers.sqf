@@ -25,8 +25,12 @@ if !(hasInterface) exitWith {};
                 private _firedEH = player addEventHandler ["FiredMan", {
                     _this call FUNC(handleFiredMan);
                 }];
+                private _damageEH = player addEventHandler ["HandleDamage", {
+                    _this call FUNC(handleDamage);
+                }];
 
                 player setVariable ["mkk_ptg_playerFiredEH", _firedEH];
+                player setVariable ["mkk_ptg_playerDamageEH", _damageEH];
                 player setVariable ["mkk_ptg_playerHandlersAdded", true];
             };
 
