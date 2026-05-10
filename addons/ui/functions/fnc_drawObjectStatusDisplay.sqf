@@ -75,7 +75,7 @@ private _fncNormalizeModelPath = {
         _path = _path select [1];
     };
 
-    if !((_path select [((count _path) - 4) max 0, 4]) isEqualTo ".p3d") then {
+    if ((_path select [((count _path) - 4) max 0, 4]) isNotEqualTo ".p3d") then {
         _path = _path + ".p3d";
     };
 
@@ -129,8 +129,8 @@ private _fncGetModelClassName = {
 
     private _cacheMiss = "__mkk_ptg_cache_miss__";
     private _cached = _cache getOrDefault [_modelPath, _cacheMiss];
-    if !(_cached isEqualTo _cacheMiss) exitWith {
-        if !(_cached isEqualTo "") then {
+    if (_cached isNotEqualTo _cacheMiss) exitWith {
+        if (_cached isNotEqualTo "") then {
             _cached
         } else {
             [_modelInfo, _removeModelExtension] call _getModelFallbackClassName
