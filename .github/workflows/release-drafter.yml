@@ -16,7 +16,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Release Drafter
-              if: github.repository == 'SolidGames-MKK/sg_mods'
+              if: github.repository == 'Kartaviy95/MKK-Proving-Ground'
               uses: release-drafter/release-drafter@v6
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
