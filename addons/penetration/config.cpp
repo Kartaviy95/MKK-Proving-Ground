@@ -22,12 +22,15 @@ class CfgPatches {
 class MKK_PTG_RscButton;
 class MKK_PTG_RscButtonDanger;
 class MKK_PTG_RscEdit;
+class MKK_PTG_RscCombo;
 class MKK_PTG_RscListbox;
 class MKK_PTG_RscPicture;
 class MKK_PTG_RscStructuredText;
 class MKK_PTG_RscText;
+class RscMapControl;
 
 #include "dialogs\penetrationTest.hpp"
+#include "dialogs\explosionTool.hpp"
 
 class RscTitles {
     class MKK_PTG_PenetrationReportHUD {

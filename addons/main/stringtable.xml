@@ -193,6 +193,10 @@
             <English>No object under cursor.</English>
             <Russian>Под прицелом нет объекта.</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_CREATE_EXPLOSION">
+            <English>Create Explosion</English>
+            <Russian>Создать взрыв</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_CREATE_TARGET">
             <English>Create Target</English>
             <Russian>Создать цель</Russian>
@@ -240,6 +244,10 @@
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_CLOSE">
             <English>Closes the proving ground menu.</English>
             <Russian>Закрывает меню полигона.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_EXPLOSION">
+            <English>Opens a map tool for creating selected explosive projectiles at a chosen point.</English>
+            <Russian>Открывает карту для создания выбранных взрывных снарядов в указанной точке.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_GOD_MODE">
             <English>Toggles player damage protection, including ACE medical damage.</English>
@@ -376,6 +384,54 @@
         <Key ID="STR_MKK_PTG_ENABLED">
             <English>enabled</English>
             <Russian>включен</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_AMMO_EMPTY">
+            <English>Select an explosive round, set height, then click the map.</English>
+            <Russian>Выберите взрывной боеприпас, задайте высоту и нажмите на карту.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_BAD_HEIGHT">
+            <English>Enter a height greater than zero.</English>
+            <Russian>Введите высоту больше нуля.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_CATEGORY">
+            <English>Category</English>
+            <Russian>Категория</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_CREATED">
+            <English>Projectile created: %1, height %2 m.</English>
+            <Russian>Снаряд создан: %1, высота %2 м.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_GROUP_ATGM">
+            <English>ATGM / Missiles</English>
+            <Russian>ПТРК / управляемые ракеты</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_GROUP_BOMBS">
+            <English>Bombs</English>
+            <Russian>Бомбы</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_GROUP_MORTARS">
+            <English>Mortar Rounds</English>
+            <Russian>Миномётные мины</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_GROUP_ROCKETS">
+            <English>Rockets</English>
+            <Russian>Ракеты</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_HEIGHT">
+            <English>Height, m</English>
+            <Russian>Высота, м</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_HEIGHT_TOO_LOW">
+            <English>Height is lower than submunition triggerDistance (%1 m). Increase height to avoid a stuck projectile sound.</English>
+            <Russian>Высота ниже submunition triggerDistance (%1 м). Увеличьте высоту, чтобы избежать зацикленного звука снаряда.</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_MAP">
+            <English>Map Click Target</English>
+            <Russian>Точка на карте</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_NOTE">
+            <English>LMB on the map creates the selected projectile above that point and sends it down.</English>
+            <Russian>ЛКМ по карте создаёт выбранный снаряд над точкой и направляет его вниз.</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_FACTION">
             <English>Faction</English>
@@ -1025,6 +1081,10 @@
             <English>Trajectory line: %1</English>
             <Russian>Линия траектории: %1</Russian>
         </Key>
+        <Key ID="STR_MKK_PTG_TRIGGER_DISTANCE">
+            <English>triggerDistance</English>
+            <Russian>triggerDistance</Russian>
+        </Key>
         <Key ID="STR_MKK_PTG_TYPE">
             <English>Type</English>
             <Russian>Тип</Russian>
@@ -1072,6 +1132,10 @@
         <Key ID="STR_MKK_PTG_TYPE_UAV">
             <English>UAV</English>
             <Russian>БПЛА</Russian>
+        </Key>
+        <Key ID="STR_MKK_PTG_TYPICAL_SPEED">
+            <English>typicalSpeed</English>
+            <Russian>typicalSpeed</Russian>
         </Key>
         <Key ID="STR_MKK_PTG_UNKNOWN">
             <English>Unknown</English>

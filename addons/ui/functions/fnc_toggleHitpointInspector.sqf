@@ -123,7 +123,7 @@ private _pfh = [{
     private _controls = uiNamespace getVariable [_hudVarName, []];
     private _isVisible = uiNamespace getVariable [_visibleVarName, false];
 
-    if (visibleMap || {!isNull (findDisplay 88000)} || {!isNull (findDisplay 88900)}) exitWith {
+    if (visibleMap || {!isNull (findDisplay 88000)} || {!isNull (findDisplay 88900)} || {!isNull (findDisplay 89000)}) exitWith {
         if (_isVisible) then {
             [_controls, false] call _fncSetHudVisible;
             uiNamespace setVariable [_visibleVarName, false];
