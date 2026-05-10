@@ -26,6 +26,17 @@ class MKK_PTG_MainDisplay {
             sizeEx = 0.038;
         };
 
+        class Version: MKK_PTG_RscText {
+            idc = 88005;
+            x = 0.50;
+            y = 0.060;
+            w = 0.18;
+            h = 0.035;
+            text = "";
+            colorText[] = {0.55,0.68,0.76,1};
+            sizeEx = 0.026;
+        };
+
         class Author: MKK_PTG_RscText {
             idc = 88004;
             x = 0.70;
