@@ -63,7 +63,7 @@ HUD tracking показывает:
 
 Текст HUD должен быть локализован через stringtable.
 
-Tracking запускается для локального игрока и техники/статики, которой он управляет, через `FiredMan` и `Fired` handlers. Камера слежения крепится к projectile и закрывается той же настраиваемой CBA-клавишей “Закрыть камеру”, что и свободная камера (по умолчанию Escape). Tracking ограничивается `mkk_ptg_trackingMaxTime` и cooldown `mkk_ptg_trackingCooldown`.
+Tracking запускается для локального игрока и техники/статики, которой он управляет, через `FiredMan` и `Fired` handlers. Камера слежения крепится к projectile и закрывается той же настраиваемой CBA-клавишей “Закрыть камеру”, что и свободная камера (по умолчанию F). Tracking ограничивается `mkk_ptg_trackingMaxTime` и cooldown `mkk_ptg_trackingCooldown`.
 
 18. Линия траектории пули
 
