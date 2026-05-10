@@ -65,6 +65,97 @@ private _fncGetBool = {
     missionNamespace getVariable [_varName, _default]
 };
 
+private _fncNormalizeModelPath = {
+    params [["_path", ""]];
+
+    _path = toLowerANSI _path;
+    if (_path isEqualTo "") exitWith {""};
+
+    if ((_path select [0, 1]) isEqualTo "\") then {
+        _path = _path select [1];
+    };
+
+    if !((_path select [((count _path) - 4) max 0, 4]) isEqualTo ".p3d") then {
+        _path = _path + ".p3d";
+    };
+
+    _path
+};
+
+private _fncRemoveModelExtension = {
+    params [["_modelName", ""]];
+
+    if (_modelName isEqualTo "") exitWith {""};
+
+    private _p3dIndex = (toLowerANSI _modelName) find ".p3d";
+    if (_p3dIndex >= 0) then {
+        _modelName = _modelName select [0, _p3dIndex];
+    };
+
+    _modelName
+};
+
+private _fncGetModelFallbackClassName = {
+    params ["_modelInfo", "_removeModelExtension"];
+
+    private _modelName = _modelInfo param [0, ""];
+    if (_modelName isEqualTo "") then {
+        private _modelPath = _modelInfo param [1, ""];
+        private _pathParts = _modelPath splitString "\/";
+        if (_pathParts isNotEqualTo []) then {
+            _modelName = _pathParts # ((count _pathParts) - 1);
+        };
+    };
+
+    _modelName = [_modelName] call _removeModelExtension;
+    if (_modelName isEqualTo "") exitWith {""};
+
+    format ["Land_%1", _modelName]
+};
+
+private _fncGetModelClassName = {
+    params ["_object", "_normalizeModelPath", "_removeModelExtension", "_getModelFallbackClassName"];
+
+    private _modelInfo = getModelInfo _object;
+    private _modelPath = [_modelInfo param [1, ""]] call _normalizeModelPath;
+    if (_modelPath isEqualTo "") exitWith {
+        [_modelInfo, _removeModelExtension] call _getModelFallbackClassName
+    };
+
+    private _cache = missionNamespace getVariable ["mkk_ptg_objectStatusModelClassCache", createHashMap];
+    if !(_cache isEqualType createHashMap) then {
+        _cache = createHashMap;
+    };
+
+    private _cacheMiss = "__mkk_ptg_cache_miss__";
+    private _cached = _cache getOrDefault [_modelPath, _cacheMiss];
+    if !(_cached isEqualTo _cacheMiss) exitWith {
+        if !(_cached isEqualTo "") then {
+            _cached
+        } else {
+            [_modelInfo, _removeModelExtension] call _getModelFallbackClassName
+        }
+    };
+
+    private _className = "";
+    {
+        {
+            if (_className isEqualTo "" && {([getText (_x >> "model")] call _normalizeModelPath) isEqualTo _modelPath}) then {
+                _className = configName _x;
+            };
+        } forEach ("true" configClasses _x);
+    } forEach [configFile >> "CfgVehicles", configFile >> "CfgNonAIVehicles"];
+
+    if (_className isEqualTo "") then {
+        _className = [_modelInfo, _removeModelExtension] call _getModelFallbackClassName;
+    };
+
+    _cache set [_modelPath, _className];
+    missionNamespace setVariable ["mkk_ptg_objectStatusModelClassCache", _cache];
+
+    _className
+};
+
 private _showClass = ["mkk_ptg_objectStatusShowClass", true] call _fncGetBool;
 private _showDistance = ["mkk_ptg_objectStatusShowDistance", true] call _fncGetBool;
 private _showDamage = ["mkk_ptg_objectStatusShowDamage", true] call _fncGetBool;
@@ -78,6 +169,9 @@ private _showHpGun = ["mkk_ptg_objectStatusHpGun", true] call _fncGetBool;
 
 private _distance = round (_viewer distance _target);
 private _className = typeOf _target;
+if (_className isEqualTo "") then {
+    _className = [_target, _fncNormalizeModelPath, _fncRemoveModelExtension, _fncGetModelFallbackClassName] call _fncGetModelClassName;
+};
 if (_className isEqualTo "") then {
     _className = localize "STR_MKK_PTG_UNKNOWN";
 };
