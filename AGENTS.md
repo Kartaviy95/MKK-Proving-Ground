@@ -57,7 +57,7 @@
 - Диалоги, компоновка, UX, карточка техники, камера, перевооружение: `docs/ptg/ui-ux.md`.
 - Динамический каталог техники, фильтры, спавн, очистка: `docs/ptg/catalog-and-spawn.md`.
 - Телепорт, камера, tracking, trajectory, markers, status display, penetration test, keybinds, режимы игрока: `docs/ptg/features.md`.
-- Границы модулей и правила локализации: `docs/ptg/architecture-and-локализацию.md`.
+- Границы модулей и правила локализации: `docs/ptg/architecture-and-localization.md`.
 - Полный исходный дизайн: `docs/ptg/design-full.md`, только если раздельных документов недостаточно.
 
 ## Перед правками кода
