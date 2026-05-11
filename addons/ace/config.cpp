@@ -8,6 +8,7 @@ class CfgPatches {
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {QUOTE(MAIN_ADDON), "ace_interact_menu"};
+        skipWhenMissingDependencies = 1;
         VERSION_CONFIG;
     };
 };

@@ -72,7 +72,7 @@ ace — ACE self actions и terminal actions.
 `ptg_tracking` требует `ptg_main` и `ptg_common`;
 `ptg_ui` требует `ptg_main`, `ptg_common` и `ptg_player`;
 `ptg_penetration` требует `ptg_main`, `ptg_ui`, `ptg_catalog`, `ptg_spawn`, `ptg_tracking`;
-`ptg_ace` требует `ptg_main` и `ace_interact_menu`;
+`ptg_ace` требует `ptg_main` и `ace_interact_menu`, использует `skipWhenMissingDependencies = 1`;
 `ptg_player_ace` требует `ptg_player` и `ace_medical_damage`, использует `skipWhenMissingDependencies = 1`.
 
 Основные UI-поверхности:

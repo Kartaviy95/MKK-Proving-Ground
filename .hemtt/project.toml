@@ -8,11 +8,26 @@ git_hash = 0
 
 [files]
 exclude = ["*.md", "*c4d", "*.xcf", "*.pptx"]
-include = ["./include", "mod.paa"]
+include = [
+    "./include",
+    "mod.cpp",
+    "meta.cpp",
+    "logo_128.paa",
+    "logo_over.paa",
+    "logo_small.paa",
+    "logo.paa",
+]
+
+[properties]
+author = "MKK"
+
+[signing]
+authority = "mkk_ptg"
+version = 3
 
 [hemtt.build]
 optional_mod_folders = false # Default: true
 
 [hemtt.release]
-sign = false    # Default: true
-archive = false # Default: true
+sign = true     # Creates .bisign files and a public .bikey for Steam/server use.
+archive = true  # Creates release zip files under releases/.

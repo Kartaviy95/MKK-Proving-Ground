@@ -1,0 +1,15 @@
+name = "MKK Proving Ground";
+picture = "logo_over.paa";
+logoSmall = "logo_small.paa";
+logo = "logo_128.paa";
+logoOver = "logo_over.paa";
+tooltip = "MKK Proving Ground";
+tooltipOwned = "MKK Proving Ground";
+overview = "MKK Proving Ground — военный технический полигон для Arma 3: каталог и спавн техники, телепорт и свободная камера, перевооружение, тестовые цели, tracking снарядов, линии траектории, map markers, статус-дисплей объектов, инспектор hitpoints, тест пробития и режимы игрока для отладки.";
+author = "Kartaviy, Tarantino";
+actionName = "GitHub";
+action = "https://github.com/Kartaviy95/MKK-Proving-Ground";
+hideName = 0;
+hidePicture = 0;
+dlcColor[] = {0.00, 0.62, 0.64, 1.00};
+overviewText = "MKK Proving Ground — военный технический полигон для Arma 3: каталог и спавн техники, телепорт и свободная камера, перевооружение, тестовые цели, tracking снарядов, линии траектории, map markers, статус-дисплей объектов, инспектор hitpoints, тест пробития и режимы игрока для отладки.";

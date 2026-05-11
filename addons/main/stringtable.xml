@@ -4,1190 +4,1487 @@
         <Key ID="STR_MKK_PTG_AIR_FRICTION">
             <English>airFriction</English>
             <Russian>airFriction</Russian>
+            <German>airFriction</German>
         </Key>
         <Key ID="STR_MKK_PTG_ALIVE">
             <English>alive</English>
             <Russian>жив</Russian>
+            <German>lebendig</German>
         </Key>
         <Key ID="STR_MKK_PTG_ALL">
             <English>All</English>
             <Russian>Все</Russian>
+            <German>Alle</German>
         </Key>
         <Key ID="STR_MKK_PTG_ALLOW_DAMAGE">
             <English>Get Damage:</English>
             <Russian>Получать урон:</Russian>
+            <German>Schaden erhalten:</German>
         </Key>
         <Key ID="STR_MKK_PTG_AMMO_CLASS_COPIED">
             <English>Ammo class copied: %1</English>
             <Russian>Класс ammo скопирован: %1</Russian>
+            <German>Munitionsklasse kopiert: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_AMMO_PARAMS">
             <English>Ammo Parameters</English>
             <Russian>Параметры боеприпаса</Russian>
+            <German>Munitionsparameter</German>
         </Key>
         <Key ID="STR_MKK_PTG_AMMO_PARAMS_EMPTY">
             <English>Select ammo to see its config parameters.</English>
             <Russian>Выберите боеприпас, чтобы увидеть параметры конфига.</Russian>
+            <German>Munition auswählen, um die Config-Parameter anzuzeigen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_AUTHOR">
             <English>by Kartaviy, Tarantino</English>
             <Russian>by Kartaviy, Tarantino</Russian>
+            <German>by Kartaviy, Tarantino</German>
         </Key>
         <Key ID="STR_MKK_PTG_BACK">
             <English>Back</English>
             <Russian>Назад</Russian>
+            <German>Zurück</German>
         </Key>
         <Key ID="STR_MKK_PTG_BLUFOR">
             <English>BLUFOR</English>
             <Russian>BLUFOR</Russian>
+            <German>BLUFOR</German>
         </Key>
         <Key ID="STR_MKK_PTG_CALIBER">
             <English>caliber</English>
             <Russian>caliber</Russian>
+            <German>caliber</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA">
             <English>Camera</English>
             <Russian>Камера</Russian>
+            <German>Kamera</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROLS_TITLE">
             <English>Camera Controls</English>
             <Russian>Управление камерой</Russian>
+            <German>Kamerasteuerung</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_CLOSE_NOTE">
             <English>Close camera key is configurable in addon controls.</English>
             <Russian>Кнопка закрытия камеры настраивается в управлении аддона.</Russian>
+            <German>Die Taste zum Schließen der Kamera ist in der Addon-Steuerung konfigurierbar.</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_DOWN">
             <English>down</English>
             <Russian>вниз</Russian>
+            <German>abwärts</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_FORWARD_BACK">
             <English>forward / back</English>
             <Russian>вперёд / назад</Russian>
+            <German>vorwärts / rückwärts</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_LEFT_RIGHT">
             <English>left / right</English>
             <Russian>влево / вправо</Russian>
+            <German>links / rechts</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_LMB">
             <English>LMB</English>
             <Russian>ЛКМ</Russian>
+            <German>LMB</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_LOOK">
             <English>look around</English>
             <Russian>обзор</Russian>
+            <German>umsehen</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_MOUSE">
             <English>Mouse</English>
             <Russian>Мышь</Russian>
+            <German>Maus</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_NIGHT_VISION">
             <English>night vision on / off</English>
             <Russian>ночное видение вкл. / выкл.</Russian>
+            <German>Nachtsicht ein / aus</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_RELOCATE">
             <English>move camera to clicked area</English>
             <Russian>перенести камеру в выбранную область</Russian>
+            <German>Kamera zum angeklickten Bereich bewegen</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_SPEED">
             <English>faster</English>
             <Russian>ускорение</Russian>
+            <German>schneller</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_SPEED_CHANGE">
             <English>change speed</English>
             <Russian>смена скорости</Russian>
+            <German>Geschwindigkeit ändern</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_TOGGLE_HINT">
             <English>show / hide this menu</English>
             <Russian>показать / скрыть меню</Russian>
+            <German>dieses Menü anzeigen / ausblenden</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_UP">
             <English>up</English>
             <Russian>вверх</Russian>
+            <German>aufwärts</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_WHEEL">
             <English>Wheel</English>
             <Russian>Колесо</Russian>
+            <German>Mausrad</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_SELECT_MAP_POINT">
             <English>Open the map and left-click the area where the camera should appear.</English>
             <Russian>Откройте карту и нажмите ЛКМ по области, где должна появиться камера.</Russian>
+            <German>Öffne die Karte und klicke mit LMT auf den Bereich, in dem die Kamera erscheinen soll.</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_SPEED_VALUE">
             <English>Camera speed: %1 m/s</English>
             <Russian>Скорость камеры: %1 м/с</Russian>
+            <German>Kamerageschwindigkeit: %1 m/s</German>
         </Key>
         <Key ID="STR_MKK_PTG_CIVILIAN">
             <English>Civilian</English>
             <Russian>Гражданские</Russian>
+            <German>Zivilisten</German>
         </Key>
         <Key ID="STR_MKK_PTG_CLASS">
             <English>Class</English>
             <Russian>Класс</Russian>
+            <German>Klasse</German>
         </Key>
         <Key ID="STR_MKK_PTG_CLASS_COPIED">
             <English>Class copied: %1</English>
             <Russian>Класс скопирован: %1</Russian>
+            <German>Klasse kopiert: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_CLEANUP_RANGE">
             <English>Cleanup Range</English>
             <Russian>Очистить полигон</Russian>
+            <German>Testgelände räumen</German>
         </Key>
         <Key ID="STR_MKK_PTG_CLOSE">
             <English>Close</English>
             <Russian>Закрыть</Russian>
+            <German>Schließen</German>
         </Key>
         <Key ID="STR_MKK_PTG_CLOSE_CAMERA">
             <English>Close Camera</English>
             <Russian>Закрыть камеру</Russian>
+            <German>Kamera schließen</German>
         </Key>
         <Key ID="STR_MKK_PTG_COLOR">
             <English>Color</English>
             <Russian>Цвет</Russian>
+            <German>Farbe</German>
         </Key>
         <Key ID="STR_MKK_PTG_COLOR_CYAN">
             <English>Cyan</English>
             <Russian>Голубой</Russian>
+            <German>Cyan</German>
         </Key>
         <Key ID="STR_MKK_PTG_COLOR_GREEN">
             <English>Green</English>
             <Russian>Зеленый</Russian>
+            <German>Grün</German>
         </Key>
         <Key ID="STR_MKK_PTG_COLOR_MAGENTA">
             <English>Magenta</English>
             <Russian>Пурпурный</Russian>
+            <German>Magenta</German>
         </Key>
         <Key ID="STR_MKK_PTG_COLOR_RED">
             <English>Red</English>
             <Russian>Красный</Russian>
+            <German>Rot</German>
         </Key>
         <Key ID="STR_MKK_PTG_COLOR_WHITE">
             <English>White</English>
             <Russian>Белый</Russian>
+            <German>Weiß</German>
         </Key>
         <Key ID="STR_MKK_PTG_COLOR_YELLOW">
             <English>Yellow</English>
             <Russian>Желтый</Russian>
+            <German>Gelb</German>
         </Key>
         <Key ID="STR_MKK_PTG_COMPATIBLE_AMMO_BOX">
             <English>Compatible Ammo Box</English>
             <Russian>Совместимый ящик БК</Russian>
+            <German>Kompatible Munitionskiste</German>
         </Key>
         <Key ID="STR_MKK_PTG_CONDITION">
             <English>Condition</English>
             <Russian>Состояние</Russian>
+            <German>Zustand</German>
         </Key>
         <Key ID="STR_MKK_PTG_COPY_AMMO_CLASS">
             <English>Copy Ammo Class</English>
             <Russian>Скопировать класс ammo</Russian>
+            <German>Munitionsklasse kopieren</German>
         </Key>
         <Key ID="STR_MKK_PTG_COPY_CLASS">
             <English>Copy Class</English>
             <Russian>Скопировать класс</Russian>
+            <German>Klasse kopieren</German>
         </Key>
         <Key ID="STR_MKK_PTG_COPY_CURSOR_OBJECT_CLASS">
             <English>Copy Cursor Object Class</English>
             <Russian>Скопировать класс объекта под прицелом</Russian>
+            <German>Klasse des Objekts im Fadenkreuz kopieren</German>
         </Key>
         <Key ID="STR_MKK_PTG_COPY_CURSOR_OBJECT_CLASS_NONE">
             <English>No object under cursor.</English>
             <Russian>Под прицелом нет объекта.</Russian>
+            <German>Kein Objekt im Fadenkreuz.</German>
         </Key>
         <Key ID="STR_MKK_PTG_CREATE_EXPLOSION">
             <English>Create Explosion</English>
             <Russian>Создать взрыв</Russian>
+            <German>Explosion erstellen</German>
         </Key>
         <Key ID="STR_MKK_PTG_CREATE_TARGET">
             <English>Create Target</English>
             <Russian>Создать цель</Russian>
+            <German>Ziel erstellen</German>
         </Key>
         <Key ID="STR_MKK_PTG_CREATE_TEST_TARGET">
             <English>Create Test Target</English>
             <Russian>Создать тестовую цель</Russian>
+            <German>Testziel erstellen</German>
         </Key>
         <Key ID="STR_MKK_PTG_CREATE_TEST_TARGET_FIRST">
             <English>Create a test target first.</English>
             <Russian>Сначала создайте тестовую цель.</Russian>
+            <German>Erstelle zuerst ein Testziel.</German>
         </Key>
         <Key ID="STR_MKK_PTG_CREW">
             <English>Crew</English>
             <Russian>Экипаж</Russian>
+            <German>Besatzung</German>
         </Key>
         <Key ID="STR_MKK_PTG_CREW_COMMANDER">
             <English>Commander</English>
             <Russian>Командир</Russian>
+            <German>Kommandant</German>
         </Key>
         <Key ID="STR_MKK_PTG_CREW_DRIVER">
             <English>Driver</English>
             <Russian>Водитель</Russian>
+            <German>Fahrer</German>
         </Key>
         <Key ID="STR_MKK_PTG_CREW_GUNNER">
             <English>Gunner</English>
             <Russian>Стрелок</Russian>
+            <German>Schütze</German>
         </Key>
         <Key ID="STR_MKK_PTG_CREW_LOADER">
             <English>Loader</English>
             <Russian>Заряжающий</Russian>
+            <German>Ladeschütze</German>
         </Key>
         <Key ID="STR_MKK_PTG_DAMAGE">
             <English>Damage</English>
             <Russian>Повреждение</Russian>
+            <German>Schaden</German>
         </Key>
         <Key ID="STR_MKK_PTG_DAMAGE_REPORT">
             <English>Damage Report</English>
             <Russian>Отчет о повреждениях</Russian>
+            <German>Schadensbericht</German>
         </Key>
         <Key ID="STR_MKK_PTG_DAMAGE_REPORT_EMPTY">
             <English>Create a test target and fire a selected round to see damage data.</English>
             <Russian>Создайте тестовую цель и выпустите выбранный снаряд, чтобы увидеть данные повреждений.</Russian>
+            <German>Erstelle ein Testziel und feuere die ausgewählte Munition ab, um Schadensdaten zu sehen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_ANALYZE_HINT">
             <English>Camera, projectile tools, markers, HUD and damage inspection.</English>
             <Russian>Камера, снаряды, маркеры, HUD и инспектор повреждений.</Russian>
+            <German>Kamera, Projektilwerkzeuge, Marker, HUD und Schadensanalyse.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_ANALYZE_TITLE">
             <English>Observation and analysis</English>
             <Russian>Наблюдение и анализ</Russian>
+            <German>Beobachtung und Analyse</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_CAMERA">
             <English>Free camera: pick a map point, then inspect the range from the air.</English>
             <Russian>Свободная камера: выберите точку на карте и осмотрите полигон с воздуха.</Russian>
+            <German>Freie Kamera: Kartenpunkt wählen und das Testgelände aus der Luft prüfen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_CLEANUP">
             <English>Deletes spawned vehicles and targets from the proving ground.</English>
             <Russian>Удаляет созданную технику и мишени с полигона.</Russian>
+            <German>Löscht gespawnte Fahrzeuge und Ziele vom Testgelände.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_CLOSE">
             <English>Closes the proving ground menu.</English>
             <Russian>Закрывает меню полигона.</Russian>
+            <German>Schließt das Menü des Testgeländes.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_EXPLOSION">
             <English>Opens a map tool for creating selected explosive projectiles at a chosen point.</English>
             <Russian>Открывает карту для создания выбранных взрывных снарядов в указанной точке.</Russian>
+            <German>Öffnet ein Kartenwerkzeug, um ausgewählte explosive Projektile an einem gewählten Punkt zu erstellen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_GOD_MODE">
             <English>Toggles player damage protection, including ACE medical damage.</English>
             <Russian>Включает или выключает защиту игрока от урона, включая ACE medical.</Russian>
+            <German>Schaltet Spielerschutz gegen Schaden um, einschließlich ACE medical damage.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_HITPOINT_INSPECTOR">
             <English>Shows compact damage and hitpoint cards for the vehicle under the cursor.</English>
             <Russian>Показывает компактные карточки урона и hitpoints техники под курсором.</Russian>
+            <German>Zeigt kompakte Schadens- und Hitpoint-Karten für das Fahrzeug im Fadenkreuz.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_INFINITE_AMMO">
             <English>Toggles infinite ammo for the local player.</English>
             <Russian>Включает или выключает бесконечные патроны для локального игрока.</Russian>
+            <German>Schaltet unendliche Munition für den lokalen Spieler um.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKERS">
             <English>Tracks fired projectiles with local markers on the map.</English>
             <Russian>Показывает выпущенные снаряды локальными маркерами на карте.</Russian>
+            <German>Verfolgt abgefeuerte Projektile mit lokalen Markern auf der Karte.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKER_AMMO">
             <English>Toggles ammo classname text on projectile map markers.</English>
             <Russian>Включает или выключает classname ammo у маркеров снарядов на карте.</Russian>
+            <German>Schaltet den ammo-classname-Text auf Projektilmarkern um.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKER_SETTINGS">
             <English>Opens settings for projectile map marker labels.</English>
             <Russian>Открывает настройки подписей маркеров снарядов на карте.</Russian>
+            <German>Öffnet Einstellungen für Beschriftungen der Projektilmarker.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_OBJECT_STATUS">
             <English>Shows class, distance, damage and optional hitpoints for the object under the cursor.</English>
             <Russian>Показывает класс, дистанцию, урон и опциональные hitpoints объекта под курсором.</Russian>
+            <German>Zeigt Klasse, Entfernung, Schaden und optionale Hitpoints für das Objekt im Fadenkreuz.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_OBJECT_STATUS_SETTINGS">
             <English>Opens field settings for the object status display.</English>
             <Russian>Открывает настройки полей статус-дисплея объектов.</Russian>
+            <German>Öffnet Feldeinstellungen für die Objektstatusanzeige.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_PENETRATION">
             <English>Armor test screen is currently disabled in the dashboard.</English>
             <Russian>Экран теста пробития сейчас отключен в главном меню.</Russian>
+            <German>Der Panzerungstest ist im Dashboard derzeit deaktiviert.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_REARM">
             <English>Opens vehicle rearm overlay for the vehicle the player is inside.</English>
             <Russian>Открывает перевооружение техники, в которой находится игрок.</Russian>
+            <German>Öffnet das Nachrüstungs-Overlay für das Fahrzeug, in dem der Spieler sitzt.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_TARGETS">
             <English>Opens the target overlay for bots, ground targets and air targets.</English>
             <Russian>Открывает оверлей целей: боты, наземные и воздушные цели.</Russian>
+            <German>Öffnet das Ziel-Overlay für Einheiten, Boden- und Luftziele.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_TELEPORT">
             <English>Moves the player or current vehicle to a selected map point.</English>
             <Russian>Переносит игрока или текущую технику в выбранную точку карты.</Russian>
+            <German>Bewegt den Spieler oder das aktuelle Fahrzeug zu einem gewählten Kartenpunkt.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_TRACKING">
             <English>Toggles projectile tracking after shots from the player or controlled vehicle.</English>
             <Russian>Включает или выключает слежение за снарядами после выстрела игрока или техники.</Russian>
+            <German>Schaltet Projektilverfolgung nach Schüssen des Spielers oder gesteuerten Fahrzeugs um.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_TRAJECTORY">
             <English>Draws recent projectile flight paths in the world.</English>
             <Russian>Рисует последние траектории полета снарядов в мире.</Russian>
+            <German>Zeichnet aktuelle Projektilflugbahnen in der Welt.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_TRAJECTORY_SETTINGS">
             <English>Opens trajectory color and line width settings.</English>
             <Russian>Открывает настройки цвета и толщины линии траектории.</Russian>
+            <German>Öffnet Einstellungen für Farbe und Breite der Flugbahnlinie.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_UNLOCK">
             <English>Unlocks the vehicle currently under the cursor.</English>
             <Russian>Разблокирует технику, на которую наведен курсор.</Russian>
+            <German>Entsperrt das Fahrzeug, auf das der Cursor zeigt.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_VEHICLE">
             <English>Opens the vehicle catalog for search, preview and spawn.</English>
             <Russian>Открывает каталог техники для поиска, просмотра и спавна.</Russian>
+            <German>Öffnet den Fahrzeugkatalog für Suche, Vorschau und Spawn.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_INFO">
             <English>Workflow: prepare vehicle and targets, enable camera/tracking, analyze trajectories and damage, then clean the range when the test is complete.</English>
             <Russian>Сценарий работы: подготовьте технику и цели, включите камеру/слежение, проанализируйте траектории и повреждения, затем очистите полигон после теста.</Russian>
+            <German>Ablauf: Fahrzeuge und Ziele vorbereiten, Kamera/Tracking aktivieren, Flugbahnen und Schaden analysieren, danach das Testgelände räumen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_PREPARE_HINT">
             <English>Vehicles, targets, pylons and position.</English>
             <Russian>Техника, цели, пилоны и позиция.</Russian>
+            <German>Fahrzeuge, Ziele, Pylone und Position.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_PREPARE_INFO">
             <English>Rearm is placed next to vehicle spawn because turret magazines and pylon loadouts are part of test preparation.</English>
             <Russian>Перевооружение находится рядом со спавном техники, потому что магазины турелей и loadout пилонов относятся к подготовке теста.</Russian>
+            <German>Nachrüstung liegt neben dem Fahrzeugspawn, weil Turmmagazine und Pylon-Loadouts zur Testvorbereitung gehören.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_PREPARE_TITLE">
             <English>Creation and preparation</English>
             <Russian>Создание и подготовка</Russian>
+            <German>Erstellung und Vorbereitung</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_SYSTEM_HINT">
             <English>Player assists, interface size and safe exit actions.</English>
             <Russian>Режимы игрока, размер интерфейса и служебные действия.</Russian>
+            <German>Spielerhilfen, Interfacegröße und sichere Beenden-Aktionen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_SYSTEM_INFO">
             <English>Cleanup is isolated as a destructive action. Disabled modules stay visible but muted.</English>
             <Russian>Очистка отделена как опасное действие. Недоступные модули остаются видимыми, но приглушены.</Russian>
+            <German>Räumen ist als destruktive Aktion getrennt. Deaktivierte Module bleiben sichtbar, aber gedämpft.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_SYSTEM_TITLE">
             <English>Player and system</English>
             <Russian>Игрок и система</Russian>
+            <German>Spieler und System</German>
         </Key>
         <Key ID="STR_MKK_PTG_DEAD">
             <English>dead</English>
             <Russian>мертв</Russian>
+            <German>tot</German>
         </Key>
         <Key ID="STR_MKK_PTG_DELETE_CURSOR_OBJECT">
             <English>Delete Cursor Object</English>
             <Russian>Удалить объект под прицелом</Russian>
+            <German>Objekt im Fadenkreuz löschen</German>
         </Key>
         <Key ID="STR_MKK_PTG_DELETE_CURSOR_OBJECT_DONE">
             <English>Object deleted.</English>
             <Russian>Объект удален.</Russian>
+            <German>Objekt gelöscht.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DELETE_CURSOR_OBJECT_NONE">
             <English>No object under cursor.</English>
             <Russian>Под прицелом нет объекта.</Russian>
+            <German>Kein Objekt im Fadenkreuz.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DELETE_CURSOR_OBJECT_PLAYER">
             <English>Player objects cannot be deleted.</English>
             <Russian>Объекты игроков нельзя удалить.</Russian>
+            <German>Spielerobjekte können nicht gelöscht werden.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DELETE_TARGETS">
             <English>Delete Targets</English>
             <Russian>Удалить мишени</Russian>
+            <German>Ziele löschen</German>
         </Key>
         <Key ID="STR_MKK_PTG_DIRECTION_OFFSET">
             <English>Direction Offset, deg.</English>
             <Russian>Угол разворота, град.</Russian>
+            <German>Richtungsoffset, Grad</German>
         </Key>
         <Key ID="STR_MKK_PTG_DISABLED">
             <English>disabled</English>
             <Russian>выключен</Russian>
+            <German>deaktiviert</German>
         </Key>
         <Key ID="STR_MKK_PTG_DISTANCE">
             <English>Distance</English>
             <Russian>Дистанция</Russian>
+            <German>Entfernung</German>
         </Key>
         <Key ID="STR_MKK_PTG_ENABLED">
             <English>enabled</English>
             <Russian>включен</Russian>
+            <German>aktiviert</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_AMMO_EMPTY">
             <English>Select an explosive round, set height, then click the map.</English>
             <Russian>Выберите взрывной боеприпас, задайте высоту и нажмите на карту.</Russian>
+            <German>Explosive Munition auswählen, Höhe setzen und dann auf die Karte klicken.</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_BAD_HEIGHT">
             <English>Enter a height greater than zero.</English>
             <Russian>Введите высоту больше нуля.</Russian>
+            <German>Gib eine Höhe größer als null ein.</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_CATEGORY">
             <English>Category</English>
             <Russian>Категория</Russian>
+            <German>Kategorie</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_CREATED">
             <English>Projectile created: %1, height %2 m.</English>
             <Russian>Снаряд создан: %1, высота %2 м.</Russian>
+            <German>Projektil erstellt: %1, Höhe %2 m.</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_GROUP_ATGM">
             <English>ATGM / Missiles</English>
             <Russian>ПТРК / управляемые ракеты</Russian>
+            <German>ATGM / Raketen</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_GROUP_BOMBS">
             <English>Bombs</English>
             <Russian>Бомбы</Russian>
+            <German>Bomben</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_GROUP_MORTARS">
             <English>Mortar Rounds</English>
             <Russian>Миномётные мины</Russian>
+            <German>Mörsergranaten</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_GROUP_ROCKETS">
             <English>Rockets</English>
             <Russian>Ракеты</Russian>
+            <German>Raketen</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_HEIGHT">
             <English>Height, m</English>
             <Russian>Высота, м</Russian>
+            <German>Höhe, m</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_HEIGHT_TOO_LOW">
             <English>Height is lower than submunition triggerDistance (%1 m). Increase height to avoid a stuck projectile sound.</English>
             <Russian>Высота ниже submunition triggerDistance (%1 м). Увеличьте высоту, чтобы избежать зацикленного звука снаряда.</Russian>
+            <German>Die Höhe liegt unter triggerDistance der Submunition (%1 m). Erhöhe die Höhe, um festhängenden Projektilsound zu vermeiden.</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_MAP">
             <English>Map Click Target</English>
             <Russian>Точка на карте</Russian>
+            <German>Klickziel auf der Karte</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_NOTE">
             <English>LMB on the map creates the selected projectile above that point and sends it down.</English>
             <Russian>ЛКМ по карте создаёт выбранный снаряд над точкой и направляет его вниз.</Russian>
+            <German>LMT auf der Karte erstellt das ausgewählte Projektil über diesem Punkt und schickt es nach unten.</German>
         </Key>
         <Key ID="STR_MKK_PTG_FACTION">
             <English>Faction</English>
             <Russian>Фракция</Russian>
+            <German>Fraktion</German>
         </Key>
         <Key ID="STR_MKK_PTG_FIRE_TEST_ROUND">
             <English>Fire Test Round</English>
             <Russian>Выстрелить снарядом</Russian>
+            <German>Testschuss abfeuern</German>
         </Key>
         <Key ID="STR_MKK_PTG_FOUND">
             <English>Found: %1</English>
             <Russian>Найдено: %1</Russian>
+            <German>Gefunden: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_FOUND_ZERO">
             <English>Found: 0</English>
             <Russian>Найдено: 0</Russian>
+            <German>Gefunden: 0</German>
         </Key>
         <Key ID="STR_MKK_PTG_GOD_MODE">
             <English>God Mode</English>
             <Russian>Режим бога</Russian>
+            <German>Gottmodus</German>
         </Key>
         <Key ID="STR_MKK_PTG_GOD_MODE_STATUS">
             <English>God mode: %1</English>
             <Russian>Режим бога: %1</Russian>
+            <German>Gottmodus: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_GROUP">
             <English>Group</English>
             <Russian>Группа</Russian>
+            <German>Gruppe</German>
         </Key>
         <Key ID="STR_MKK_PTG_HIT">
             <English>hit</English>
             <Russian>hit</Russian>
+            <German>hit</German>
         </Key>
         <Key ID="STR_MKK_PTG_HITPOINTS">
             <English>Hitpoints</English>
             <Russian>Hitpoints</Russian>
+            <German>Hitpoints</German>
         </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR">
             <English>Hitpoint Inspector</English>
             <Russian>Инспектор hitpoints</Russian>
+            <German>Hitpoint-Inspektor</German>
         </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_DISPLAY_MISSING">
             <English>Main game display is not available.</English>
             <Russian>Основной игровой дисплей недоступен.</Russian>
+            <German>Das Hauptdisplay des Spiels ist nicht verfügbar.</German>
         </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_PLAYER_REQUIRED">
             <English>Enter a player unit before enabling hitpoint inspector.</English>
             <Russian>Сначала войдите в юнита, затем включите инспектор hitpoints.</Russian>
+            <German>Steige in eine Spielereinheit ein, bevor der Hitpoint-Inspektor aktiviert wird.</German>
         </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_STATUS">
             <English>Hitpoint inspector: %1</English>
             <Russian>Инспектор hitpoints: %1</Russian>
+            <German>Hitpoint-Inspektor: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_TARGET">
             <English>TARGET</English>
             <Russian>ЦЕЛЬ</Russian>
+            <German>ZIEL</German>
         </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_TITLE">
             <English>HITPOINT INSPECTOR</English>
             <Russian>ИНСПЕКТОР HITPOINTS</Russian>
+            <German>HITPOINT-INSPEKTOR</German>
         </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING">
             <English>Waiting...</English>
             <Russian>Ожидание...</Russian>
+            <German>Warten...</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_AVIONICS">
             <English>Avionics</English>
             <Russian>Авионика</Russian>
+            <German>Avionik</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_ENGINE">
             <English>Engine</English>
             <Russian>Двигатель</Russian>
+            <German>Motor</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_ENGINE_NUMBER">
             <English>Engine %1</English>
             <Russian>Двигатель %1</Russian>
+            <German>Motor %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_FUEL">
             <English>Fuel</English>
             <Russian>Топливо</Russian>
+            <German>Treibstoff</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_FUEL_NUMBER">
             <English>Fuel %1</English>
             <Russian>Топливо %1</Russian>
+            <German>Treibstoff %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_GLASS_NUMBER">
             <English>Glass %1</English>
             <Russian>Стекло %1</Russian>
+            <German>Glas %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_GUN">
             <English>Gun</English>
             <Russian>Пушка</Russian>
+            <German>Geschütz</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_GUN_NUMBER">
             <English>Gun %1</English>
             <Russian>Пушка %1</Russian>
+            <German>Geschütz %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_HULL">
             <English>Hull</English>
             <Russian>Корпус</Russian>
+            <German>Wanne</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_LEFT_FRONT_WHEEL">
             <English>Left front wheel</English>
             <Russian>Левое переднее колесо</Russian>
+            <German>Linkes Vorderrad</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_LEFT_REAR_WHEEL">
             <English>Left rear wheel</English>
             <Russian>Левое заднее колесо</Russian>
+            <German>Linkes Hinterrad</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_LEFT_TRACK">
             <English>Left track</English>
             <Russian>Левая гусеница</Russian>
+            <German>Linke Kette</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_MAIN_ROTOR">
             <English>Main rotor</English>
             <Russian>Главный ротор</Russian>
+            <German>Hauptrotor</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_RIGHT_FRONT_WHEEL">
             <English>Right front wheel</English>
             <Russian>Правое переднее колесо</Russian>
+            <German>Rechtes Vorderrad</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_RIGHT_REAR_WHEEL">
             <English>Right rear wheel</English>
             <Russian>Правое заднее колесо</Russian>
+            <German>Rechtes Hinterrad</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_RIGHT_TRACK">
             <English>Right track</English>
             <Russian>Правая гусеница</Russian>
+            <German>Rechte Kette</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_TAIL_ROTOR">
             <English>Tail rotor</English>
             <Russian>Хвостовой ротор</Russian>
+            <German>Heckrotor</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_TURRET">
             <English>Turret</English>
             <Russian>Башня</Russian>
+            <German>Turm</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_TURRET_NUMBER">
             <English>Turret %1</English>
             <Russian>Башня %1</Russian>
+            <German>Turm %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_INDEPENDENT">
             <English>Independent</English>
             <Russian>Независимые</Russian>
+            <German>Unabhängig</German>
         </Key>
         <Key ID="STR_MKK_PTG_INDIRECT_HIT">
             <English>indirectHit</English>
             <Russian>indirectHit</Russian>
+            <German>indirectHit</German>
         </Key>
         <Key ID="STR_MKK_PTG_INDIRECT_HIT_RANGE">
             <English>indirectHitRange</English>
             <Russian>indirectHitRange</Russian>
+            <German>indirectHitRange</German>
         </Key>
         <Key ID="STR_MKK_PTG_INFINITE_AMMO">
             <English>Infinite Ammo</English>
             <Russian>Бесконечные патроны</Russian>
+            <German>Unendliche Munition</German>
         </Key>
         <Key ID="STR_MKK_PTG_INFINITE_AMMO_STATUS">
             <English>Infinite ammo: %1</English>
             <Russian>Бесконечные патроны: %1</Russian>
+            <German>Unendliche Munition: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_INFO_NOT_FOUND">
             <English>Information not found</English>
             <Russian>Информация не найдена</Russian>
+            <German>Information nicht gefunden</German>
         </Key>
         <Key ID="STR_MKK_PTG_INTERFACE_SIZE">
             <English>Interface size</English>
             <Russian>Размер интерфейса</Russian>
+            <German>Interfacegröße</German>
         </Key>
         <Key ID="STR_MKK_PTG_INTERFACE_SIZE_EXTRA_LARGE">
             <English>Extra large</English>
             <Russian>Очень крупный</Russian>
+            <German>Extra groß</German>
         </Key>
         <Key ID="STR_MKK_PTG_INTERFACE_SIZE_LARGE">
             <English>Large</English>
             <Russian>Крупный</Russian>
+            <German>Groß</German>
         </Key>
         <Key ID="STR_MKK_PTG_INTERFACE_SIZE_NORMAL">
             <English>Normal</English>
             <Russian>Обычный</Russian>
+            <German>Normal</German>
         </Key>
         <Key ID="STR_MKK_PTG_INTERFACE_SIZE_SMALL">
             <English>Small</English>
             <Russian>Малый</Russian>
+            <German>Klein</German>
         </Key>
         <Key ID="STR_MKK_PTG_LINE_WIDTH">
             <English>Line width</English>
             <Russian>Толщина линии</Russian>
+            <German>Linienbreite</German>
         </Key>
         <Key ID="STR_MKK_PTG_LINE_WIDTH_VALUE">
             <English>Width %1</English>
             <Russian>Толщина %1</Russian>
+            <German>Breite %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAGAZINE_CLASS_COPIED">
             <English>Magazine class copied: %1</English>
             <Russian>Класс магазина скопирован: %1</Russian>
+            <German>Magazinklasse kopiert: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_CAMERA_HINT">
             <English>Camera mode: WASD fly, Q up, Z down, Shift speed, mouse look, mouse wheel speed. Close camera key is configurable in addon controls.</English>
             <Russian>Режим камеры: WASD полёт, Q вверх, Z вниз, Shift ускорение, мышь обзор, колесо скорость. Кнопка закрытия настраивается в управлении аддона.</Russian>
+            <German>Kameramodus: WASD fliegen, Q hoch, Z runter, Shift Geschwindigkeit, Mausblick, Mausrad Geschwindigkeit. Die Taste zum Schließen der Kamera ist in der Addon-Steuerung konfigurierbar.</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_MARKERS_STATUS">
             <English>Projectile map markers: %1</English>
             <Russian>Маркеры снарядов на карте: %1</Russian>
+            <German>Projektil-Kartenmarker: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO">
             <English>Ammo Class on Marker</English>
             <Russian>Класс ammo на маркере</Russian>
+            <German>Munitionsklasse am Marker</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO_STATUS">
             <English>Ammo class on marker: %1</English>
             <Russian>Класс ammo на маркере: %1</Russian>
+            <German>Munitionsklasse am Marker: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_MARKER_SETTINGS">
             <English>Map marker settings</English>
             <Russian>Настройки маркеров на карте</Russian>
+            <German>Kartenmarker-Einstellungen</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_PROJECTILE_MARKERS">
             <English>Projectile Map Markers</English>
             <Russian>Маркеры снарядов на карте</Russian>
+            <German>Projektil-Kartenmarker</German>
         </Key>
         <Key ID="STR_MKK_PTG_METERS_SHORT">
             <English>m</English>
             <Russian>м</Russian>
+            <German>m</German>
         </Key>
         <Key ID="STR_MKK_PTG_MOD_NAME">
             <English>MKK Proving Ground</English>
             <Russian>MKK Proving Ground</Russian>
+            <German>MKK Proving Ground</German>
         </Key>
         <Key ID="STR_MKK_PTG_NO">
             <English>No</English>
             <Russian>Нет</Russian>
+            <German>Nein</German>
         </Key>
         <Key ID="STR_MKK_PTG_NO_ACCESS">
             <English>No access to the proving ground.</English>
             <Russian>Нет доступа к полигону.</Russian>
+            <German>Kein Zugriff auf das Testgelände.</German>
         </Key>
         <Key ID="STR_MKK_PTG_NO_AMMO_BOX">
             <English>No ammo box</English>
             <Russian>Без ящика БК</Russian>
+            <German>Keine Munitionskiste</German>
         </Key>
         <Key ID="STR_MKK_PTG_NO_COMPATIBLE_AMMO_BOXES">
             <English>No compatible ammo boxes found.</English>
             <Russian>Совместимые ящики БК не найдены.</Russian>
+            <German>Keine kompatiblen Munitionskisten gefunden.</German>
         </Key>
         <Key ID="STR_MKK_PTG_NO_CREW">
             <English>No crew.</English>
             <Russian>Экипажа нет.</Russian>
+            <German>Keine Besatzung.</German>
         </Key>
         <Key ID="STR_MKK_PTG_NO_HITPOINT_DAMAGE">
             <English>No hitpoint damage recorded.</English>
             <Russian>Повреждения hitpoints не зафиксированы.</Russian>
+            <German>Kein Hitpoint-Schaden aufgezeichnet.</German>
         </Key>
         <Key ID="STR_MKK_PTG_OBJECT_STATUS_DISPLAY">
             <English>Object Status Display</English>
             <Russian>Статус-дисплей объектов</Russian>
+            <German>Objektstatusanzeige</German>
         </Key>
         <Key ID="STR_MKK_PTG_OBJECT_STATUS_DISPLAY_STATUS">
             <English>Object status display: %1</English>
             <Russian>Статус-дисплей объектов: %1</Russian>
+            <German>Objektstatusanzeige: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_OBJECT_STATUS_FIELDS">
             <English>Displayed fields</English>
             <Russian>Показываемые поля</Russian>
+            <German>Angezeigte Felder</German>
         </Key>
         <Key ID="STR_MKK_PTG_OBJECT_STATUS_HITPOINTS">
             <English>Hitpoint fields</English>
             <Russian>Hitpoint-поля</Russian>
+            <German>Hitpoint-Felder</German>
         </Key>
         <Key ID="STR_MKK_PTG_OBJECT_STATUS_SETTINGS">
             <English>Status display settings</English>
             <Russian>Настройки статус-дисплея</Russian>
+            <German>Statusanzeige-Einstellungen</German>
         </Key>
         <Key ID="STR_MKK_PTG_OBJECT_STATUS_TITLE">
             <English>Object Status</English>
             <Russian>Статус объекта</Russian>
+            <German>Objektstatus</German>
         </Key>
         <Key ID="STR_MKK_PTG_OPEN">
             <English>Open MKK Proving Ground</English>
             <Russian>Открыть MKK Proving Ground</Russian>
+            <German>MKK Proving Ground öffnen</German>
         </Key>
         <Key ID="STR_MKK_PTG_OPEN_ACE_ARSENAL">
             <English>Open ACE3 Arsenal</English>
             <Russian>Открыть ACE3 арсенал</Russian>
+            <German>ACE3-Arsenal öffnen</German>
         </Key>
         <Key ID="STR_MKK_PTG_OPEN_SHORT">
             <English>Open Proving Ground</English>
             <Russian>Открыть полигон</Russian>
+            <German>Testgelände öffnen</German>
         </Key>
         <Key ID="STR_MKK_PTG_OPEN_VIRTUAL_ARSENAL">
             <English>Open Virtual Arsenal</English>
             <Russian>Открыть виртуальный арсенал</Russian>
+            <German>Virtuelles Arsenal öffnen</German>
         </Key>
         <Key ID="STR_MKK_PTG_OPFOR">
             <English>OPFOR</English>
             <Russian>OPFOR</Russian>
+            <German>OPFOR</German>
         </Key>
         <Key ID="STR_MKK_PTG_ORBIT_CAMERA">
             <English>Orbit Camera</English>
             <Russian>Камера вокруг цели</Russian>
+            <German>Orbit-Kamera</German>
         </Key>
         <Key ID="STR_MKK_PTG_ORBIT_EXIT_HINT">
             <English>Mouse: rotate / wheel: zoom / ESC: exit camera</English>
             <Russian>Мышь: вращать / колесо: зум / ESC: выйти из камеры</Russian>
+            <German>Maus: drehen / Mausrad: Zoom / ESC: Kamera verlassen</German>
         </Key>
         <Key ID="STR_MKK_PTG_PENETRATION_AIM_HINT">
             <English>Aim at the vehicle and left-click to fire the selected round.</English>
             <Russian>Наведите курсор на технику и нажмите ЛКМ, чтобы выпустить выбранный снаряд.</Russian>
+            <German>Ziele auf das Fahrzeug und klicke mit LMT, um die ausgewählte Munition abzufeuern.</German>
         </Key>
         <Key ID="STR_MKK_PTG_PENETRATION_NOTE">
             <English>MVP mode: the round is fired at the target center, then vehicle hitpoints and crew state are reported.</English>
             <Russian>MVP-режим: снаряд выпускается в центр цели, затем показываются hitpoints техники и состояние экипажа.</Russian>
+            <German>MVP-Modus: Die Munition wird auf die Zielmitte abgefeuert, danach werden Fahrzeug-Hitpoints und Besatzungsstatus gemeldet.</German>
         </Key>
         <Key ID="STR_MKK_PTG_PENETRATION_TEST">
             <English>Armor Test</English>
             <Russian>Тест пробития</Russian>
+            <German>Panzerungstest</German>
         </Key>
         <Key ID="STR_MKK_PTG_PENETRATION_TEST_DEV">
             <English>Armor Test (DEV)</English>
             <Russian>Тест пробития (DEV)</Russian>
+            <German>Panzerungstest (DEV)</German>
         </Key>
         <Key ID="STR_MKK_PTG_PROJECTILE_TRACKING">
             <English>Projectile Tracking</English>
             <Russian>Слежение за пулей</Russian>
+            <German>Projektilverfolgung</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM">
             <English>Rearm</English>
             <Russian>Перевооружение</Russian>
+            <German>Nachrüsten</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_CLEAR_WEAPON">
             <English>Clear weapon</English>
             <Russian>Очистить орудие</Russian>
+            <German>Waffe leeren</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_COMMANDER">
             <English>Commander</English>
             <Russian>Командир</Russian>
+            <German>Kommandant</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_CREW_POSITION">
             <English>Crew position</English>
             <Russian>Место экипажа</Russian>
+            <German>Besatzungsposition</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_CURRENT_VEHICLE">
             <English>Current vehicle</English>
             <Russian>Текущая техника</Russian>
+            <German>Aktuelles Fahrzeug</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_DRIVER">
             <English>Driver / pilot</English>
             <Russian>Водитель / пилот</Russian>
+            <German>Fahrer / Pilot</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_ENTER_VEHICLE">
             <English>Enter a vehicle or static weapon first.</English>
             <Russian>Сначала сядьте в технику или статику.</Russian>
+            <German>Steige zuerst in ein Fahrzeug oder eine statische Waffe ein.</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_GUNNER">
             <English>Gunner</English>
             <Russian>Стрелок</Russian>
+            <German>Schütze</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_LOADED">
             <English>Magazine loaded: %1</English>
             <Russian>Магазин заряжен: %1</Russian>
+            <German>Magazin geladen: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_LOAD_NOW">
             <English>Load now</English>
             <Russian>Зарядить сейчас</Russian>
+            <German>Jetzt laden</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_MAGAZINES">
             <English>Magazines</English>
             <Russian>Магазины</Russian>
+            <German>Magazine</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_MAGAZINE_AMMO">
             <English>ammo</English>
             <Russian>Боеприпас</Russian>
+            <German>Munition</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_MAGAZINE_CLASS">
             <English>Magazine class</English>
             <Russian>Класс магазина</Russian>
+            <German>Magazinklasse</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_MAGAZINE_CLASSNAME">
             <English>className</English>
             <Russian>Класс</Russian>
+            <German>className</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_MAGAZINE_COUNT">
             <English>count</English>
             <Russian>Количество</Russian>
+            <German>Anzahl</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_MAGAZINE_INFO">
             <English>Magazine information</English>
             <Russian>Информация о магазине</Russian>
+            <German>Magazininformation</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_MAGAZINE_INFO_EMPTY">
             <English>Select a magazine to see className, ammo, and count.</English>
             <Russian>Выберите магазин, чтобы увидеть className, ammo и count.</Russian>
+            <German>Wähle ein Magazin, um className, Munition und Anzahl zu sehen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_NOTE">
             <English>Select a crew position, weapon/pylon, and compatible magazine. For pylons the list uses getCompatiblePylonMagazines and applies the loadout to the selected pylon.</English>
             <Russian>Выберите место экипажа, оружие/пилон и совместимый магазин. Для пилонов список берётся через getCompatiblePylonMagazines, а выбранный loadout применяется к выбранному пилону.</Russian>
+            <German>Wähle Besatzungsposition, Waffe/Pylon und kompatibles Magazin. Für Pylone nutzt die Liste getCompatiblePylonMagazines und wendet das Loadout auf den gewählten Pylon an.</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_NO_MAGAZINES">
             <English>No compatible magazines found for this weapon.</English>
             <Russian>Для этого оружия не найдены совместимые магазины.</Russian>
+            <German>Keine kompatiblen Magazine für diese Waffe gefunden.</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_NO_PYLON_MAGAZINES">
             <English>No compatible pylon magazines found for this pylon.</English>
             <Russian>Для этого пилона не найдены совместимые pylon-магазины.</Russian>
+            <German>Keine kompatiblen Pylon-Magazine für diesen Pylon gefunden.</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_NO_WEAPONS">
             <English>No turret weapons found in this vehicle.</English>
             <Russian>В этой технике не найдены орудия на местах экипажа.</Russian>
+            <German>In diesem Fahrzeug wurden keine Turmwaffen gefunden.</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_PYLON">
             <English>Pylon %1</English>
             <Russian>Пилон %1</Russian>
+            <German>Pylon %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_PYLONS">
             <English>Rearm / Pylons</English>
             <Russian>Перевооружение / пилоны</Russian>
+            <German>Nachrüsten / Pylone</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_PYLON_CLEARED">
             <English>Selected pylon cleared.</English>
             <Russian>Выбранный пилон очищен.</Russian>
+            <German>Ausgewählter Pylon geleert.</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_PYLON_CURRENT">
             <English>Pylon %1 current: %2</English>
             <Russian>Пилон %1 сейчас: %2</Russian>
+            <German>Pylon %1 aktuell: %2</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_PYLON_EMPTY">
             <English>empty</English>
             <Russian>пусто</Russian>
+            <German>leer</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_SELECT_MAGAZINE">
             <English>Select a magazine first.</English>
             <Russian>Сначала выберите магазин.</Russian>
+            <German>Wähle zuerst ein Magazin.</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_SELECT_WEAPON">
             <English>Select a weapon first.</English>
             <Russian>Сначала выберите оружие.</Russian>
+            <German>Wähle zuerst eine Waffe.</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_TURRET">
             <English>Turret</English>
             <Russian>Турель</Russian>
+            <German>Turm</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_WEAPONS">
             <English>Weapons</English>
             <Russian>Оружие</Russian>
+            <German>Waffen</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_WEAPON_CLEARED">
             <English>Selected weapon magazines removed globally.</English>
             <Russian>Магазины выбранного орудия удалены глобально.</Russian>
+            <German>Magazine der ausgewählten Waffe global entfernt.</German>
         </Key>
         <Key ID="STR_MKK_PTG_REFRESH">
             <English>Refresh</English>
             <Russian>Обновить</Russian>
+            <German>Aktualisieren</German>
         </Key>
         <Key ID="STR_MKK_PTG_RESET_TEST">
             <English>Reset Test</English>
             <Russian>Сбросить тест</Russian>
+            <German>Test zurücksetzen</German>
         </Key>
         <Key ID="STR_MKK_PTG_SEARCH">
             <English>Search</English>
             <Russian>Поиск</Russian>
+            <German>Suche</German>
         </Key>
         <Key ID="STR_MKK_PTG_SELECT_AMMO_FIRST">
             <English>Select ammo first.</English>
             <Russian>Сначала выберите боеприпас.</Russian>
+            <German>Wähle zuerst Munition.</German>
         </Key>
         <Key ID="STR_MKK_PTG_SELECT_FUNCTION">
             <English>Dashboard: choose the next test step</English>
             <Russian>Панель полигона: выберите следующий шаг теста</Russian>
+            <German>Dashboard: nächsten Testschritt wählen</German>
         </Key>
         <Key ID="STR_MKK_PTG_SELECT_TELEPORT_POINT">
             <English>Select teleport point on the map.</English>
             <Russian>Выберите точку телепорта на карте.</Russian>
+            <German>Teleportpunkt auf der Karte wählen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_SELECT_VEHICLE">
             <English>Select a vehicle</English>
             <Russian>Выберите технику</Russian>
+            <German>Fahrzeug auswählen</German>
         </Key>
         <Key ID="STR_MKK_PTG_SELECT_VEHICLE_FIRST">
             <English>Select a vehicle first.</English>
             <Russian>Сначала выберите технику.</Russian>
+            <German>Wähle zuerst ein Fahrzeug.</German>
         </Key>
         <Key ID="STR_MKK_PTG_SIDE">
             <English>Side</English>
             <Russian>Сторона</Russian>
+            <German>Seite</German>
         </Key>
         <Key ID="STR_MKK_PTG_SOURCE">
             <English>Source</English>
             <Russian>Источник</Russian>
+            <German>Quelle</German>
         </Key>
         <Key ID="STR_MKK_PTG_SPAWN_DISTANCE">
             <English>Spawn Distance, m</English>
             <Russian>Дистанция спавна, м</Russian>
+            <German>Spawn-Entfernung, m</German>
         </Key>
         <Key ID="STR_MKK_PTG_SPAWN_EMPTY">
             <English>Spawn Empty</English>
             <Russian>Создать пустую</Russian>
+            <German>Leer spawnen</German>
         </Key>
         <Key ID="STR_MKK_PTG_SPAWN_WITH_CREW">
             <English>Spawn With Crew</English>
             <Russian>Создать с экипажем</Russian>
+            <German>Mit Besatzung spawnen</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATE_CRITICAL">
             <English>CRITICAL</English>
             <Russian>КРИТИЧНО</Russian>
+            <German>KRITISCH</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATE_DAMAGED">
             <English>DAMAGED</English>
             <Russian>ПОВРЕЖДЕНО</Russian>
+            <German>BESCHÄDIGT</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATE_HEAVY_DAMAGE">
             <English>HEAVY DAMAGE</English>
             <Russian>СИЛЬНО ПОВРЕЖДЕНО</Russian>
+            <German>SCHWER BESCHÄDIGT</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATE_NOMINAL">
             <English>NOMINAL</English>
             <Russian>НОРМА</Russian>
+            <German>NOMINAL</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATUS_GOD_MODE">
             <English>God</English>
             <Russian>Бог</Russian>
+            <German>Gott</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATUS_HITPOINTS">
             <English>HP</English>
             <Russian>HP</Russian>
+            <German>HP</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATUS_INFINITE_AMMO">
             <English>Inf. ammo</English>
             <Russian>Беск. патроны</Russian>
+            <German>Unendl. Mun.</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATUS_MAP_MARKERS">
             <English>Markers</English>
             <Russian>Марк.</Russian>
+            <German>Markers</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATUS_OBJECT_STATUS">
             <English>Status</English>
             <Russian>Статус</Russian>
+            <German>Status</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATUS_OFF">
             <English>OFF</English>
             <Russian>ВЫКЛ</Russian>
+            <German>AUS</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATUS_ON">
             <English>ON</English>
             <Russian>ВКЛ</Russian>
+            <German>EIN</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATUS_TRACKING">
             <English>Track</English>
             <Russian>Слеж.</Russian>
+            <German>Track</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATUS_TRAJECTORY">
             <English>Traj.</English>
             <Russian>Траект.</Russian>
+            <German>Flugb.</German>
         </Key>
         <Key ID="STR_MKK_PTG_SUBMUNITION_AMMO">
             <English>submunitionAmmo</English>
             <Russian>submunitionAmmo</Russian>
+            <German>submunitionAmmo</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_AIR">
             <English>Air Targets</English>
             <Russian>Воздушные цели</Russian>
+            <German>Luftziele</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_AIR_HEIGHT">
             <English>Flight Height</English>
             <Russian>Высота полета</Russian>
+            <German>Flughöhe</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_AIR_RADIUS">
             <English>Movement Radius</English>
             <Russian>Радиус движения</Russian>
+            <German>Bewegungsradius</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_BLUE_BOT">
             <English>Blue bot — B_Survivor_F</English>
             <Russian>Синий бот — B_Survivor_F</Russian>
+            <German>Blauer Bot — B_Survivor_F</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_BOTS">
             <English>Bots</English>
             <Russian>Боты</Russian>
+            <German>Bots</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_GREEN_BOT">
             <English>Green bot — I_Survivor_F</English>
             <Russian>Зеленый бот — I_Survivor_F</Russian>
+            <German>Grüner Bot — I_Survivor_F</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_GROUND">
             <English>Ground Vehicles</English>
             <Russian>Наземная техника</Russian>
+            <German>Bodenfahrzeuge</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_PATROL_RADIUS">
             <English>Patrol Radius</English>
             <Russian>Радиус патруля</Russian>
+            <German>Patrouillenradius</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_RED_BOT">
             <English>Red bot — O_Survivor_F</English>
             <Russian>Красный бот — O_Survivor_F</Russian>
+            <German>Roter Bot — O_Survivor_F</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_SELECT">
             <English>Select Target</English>
             <Russian>Выбор цели</Russian>
+            <German>Ziel auswählen</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_SELECT_FIRST">
             <English>Select a target first.</English>
             <Russian>Сначала выберите цель.</Russian>
+            <German>Wähle zuerst ein Ziel.</German>
         </Key>
         <Key ID="STR_MKK_PTG_TARGET_TYPE">
             <English>Target Type</English>
             <Russian>Тип цели</Russian>
+            <German>Zieltyp</German>
         </Key>
         <Key ID="STR_MKK_PTG_TELEPORT">
             <English>Teleport</English>
             <Russian>Телепорт</Russian>
-        </Key>
-        <Key ID="STR_MKK_PTG_TELEPORT_DONE">
-            <English>Teleport complete.</English>
-            <Russian>Телепорт выполнен.</Russian>
+            <German>Teleport</German>
         </Key>
         <Key ID="STR_MKK_PTG_TELEPORT_CURRENT_LOCATION">
             <English>Current location: %1</English>
             <Russian>Текущее местоположение: %1</Russian>
+            <German>Aktuelle Position: %1</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_TELEPORT_DONE">
+            <English>Teleport complete.</English>
+            <Russian>Телепорт выполнен.</Russian>
+            <German>Teleport abgeschlossen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_TEST_AMMO">
             <English>Ammo</English>
             <Russian>Боеприпас</Russian>
+            <German>Munition</German>
         </Key>
         <Key ID="STR_MKK_PTG_TEST_VEHICLE">
             <English>Test Vehicle</English>
             <Russian>Тестовая техника</Russian>
+            <German>Testfahrzeug</German>
         </Key>
         <Key ID="STR_MKK_PTG_TOTAL_DAMAGE">
             <English>Total Damage Received</English>
             <Russian>Общий полученный урон</Russian>
+            <German>Gesamter erlittener Schaden</German>
         </Key>
         <Key ID="STR_MKK_PTG_TOTAL_DAMAGE_SHORT">
             <English>Total Damage</English>
             <Russian>Общий урон</Russian>
+            <German>Gesamtschaden</German>
         </Key>
         <Key ID="STR_MKK_PTG_TRACKING_HUD">
             <English>MKK Projectile Tracking&lt;br/&gt;Ammo class: %1&lt;br/&gt;Flight time: %2 sec&lt;br/&gt;Distance: %3 m&lt;br/&gt;Mode: %4&lt;br/&gt;Speed: %5 m/s</English>
             <Russian>MKK Projectile Tracking&lt;br/&gt;Класс боеприпаса: %1&lt;br/&gt;Время полета: %2 сек&lt;br/&gt;Дистанция: %3 м&lt;br/&gt;Режим: %4&lt;br/&gt;Скорость: %5 м/с</Russian>
+            <German>MKK-Projektilverfolgung&lt;br/&gt;Munitionsklasse: %1&lt;br/&gt;Flugzeit: %2 Sek.&lt;br/&gt;Entfernung: %3 m&lt;br/&gt;Modus: %4&lt;br/&gt;Geschwindigkeit: %5 m/s</German>
         </Key>
         <Key ID="STR_MKK_PTG_TRACKING_STATUS">
             <English>Tracking: %1</English>
             <Russian>Tracking: %1</Russian>
+            <German>Tracking: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_TRAJECTORY_LINES">
             <English>Bullet Trajectory Line</English>
             <Russian>Линия траектории пули</Russian>
+            <German>Geschossflugbahnlinie</German>
         </Key>
         <Key ID="STR_MKK_PTG_TRAJECTORY_SETTINGS">
             <English>Trajectory line settings</English>
             <Russian>Настройки линии траектории</Russian>
+            <German>Einstellungen der Flugbahnlinie</German>
         </Key>
         <Key ID="STR_MKK_PTG_TRAJECTORY_STATUS">
             <English>Trajectory line: %1</English>
             <Russian>Линия траектории: %1</Russian>
+            <German>Flugbahnlinie: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_TRIGGER_DISTANCE">
             <English>triggerDistance</English>
             <Russian>triggerDistance</Russian>
+            <German>triggerDistance</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE">
             <English>Type</English>
             <Russian>Тип</Russian>
+            <German>Typ</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE_APC">
             <English>APC</English>
             <Russian>БТР</Russian>
+            <German>APC</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE_BOAT">
             <English>Boat</English>
             <Russian>Лодка</Russian>
+            <German>Boot</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE_CAR">
             <English>Car</English>
             <Russian>Автомобиль</Russian>
+            <German>Auto</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE_HELICOPTER">
             <English>Helicopter</English>
             <Russian>Вертолет</Russian>
+            <German>Hubschrauber</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE_IFV">
             <English>IFV</English>
             <Russian>БМП</Russian>
+            <German>IFV</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE_OTHER">
             <English>Other</English>
             <Russian>Другое</Russian>
+            <German>Sonstiges</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE_PLANE">
             <English>Plane</English>
             <Russian>Самолет</Russian>
+            <German>Flugzeug</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE_STATIC">
             <English>Static</English>
             <Russian>Статичное</Russian>
+            <German>Statisch</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE_TANK">
             <English>Tank</English>
             <Russian>Танк</Russian>
+            <German>Panzer</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE_TRUCK">
             <English>Truck</English>
             <Russian>Грузовик</Russian>
+            <German>LKW</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPE_UAV">
             <English>UAV</English>
             <Russian>БПЛА</Russian>
+            <German>UAV</German>
         </Key>
         <Key ID="STR_MKK_PTG_TYPICAL_SPEED">
             <English>typicalSpeed</English>
             <Russian>typicalSpeed</Russian>
+            <German>typicalSpeed</German>
         </Key>
         <Key ID="STR_MKK_PTG_UNKNOWN">
             <English>Unknown</English>
             <Russian>Неизвестно</Russian>
+            <German>Unbekannt</German>
         </Key>
         <Key ID="STR_MKK_PTG_UNLOCK_CURSOR_VEHICLE">
             <English>Unlock Cursor Vehicle</English>
             <Russian>Разблокировать технику под прицелом</Russian>
+            <German>Fahrzeug im Fadenkreuz entsperren</German>
         </Key>
         <Key ID="STR_MKK_PTG_UNLOCK_VEHICLE">
             <English>Unlock Vehicle</English>
             <Russian>Разблокировать технику</Russian>
+            <German>Fahrzeug entsperren</German>
         </Key>
         <Key ID="STR_MKK_PTG_UNLOCK_VEHICLE_NONE">
             <English>No vehicle under cursor.</English>
             <Russian>Под прицелом нет техники.</Russian>
+            <German>Kein Fahrzeug im Fadenkreuz.</German>
         </Key>
         <Key ID="STR_MKK_PTG_UNLOCK_VEHICLE_REQUESTED">
             <English>Vehicle unlock requested.</English>
             <Russian>Разблокировка техники отправлена.</Russian>
+            <German>Fahrzeugentsperrung angefordert.</German>
         </Key>
         <Key ID="STR_MKK_PTG_VEHICLE_SPAWN">
             <English>Vehicle Spawner</English>
             <Russian>Создание техники</Russian>
+            <German>Fahrzeug-Spawner</German>
         </Key>
         <Key ID="STR_MKK_PTG_VERSION">
             <English>Version: %1</English>
             <Russian>Версия: %1</Russian>
+            <German>Version: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_YES">
             <English>Yes</English>
             <Russian>Да</Russian>
+            <German>Ja</German>
         </Key>
     </Package>
 </Project>
