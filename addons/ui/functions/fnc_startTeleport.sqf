@@ -4,6 +4,17 @@
 */
 if !(hasInterface) exitWith {};
 
+if (missionNamespace getVariable ["mkk_ptg_teleportTemporaryMap", false]) then {
+    player unlinkItem "ItemMap";
+    missionNamespace setVariable ["mkk_ptg_teleportTemporaryMap", false];
+};
+
+private _hasMap = "ItemMap" in assignedItems player;
+if !(_hasMap) then {
+    player linkItem "ItemMap";
+};
+missionNamespace setVariable ["mkk_ptg_teleportTemporaryMap", !_hasMap];
+
 closeDialog 0;
 openMap true;
 [localize "STR_MKK_PTG_SELECT_TELEPORT_POINT"] call EFUNC(main,showTimedHint);
@@ -37,6 +48,10 @@ onMapSingleClick "
     };
     onMapSingleClick '';
     openMap false;
+    if (missionNamespace getVariable ['mkk_ptg_teleportTemporaryMap', false]) then {
+        player unlinkItem 'ItemMap';
+        missionNamespace setVariable ['mkk_ptg_teleportTemporaryMap', false];
+    };
     [(missionNamespace getVariable ['mkk_ptg_teleportDoneText', ''])] call ptg_main_fnc_showTimedHint;
     true
 ";
@@ -56,6 +71,11 @@ onMapSingleClick "
 
     missionNamespace setVariable ["mkk_ptg_teleportSelecting", false];
     onMapSingleClick "";
+
+    if (missionNamespace getVariable ["mkk_ptg_teleportTemporaryMap", false]) then {
+        player unlinkItem "ItemMap";
+        missionNamespace setVariable ["mkk_ptg_teleportTemporaryMap", false];
+    };
 
     private _activeMarker = missionNamespace getVariable ["mkk_ptg_teleportCurrentPositionMarker", ""];
     if (_activeMarker isEqualTo _marker) then {
