@@ -391,7 +391,7 @@ picture;
 Текущие дефолты:
 
 `mkk_ptg_spawnDefaultDistance` = 10;
-`mkk_ptg_spawnMaxDistance` = 3500.
+`mkk_ptg_spawnMaxDistance` = 20000.
 
 Совместимые ящики БК для статики определяются динамически:
 
@@ -715,7 +715,7 @@ tracking mode label `TACTICAL`;
 tracking max time 8 seconds;
 tracking cooldown 1 second;
 allowed ammo kinds `bullet`, `shell`, `missile`, `rocket`;
-spawn distance 10, max distance 3500;
+spawn distance 10, max distance 20000;
 penetration target distance 120, shot distance 70;
 infinite ammo and god mode disabled.
 

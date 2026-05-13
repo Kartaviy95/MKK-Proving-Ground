@@ -19,7 +19,7 @@ private _setDefault = {
     ["mkk_ptg_trackingCooldown", 1],
     ["mkk_ptg_trackingAllowedAmmoKinds", ["bullet", "shell", "missile", "rocket"]],
     ["mkk_ptg_spawnDefaultDistance", 10],
-    ["mkk_ptg_spawnMaxDistance", 3500],
+    ["mkk_ptg_spawnMaxDistance", 20000],
     ["mkk_ptg_trajectoryEnabled", false],
     ["mkk_ptg_mapProjectileMarkersEnabled", false],
     ["mkk_ptg_mapProjectileMarkerShowAmmo", false],
