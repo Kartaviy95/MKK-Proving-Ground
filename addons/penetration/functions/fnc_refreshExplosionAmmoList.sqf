@@ -8,7 +8,7 @@ if (isNull _display) exitWith {};
 private _ctrlSearch = _display displayCtrl 89010;
 private _ctrlCategory = _display displayCtrl 89011;
 private _ctrlList = _display displayCtrl 89020;
-private _search = toLowerANSI ctrlText _ctrlSearch;
+private _search = toLower ctrlText _ctrlSearch;
 private _categoryIdx = lbCurSel _ctrlCategory;
 private _categoryKey = if (_categoryIdx >= 0) then {_ctrlCategory lbData _categoryIdx} else {"STR_MKK_PTG_EXPLOSION_GROUP_BOMBS"};
 
@@ -24,8 +24,8 @@ private _preferredAmmoIdx = -1;
         (_x # 0) isEqualTo _categoryKey
         && {
             _search isEqualTo ""
-            || {_search in (toLowerANSI (_x # 1))}
-            || {_search in (toLowerANSI (_x # 2))}
+            || {_search in (toLower (_x # 1))}
+            || {_search in (toLower (_x # 2))}
         }
     ) then {
         private _idx = _ctrlList lbAdd format ["%1 | %2", _x # 1, _x # 2];

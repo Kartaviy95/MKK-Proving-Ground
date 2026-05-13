@@ -11,7 +11,7 @@ if (_mode isEqualTo "") then {_mode = "bot";};
 
 private _ctrlSearch = _display displayCtrl 88311;
 private _ctrlList = _display displayCtrl 88320;
-private _search = toLowerANSI (ctrlText _ctrlSearch);
+private _search = toLower (ctrlText _ctrlSearch);
 lbClear _ctrlList;
 
 private _showGround = _mode isEqualTo "ground";
@@ -31,7 +31,7 @@ if (_mode isNotEqualTo _lastMode) then {
 if (_mode isEqualTo "bot") then {
     {
         _x params ["_className", "_label"];
-        if (_search isEqualTo "" || {(toLowerANSI _label) find _search > -1 || {(toLowerANSI _className) find _search > -1}}) then {
+        if (_search isEqualTo "" || {(toLower _label) find _search > -1 || {(toLower _className) find _search > -1}}) then {
             private _idx = _ctrlList lbAdd _label;
             _ctrlList lbSetData [_idx, _className];
         };
@@ -68,7 +68,7 @@ if (_mode isEqualTo "bot") then {
             (_showGround && {_className isKindOf "LandVehicle"})
             || {_showAir && {_className isKindOf "Air"}}
         )
-        && (_search isEqualTo "" || {(toLowerANSI _displayName) find _search > -1 || {(toLowerANSI _className) find _search > -1}})
+        && (_search isEqualTo "" || {(toLower _displayName) find _search > -1 || {(toLower _className) find _search > -1}})
     };
 
     {
