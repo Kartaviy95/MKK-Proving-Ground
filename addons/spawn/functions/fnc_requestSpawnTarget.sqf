@@ -19,7 +19,7 @@ if !([_requestor] call EFUNC(main,isAuthorized)) exitWith {
     [localize "STR_MKK_PTG_NO_ACCESS"] call EFUNC(main,showTimedHint);
 };
 
-private _maxDistance = missionNamespace getVariable ["mkk_ptg_spawnMaxDistance", 3500];
+private _maxDistance = missionNamespace getVariable ["mkk_ptg_spawnMaxDistance", 20000];
 _distance = (_distance max 1) min _maxDistance;
 _patrolRadius = (_patrolRadius max 5) min 1000;
 _airRadius = (_airRadius max 25) min 3000;

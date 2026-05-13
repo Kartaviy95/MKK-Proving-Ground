@@ -316,7 +316,7 @@ tracking mode label `TACTICAL`;
 tracking max time 8 seconds;
 tracking cooldown 1 second;
 allowed ammo kinds `bullet`, `shell`, `missile`, `rocket`;
-spawn distance 10, max distance 3500;
+spawn distance 10, max distance 20000;
 penetration target distance 120, shot distance 70;
 infinite ammo and god mode disabled.
 
