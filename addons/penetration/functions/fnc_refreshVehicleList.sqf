@@ -13,7 +13,7 @@ if (_catalog isEqualTo []) then {
 
 private _ctrlSearch = _display displayCtrl 88910;
 private _ctrlList = _display displayCtrl 88920;
-private _search = toLowerANSI ctrlText _ctrlSearch;
+private _search = toLower ctrlText _ctrlSearch;
 
 lbClear _ctrlList;
 
@@ -30,7 +30,7 @@ lbClear _ctrlList;
     private _vehicleType = [_x # 4] call EFUNC(common,localizeString);
     private _faction = _x param [11, _x # 3];
 
-    if (_search isEqualTo "" || {(toLowerANSI _displayName) find _search > -1 || {(toLowerANSI _className) find _search > -1}}) then {
+    if (_search isEqualTo "" || {(toLower _displayName) find _search > -1 || {(toLower _className) find _search > -1}}) then {
         private _idx = _ctrlList lbAdd format ["%1 | %2 | %3", _displayName, _vehicleType, _faction];
         _ctrlList lbSetData [_idx, _className];
     };

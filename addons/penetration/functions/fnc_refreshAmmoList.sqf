@@ -7,7 +7,7 @@ if (isNull _display) exitWith {};
 
 private _ctrlSearch = _display displayCtrl 88911;
 private _ctrlList = _display displayCtrl 88921;
-private _search = toLowerANSI ctrlText _ctrlSearch;
+private _search = toLower ctrlText _ctrlSearch;
 
 lbClear _ctrlList;
 
@@ -27,7 +27,7 @@ lbClear _ctrlList;
     _displayName = [_displayName] call EFUNC(common,localizeString);
     if (_displayName isEqualTo "") then {_displayName = _className;};
 
-    if (_search isEqualTo "" || {(toLowerANSI _displayName) find _search > -1 || {(toLowerANSI _className) find _search > -1}}) then {
+    if (_search isEqualTo "" || {(toLower _displayName) find _search > -1 || {(toLower _className) find _search > -1}}) then {
         private _idx = _ctrlList lbAdd format ["%1 | %2", _displayName, _className];
         _ctrlList lbSetData [_idx, _className];
     };
