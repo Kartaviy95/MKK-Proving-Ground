@@ -1,6 +1,7 @@
 #include "..\script_component.hpp"
 /*
     Применяет или снимает локальную неуязвимость с текущего игрока.
+    При включенном режиме также лечит технику, в которой сидит игрок.
 */
 params [
     ["_unit", player, [objNull]],
@@ -32,6 +33,12 @@ if (_enabled) then {
 
 if (_enabled) then {
     _unit setDamage 0;
+
+    private _vehicle = vehicle _unit;
+    if (_vehicle isNotEqualTo _unit) then {
+        _vehicle setDamage 0;
+    };
+
     resetCamShake;
 
     [nil, 0] call BIS_fnc_dirtEffect;
