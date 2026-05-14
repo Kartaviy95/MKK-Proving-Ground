@@ -332,9 +332,9 @@
             <German>Öffnet ein Kartenwerkzeug, um ausgewählte explosive Projektile an einem gewählten Punkt zu erstellen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_GOD_MODE">
-            <English>Toggles player damage protection, including ACE medical damage.</English>
-            <Russian>Включает или выключает защиту игрока от урона, включая ACE medical.</Russian>
-            <German>Schaltet Spielerschutz gegen Schaden um, einschließlich ACE medical damage.</German>
+            <English>Toggles player damage protection and auto-repairs the occupied vehicle.</English>
+            <Russian>Включает или выключает защиту игрока от урона и автоматически ремонтирует технику, в которой он сидит.</Russian>
+            <German>Schaltet Spielerschutz gegen Schaden um und repariert das besetzte Fahrzeug automatisch.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_HITPOINT_INSPECTOR">
             <English>Shows compact damage and hitpoint cards for the vehicle under the cursor.</English>
