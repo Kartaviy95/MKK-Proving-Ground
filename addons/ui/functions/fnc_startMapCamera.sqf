@@ -207,8 +207,13 @@ if !(isNull _display) then {
     }];
 
     private _keyDownEH = _display displayAddEventHandler ["KeyDown", {
-        params ["_display", "_key"];
+        params ["_display", "_key", "_shift", "_ctrl", "_alt"];
         if !(missionNamespace getVariable ["mkk_ptg_mapCameraRunning", false]) exitWith {false};
+
+        if ([_key, _shift, _ctrl, _alt] call EFUNC(main,isCloseCameraKey)) exitWith {
+            [] call EFUNC(main,closeActiveCamera);
+            true
+        };
 
         if (_key == DIK_N) exitWith {
             private _enabled = !(missionNamespace getVariable ["mkk_ptg_mapCameraNightVision", false]);
