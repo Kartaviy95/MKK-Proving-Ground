@@ -9,7 +9,7 @@ params [
 
 if !(hasInterface) exitWith {};
 
-_duration = _duration max 0;
+_duration = 2;
 
 private _token = (uiNamespace getVariable ["mkk_ptg_timedHintToken", 0]) + 1;
 uiNamespace setVariable ["mkk_ptg_timedHintToken", _token];

@@ -17,7 +17,7 @@ if (_selectedMapPos isEqualTo []) exitWith {
     missionNamespace setVariable ["mkk_ptg_mapCameraSelecting", true];
     missionNamespace setVariable ["mkk_ptg_mapCameraSelectedPos", []];
 
-    hint localize "STR_MKK_PTG_CAMERA_SELECT_MAP_POINT";
+    [localize "STR_MKK_PTG_CAMERA_SELECT_MAP_POINT"] call EFUNC(main,showTimedHint);
     openMap [true, false];
 
     onMapSingleClick "
@@ -108,8 +108,8 @@ if !(isNull _hintDisplay) then {
     private _fontScale = _hudScales # 1;
     private _marginX = 0.014 * safeZoneW;
     private _marginY = 0.014 * safeZoneH;
-    private _bgW = (0.37 * safeZoneW * _hudScale) min (safeZoneW - (_marginX * 2));
-    private _bgH = (0.38 * safeZoneH * _hudScale) min (safeZoneH - (_marginY * 2));
+    private _bgW = (0.18 * safeZoneW * _hudScale) min (safeZoneW - (_marginX * 2));
+    private _bgH = (0.37 * safeZoneH * _hudScale) min (safeZoneH - (_marginY * 2));
     private _bgX = safeZoneX + safeZoneW - _bgW - _marginX;
     private _bgY = safeZoneY + _marginY;
     private _padX = 0.010 * safeZoneW * _hudScale;
@@ -124,22 +124,24 @@ if !(isNull _hintDisplay) then {
 
     private _text = _hintDisplay ctrlCreate ["RscStructuredText", 88911];
     _text ctrlSetPosition _textRect;
-    private _titleSize = str ([1.18 * _fontScale, 2] call BIS_fnc_cutDecimals);
-    private _rowSize = str ([0.95 * _fontScale, 2] call BIS_fnc_cutDecimals);
-    private _noteSize = str ([0.86 * _fontScale, 2] call BIS_fnc_cutDecimals);
+    private _titleSize = str ([1.08 * _fontScale, 2] call BIS_fnc_cutDecimals);
+    private _rowSize = str ([0.84 * _fontScale, 2] call BIS_fnc_cutDecimals);
+    private _closeCameraKeyName = if (isNil "ptg_main_fnc_getCloseCameraKeyName") then {"F"} else {[] call EFUNC(main,getCloseCameraKeyName)};
+    if !(_closeCameraKeyName isEqualType "") then {_closeCameraKeyName = "F";};
+    if (_closeCameraKeyName isEqualTo "") then {_closeCameraKeyName = "F";};
     _text ctrlSetStructuredText parseText format [
-        "<t align='center' size='%16' font='RobotoCondensedBold' color='#F2F2F2'>%1</t><br/>" +
-        "<t size='%17' color='#FFFFFF'>W / S</t><t size='%17' color='#CFCFCF'>    %2</t><br/>" +
-        "<t size='%17' color='#FFFFFF'>A / D</t><t size='%17' color='#CFCFCF'>    %3</t><br/>" +
-        "<t size='%17' color='#FFFFFF'>Q</t><t size='%17' color='#CFCFCF'>        %4</t><br/>" +
-        "<t size='%17' color='#FFFFFF'>Z</t><t size='%17' color='#CFCFCF'>        %5</t><br/>" +
-        "<t size='%17' color='#FFFFFF'>Shift</t><t size='%17' color='#CFCFCF'>    %6</t><br/>" +
-        "<t size='%17' color='#FFFFFF'>%7</t><t size='%17' color='#CFCFCF'>    %8</t><br/>" +
-        "<t size='%17' color='#FFFFFF'>%9</t><t size='%17' color='#CFCFCF'>   %10</t><br/>" +
-        "<t size='%17' color='#FFFFFF'>%11</t><t size='%17' color='#CFCFCF'>    %12</t><br/>" +
-        "<t size='%17' color='#FFFFFF'>N</t><t size='%17' color='#CFCFCF'>        %13</t><br/>" +
-        "<t size='%17' color='#FFFFFF'>F1</t><t size='%17' color='#CFCFCF'>       %14</t><br/>" +
-        "<t align='center' size='%18' color='#DADADA'>%15</t>",
+        "<t align='left' size='%17' font='RobotoCondensedBold' color='#F2F2F2'>%1</t><br/>" +
+        "<t size='%18' color='#FFFFFF'>W / S</t><t size='%18' color='#CFCFCF'>    %2</t><br/>" +
+        "<t size='%18' color='#FFFFFF'>A / D</t><t size='%18' color='#CFCFCF'>    %3</t><br/>" +
+        "<t size='%18' color='#FFFFFF'>Q</t><t size='%18' color='#CFCFCF'>        %4</t><br/>" +
+        "<t size='%18' color='#FFFFFF'>Z</t><t size='%18' color='#CFCFCF'>        %5</t><br/>" +
+        "<t size='%18' color='#FFFFFF'>Shift</t><t size='%18' color='#CFCFCF'>    %6</t><br/>" +
+        "<t size='%18' color='#FFFFFF'>%7</t><t size='%18' color='#CFCFCF'>    %8</t><br/>" +
+        "<t size='%18' color='#FFFFFF'>%9</t><t size='%18' color='#CFCFCF'>   %10</t><br/>" +
+        "<t size='%18' color='#FFFFFF'>%11</t><t size='%18' color='#CFCFCF'>    %12</t><br/>" +
+        "<t size='%18' color='#FFFFFF'>N</t><t size='%18' color='#CFCFCF'>        %13</t><br/>" +
+        "<t size='%18' color='#FFFFFF'>F1</t><t size='%18' color='#CFCFCF'>       %14</t><br/>" +
+        "<t size='%18' color='#FFFFFF'>%15</t><t size='%18' color='#CFCFCF'>    %16</t>",
         localize "STR_MKK_PTG_CAMERA_CONTROLS_TITLE",
         localize "STR_MKK_PTG_CAMERA_CONTROL_FORWARD_BACK",
         localize "STR_MKK_PTG_CAMERA_CONTROL_LEFT_RIGHT",
@@ -154,10 +156,10 @@ if !(isNull _hintDisplay) then {
         localize "STR_MKK_PTG_CAMERA_CONTROL_RELOCATE",
         localize "STR_MKK_PTG_CAMERA_CONTROL_NIGHT_VISION",
         localize "STR_MKK_PTG_CAMERA_CONTROL_TOGGLE_HINT",
-        localize "STR_MKK_PTG_CAMERA_CONTROL_CLOSE_NOTE",
+        _closeCameraKeyName,
+        localize "STR_MKK_PTG_CLOSE_CAMERA",
         _titleSize,
-        _rowSize,
-        _noteSize
+        _rowSize
     ];
     _text ctrlSetBackgroundColor [0, 0, 0, 0];
     _text ctrlCommit 0;

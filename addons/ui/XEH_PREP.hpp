@@ -43,6 +43,7 @@ PREP(toggleTracking);
 PREP(toggleTrajectorySettings);
 PREP(updateMapProjectileMarkerSettingsMenu);
 PREP(updateDashboardStatusLine);
+PREP(updateDashboardKeybindLabels);
 PREP(updateObjectStatusSettingsMenu);
 PREP(updateTrajectorySettingsMenu);
 PREP(updateVehicleCard);
