@@ -5,7 +5,12 @@
 private _state = missionNamespace getVariable ["mkk_ptg_trackingState", createHashMap];
 if (_state isEqualType createHashMap && {count _state > 0}) then {
     private _projectile = _state getOrDefault ["projectile", objNull];
-    if (isNull _projectile) exitWith {};
+    private _currentPos = _state getOrDefault ["lastPos", [0,0,0]];
+    private _velocity = _state getOrDefault ["lastVelocity", [0,0,0]];
+    if !(isNull _projectile) then {
+        _currentPos = getPosASL _projectile;
+        _velocity = velocity _projectile;
+    };
 
     private _ammoClass = _state getOrDefault ["ammoClass", ""];
     if (_ammoClass isEqualTo "") then {
@@ -19,8 +24,7 @@ if (_state isEqualType createHashMap && {count _state > 0}) then {
     private _startPos = _state getOrDefault ["startPos", [0,0,0]];
 
     private _flightTime = diag_tickTime - _startTime;
-    private _distance = _startPos distance (getPosASL _projectile);
-    private _velocity = velocity _projectile;
+    private _distance = _startPos distance _currentPos;
     private _speed = round (sqrt (
         ((_velocity # 0) * (_velocity # 0)) +
         ((_velocity # 1) * (_velocity # 1)) +
