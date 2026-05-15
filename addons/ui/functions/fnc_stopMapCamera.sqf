@@ -20,18 +20,40 @@ if !(isNull _display) then {
     if ((count _ehs) > 2) then {_display displayRemoveEventHandler ["MouseButtonDown", _ehs # 2];};
     if ((count _ehs) > 3) then {_display displayRemoveEventHandler ["KeyDown", _ehs # 3];};
     if ((count _ehs) > 4) then {_display displayRemoveEventHandler ["KeyUp", _ehs # 4];};
+
+    {
+        private _ctrl = _display displayCtrl _x;
+        if !(isNull _ctrl) then {
+            ctrlDelete _ctrl;
+        };
+    } forEach [88910, 88911];
+
+    {
+        private _pos = ctrlPosition _x;
+        _pos params ["_ctrlX", "_ctrlY", "_ctrlW", "_ctrlH"];
+        if (
+            (ctrlIDC _x) < 0
+            && {_ctrlX > (safeZoneX + (safeZoneW * 0.55))}
+            && {_ctrlY < (safeZoneY + (safeZoneH * 0.30))}
+            && {_ctrlW > (safeZoneW * 0.20)}
+            && {_ctrlH > (safeZoneH * 0.20)}
+        ) then {
+            ctrlDelete _x;
+        };
+    } forEach allControls _display;
 };
 missionNamespace setVariable ["mkk_ptg_mapCameraControlEHs", []];
 missionNamespace setVariable ["mkk_ptg_mapCameraMapKeyEHs", []];
 missionNamespace setVariable ["mkk_ptg_mapCameraMarker", ""];
 
-private _hintCtrls = missionNamespace getVariable ["mkk_ptg_mapCameraHintCtrls", []];
+private _hintCtrls = (missionNamespace getVariable ["mkk_ptg_mapCameraHintCtrls", []]) + (uiNamespace getVariable ["mkk_ptg_mapCameraHintCtrls", []]);
 {
     if !(isNull _x) then {
         ctrlDelete _x;
     };
 } forEach _hintCtrls;
 missionNamespace setVariable ["mkk_ptg_mapCameraHintCtrls", []];
+uiNamespace setVariable ["mkk_ptg_mapCameraHintCtrls", []];
 missionNamespace setVariable ["mkk_ptg_mapCameraHintVisible", true];
 
 private _speedCtrls = missionNamespace getVariable ["mkk_ptg_mapCameraSpeedCtrls", []];
