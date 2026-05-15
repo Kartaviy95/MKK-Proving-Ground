@@ -638,7 +638,7 @@ class MKK_PTG_MainDisplay {
             y = 0.70;
             w = 0.26;
             h = 0.045;
-            text = "$STR_MKK_PTG_SPAWN_WITH_CREW";
+            text = "$STR_MKK_PTG_SPAWN_FULL_CREW";
             action = QUOTE([true] call FUNC(onSpawnPressed));
         };
 
@@ -658,8 +658,8 @@ class MKK_PTG_MainDisplay {
             y = 0.755;
             w = 0.26;
             h = 0.045;
-            text = "$STR_MKK_PTG_REFRESH";
-            action = QUOTE([true] call FUNC(refreshFilters));
+            text = "$STR_MKK_PTG_SPAWN_WITH_CREW";
+            action = QUOTE([] call FUNC(onSpawnCrewControlPressed));
         };
 
         class CopyClassBtn: MKK_PTG_RscButton {

@@ -9,7 +9,8 @@ params [
     ["_withCrew", false],
     ["_distance", missionNamespace getVariable ["mkk_ptg_spawnDefaultDistance", 10]],
     ["_directionOffset", 0],
-    ["_ammoBoxClass", ""]
+    ["_ammoBoxClass", ""],
+    ["_driverClass", ""]
 ];
 
 if (_className isEqualTo "") exitWith {};
@@ -30,11 +31,19 @@ if (_ammoBoxClass isNotEqualTo "" && {
     _ammoBoxClass = "";
 };
 
+if (_driverClass isNotEqualTo "" && {
+    !isClass (configFile >> "CfgVehicles" >> _driverClass)
+    || {!(_driverClass isKindOf "CAManBase")}
+}) then {
+    _driverClass = "";
+};
+
 [
     _className,
     _requestor,
     _withCrew,
     _distance,
     _directionOffset,
-    _ammoBoxClass
+    _ammoBoxClass,
+    _driverClass
 ] call FUNC(serverSpawnVehicle);

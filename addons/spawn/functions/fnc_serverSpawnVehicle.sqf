@@ -9,7 +9,8 @@ params [
     ["_withCrew", false],
     ["_distance", 10],
     ["_directionOffset", 0],
-    ["_ammoBoxClass", ""]
+    ["_ammoBoxClass", ""],
+    ["_driverClass", ""]
 ];
 
 if (_className isEqualTo "") exitWith {};
@@ -25,10 +26,14 @@ _vehicle setDir _vehicleDir;
 _vehicle setPosATL _spawnPos;
 
 if (_withCrew) then {
-    [_vehicle] call FUNC(spawnCrew);
+    if (_driverClass isNotEqualTo "") then {
+        [_vehicle, _requestor, _driverClass] call FUNC(spawnDriver);
+    } else {
+        [_vehicle] call FUNC(spawnCrew);
 
-    _vehicle setVehicleAmmo 0;
-    _vehicle setFuel 0;
+        _vehicle setVehicleAmmo 0;
+        _vehicle setFuel 0;
+    };
 };
 
 [_vehicle, "vehicle"] call FUNC(registerSpawnedEntity);
@@ -45,3 +50,5 @@ if (_ammoBoxClass isNotEqualTo "" && {
 
     [_ammoBox, "object"] call FUNC(registerSpawnedEntity);
 };
+
+_vehicle
