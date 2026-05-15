@@ -1,14 +1,14 @@
 # MKK Proving Ground
 
-Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build-Praefix `ptg`. Aktueller Build: `1.3.0.0`, minimale Arma-3-Version: `2.20`. Das Projekt dient zum schnellen Testen von Fahrzeugen, Waffen, Munition, Flugbahnen, Durchschlag, Teleportation und lokalen Spieler-Werkzeugen.
+Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build-Praefix `ptg`. Aktueller Build: `1.3.3.0`, minimale Arma-3-Version: `2.20`. Das Projekt dient zum schnellen Testen von Fahrzeugen, Waffen, Munition, Flugbahnen, Durchschlag, Teleportation und lokalen Spieler-Werkzeugen.
 
 ## Module
 
 - `ptg_main` - Basiskonfiguration, Tastenzuweisungen, UI-Einstieg, Virtual/ACE Arsenal, Kopieren von Classnames, Loeschen und Entsperren des Objekts unter dem Cursor.
 - `ptg_common` - gemeinsame Helper, sicheres Lesen von Configs, Lokalisierung auf Englisch/Russisch/Deutsch, UI/HUD-Skalierung.
 - `ptg_catalog` - dynamischer `CfgVehicles`-Katalog, Filterung, Sortierung, Erkennung des Fahrzeugtyps und Suche nach kompatiblen Munitionskisten fuer statische Waffen.
-- `ptg_ui` - Hauptfenster, Startmenue, kleine Zusatzfenster fuer Einstellungen, Fahrzeug-Erstellungsbildschirm, Kamera, Teleport, Wiederbewaffnung, Testziele, HUD-Einstellungen, Hitpoint-Inspektor, Interface-Skalierung und Button-Handler.
-- `ptg_spawn` - globales Spawnen von Fahrzeugen und Testzielen, Registrierung erstellter Objekte, Loeschen und Aufraeumen des Testplatzes ohne Pflicht, das Addon auf einem Dedicated Server zu laden.
+- `ptg_ui` - Hauptfenster, Startmenue, kleine Zusatzfenster fuer Einstellungen, Fahrzeug-Erstellungsbildschirm, Fahrer+Schuetze-Modus, Kamera, Teleport, Wiederbewaffnung, Testziele, HUD-Einstellungen, Hitpoint-Inspektor, Interface-Skalierung und Button-Handler.
+- `ptg_spawn` - globales Spawnen von Fahrzeugen, Fahrern/Besatzungen und Testzielen, Registrierung erstellter Objekte, Loeschen und Aufraeumen des Testplatzes ohne Pflicht, das Addon auf einem Dedicated Server zu laden.
 - `ptg_tracking` - Projectile-Tracking, Tracking-HUD, Flugbahnlinien und Projektilmarker auf der Karte.
 - `ptg_penetration` - Fahrzeug-Durchschlagstest, Orbit-Kamera, Testprojektil, Bericht zu damage/AllowDamage/hitpoints/crew und `CfgAmmo`-Parametern.
 - `ptg_player` - unendliche Munition, God Mode, Fired-Handler und Respawn-Handler.
@@ -27,7 +27,8 @@ Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build
 - dynamischer Fahrzeugkatalog aus `CfgVehicles` ohne fest verdrahtete Mod-Fraktionen;
 - Filter nach Seite, Fraktion, Fahrzeugtyp und Suche nach Anzeigename/classname;
 - Karte des ausgewaehlten Fahrzeugs mit Bild, Fraktion, Typ, Gruppe, Besatzung und Quell-Mod;
-- globales Spawnen leerer oder besetzter Fahrzeuge ueber Client-Anfrage und Zugriffspruefung;
+- globales Spawnen leerer Fahrzeuge, Fahrzeuge mit voller Besatzung oder Fahrzeuge mit einem Fahrer der Spielerklasse und dem Spieler im Schuetzenplatz;
+- Fahrzeugbewegung vom Schuetzenplatz ueber native Arma-3-Bewegungsaktionen inklusive Vollgas;
 - kompatible Munitionskisten fuer statische Waffen;
 - separates Testzielmenue und globales Erstellen/Loeschen von Zielen;
 - Teleport per Kartenklick oder konfigurierbarer Taste "Teleport", standardmaessig T;
@@ -45,7 +46,7 @@ Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build
 - Loeschen des Objekts unter dem Cursor mit Zugriffspruefung und Schutz vor dem Loeschen von Spielern;
 - Entsperren des Fahrzeugs unter dem Cursor;
 - Interface-Skalierung: small, normal, large, extra large;
-- Lokalisierung sichtbarer Texte ueber `addons/main/stringtable.xml` auf Englisch, Russisch und Deutsch; die aktuelle stringtable enthaelt 297 Keys, alle mit English-, Russian- und German-Eintraegen.
+- Lokalisierung sichtbarer Texte ueber `addons/main/stringtable.xml` auf Englisch, Russisch und Deutsch; die aktuelle stringtable enthaelt 300 Keys, alle mit English-, Russian- und German-Eintraegen.
 
 ## Dokumentation
 

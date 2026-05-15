@@ -1,14 +1,14 @@
 # MKK Proving Ground
 
-A modular Arma 3 proving ground with the technical name `mkk_ptg` and build prefix `ptg`. Current build: `1.3.0.0`, minimum Arma 3 version: `2.20`. The project is designed for quick testing of vehicles, weapons, ammunition, trajectories, penetration, teleportation, and local player utilities.
+A modular Arma 3 proving ground with the technical name `mkk_ptg` and build prefix `ptg`. Current build: `1.3.3.0`, minimum Arma 3 version: `2.20`. The project is designed for quick testing of vehicles, weapons, ammunition, trajectories, penetration, teleportation, and local player utilities.
 
 ## Modules
 
 - `ptg_main` - base configuration, keybinds, UI entry point, Virtual/ACE Arsenal, classname copying, deletion and unlocking of the object under the cursor.
 - `ptg_common` - shared helpers, safe config reading, English/Russian/German localization, UI/HUD scaling.
 - `ptg_catalog` - dynamic `CfgVehicles` catalog, filtering, sorting, vehicle type detection, and compatible ammo box lookup for static weapons.
-- `ptg_ui` - main window, start menu, small auxiliary settings windows, vehicle spawn screen, camera, teleport, rearm, test targets, HUD settings, hitpoint inspector, interface scale, and button handlers.
-- `ptg_spawn` - global spawning of vehicles and test targets, registration of created objects, deletion and range cleanup without requiring the addon to be loaded on a dedicated server.
+- `ptg_ui` - main window, start menu, small auxiliary settings windows, vehicle spawn screen, driver+gunner mode, camera, teleport, rearm, test targets, HUD settings, hitpoint inspector, interface scale, and button handlers.
+- `ptg_spawn` - global spawning of vehicles, drivers/crews, and test targets, registration of created objects, deletion and range cleanup without requiring the addon to be loaded on a dedicated server.
 - `ptg_tracking` - projectile tracking, tracking HUD, trajectory lines, and projectile markers on the map.
 - `ptg_penetration` - vehicle penetration test, orbit camera, test projectile, damage/AllowDamage/hitpoints/crew report, and `CfgAmmo` parameters.
 - `ptg_player` - infinite ammo, god mode, fired handlers, and respawn handlers.
@@ -27,7 +27,8 @@ A modular Arma 3 proving ground with the technical name `mkk_ptg` and build pref
 - dynamic vehicle catalog from `CfgVehicles` without hardcoded mod factions;
 - filters by side, faction, vehicle type, and search by display name/classname;
 - selected vehicle card with image, faction, type, group, crew, and source mod;
-- global spawning of empty vehicles or crewed vehicles through a client request and access check;
+- global spawning of empty vehicles, fully crewed vehicles, or vehicles with a player-class driver and the player in a gunner slot;
+- vehicle movement control from the gunner slot through native Arma 3 movement actions, including fast forward;
 - compatible ammo boxes for static weapons;
 - separate test target menu and global target creation/deletion;
 - teleport by map click or configurable "Teleport" keybind, T by default;
@@ -45,7 +46,7 @@ A modular Arma 3 proving ground with the technical name `mkk_ptg` and build pref
 - object deletion under the cursor with access check and player deletion protection;
 - unlocking the vehicle under the cursor;
 - interface scale: small, normal, large, extra large;
-- visible text localization through `addons/main/stringtable.xml` in English, Russian, and German; the current stringtable contains 297 keys, all with English, Russian, and German entries.
+- visible text localization through `addons/main/stringtable.xml` in English, Russian, and German; the current stringtable contains 300 keys, all with English, Russian, and German entries.
 
 ## Documentation
 
