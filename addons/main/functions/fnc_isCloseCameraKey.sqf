@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 /*
     Проверяет, совпадает ли нажатие с CBA keybind "Закрыть камеру".
-    Нужен отдельный перехват ESC, потому что обычный игровой ESC открывает pause menu.
+    Нужен отдельный перехват keydown внутри локальных camera display handlers.
 */
 params [
     ["_key", -1, [0]],
@@ -35,12 +35,12 @@ if !(isNil "CBA_fnc_hashGet") then {
 };
 
 if (isNil "CBA_fnc_getKeybind") exitWith {
-    _pressedKeybind isEqualTo [DIK_ESCAPE, [false, false, false]]
+    _pressedKeybind isEqualTo [DIK_F, [false, false, false]]
 };
 
 private _entry = [localize "STR_MKK_PTG_MOD_NAME", "mkk_ptg_close_map_camera"] call CBA_fnc_getKeybind;
 if (isNil "_entry" || {!(_entry isEqualType [])}) exitWith {
-    _pressedKeybind isEqualTo [DIK_ESCAPE, [false, false, false]]
+    _pressedKeybind isEqualTo [DIK_F, [false, false, false]]
 };
 
 private _keybinds = [];
