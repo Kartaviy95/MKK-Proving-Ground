@@ -73,18 +73,56 @@ missionNamespace setVariable ["mkk_ptg_mapCameraHintVisible", true];
 
 private _hintDisplay = findDisplay 46;
 if !(isNull _hintDisplay) then {
+    private _hintIdcs = [88910, 88911];
+    {
+        private _ctrl = _hintDisplay displayCtrl _x;
+        if !(isNull _ctrl) then {
+            ctrlDelete _ctrl;
+        };
+    } forEach _hintIdcs;
+
+    {
+        private _pos = ctrlPosition _x;
+        _pos params ["_ctrlX", "_ctrlY", "_ctrlW", "_ctrlH"];
+        if (
+            (ctrlIDC _x) < 0
+            && {_ctrlX > (safeZoneX + (safeZoneW * 0.55))}
+            && {_ctrlY < (safeZoneY + (safeZoneH * 0.30))}
+            && {_ctrlW > (safeZoneW * 0.20)}
+            && {_ctrlH > (safeZoneH * 0.20)}
+        ) then {
+            ctrlDelete _x;
+        };
+    } forEach allControls _hintDisplay;
+
+    {
+        if !(isNull _x) then {
+            ctrlDelete _x;
+        };
+    } forEach ((missionNamespace getVariable ["mkk_ptg_mapCameraHintCtrls", []]) + (uiNamespace getVariable ["mkk_ptg_mapCameraHintCtrls", []]));
+    missionNamespace setVariable ["mkk_ptg_mapCameraHintCtrls", []];
+    uiNamespace setVariable ["mkk_ptg_mapCameraHintCtrls", []];
+
     private _hudScales = [] call EFUNC(common,getHudScale);
     private _hudScale = _hudScales # 0;
     private _fontScale = _hudScales # 1;
-    private _bgRect = [[0.64, 0.12, 0.34, 0.45], _hudScale] call EFUNC(common,scaleRect);
-    private _textRect = [[0.65, 0.13, 0.32, 0.45], _hudScale] call EFUNC(common,scaleRect);
+    private _marginX = 0.014 * safeZoneW;
+    private _marginY = 0.014 * safeZoneH;
+    private _bgW = (0.37 * safeZoneW * _hudScale) min (safeZoneW - (_marginX * 2));
+    private _bgH = (0.38 * safeZoneH * _hudScale) min (safeZoneH - (_marginY * 2));
+    private _bgX = safeZoneX + safeZoneW - _bgW - _marginX;
+    private _bgY = safeZoneY + _marginY;
+    private _padX = 0.010 * safeZoneW * _hudScale;
+    private _padY = 0.007 * safeZoneH * _hudScale;
+    private _bgRect = [_bgX, _bgY, _bgW, _bgH];
+    private _textRect = [_bgX + _padX, _bgY + _padY, _bgW - (_padX * 2), _bgH - (_padY * 2)];
 
-    private _bg = _hintDisplay ctrlCreate ["RscText", -1];
+    private _bg = _hintDisplay ctrlCreate ["RscText", 88910];
     _bg ctrlSetPosition _bgRect;
-    _bg ctrlSetBackgroundColor [0, 0, 0, 0.68];
+    _bg ctrlSetBackgroundColor [0, 0, 0, 0.30];
     _bg ctrlCommit 0;
 
-    private _text = _hintDisplay ctrlCreate ["RscStructuredText", -1];
+    private _text = _hintDisplay ctrlCreate ["RscStructuredText", 88911];
     _text ctrlSetPosition _textRect;
     private _titleSize = str ([1.18 * _fontScale, 2] call BIS_fnc_cutDecimals);
     private _rowSize = str ([0.95 * _fontScale, 2] call BIS_fnc_cutDecimals);
@@ -125,6 +163,7 @@ if !(isNull _hintDisplay) then {
     _text ctrlCommit 0;
 
     missionNamespace setVariable ["mkk_ptg_mapCameraHintCtrls", [_bg, _text]];
+    uiNamespace setVariable ["mkk_ptg_mapCameraHintCtrls", [_bg, _text]];
 
     private _speedBgRect = [[0.405, 0.055, 0.19, 0.045], _hudScale] call EFUNC(common,scaleRect);
     private _speedTextRect = [[0.412, 0.062, 0.176, 0.034], _hudScale] call EFUNC(common,scaleRect);
