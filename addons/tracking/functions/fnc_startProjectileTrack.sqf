@@ -41,4 +41,22 @@ missionNamespace setVariable ["mkk_ptg_trackingState", createHashMapFromArray [
 
 missionNamespace setVariable ["mkk_ptg_trackingLastAt", diag_tickTime];
 
+private _display = findDisplay 46;
+if !(isNull _display) then {
+    private _keyEH = _display displayAddEventHandler ["KeyDown", {
+        params ["_display", "_key", "_shift", "_ctrl", "_alt"];
+
+        private _state = missionNamespace getVariable ["mkk_ptg_trackingState", createHashMap];
+        if !(_state isEqualType createHashMap && {count _state > 0}) exitWith {false};
+
+        if ([_key, _shift, _ctrl, _alt] call EFUNC(main,isCloseCameraKey)) exitWith {
+            [] call EFUNC(main,closeActiveCamera);
+            true
+        };
+
+        false
+    }];
+    missionNamespace setVariable ["mkk_ptg_trackingKeyEH", _keyEH];
+};
+
 [_projectile, _trackId] spawn FUNC(updateProjectileTrack);

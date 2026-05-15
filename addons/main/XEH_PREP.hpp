@@ -1,6 +1,8 @@
 PREP(copyCursorObjectClass);
+PREP(closeActiveCamera);
 PREP(deleteCursorObject);
 PREP(isAuthorized);
+PREP(isCloseCameraKey);
 PREP(openMainUI);
 PREP(openAceArsenal);
 PREP(openVirtualArsenal);

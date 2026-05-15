@@ -68,26 +68,27 @@
     [DIK_DELETE, [false, false, false]]
 ] call CBA_fnc_addKeybind;
 
+if !(isNil "CBA_fnc_hashGet" || {isNil "CBA_fnc_hashSet"}) then {
+    private _registry = profileNamespace getVariable "cba_keybinding_registry_v3";
+    if !(isNil "_registry") then {
+        private _action = toLower format ["%1$%2", localize "STR_MKK_PTG_MOD_NAME", "mkk_ptg_close_map_camera"];
+        private _storedKeybinds = [_registry, _action] call CBA_fnc_hashGet;
+        if (_storedKeybinds isEqualTo [[DIK_F, [false, false, false]]]) then {
+            [_registry, _action, [[DIK_ESCAPE, [false, false, false]]]] call CBA_fnc_hashSet;
+            saveProfileNamespace;
+        };
+    };
+};
+
 [
     localize "STR_MKK_PTG_MOD_NAME",
     "mkk_ptg_close_map_camera",
     localize "STR_MKK_PTG_CLOSE_CAMERA",
     {
-        if (missionNamespace getVariable ["mkk_ptg_mapCameraRunning", false]) exitWith {
-            [] call ptg_ui_fnc_stopMapCamera;
-            true
-        };
-
-        private _trackingState = missionNamespace getVariable ["mkk_ptg_trackingState", createHashMap];
-        if (_trackingState isEqualType createHashMap && {count _trackingState > 0} && {!isNil "ptg_tracking_fnc_stopProjectileTrack"}) exitWith {
-            [] call ptg_tracking_fnc_stopProjectileTrack;
-            true
-        };
-
-        false
+        [] call FUNC(closeActiveCamera)
     },
     {},
-    [DIK_F, [false, false, false]]
+    [DIK_ESCAPE, [false, false, false]]
 ] call CBA_fnc_addKeybind;
 
 [
