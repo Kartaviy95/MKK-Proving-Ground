@@ -266,6 +266,21 @@
             <Russian>Командир</Russian>
             <German>Kommandant</German>
         </Key>
+        <Key ID="STR_MKK_PTG_CREW_CONTROL_NO_DRIVER">
+            <English>No driver slot is available for this vehicle.</English>
+            <Russian>У этой техники нет доступного места водителя.</Russian>
+            <German>Für dieses Fahrzeug ist kein Fahrerplatz verfügbar.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_CREW_CONTROL_NO_GUNNER">
+            <English>No gunner slot is available for this vehicle.</English>
+            <Russian>У этой техники нет доступного места стрелка.</Russian>
+            <German>Für dieses Fahrzeug ist kein Schützenplatz verfügbar.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_CREW_CONTROL_READY">
+            <English>Driver created. Use W/S/A/D from the gunner slot to move the vehicle.</English>
+            <Russian>Водитель создан. Используйте W/S/A/D со слота стрелка для движения техники.</Russian>
+            <German>Fahrer erstellt. Nutze W/S/A/D vom Schützenplatz, um das Fahrzeug zu bewegen.</German>
+        </Key>
         <Key ID="STR_MKK_PTG_CREW_DRIVER">
             <English>Driver</English>
             <Russian>Водитель</Russian>
@@ -1185,21 +1200,6 @@
             <English>Spawn With Crew</English>
             <Russian>Создать с экипажем</Russian>
             <German>Mit Besatzung spawnen</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_CREW_CONTROL_NO_DRIVER">
-            <English>No driver slot is available for this vehicle.</English>
-            <Russian>У этой техники нет доступного места водителя.</Russian>
-            <German>Für dieses Fahrzeug ist kein Fahrerplatz verfügbar.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_CREW_CONTROL_NO_GUNNER">
-            <English>No gunner slot is available for this vehicle.</English>
-            <Russian>У этой техники нет доступного места стрелка.</Russian>
-            <German>Für dieses Fahrzeug ist kein Schützenplatz verfügbar.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_CREW_CONTROL_READY">
-            <English>Driver created. Use W/S/A/D from the gunner slot to move the vehicle.</English>
-            <Russian>Водитель создан. Используйте W/S/A/D со слота стрелка для движения техники.</Russian>
-            <German>Fahrer erstellt. Nutze W/S/A/D vom Schützenplatz, um das Fahrzeug zu bewegen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATE_CRITICAL">
             <English>CRITICAL</English>
