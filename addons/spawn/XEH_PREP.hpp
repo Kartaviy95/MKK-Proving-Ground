@@ -4,6 +4,7 @@ PREP(removeEntity);
 PREP(requestSpawnVehicle);
 PREP(serverSpawnVehicle);
 PREP(spawnCrew);
+PREP(spawnDriver);
 PREP(registerTargetEntity);
 PREP(requestSpawnTarget);
 PREP(serverSpawnTarget);

@@ -3,7 +3,8 @@
     Отправляет запрос на серверный спавн техники.
 */
 params [
-    ["_withCrew", false]
+    ["_withCrew", false],
+    ["_enterAsGunner", false]
 ];
 
 private _className = missionNamespace getVariable ["mkk_ptg_currentSelection", ""];
@@ -30,4 +31,12 @@ if !(isNull _display) then {
     };
 };
 
-[_className, player, _withCrew, _distance, _directionOffset, _ammoBoxClass] call EFUNC(spawn,requestSpawnVehicle);
+private _driverClass = "";
+if (_enterAsGunner) then {
+    _driverClass = typeOf player;
+};
+
+private _vehicle = [_className, player, _withCrew, _distance, _directionOffset, _ammoBoxClass, _driverClass] call EFUNC(spawn,requestSpawnVehicle);
+if (_enterAsGunner) then {
+    [_vehicle] call FUNC(startCrewDriverControl);
+};
