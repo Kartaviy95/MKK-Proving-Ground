@@ -66,11 +66,6 @@
             <Russian>Управление камерой</Russian>
             <German>Kamerasteuerung</German>
         </Key>
-        <Key ID="STR_MKK_PTG_CAMERA_CONTROL_CLOSE_NOTE">
-            <English>Close camera key is configurable in addon controls.</English>
-            <Russian>Кнопка закрытия камеры настраивается в управлении аддона.</Russian>
-            <German>Die Taste zum Schließen der Kamera ist in der Addon-Steuerung konfigurierbar.</German>
-        </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_DOWN">
             <English>down</English>
             <Russian>вниз</Russian>
@@ -107,9 +102,9 @@
             <German>Nachtsicht ein / aus</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_RELOCATE">
-            <English>move camera to clicked area</English>
-            <Russian>перенести камеру в выбранную область</Russian>
-            <German>Kamera zum angeklickten Bereich bewegen</German>
+            <English>rotation</English>
+            <Russian>вращение</Russian>
+            <German>Drehung</German>
         </Key>
         <Key ID="STR_MKK_PTG_CAMERA_CONTROL_SPEED">
             <English>faster</English>
@@ -791,6 +786,11 @@
             <Russian>Малый</Russian>
             <German>Klein</German>
         </Key>
+        <Key ID="STR_MKK_PTG_KEYBIND_LABEL_FORMAT">
+            <English>%1 [%2]</English>
+            <Russian>%1 [%2]</Russian>
+            <German>%1 [%2]</German>
+        </Key>
         <Key ID="STR_MKK_PTG_LINE_WIDTH">
             <English>Line width</English>
             <Russian>Толщина линии</Russian>
@@ -805,11 +805,6 @@
             <English>Magazine class copied: %1</English>
             <Russian>Класс магазина скопирован: %1</Russian>
             <German>Magazinklasse kopiert: %1</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_CAMERA_HINT">
-            <English>Camera mode: WASD fly, Q up, Z down, Shift speed, mouse look, mouse wheel speed. Close camera key is configurable in addon controls.</English>
-            <Russian>Режим камеры: WASD полёт, Q вверх, Z вниз, Shift ускорение, мышь обзор, колесо скорость. Кнопка закрытия настраивается в управлении аддона.</Russian>
-            <German>Kameramodus: WASD fliegen, Q hoch, Z runter, Shift Geschwindigkeit, Mausblick, Mausrad Geschwindigkeit. Die Taste zum Schließen der Kamera ist in der Addon-Steuerung konfigurierbar.</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_MARKERS_STATUS">
             <English>Projectile map markers: %1</English>

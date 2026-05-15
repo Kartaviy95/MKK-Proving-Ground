@@ -1,6 +1,8 @@
 PREP(copyCursorObjectClass);
 PREP(closeActiveCamera);
 PREP(deleteCursorObject);
+PREP(getCloseCameraKeyName);
+PREP(getKeybindName);
 PREP(isAuthorized);
 PREP(isCloseCameraKey);
 PREP(openMainUI);
