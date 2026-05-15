@@ -35,7 +35,8 @@ missionNamespace setVariable ["mkk_ptg_trackingState", createHashMapFromArray [
     ["weapon", _weapon],
     ["startTime", diag_tickTime],
     ["startPos", getPosASL _projectile],
-    ["lastPos", getPosASL _projectile]
+    ["lastPos", getPosASL _projectile],
+    ["lastVelocity", velocity _projectile]
 ]];
 
 missionNamespace setVariable ["mkk_ptg_trackingLastAt", diag_tickTime];

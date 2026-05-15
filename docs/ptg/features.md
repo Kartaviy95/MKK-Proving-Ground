@@ -63,7 +63,7 @@ HUD tracking показывает:
 
 Текст HUD должен быть локализован через stringtable.
 
-Tracking запускается для локального игрока и техники/статики, которой он управляет, через `FiredMan` и `Fired` handlers. Камера слежения крепится к projectile и закрывается той же настраиваемой CBA-клавишей “Закрыть камеру”, что и свободная камера (по умолчанию F). Tracking ограничивается `mkk_ptg_trackingMaxTime` и cooldown `mkk_ptg_trackingCooldown`.
+Tracking запускается для локального игрока и техники/статики, которой он управляет, через `FiredMan` и `Fired` handlers. Камера слежения крепится к projectile и закрывается той же настраиваемой CBA-клавишей “Закрыть камеру”, что и свободная камера (по умолчанию F). Камера ведет projectile до конца его жизни, после падения плавно переходит к верхнему обзору точки impact и удерживает обзор. Повторный запуск tracking-камеры ограничивается cooldown `mkk_ptg_trackingCooldown`.
 
 18. Линия траектории пули
 
@@ -313,7 +313,7 @@ UI/HUD: `mkk_ptg_hudSize` в `profileNamespace` для выбранного ма
 
 tracking disabled;
 tracking mode label `TACTICAL`;
-tracking max time 8 seconds;
+trajectory and map marker tracking max time 8 seconds;
 tracking cooldown 1 second;
 allowed ammo kinds `bullet`, `shell`, `missile`, `rocket`;
 spawn distance 10, max distance 20000;
