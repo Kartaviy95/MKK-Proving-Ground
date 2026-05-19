@@ -39,7 +39,12 @@ _marker setMarkerTextLocal format [localize "STR_MKK_PTG_TELEPORT_CURRENT_LOCATI
 
 onMapSingleClick "
     private _target = vehicle player;
-    _target setPosATL [_pos # 0, _pos # 1, 0];
+    private _targetPos = [_pos # 0, _pos # 1, 0];
+    if (surfaceIsWater _targetPos) then {
+        _target setPosASL [_pos # 0, _pos # 1, 3];
+    } else {
+        _target setPosATL _targetPos;
+    };
     missionNamespace setVariable ['mkk_ptg_teleportSelecting', false];
     private _marker = missionNamespace getVariable ['mkk_ptg_teleportCurrentPositionMarker', ''];
     if (_marker isNotEqualTo '') then {
