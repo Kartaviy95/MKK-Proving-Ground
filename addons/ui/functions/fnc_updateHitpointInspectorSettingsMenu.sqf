@@ -39,6 +39,9 @@ private _settings = [
     ["hpTracks", "mkk_ptg_hitpointInspectorHpTracks", false, localize "STR_MKK_PTG_HP_TRACKS"],
     ["hpFuel", "mkk_ptg_hitpointInspectorHpFuel", false, localize "STR_MKK_PTG_HP_FUEL"]
 ];
+private _visualSettings = [
+    ["showVolumes", "mkk_ptg_hitpointInspectorShowVolumes", false, localize "STR_MKK_PTG_HITPOINT_INSPECTOR_SHOW_VOLUMES"]
+];
 
 private _allControls = [];
 private _panelX = 0.34;
@@ -74,10 +77,14 @@ _title ctrlSetTextColor [0.72, 0.88, 1, 1];
 
 private _curY = _panelY + 0.065;
 
-private _section = ["MKK_PTG_RscText", [_panelX + _pad, _curY, _panelW - (_pad * 2), 0.026]] call _fncCreateCtrl;
-_section ctrlSetText localize "STR_MKK_PTG_HITPOINT_INSPECTOR_FIELDS";
-_section ctrlSetTextColor [0.72, 0.88, 1, 1];
-_curY = _curY + 0.032;
+private _fncCreateSection = {
+    params ["_text"];
+
+    private _section = ["MKK_PTG_RscText", [_panelX + _pad, _curY, _panelW - (_pad * 2), 0.026]] call _fncCreateCtrl;
+    _section ctrlSetText _text;
+    _section ctrlSetTextColor [0.72, 0.88, 1, 1];
+    _curY = _curY + 0.032;
+};
 
 private _fncCreateToggle = {
     params ["_setting", "_varName", "_default", "_label"];
@@ -103,9 +110,16 @@ private _fncCreateToggle = {
     _curY = _curY + _rowH + _rowGap;
 };
 
+[localize "STR_MKK_PTG_HITPOINT_INSPECTOR_FIELDS"] call _fncCreateSection;
 {
     _x call _fncCreateToggle;
 } forEach _settings;
+
+_curY = _curY + 0.008;
+[localize "STR_MKK_PTG_HITPOINT_INSPECTOR_VISUALIZATION"] call _fncCreateSection;
+{
+    _x call _fncCreateToggle;
+} forEach _visualSettings;
 
 private _close = ["MKK_PTG_RscButtonDanger", [_panelX + _pad, _panelY + _panelH - 0.052, _panelW - (_pad * 2), 0.036], [0.320, 0.075, 0.065, 0.98]] call _fncCreateCtrl;
 _close ctrlSetText localize "STR_MKK_PTG_CLOSE";
