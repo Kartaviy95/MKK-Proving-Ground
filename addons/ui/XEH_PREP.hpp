@@ -1,4 +1,5 @@
 PREP(drawObjectStatusDisplay);
+PREP(drawHitpointInspectorVolumes);
 PREP(initDisplay);
 PREP(openSettingsDialog);
 PREP(initSettingsDisplay);
@@ -24,6 +25,7 @@ PREP(startCrewDriverControl);
 PREP(stopCrewDriverControl);
 PREP(onVehicleSelected);
 PREP(registerObjectStatusDisplay);
+PREP(registerHitpointInspectorDraw);
 PREP(refreshFilters);
 PREP(refreshStaticAmmoBoxes);
 PREP(refreshVehicleList);

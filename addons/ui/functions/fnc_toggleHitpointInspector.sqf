@@ -4,6 +4,8 @@
 */
 if !(hasInterface) exitWith {};
 
+[] call FUNC(registerHitpointInspectorDraw);
+
 private _enabledVarName = "mkk_ptg_hitpointInspectorEnabled";
 private _pfhVarName = "mkk_ptg_hitpointInspectorPFH";
 private _hudVarName = "mkk_ptg_hitpointInspectorHUD";

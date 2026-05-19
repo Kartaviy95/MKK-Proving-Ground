@@ -641,10 +641,20 @@
             <Russian>Сначала войдите в юнита, затем включите инспектор hitpoints.</Russian>
             <German>Steige in eine Spielereinheit ein, bevor der Hitpoint-Inspektor aktiviert wird.</German>
         </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_RADIUS_LABEL">
+            <English>r %1 m</English>
+            <Russian>r %1 м</Russian>
+            <German>r %1 m</German>
+        </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_SETTINGS">
             <English>Hitpoint inspector settings</English>
             <Russian>Настройки инспектора hitpoints</Russian>
             <German>Hitpoint-Inspektor-Einstellungen</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_SHOW_VOLUMES">
+            <English>3D points and radii</English>
+            <Russian>3D-точки и радиусы</Russian>
+            <German>3D-Punkte und Radien</German>
         </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_STATUS">
             <English>Hitpoint inspector: %1</English>
@@ -665,6 +675,11 @@
             <English>Waiting...</English>
             <Russian>Ожидание...</Russian>
             <German>Warten...</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_VISUALIZATION">
+            <English>3D visualization</English>
+            <Russian>3D-визуализация</Russian>
+            <German>3D-Visualisierung</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_AVIONICS">
             <English>Avionics</English>

@@ -12,6 +12,7 @@ private _varName = switch (_setting) do {
     case "hpWheels": {"mkk_ptg_hitpointInspectorHpWheels"};
     case "hpTracks": {"mkk_ptg_hitpointInspectorHpTracks"};
     case "hpFuel": {"mkk_ptg_hitpointInspectorHpFuel"};
+    case "showVolumes": {"mkk_ptg_hitpointInspectorShowVolumes"};
     default {""};
 };
 
