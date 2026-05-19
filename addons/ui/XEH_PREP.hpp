@@ -31,6 +31,7 @@ PREP(setDashboardControlsBlocked);
 PREP(setDashboardInfoText);
 PREP(showDashboardView);
 PREP(showVehicleView);
+PREP(applyTeleport);
 PREP(startMapCamera);
 PREP(startTeleport);
 PREP(stopMapCamera);
