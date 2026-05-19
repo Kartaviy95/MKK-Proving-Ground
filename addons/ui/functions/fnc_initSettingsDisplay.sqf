@@ -14,5 +14,6 @@ switch (_type) do {
     case "objectStatus": {[] call FUNC(updateObjectStatusSettingsMenu)};
     case "mapProjectileMarker": {[] call FUNC(updateMapProjectileMarkerSettingsMenu)};
     case "trajectory": {[] call FUNC(updateTrajectorySettingsMenu)};
+    case "hitpointInspector": {[] call FUNC(updateHitpointInspectorSettingsMenu)};
     default {[] call FUNC(closeSettingsDialog)};
 };

@@ -6,12 +6,13 @@
 params [["_type", "", [""]]];
 
 if !(hasInterface) exitWith {};
-if !(_type in ["objectStatus", "mapProjectileMarker", "trajectory"]) exitWith {};
+if !(_type in ["objectStatus", "mapProjectileMarker", "trajectory", "hitpointInspector"]) exitWith {};
 
 uiNamespace setVariable ["mkk_ptg_settingsDialogType", _type];
 uiNamespace setVariable ["mkk_ptg_objectStatusSettingsVisible", _type isEqualTo "objectStatus"];
 uiNamespace setVariable ["mkk_ptg_mapProjectileMarkerSettingsVisible", _type isEqualTo "mapProjectileMarker"];
 uiNamespace setVariable ["mkk_ptg_trajectorySettingsVisible", _type isEqualTo "trajectory"];
+uiNamespace setVariable ["mkk_ptg_hitpointInspectorSettingsVisible", _type isEqualTo "hitpointInspector"];
 
 [] spawn {
     disableSerialization;
@@ -33,6 +34,7 @@ uiNamespace setVariable ["mkk_ptg_trajectorySettingsVisible", _type isEqualTo "t
             case "objectStatus": {[] call FUNC(updateObjectStatusSettingsMenu)};
             case "mapProjectileMarker": {[] call FUNC(updateMapProjectileMarkerSettingsMenu)};
             case "trajectory": {[] call FUNC(updateTrajectorySettingsMenu)};
+            case "hitpointInspector": {[] call FUNC(updateHitpointInspectorSettingsMenu)};
         };
     };
 };
