@@ -1391,6 +1391,16 @@
             <Russian>Телепорт выполнен.</Russian>
             <German>Teleport abgeschlossen.</German>
         </Key>
+        <Key ID="STR_MKK_PTG_TELEPORT_FAILED">
+            <English>Teleport failed.</English>
+            <Russian>Телепорт не выполнен.</Russian>
+            <German>Teleport fehlgeschlagen.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_TELEPORT_BLOCKED_OBJECT">
+            <English>Teleport point is blocked by a map object.</English>
+            <Russian>Точка телепорта занята объектом карты.</Russian>
+            <German>Teleportpunkt ist durch ein Kartenobjekt blockiert.</German>
+        </Key>
         <Key ID="STR_MKK_PTG_TEST_AMMO">
             <English>Ammo</English>
             <Russian>Боеприпас</Russian>

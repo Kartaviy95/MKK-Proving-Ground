@@ -18,7 +18,6 @@ missionNamespace setVariable ["mkk_ptg_teleportTemporaryMap", !_hasMap];
 closeDialog 0;
 openMap true;
 [localize "STR_MKK_PTG_SELECT_TELEPORT_POINT"] call EFUNC(main,showTimedHint);
-missionNamespace setVariable ["mkk_ptg_teleportDoneText", localize "STR_MKK_PTG_TELEPORT_DONE"];
 missionNamespace setVariable ["mkk_ptg_teleportSelecting", true];
 
 private _marker = missionNamespace getVariable ["mkk_ptg_teleportCurrentPositionMarker", ""];
@@ -38,12 +37,10 @@ _marker setMarkerColorLocal "ColorWEST";
 _marker setMarkerTextLocal format [localize "STR_MKK_PTG_TELEPORT_CURRENT_LOCATION", mapGridPosition _targetPos];
 
 onMapSingleClick "
-    private _target = vehicle player;
-    private _targetPos = [_pos # 0, _pos # 1, 0];
-    if (surfaceIsWater _targetPos) then {
-        _target setPosASL [_pos # 0, _pos # 1, 3];
-    } else {
-        _target setPosATL _targetPos;
+    private _result = [_pos] call ptg_ui_fnc_applyTeleport;
+    if ((_result # 0) isEqualTo false) exitWith {
+        [_result # 1] call ptg_main_fnc_showTimedHint;
+        true
     };
     missionNamespace setVariable ['mkk_ptg_teleportSelecting', false];
     private _marker = missionNamespace getVariable ['mkk_ptg_teleportCurrentPositionMarker', ''];
@@ -57,7 +54,7 @@ onMapSingleClick "
         player unlinkItem 'ItemMap';
         missionNamespace setVariable ['mkk_ptg_teleportTemporaryMap', false];
     };
-    [(missionNamespace getVariable ['mkk_ptg_teleportDoneText', ''])] call ptg_main_fnc_showTimedHint;
+    [_result # 1] call ptg_main_fnc_showTimedHint;
     true
 ";
 
