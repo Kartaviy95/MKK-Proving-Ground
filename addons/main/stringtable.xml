@@ -351,6 +351,11 @@
             <Russian>Показывает компактные карточки урона и hitpoints техники под курсором.</Russian>
             <German>Zeigt kompakte Schadens- und Hitpoint-Karten für das Fahrzeug im Fadenkreuz.</German>
         </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_HITPOINT_INSPECTOR_SETTINGS">
+            <English>Opens hitpoint category settings for the inspector.</English>
+            <Russian>Открывает настройки категорий hitpoint для инспектора.</Russian>
+            <German>Öffnet die Hitpoint-Kategorieeinstellungen für den Inspektor.</German>
+        </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_INFINITE_AMMO">
             <English>Toggles infinite ammo for the local player.</English>
             <Russian>Включает или выключает бесконечные патроны для локального игрока.</Russian>
@@ -626,10 +631,20 @@
             <Russian>Основной игровой дисплей недоступен.</Russian>
             <German>Das Hauptdisplay des Spiels ist nicht verfügbar.</German>
         </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_FIELDS">
+            <English>Displayed hitpoints</English>
+            <Russian>Показываемые hitpoints</Russian>
+            <German>Angezeigte Hitpoints</German>
+        </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_PLAYER_REQUIRED">
             <English>Enter a player unit before enabling hitpoint inspector.</English>
             <Russian>Сначала войдите в юнита, затем включите инспектор hitpoints.</Russian>
             <German>Steige in eine Spielereinheit ein, bevor der Hitpoint-Inspektor aktiviert wird.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_SETTINGS">
+            <English>Hitpoint inspector settings</English>
+            <Russian>Настройки инспектора hitpoints</Russian>
+            <German>Hitpoint-Inspektor-Einstellungen</German>
         </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_STATUS">
             <English>Hitpoint inspector: %1</English>
@@ -667,14 +682,14 @@
             <German>Motor %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_FUEL">
-            <English>Fuel</English>
-            <Russian>Топливо</Russian>
-            <German>Treibstoff</German>
+            <English>Fuel tank</English>
+            <Russian>Бензобак</Russian>
+            <German>Kraftstofftank</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_FUEL_NUMBER">
-            <English>Fuel %1</English>
-            <Russian>Топливо %1</Russian>
-            <German>Treibstoff %1</German>
+            <English>Fuel tank %1</English>
+            <Russian>Бензобак %1</Russian>
+            <German>Kraftstofftank %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_GLASS_NUMBER">
             <English>Glass %1</English>
@@ -701,6 +716,11 @@
             <Russian>Левое переднее колесо</Russian>
             <German>Linkes Vorderrad</German>
         </Key>
+        <Key ID="STR_MKK_PTG_HP_LEFT_MIDDLE_WHEEL">
+            <English>Left middle wheel</English>
+            <Russian>Левое среднее колесо</Russian>
+            <German>Linkes mittleres Rad</German>
+        </Key>
         <Key ID="STR_MKK_PTG_HP_LEFT_REAR_WHEEL">
             <English>Left rear wheel</English>
             <Russian>Левое заднее колесо</Russian>
@@ -710,6 +730,11 @@
             <English>Left track</English>
             <Russian>Левая гусеница</Russian>
             <German>Linke Kette</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_LEFT_WHEEL">
+            <English>Left wheel</English>
+            <Russian>Левое колесо</Russian>
+            <German>Linkes Rad</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_MAIN_ROTOR">
             <English>Main rotor</English>
@@ -721,6 +746,11 @@
             <Russian>Правое переднее колесо</Russian>
             <German>Rechtes Vorderrad</German>
         </Key>
+        <Key ID="STR_MKK_PTG_HP_RIGHT_MIDDLE_WHEEL">
+            <English>Right middle wheel</English>
+            <Russian>Правое среднее колесо</Russian>
+            <German>Rechtes mittleres Rad</German>
+        </Key>
         <Key ID="STR_MKK_PTG_HP_RIGHT_REAR_WHEEL">
             <English>Right rear wheel</English>
             <Russian>Правое заднее колесо</Russian>
@@ -731,10 +761,20 @@
             <Russian>Правая гусеница</Russian>
             <German>Rechte Kette</German>
         </Key>
+        <Key ID="STR_MKK_PTG_HP_RIGHT_WHEEL">
+            <English>Right wheel</English>
+            <Russian>Правое колесо</Russian>
+            <German>Rechtes Rad</German>
+        </Key>
         <Key ID="STR_MKK_PTG_HP_TAIL_ROTOR">
             <English>Tail rotor</English>
             <Russian>Хвостовой ротор</Russian>
             <German>Heckrotor</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_TRACKS">
+            <English>Tracks</English>
+            <Russian>Гусеницы</Russian>
+            <German>Ketten</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_TURRET">
             <English>Turret</English>
@@ -745,6 +785,11 @@
             <English>Turret %1</English>
             <Russian>Башня %1</Russian>
             <German>Turm %1</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_HP_WHEELS">
+            <English>Wheels</English>
+            <Russian>Колеса</Russian>
+            <German>Räder</German>
         </Key>
         <Key ID="STR_MKK_PTG_INDEPENDENT">
             <English>Independent</English>

@@ -61,7 +61,6 @@ if (isNull (findDisplay 46)) exitWith {
 [_pfhVarName] call _fncRemovePFH;
 [_hudVarName, _targetVarName, _visibleVarName, _workDataVarName] call _fncDestroyHud;
 
-private _maxHitpointsToShow = 4;
 private _scanDistance = 1200;
 private _pfhDelay = 0.05;
 private _radialSegments = 250;
@@ -77,7 +76,6 @@ private _pfh = [{
         "_visibleVarName",
         "_workDataVarName",
         "_enabledVarName",
-        "_maxHitpointsToShow",
         "_scanDistance",
         "_radialSegments",
         "_radialOffColor"
@@ -231,9 +229,15 @@ private _pfh = [{
             case "hitltrack": {localize "STR_MKK_PTG_HP_LEFT_TRACK"};
             case "hitrtrack": {localize "STR_MKK_PTG_HP_RIGHT_TRACK"};
             case "hitlfwheel": {localize "STR_MKK_PTG_HP_LEFT_FRONT_WHEEL"};
+            case "hitlf2wheel": {format ["%1 2", localize "STR_MKK_PTG_HP_LEFT_FRONT_WHEEL"]};
             case "hitrfwheel": {localize "STR_MKK_PTG_HP_RIGHT_FRONT_WHEEL"};
+            case "hitrf2wheel": {format ["%1 2", localize "STR_MKK_PTG_HP_RIGHT_FRONT_WHEEL"]};
+            case "hitlmwheel": {localize "STR_MKK_PTG_HP_LEFT_MIDDLE_WHEEL"};
+            case "hitrmwheel": {localize "STR_MKK_PTG_HP_RIGHT_MIDDLE_WHEEL"};
             case "hitlbwheel": {localize "STR_MKK_PTG_HP_LEFT_REAR_WHEEL"};
             case "hitrbwheel": {localize "STR_MKK_PTG_HP_RIGHT_REAR_WHEEL"};
+            case "hitlwheel": {localize "STR_MKK_PTG_HP_LEFT_WHEEL"};
+            case "hitrwheel": {localize "STR_MKK_PTG_HP_RIGHT_WHEEL"};
             case "hitavionics": {localize "STR_MKK_PTG_HP_AVIONICS"};
             case "hithrotor": {localize "STR_MKK_PTG_HP_MAIN_ROTOR"};
             case "hitvrotor": {localize "STR_MKK_PTG_HP_TAIL_ROTOR"};
@@ -247,8 +251,100 @@ private _pfh = [{
         }
     };
 
+    private _fncGetHitpointSettingsSignature = {
+        [
+            missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpEngine", true],
+            missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpHull", true],
+            missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpTurret", true],
+            missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpGun", true],
+            missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpWheels", false],
+            missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpTracks", false],
+            missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpFuel", false]
+        ]
+    };
+
+    private _fncGetHitpointGroups = {
+        private _groups = [];
+
+        if (missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpEngine", true]) then {
+            _groups pushBack [
+                ["HitEngine", "HitEngine1", "HitEngine2"],
+                localize "STR_MKK_PTG_HP_ENGINE",
+                [],
+                false
+            ];
+        };
+
+        if (missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpHull", true]) then {
+            _groups pushBack [
+                ["HitHull", "HitBody"],
+                localize "STR_MKK_PTG_HP_HULL",
+                [],
+                false
+            ];
+        };
+
+        if (missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpTurret", true]) then {
+            _groups pushBack [
+                ["HitTurret", "HitTurret1", "HitTurret2"],
+                localize "STR_MKK_PTG_HP_TURRET",
+                [],
+                false
+            ];
+        };
+
+        if (missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpGun", true]) then {
+            _groups pushBack [
+                ["HitGun", "HitGun1", "HitGun2"],
+                localize "STR_MKK_PTG_HP_GUN",
+                [],
+                false
+            ];
+        };
+
+        if (missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpWheels", false]) then {
+            _groups pushBack [
+                [
+                    "HitLFWheel",
+                    "HitRFWheel",
+                    "HitLBWheel",
+                    "HitRBWheel",
+                    "HitLMWheel",
+                    "HitRMWheel",
+                    "HitLF2Wheel",
+                    "HitRF2Wheel",
+                    "HitLWheel",
+                    "HitRWheel"
+                ],
+                localize "STR_MKK_PTG_HP_WHEELS",
+                ["wheel"],
+                true
+            ];
+        };
+
+        if (missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpTracks", false]) then {
+            _groups pushBack [
+                ["HitLTrack", "HitRTrack"],
+                localize "STR_MKK_PTG_HP_TRACKS",
+                ["track"],
+                true
+            ];
+        };
+
+        if (missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpFuel", false]) then {
+            _groups pushBack [
+                ["HitFuel", "HitFuel1", "HitFuel2"],
+                localize "STR_MKK_PTG_HP_FUEL",
+                [],
+                false
+            ];
+        };
+
+        _groups
+    };
+
     private _fncGetHitpoints = {
-        params ["_veh", "_maxHitpointsToShow"];
+        params ["_veh", "_groups"];
 
         private _all = getAllHitPointsDamage _veh;
         private _names = [];
@@ -264,80 +360,88 @@ private _pfh = [{
             [[], 0]
         };
 
-        private _limit = if (_maxHitpointsToShow < 0) then {
-            _fullCount
-        } else {
-            _maxHitpointsToShow min _fullCount
-        };
-
         private _items = [];
         private _addedKeys = [];
 
-        private _fncPushHitpoint = {
-            params ["_item"];
+        private _fncGetDamageAt = {
+            params ["_index", "_hpName"];
 
-            if ((count _item) == 0) exitWith {};
-            if ((count _items) >= _limit) exitWith {};
-
-            private _key = toLowerANSI (_item # 0);
-            if (!(_key in _addedKeys)) then {
-                _items pushBack _item;
-                _addedKeys pushBack _key;
-            };
+            if (_index < (count _damages)) then {
+                _damages # _index
+            } else {
+                _veh getHitPointDamage _hpName
+            }
         };
 
-        private _fncFindHitpoint = {
-            params ["_wantedNames", "_label"];
+        private _fncBuildWantedKeys = {
+            params ["_wantedNames"];
 
-            private _result = [];
-            private _foundIndex = -1;
-            private _foundName = "";
-
+            private _wantedKeys = [];
             {
-                private _wanted = toLowerANSI _x;
-                {
-                    if (_foundIndex < 0 && {(toLowerANSI _x) isEqualTo _wanted}) then {
-                        _foundIndex = _forEachIndex;
-                        _foundName = _x;
-                    };
-                } forEach _names;
+                _wantedKeys pushBackUnique (toLowerANSI _x);
             } forEach _wantedNames;
 
-            if (_foundIndex >= 0) then {
-                private _damage = if (_foundIndex < (count _damages)) then {
-                    _damages # _foundIndex
-                } else {
-                    _veh getHitPointDamage _foundName
-                };
-
-                _result = [_foundName, _label, _damage];
-            };
-
-            _result
+            _wantedKeys
         };
 
-        [[["HitHull", "HitBody"], localize "STR_MKK_PTG_HP_HULL"] call _fncFindHitpoint] call _fncPushHitpoint;
-        [[["HitEngine", "HitEngine1", "HitEngine2"], localize "STR_MKK_PTG_HP_ENGINE"] call _fncFindHitpoint] call _fncPushHitpoint;
-        [[["HitGun", "HitGun1", "HitGun2"], localize "STR_MKK_PTG_HP_GUN"] call _fncFindHitpoint] call _fncPushHitpoint;
-        [[["HitTurret", "HitTurret1", "HitTurret2"], localize "STR_MKK_PTG_HP_TURRET"] call _fncFindHitpoint] call _fncPushHitpoint;
+        private _fncMatchesHitpoint = {
+            params ["_hpKey", "_wantedKeys", "_matchFragments"];
 
-        if ((count _items) < _limit) then {
+            private _matches = _hpKey in _wantedKeys;
+            if (!_matches) then {
+                {
+                    if (!_matches && {(_hpKey find _x) >= 0}) then {
+                        _matches = true;
+                    };
+                } forEach _matchFragments;
+            };
+
+            _matches
+        };
+
+        private _fncAddExactHitpoint = {
+            params ["_hpName", "_label", "_damage"];
+
+            private _hpKey = toLowerANSI _hpName;
+            if (!(_hpKey in _addedKeys)) then {
+                _items pushBack [_hpName, _label, _damage, [_hpName], []];
+                _addedKeys pushBack _hpKey;
+            };
+        };
+
+        private _fncFindHitpointGroup = {
+            params ["_wantedNames", "_label", "_matchFragments", "_expandAll"];
+
+            private _wantedKeys = [_wantedNames] call _fncBuildWantedKeys;
+            private _bestName = "";
+            private _bestDamage = -1;
+
             {
-                if ((count _items) < _limit) then {
-                    private _key = toLowerANSI _x;
-                    if (!(_key in _addedKeys)) then {
-                        private _damage = if (_forEachIndex < (count _damages)) then {
-                            _damages # _forEachIndex
-                        } else {
-                            _veh getHitPointDamage _x
+                private _hpName = _x;
+                private _hpKey = toLowerANSI _hpName;
+                if ([_hpKey, _wantedKeys, _matchFragments] call _fncMatchesHitpoint) then {
+                    private _damage = [_forEachIndex, _hpName] call _fncGetDamageAt;
+                    if (_expandAll) then {
+                        [_hpName, [_hpName] call _fncGetHitpointLabel, _damage] call _fncAddExactHitpoint;
+                    } else {
+                        if (!(_hpKey in _addedKeys) && {_damage > _bestDamage}) then {
+                            _bestDamage = _damage;
+                            _bestName = _hpName;
                         };
-
-                        _items pushBack [_x, [_x] call _fncGetHitpointLabel, _damage];
-                        _addedKeys pushBack _key;
                     };
                 };
             } forEach _names;
+
+            if (!_expandAll && {_bestName isNotEqualTo ""}) then {
+                _items pushBack [_bestName, _label, _bestDamage, _wantedNames, _matchFragments];
+                _addedKeys pushBack (toLowerANSI _bestName);
+            };
         };
+
+        {
+            _x params ["_wantedNames", "_label", ["_matchFragments", []], ["_expandAll", false]];
+            [_wantedNames, _label, _matchFragments, _expandAll] call _fncFindHitpointGroup;
+        } forEach _groups;
 
         [_items, _fullCount]
     };
@@ -521,7 +625,8 @@ private _pfh = [{
             "_targetVarName",
             "_visibleVarName",
             "_radialSegments",
-            "_radialOffColor"
+            "_radialOffColor",
+            "_hitpointSettingsSignature"
         ];
 
         private _allControls = [];
@@ -569,13 +674,23 @@ private _pfh = [{
         private _panelH = call _fncCalcPanelH;
         private _maxPanelH = safeZoneH - (0.030 * _layoutScale);
         if (_panelH > _maxPanelH) then {
-            private _heightScale = ((_maxPanelH / _panelH) max 0.82) min 1.00;
+            private _heightScale = ((_maxPanelH / _panelH) max 0.58) min 1.00;
             _gap = _gap * _heightScale;
-            _headerH = _headerH * (_heightScale max 0.90);
-            _classH = _classH * (_heightScale max 0.88);
+            _headerH = _headerH * (_heightScale max 0.74);
+            _classH = _classH * (_heightScale max 0.70);
             _vehicleCardH = _vehicleCardH * _heightScale;
             _hpCardH = _hpCardH * _heightScale;
             _panelH = call _fncCalcPanelH;
+
+            if (_panelH > _maxPanelH) then {
+                private _extraHeightScale = (_maxPanelH / _panelH) min 1.00;
+                _gap = _gap * _extraHeightScale;
+                _headerH = _headerH * _extraHeightScale;
+                _classH = _classH * _extraHeightScale;
+                _vehicleCardH = _vehicleCardH * _extraHeightScale;
+                _hpCardH = _hpCardH * _extraHeightScale;
+                _panelH = call _fncCalcPanelH;
+            };
         };
 
         private _panelX = safeZoneX + safeZoneW - _panelW - (0.025 * _layoutScale);
@@ -711,6 +826,8 @@ private _pfh = [{
         {
             private _hpName = _x # 0;
             private _hpLabel = _x # 1;
+            private _hpWantedNames = _x param [3, [_hpName]];
+            private _hpMatchFragments = _x param [4, []];
 
             private _card = [
                 _display,
@@ -745,7 +862,9 @@ private _pfh = [{
                 _statusText,
                 _ringSegments,
                 _percentText,
-                _statusTextW
+                _statusTextW,
+                _hpWantedNames,
+                _hpMatchFragments
             ];
 
             _curY = _curY + _hpCardH + _gap;
@@ -762,7 +881,8 @@ private _pfh = [{
             _vehPercentText,
             _vehStatusTextW,
             _hpControls,
-            _interfaceSize
+            _interfaceSize,
+            _hitpointSettingsSignature
         ]
     };
 
@@ -829,6 +949,9 @@ private _pfh = [{
         };
     };
 
+    private _hitpointGroups = call _fncGetHitpointGroups;
+    private _hitpointSettingsSignature = call _fncGetHitpointSettingsSignature;
+
     private _hudMissing = (count _controls) == 0;
     if (!_hudMissing) then {
         _hudMissing = isNull (_controls # 0);
@@ -837,7 +960,7 @@ private _pfh = [{
     if (_targetVeh isNotEqualTo _currentHudTarget || {_hudMissing}) then {
         [_hudVarName, _targetVarName, _visibleVarName, _workDataVarName] call _fncDestroyHud;
 
-        private _hpData = [_targetVeh, _maxHitpointsToShow] call _fncGetHitpoints;
+        private _hpData = [_targetVeh, _hitpointGroups] call _fncGetHitpoints;
         private _hpList = _hpData # 0;
         private _hpFullCount = _hpData # 1;
 
@@ -850,7 +973,8 @@ private _pfh = [{
             _targetVarName,
             _visibleVarName,
             _radialSegments,
-            _radialOffColor
+            _radialOffColor,
+            _hitpointSettingsSignature
         ] call _fncBuildHud;
 
         uiNamespace setVariable [_workDataVarName, _newWorkData];
@@ -868,11 +992,13 @@ private _pfh = [{
     private _currentInterfaceSize = ([] call EFUNC(common,getHudScale)) # 3;
     private _builtInterfaceSize = if ((count _workData) > 6) then {_workData # 6} else {-1};
     private _interfaceScaleChanged = abs (_currentInterfaceSize - _builtInterfaceSize) > 0.01;
+    private _builtHitpointSettingsSignature = if ((count _workData) > 7) then {_workData # 7} else {[]};
+    private _hitpointSettingsChanged = _hitpointSettingsSignature isNotEqualTo _builtHitpointSettingsSignature;
 
-    if ((count _workData) == 0 || {_targetVeh isNotEqualTo _currentHudTarget || {_interfaceScaleChanged}}) then {
+    if ((count _workData) == 0 || {_targetVeh isNotEqualTo _currentHudTarget || {_interfaceScaleChanged || {_hitpointSettingsChanged}}}) then {
         [_hudVarName, _targetVarName, _visibleVarName, _workDataVarName] call _fncDestroyHud;
 
-        private _hpData2 = [_targetVeh, _maxHitpointsToShow] call _fncGetHitpoints;
+        private _hpData2 = [_targetVeh, _hitpointGroups] call _fncGetHitpoints;
         private _hpList2 = _hpData2 # 0;
         private _hpFullCount2 = _hpData2 # 1;
 
@@ -885,7 +1011,8 @@ private _pfh = [{
             _targetVarName,
             _visibleVarName,
             _radialSegments,
-            _radialOffColor
+            _radialOffColor,
+            _hitpointSettingsSignature
         ] call _fncBuildHud;
 
         uiNamespace setVariable [_workDataVarName, _workData];
@@ -900,7 +1027,8 @@ private _pfh = [{
         "_vehPercentText",
         "_vehStatusTextW",
         "_hpControls",
-        ["_builtInterfaceSize", -1]
+        ["_builtInterfaceSize", -1],
+        ["_builtHitpointSettingsSignature", []]
     ];
 
     if ((count _allControls) == 0 || {isNull (_allControls # 0)}) exitWith {
@@ -959,6 +1087,58 @@ private _pfh = [{
         _radialOffColor
     ] call _fncUpdateRing;
 
+    private _liveHitpoints = getAllHitPointsDamage _targetVeh;
+    private _liveHpNames = [];
+    private _liveHpDamages = [];
+
+    if ((count _liveHitpoints) >= 3) then {
+        _liveHpNames = _liveHitpoints # 0;
+        _liveHpDamages = _liveHitpoints # 2;
+    };
+
+    private _fncFindLiveHitpoint = {
+        params ["_fallbackName", "_wantedNames", "_matchFragments"];
+
+        private _wantedKeys = [];
+        {
+            _wantedKeys pushBack (toLowerANSI _x);
+        } forEach _wantedNames;
+
+        private _bestName = _fallbackName;
+        private _bestDamage = _targetVeh getHitPointDamage _fallbackName;
+        private _found = false;
+
+        {
+            private _hpName = _x;
+            private _hpKey = toLowerANSI _hpName;
+            private _matches = _hpKey in _wantedKeys;
+
+            if (!_matches) then {
+                {
+                    if (!_matches && {(_hpKey find _x) >= 0}) then {
+                        _matches = true;
+                    };
+                } forEach _matchFragments;
+            };
+
+            if (_matches) then {
+                private _damage = if (_forEachIndex < (count _liveHpDamages)) then {
+                    _liveHpDamages # _forEachIndex
+                } else {
+                    _targetVeh getHitPointDamage _hpName
+                };
+
+                if (!_found || {_damage > _bestDamage}) then {
+                    _found = true;
+                    _bestName = _hpName;
+                    _bestDamage = _damage;
+                };
+            };
+        } forEach _liveHpNames;
+
+        [_bestName, _bestDamage]
+    };
+
     {
         _x params [
             "_hpName",
@@ -966,10 +1146,18 @@ private _pfh = [{
             "_statusText",
             "_ringSegments",
             "_percentText",
-            "_statusTextW"
+            "_statusTextW",
+            ["_hpWantedNames", []],
+            ["_hpMatchFragments", []]
         ];
 
-        private _curDamage = _targetVeh getHitPointDamage _hpName;
+        if ((count _hpWantedNames) == 0) then {
+            _hpWantedNames = [_hpName];
+        };
+
+        private _liveHitpoint = [_hpName, _hpWantedNames, _hpMatchFragments] call _fncFindLiveHitpoint;
+        private _curHpName = _liveHitpoint # 0;
+        private _curDamage = _liveHitpoint # 1;
         private _damageClamped = (_curDamage min 1) max 0;
         private _percent = round (_damageClamped * 100);
 
@@ -979,7 +1167,7 @@ private _pfh = [{
         private _stateColor = _state # 2;
 
         private _hpNameSize = [
-            _hpName,
+            _curHpName,
             0.80 * _liveTextScale,
             0.58,
             _statusTextW,
@@ -997,7 +1185,7 @@ private _pfh = [{
 
         _statusText ctrlSetStructuredText parseText format [
             "<t size='%4' color='#A8A8A8'>%1</t><br/><t size='%5' color='%2'>%3</t>",
-            _hpName,
+            _curHpName,
             _stateHex,
             _stateText,
             _hpNameSize toFixed 2,
@@ -1024,7 +1212,6 @@ private _pfh = [{
     _visibleVarName,
     _workDataVarName,
     _enabledVarName,
-    _maxHitpointsToShow,
     _scanDistance,
     _radialSegments,
     _radialOffColor

@@ -344,11 +344,23 @@ class MKK_PTG_MainDisplay {
             idc = 88116;
             x = 0.385;
             y = 0.515;
-            w = 0.230;
+            w = 0.190;
             h = 0.046;
             text = "$STR_MKK_PTG_HITPOINT_INSPECTOR";
             action = QUOTE([] call FUNC(toggleHitpointInspector); [] call FUNC(updateDashboardStatusLine));
             onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_HITPOINT_INSPECTOR'] call FUNC(setDashboardInfoText));
+            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
+        };
+
+        class DashboardHitpointInspectorSettingsBtn: MKK_PTG_RscSettingsButton {
+            idc = 88124;
+            x = 0.580;
+            y = 0.515;
+            w = 0.035;
+            h = 0.046;
+            text = "\a3\ui_f\data\igui\cfg\simpletasks\types\repair_ca.paa";
+            action = QUOTE([] call FUNC(toggleHitpointInspectorSettings));
+            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_HITPOINT_INSPECTOR_SETTINGS'] call FUNC(setDashboardInfoText));
             onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
@@ -1074,7 +1086,7 @@ class MKK_PTG_SettingsDisplay {
     movingEnable = 1;
     enableSimulation = 1;
     onLoad = QUOTE(_this call FUNC(initSettingsDisplay));
-    onUnload = "uiNamespace setVariable ['mkk_ptg_settingsDisplay', displayNull]; uiNamespace setVariable ['mkk_ptg_objectStatusSettingsControls', []]; uiNamespace setVariable ['mkk_ptg_mapProjectileMarkerSettingsControls', []]; uiNamespace setVariable ['mkk_ptg_trajectorySettingsControls', []];";
+    onUnload = "uiNamespace setVariable ['mkk_ptg_settingsDisplay', displayNull]; uiNamespace setVariable ['mkk_ptg_objectStatusSettingsControls', []]; uiNamespace setVariable ['mkk_ptg_mapProjectileMarkerSettingsControls', []]; uiNamespace setVariable ['mkk_ptg_trajectorySettingsControls', []]; uiNamespace setVariable ['mkk_ptg_hitpointInspectorSettingsControls', []];";
 
     class controlsBackground {};
     class controls {};

@@ -7,11 +7,13 @@ params [["_openMainMenu", true, [true]]];
 uiNamespace setVariable ["mkk_ptg_objectStatusSettingsVisible", false];
 uiNamespace setVariable ["mkk_ptg_mapProjectileMarkerSettingsVisible", false];
 uiNamespace setVariable ["mkk_ptg_trajectorySettingsVisible", false];
+uiNamespace setVariable ["mkk_ptg_hitpointInspectorSettingsVisible", false];
 uiNamespace setVariable ["mkk_ptg_settingsDialogType", ""];
 
 [] call FUNC(updateObjectStatusSettingsMenu);
 [] call FUNC(updateMapProjectileMarkerSettingsMenu);
 [] call FUNC(updateTrajectorySettingsMenu);
+[] call FUNC(updateHitpointInspectorSettingsMenu);
 
 [_openMainMenu] spawn {
     params ["_openMainMenu"];
