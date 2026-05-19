@@ -14,6 +14,12 @@ if (_selectedMapPos isEqualTo []) exitWith {
     [] call FUNC(stopMapCamera);
     closeDialog 0;
 
+    private _hasMap = "ItemMap" in assignedItems player;
+    if !(_hasMap) then {
+        player linkItem "ItemMap";
+    };
+    missionNamespace setVariable ["mkk_ptg_mapCameraTemporaryMap", !_hasMap];
+
     missionNamespace setVariable ["mkk_ptg_mapCameraSelecting", true];
     missionNamespace setVariable ["mkk_ptg_mapCameraSelectedPos", []];
 
@@ -26,6 +32,10 @@ if (_selectedMapPos isEqualTo []) exitWith {
         missionNamespace setVariable ['mkk_ptg_mapCameraSelecting', false];
         onMapSingleClick '';
         openMap [false, false];
+        if (missionNamespace getVariable ['mkk_ptg_mapCameraTemporaryMap', false]) then {
+            player unlinkItem 'ItemMap';
+            missionNamespace setVariable ['mkk_ptg_mapCameraTemporaryMap', false];
+        };
         true
     ";
 
@@ -38,6 +48,11 @@ if (_selectedMapPos isEqualTo []) exitWith {
         private _selectedPos = missionNamespace getVariable ["mkk_ptg_mapCameraSelectedPos", []];
         missionNamespace setVariable ["mkk_ptg_mapCameraSelecting", false];
         onMapSingleClick "";
+
+        if (missionNamespace getVariable ["mkk_ptg_mapCameraTemporaryMap", false]) then {
+            player unlinkItem "ItemMap";
+            missionNamespace setVariable ["mkk_ptg_mapCameraTemporaryMap", false];
+        };
 
         if (_selectedPos isEqualTo []) exitWith {};
         [_selectedPos] call ptg_ui_fnc_startMapCamera;

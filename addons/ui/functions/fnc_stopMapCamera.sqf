@@ -11,6 +11,10 @@ missionNamespace setVariable ["mkk_ptg_mapCameraNightVision", false];
 camUseNVG false;
 onMapSingleClick "";
 openMap false;
+if (missionNamespace getVariable ["mkk_ptg_mapCameraTemporaryMap", false]) then {
+    player unlinkItem "ItemMap";
+    missionNamespace setVariable ["mkk_ptg_mapCameraTemporaryMap", false];
+};
 
 private _display = findDisplay 46;
 private _ehs = missionNamespace getVariable ["mkk_ptg_mapCameraControlEHs", []];
