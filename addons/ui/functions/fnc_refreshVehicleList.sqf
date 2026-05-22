@@ -26,6 +26,9 @@ private _filtered = [
 
 lbClear _ctrlList;
 
+private _preferredClassName = missionNamespace getVariable ["mkk_ptg_currentSelection", ""];
+private _preferredIndex = -1;
+
 {
     private _className = _x # 0;
     private _displayName = [_x # 1] call EFUNC(common,localizeString);
@@ -35,12 +38,24 @@ lbClear _ctrlList;
 
     private _idx = _ctrlList lbAdd format ["%1 | %2 | %3", _displayName, _vehicleTypeLabel, _factionDisplayName];
     _ctrlList lbSetData [_idx, _className];
+    if (_className isEqualTo _preferredClassName) then {
+        _preferredIndex = _idx;
+    };
 } forEach _filtered;
 
 _ctrlCount ctrlSetText format [localize "STR_MKK_PTG_FOUND", count _filtered];
 
 if ((count _filtered) > 0) then {
-    _ctrlList lbSetCurSel 0;
+    private _selectionIndex = _preferredIndex;
+    if (_selectionIndex < 0) then {
+        _selectionIndex = 0;
+    };
+
+    private _className = _ctrlList lbData _selectionIndex;
+    missionNamespace setVariable ["mkk_ptg_currentSelection", _className];
+    _ctrlList lbSetCurSel _selectionIndex;
+    [] call FUNC(updateVehicleCard);
+    [] call FUNC(refreshStaticAmmoBoxes);
 } else {
     missionNamespace setVariable ["mkk_ptg_currentSelection", ""];
     [] call FUNC(updateVehicleCard);
