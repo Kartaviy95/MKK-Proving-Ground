@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Ведет projectile до конца жизни, затем показывает место падения сверху.
+    Ведет projectile до конца жизни, затем мягко отдаляет камеру от подтвержденного места попадания.
 */
 params [
     ["_projectile", objNull],
@@ -17,9 +17,41 @@ if !(isNull _projectile) then {
 private _lastCameraPos = _lastPos;
 private _trajectory = [_lastPos];
 private _impactHoldTime = 2;
-private _preImpactStopDistance = 100;
-private _impactOverviewHeight = 120;
-private _impactOverviewMoveTime = 1.6;
+private _impactPullBackDistance = 35;
+private _impactOverviewHeight = 16;
+private _impactOverviewMoveTime = 1.2;
+private _surfaceProbeDistanceMin = 25;
+private _surfaceProbeDistanceMax = 250;
+
+private _fncFindSurfaceHit = {
+    params ["_fromASL", "_toASL"];
+
+    if ((_fromASL distance _toASL) <= 0.01) exitWith {[]};
+
+    private _hits = lineIntersectsSurfaces [
+        _fromASL,
+        _toASL,
+        player,
+        vehicle player,
+        true,
+        1,
+        "GEOM",
+        "FIRE"
+    ];
+    if (_hits isNotEqualTo []) exitWith {(_hits # 0) # 0};
+
+    private _fromZ = _fromASL # 2;
+    private _toZ = _toASL # 2;
+    private _fromGroundASL = getTerrainHeightASL [_fromASL # 0, _fromASL # 1];
+    private _toGroundASL = getTerrainHeightASL [_toASL # 0, _toASL # 1];
+    private _fromAboveGround = _fromZ - _fromGroundASL;
+    private _toAboveGround = _toZ - _toGroundASL;
+    if (_fromAboveGround > 0.02 && {_toAboveGround <= 0.02}) exitWith {
+        [_toASL # 0, _toASL # 1, _toGroundASL]
+    };
+
+    []
+};
 
 while {true} do {
     private _state = missionNamespace getVariable ["mkk_ptg_trackingState", createHashMap];
@@ -52,65 +84,40 @@ if (isNull _camera) exitWith {
     [] call FUNC(stopProjectileTrack);
 };
 
-private _impactPos = _lastPos;
+private _impactPos = [];
 if ((count _trajectory) > 1) then {
     private _nearPos = _trajectory # ((count _trajectory) - 1);
     private _farPos = _trajectory # ((count _trajectory) - 2);
     private _impactDir = vectorNormalized (_nearPos vectorDiff _farPos);
     if (_impactDir isNotEqualTo [0, 0, 0]) then {
-        private _rayEnd = _nearPos vectorAdd (_impactDir vectorMultiply 1000);
-        private _hits = lineIntersectsSurfaces [_farPos, _rayEnd, objNull, objNull, true, 1, "GEOM", "NONE"];
-        if (_hits isNotEqualTo []) then {
-            _impactPos = (_hits # 0) # 0;
-        } else {
-            private _groundASL = getTerrainHeightASL [_nearPos # 0, _nearPos # 1];
-            if ((_impactDir # 2) < -0.001) then {
-                private _t = (_groundASL - (_nearPos # 2)) / (_impactDir # 2);
-                if (_t > 0) then {
-                    _impactPos = _nearPos vectorAdd (_impactDir vectorMultiply _t);
-                    _impactPos set [2, getTerrainHeightASL [_impactPos # 0, _impactPos # 1]];
-                };
-            };
+        private _surfaceHitASL = [_farPos, _nearPos] call _fncFindSurfaceHit;
+        if (_surfaceHitASL isEqualTo []) then {
+            private _probeDistance = (((_nearPos distance _farPos) * 2) max _surfaceProbeDistanceMin) min _surfaceProbeDistanceMax;
+            _surfaceHitASL = [_nearPos, _nearPos vectorAdd (_impactDir vectorMultiply _probeDistance)] call _fncFindSurfaceHit;
+        };
+
+        if (_surfaceHitASL isNotEqualTo []) then {
+            _impactPos = _surfaceHitASL;
         };
     };
 };
-if (_impactPos isEqualTo _lastPos) then {
-    _impactPos = [
-        _lastPos # 0,
-        _lastPos # 1,
-        getTerrainHeightASL [_lastPos # 0, _lastPos # 1]
-    ];
+
+if (_impactPos isEqualTo []) exitWith {
+    [] call FUNC(stopProjectileTrack);
 };
 
 detach _camera;
 private _impactATL = ASLToATL _impactPos;
-private _stopPos = _lastCameraPos;
-
-if ((count _trajectory) > 1) then {
-    private _distanceLeft = _preImpactStopDistance;
-    private _nextPos = _impactPos;
-
-    for "_idx" from ((count _trajectory) - 1) to 0 step -1 do {
-        private _pos = _trajectory # _idx;
-        private _segmentLength = _pos distance _nextPos;
-
-        if (_segmentLength >= _distanceLeft) exitWith {
-            private _dir = vectorNormalized (_pos vectorDiff _nextPos);
-            _stopPos = _nextPos vectorAdd (_dir vectorMultiply _distanceLeft);
-        };
-
-        _distanceLeft = _distanceLeft - _segmentLength;
-        _stopPos = _pos;
-        _nextPos = _pos;
-    };
+private _viewDir = vectorNormalized (_lastCameraPos vectorDiff _impactPos);
+if (_viewDir isEqualTo [0, 0, 0]) then {
+    _viewDir = [0, -1, 0.25];
 };
-
-private _stopATL = ASLToATL _stopPos;
-private _overviewPos = +_impactPos;
-_overviewPos set [2, (_impactPos # 2) + _impactOverviewHeight];
+private _overviewPos = _lastCameraPos vectorAdd (_viewDir vectorMultiply _impactPullBackDistance);
+private _minOverviewHeight = (getTerrainHeightASL [_overviewPos # 0, _overviewPos # 1]) + 4;
+_overviewPos set [2, ((_overviewPos # 2) + _impactOverviewHeight) max _minOverviewHeight];
 private _overviewATL = ASLToATL _overviewPos;
 
-_camera camSetPos _stopATL;
+_camera camSetPos (ASLToATL _lastCameraPos);
 _camera camSetTarget _impactATL;
 _camera camCommit 0;
 
