@@ -31,6 +31,8 @@ if !(isNull _display) then {
     };
 };
 
+[true] call FUNC(saveVehicleSpawnState);
+
 private _driverClass = "";
 if (_enterAsGunner) then {
     _driverClass = typeOf player;

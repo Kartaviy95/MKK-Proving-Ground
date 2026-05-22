@@ -3,7 +3,7 @@ class MKK_PTG_MainDisplay {
     movingEnable = 1;
     enableSimulation = 1;
     onLoad = QUOTE(_this call FUNC(initDisplay));
-    onUnload = "uiNamespace setVariable ['mkk_ptg_display', displayNull];";
+    onUnload = QUOTE([] call FUNC(onMainDisplayUnload));
 
     class controlsBackground {
         class Background: MKK_PTG_RscText {
@@ -588,6 +588,7 @@ class MKK_PTG_MainDisplay {
             w = 0.16;
             h = 0.04;
             text = "10";
+            onKeyUp = QUOTE([false] call FUNC(saveVehicleSpawnState));
         };
 
         class DirectionLabel: MKK_PTG_RscText {
@@ -606,6 +607,7 @@ class MKK_PTG_MainDisplay {
             w = 0.16;
             h = 0.04;
             text = "0";
+            onKeyUp = QUOTE([false] call FUNC(saveVehicleSpawnState));
         };
 
         class VehicleList: MKK_PTG_RscListbox {
@@ -632,6 +634,7 @@ class MKK_PTG_MainDisplay {
             y = 0.645;
             w = 0.38;
             h = 0.04;
+            onLBSelChanged = QUOTE(_this call FUNC(onStaticAmmoBoxSelected));
         };
 
         class SpawnBtn: MKK_PTG_RscButton {
