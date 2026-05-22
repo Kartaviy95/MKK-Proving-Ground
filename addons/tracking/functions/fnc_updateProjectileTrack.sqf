@@ -16,6 +16,7 @@ if !(isNull _projectile) then {
 };
 private _lastCameraPos = _lastPos;
 private _trajectory = [_lastPos];
+private _trackedProjectile = _projectile;
 private _impactHoldTime = 2;
 private _impactPullBackDistance = 35;
 private _impactOverviewHeight = 16;
@@ -56,6 +57,13 @@ private _fncFindSurfaceHit = {
 while {true} do {
     private _state = missionNamespace getVariable ["mkk_ptg_trackingState", createHashMap];
     if !(_state isEqualType createHashMap && {(_state getOrDefault ["id", -2]) isEqualTo _trackId}) exitWith {};
+
+    _projectile = _state getOrDefault ["projectile", objNull];
+    if (_projectile isNotEqualTo _trackedProjectile) then {
+        _trackedProjectile = _projectile;
+        _lastPos = _state getOrDefault ["lastPos", _lastPos];
+        _trajectory = [_lastPos];
+    };
 
     private _camera = _state getOrDefault ["camera", objNull];
     if !(isNull _camera) then {

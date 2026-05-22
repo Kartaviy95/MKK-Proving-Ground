@@ -671,15 +671,15 @@
             <Russian>ИНСПЕКТОР HITPOINTS</Russian>
             <German>HITPOINT-INSPEKTOR</German>
         </Key>
-        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING">
-            <English>Waiting...</English>
-            <Russian>Ожидание...</Russian>
-            <German>Warten...</German>
-        </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_VISUALIZATION">
             <English>3D visualization</English>
             <Russian>3D-визуализация</Russian>
             <German>3D-Visualisierung</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_WAITING">
+            <English>Waiting...</English>
+            <Russian>Ожидание...</Russian>
+            <German>Warten...</German>
         </Key>
         <Key ID="STR_MKK_PTG_HP_AVIONICS">
             <English>Avionics</English>
@@ -1396,6 +1396,11 @@
             <Russian>Телепорт</Russian>
             <German>Teleport</German>
         </Key>
+        <Key ID="STR_MKK_PTG_TELEPORT_BLOCKED_OBJECT">
+            <English>Teleport point is blocked by a map object.</English>
+            <Russian>Точка телепорта занята объектом карты.</Russian>
+            <German>Teleportpunkt ist durch ein Kartenobjekt blockiert.</German>
+        </Key>
         <Key ID="STR_MKK_PTG_TELEPORT_CURRENT_LOCATION">
             <English>Current location: %1</English>
             <Russian>Текущее местоположение: %1</Russian>
@@ -1410,11 +1415,6 @@
             <English>Teleport failed.</English>
             <Russian>Телепорт не выполнен.</Russian>
             <German>Teleport fehlgeschlagen.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_TELEPORT_BLOCKED_OBJECT">
-            <English>Teleport point is blocked by a map object.</English>
-            <Russian>Точка телепорта занята объектом карты.</Russian>
-            <German>Teleportpunkt ist durch ein Kartenobjekt blockiert.</German>
         </Key>
         <Key ID="STR_MKK_PTG_TEST_AMMO">
             <English>Ammo</English>

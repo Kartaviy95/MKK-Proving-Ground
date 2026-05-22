@@ -4,6 +4,14 @@
 */
 private _state = missionNamespace getVariable ["mkk_ptg_trackingState", createHashMap];
 if (_state isEqualType createHashMap && {count _state > 0}) then {
+    private _submunitionEHs = _state getOrDefault ["submunitionEHs", []];
+    {
+        _x params [["_projectile", objNull], ["_eh", -1]];
+        if (!isNull _projectile && {_eh >= 0}) then {
+            _projectile removeEventHandler ["SubmunitionCreated", _eh];
+        };
+    } forEach _submunitionEHs;
+
     private _camera = _state getOrDefault ["camera", objNull];
     if !(isNull _camera) then {
         detach _camera;

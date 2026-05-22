@@ -2,6 +2,7 @@ PREP(canTrackProjectile);
 PREP(drawTrackingHud);
 PREP(drawTrajectoryLines);
 PREP(handleProjectileFired);
+PREP(registerSubmunitionTracking);
 PREP(registerTrackingEH);
 PREP(recordTrajectory);
 PREP(recordMapProjectileMarker);
