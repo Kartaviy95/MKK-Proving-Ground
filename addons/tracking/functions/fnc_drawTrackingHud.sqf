@@ -50,6 +50,30 @@ if (_state isEqualType createHashMap && {count _state > 0}) then {
     private _padY = 0.015 * safeZoneH * _hudScale;
     private _accentH = (0.004 * safeZoneH * _hudScale) max pixelH;
 
+    private _text = format [
+        localize "STR_MKK_PTG_TRACKING_HUD",
+        _ammoClass,
+        [_flightTime, 2] call BIS_fnc_cutDecimals,
+        round _distance,
+        _mode,
+        _speed
+    ];
+
+    private _textCtrl = _hud displayCtrl 88302;
+    if !(isNull _textCtrl) then {
+        _textCtrl ctrlSetPosition [_panelX + _padX, _panelY + _padY, _panelW - (_padX * 2), _panelH - (_padY * 2)];
+        _textCtrl ctrlCommit 0;
+        _textCtrl ctrlSetStructuredText parseText format ["<t size='%1'>%2</t>", str ([1.75 * _fontScale, 2] call BIS_fnc_cutDecimals), _text];
+
+        private _textHeight = ctrlTextHeight _textCtrl;
+        private _screenBottom = safeZoneY + safeZoneH - (0.006 * safeZoneH);
+        _panelH = ((_panelH max (_textHeight + (_padY * 2))) min ((_screenBottom - _panelY) max pixelH));
+        _panelRect set [3, _panelH];
+
+        _textCtrl ctrlSetPosition [_panelX + _padX, _panelY + _padY, _panelW - (_padX * 2), _panelH - (_padY * 2)];
+        _textCtrl ctrlCommit 0;
+    };
+
     private _panel = _hud displayCtrl 88300;
     if !(isNull _panel) then {
         _panel ctrlSetPosition _panelRect;
@@ -60,24 +84,5 @@ if (_state isEqualType createHashMap && {count _state > 0}) then {
     if !(isNull _accent) then {
         _accent ctrlSetPosition [_panelX, _panelY, _panelW, _accentH];
         _accent ctrlCommit 0;
-    };
-
-    private _textCtrl = _hud displayCtrl 88302;
-    if !(isNull _textCtrl) then {
-        _textCtrl ctrlSetPosition [_panelX + _padX, _panelY + _padY, _panelW - (_padX * 2), _panelH - (_padY * 2)];
-        _textCtrl ctrlCommit 0;
-    };
-
-    private _text = format [
-        localize "STR_MKK_PTG_TRACKING_HUD",
-        _ammoClass,
-        [_flightTime, 2] call BIS_fnc_cutDecimals,
-        round _distance,
-        _mode,
-        _speed
-    ];
-
-    if !(isNull _textCtrl) then {
-        _textCtrl ctrlSetStructuredText parseText format ["<t size='%1'>%2</t>", str ([1.75 * _fontScale, 2] call BIS_fnc_cutDecimals), _text];
     };
 };
