@@ -3,7 +3,7 @@ class MKK_PTG_PenetrationDisplay {
     movingEnable = 1;
     enableSimulation = 1;
     onLoad = QUOTE(_this call FUNC(initDisplay));
-    onUnload = "if !(missionNamespace getVariable ['mkk_ptg_penetrationClosingForCamera', false]) then {[] call ptg_penetration_fnc_stopOrbitCamera}; uiNamespace setVariable ['mkk_ptg_penetrationDisplay', displayNull];";
+    onUnload = "if !(missionNamespace getVariable ['mkk_ptg_penetrationClosingForCamera', false]) then {[] call ptg_penetration_fnc_stopOrbitCamera}; uiNamespace setVariable ['mkk_ptg_penetrationDisplay', displayNull]; uiNamespace setVariable ['mkk_ptg_penetrationWebControl', controlNull]; uiNamespace setVariable ['mkk_ptg_penetrationWebReady', false];";
 
     class controlsBackground {
         class Background: MKK_PTG_RscText {
@@ -71,7 +71,7 @@ class MKK_PTG_PenetrationDisplay {
             w = 0.26;
             h = 0.04;
             text = "";
-            onKeyUp = QUOTE([] call FUNC(refreshVehicleList));
+            onKeyUp = QUOTE([] call FUNC(refreshVehicleList); ['penetration'] call FUNC(pushWebState));
         };
 
         class VehicleList: MKK_PTG_RscListbox {
@@ -100,7 +100,7 @@ class MKK_PTG_PenetrationDisplay {
             w = 0.26;
             h = 0.04;
             text = "";
-            onKeyUp = QUOTE([] call FUNC(refreshAmmoList));
+            onKeyUp = QUOTE([] call FUNC(refreshAmmoList); ['penetration'] call FUNC(pushWebState));
         };
 
         class AmmoList: MKK_PTG_RscListbox {
@@ -197,6 +197,14 @@ class MKK_PTG_PenetrationDisplay {
             w = 0.84;
             h = 0.06;
             text = "$STR_MKK_PTG_PENETRATION_NOTE";
+        };
+
+        class WebInterface: MKK_PTG_RscWebBrowser {
+            idc = 88990;
+            x = 0.05;
+            y = 0.05;
+            w = 0.90;
+            h = 0.85;
         };
     };
 };

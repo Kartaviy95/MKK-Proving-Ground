@@ -74,6 +74,11 @@ class MKK_PTG_RscPicture {
     shadow = 0;
 };
 
+class MKK_PTG_RscWebBrowser: MKK_PTG_RscText {
+    type = 106;
+    url = "";
+};
+
 class MKK_PTG_RscEdit {
     access = 0;
     type = 2;

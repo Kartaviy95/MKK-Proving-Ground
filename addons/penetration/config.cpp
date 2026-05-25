@@ -27,6 +27,7 @@ class MKK_PTG_RscListbox;
 class MKK_PTG_RscPicture;
 class MKK_PTG_RscStructuredText;
 class MKK_PTG_RscText;
+class MKK_PTG_RscWebBrowser;
 class RscMapControl;
 
 #include "dialogs\penetrationTest.hpp"

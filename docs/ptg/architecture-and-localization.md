@@ -25,7 +25,7 @@ Russian.
 Текущее состояние stringtable:
 
 ключи имеют префикс `STR_MKK_PTG_`;
-в `addons/main/stringtable.xml` сейчас 309 key;
+в `addons/main/stringtable.xml` сейчас 317 key;
 у всех текущих key есть English и Russian.
 
 24. Внутренняя архитектура
@@ -77,13 +77,16 @@ ace — ACE self actions и terminal actions.
 
 Основные UI-поверхности:
 
-`MKK_PTG_MainDisplay` idd 88000;
+`MKK_PTG_MainDisplay` idd 88000, browser presentation idc 88090;
 оверлей перевооружения в `MKK_PTG_MainDisplay` использует idc 88201, 88220-88233, 88290-88292;
 оверлей целей в `MKK_PTG_MainDisplay` использует idc 88201, 88400-88443;
 `MKK_PTG_ObjectStatusDisplayHUD` слой RscTitles, idc 88200-88203;
 `MKK_PTG_TrackingHUD` слой RscTitles, idc 88300-88302;
-`MKK_PTG_PenetrationDisplay` idd 88900;
+`MKK_PTG_PenetrationDisplay` idd 88900, browser presentation idc 88990;
+`MKK_PTG_ExplosionDisplay` idd 89000, browser sidebar idc 89090 и нативная карта для взаимодействия;
 `MKK_PTG_PenetrationReportHUD` слой RscTitles, idc 88980-88981.
+
+Browser presentation загружает локальную HTML-страницу через `ctrlWebBrowserAction ["LoadFile", ...]`, передает состояние через `ExecJS`/`ToBase64` и получает действия через `JSDialog`. Скрытые нативные controls и SQF-обработчики остаются моделью и слоем исполнения; JavaScript не создает и не удаляет игровые объекты напрямую.
 
 Игровые потоки создания/удаления объектов:
 

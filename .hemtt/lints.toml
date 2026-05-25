@@ -1,6 +1,10 @@
 [sqf.banned_commands]
 options.ignore = ["createSoundSource", "addPublicVariableEventHandler"]
 
+[sqf.event_unknown]
+# HEMTT 1.19.1 compares this option with the command name, not the event name.
+options.ignore = ["ctrlAddEventHandler"]
+
 [sqf]
 var_all_caps = false
 

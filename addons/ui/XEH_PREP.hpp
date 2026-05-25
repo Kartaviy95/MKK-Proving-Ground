@@ -1,6 +1,10 @@
 PREP(drawObjectStatusDisplay);
 PREP(drawHitpointInspectorVolumes);
 PREP(initDisplay);
+PREP(getWebLabels);
+PREP(initWebDisplay);
+PREP(pushWebState);
+PREP(handleWebEvent);
 PREP(openSettingsDialog);
 PREP(initSettingsDisplay);
 PREP(closeSettingsDialog);
