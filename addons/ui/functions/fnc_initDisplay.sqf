@@ -44,3 +44,4 @@ missionNamespace setVariable ["mkk_ptg_currentAmmoBoxSelection", _ammoBoxClass];
 [] call FUNC(refreshFilters);
 [] call FUNC(initInterfaceSizeCombo);
 [] call FUNC(showDashboardView);
+[_display] call FUNC(initWebDisplay);

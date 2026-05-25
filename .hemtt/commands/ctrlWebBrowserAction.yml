@@ -1,0 +1,27 @@
+name: ctrlWebBrowserAction
+description: Executes an action on a WebBrowser control. The return type depends on the selected action.
+groups:
+- GUI Control
+syntax:
+- call: !Binary
+  - control
+  - action
+  ret:
+  - Unknown
+  - result depends on action type
+  params:
+  - name: control
+    description: web browser control
+    type: Control
+  - name: action
+    description: action name and its optional parameters
+    type: ArrayUnknown
+argument_loc: Local
+effect_loc: Local
+since:
+  arma_3:
+    major: 2
+    minor: 20
+examples:
+- <sqf>_control ctrlWebBrowserAction ["LoadFile", "x\ptg\addons\ui\web\main.html"];</sqf>
+- <sqf>_encoded = _control ctrlWebBrowserAction ["ToBase64", "payload"];</sqf>

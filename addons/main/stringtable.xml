@@ -216,6 +216,11 @@
             <Russian>Состояние</Russian>
             <German>Zustand</German>
         </Key>
+        <Key ID="STR_MKK_PTG_CONTROL_CENTER">
+            <English>Proving Ground Control Center</English>
+            <Russian>Центр управления полигоном</Russian>
+            <German>Testgelände-Kontrollzentrum</German>
+        </Key>
         <Key ID="STR_MKK_PTG_COPY_AMMO_CLASS">
             <English>Copy Ammo Class</English>
             <Russian>Скопировать класс ammo</Russian>
@@ -580,6 +585,11 @@
             <English>Faction</English>
             <Russian>Фракция</Russian>
             <German>Fraktion</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_FILTERS">
+            <English>Filters</English>
+            <Russian>Фильтры</Russian>
+            <German>Filter</German>
         </Key>
         <Key ID="STR_MKK_PTG_FIRE_TEST_ROUND">
             <English>Fire Test Round</English>
@@ -1165,6 +1175,11 @@
             <English>empty</English>
             <Russian>пусто</Russian>
             <German>leer</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_REARM_PYLON_WEAPON">
+            <English>pylonWeapon</English>
+            <Russian>pylonWeapon</Russian>
+            <German>pylonWeapon</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_SELECT_MAGAZINE">
             <English>Select a magazine first.</English>

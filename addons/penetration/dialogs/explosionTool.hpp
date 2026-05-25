@@ -3,7 +3,7 @@ class MKK_PTG_ExplosionDisplay {
     movingEnable = 1;
     enableSimulation = 1;
     onLoad = QUOTE(_this call FUNC(initExplosionDisplay));
-    onUnload = "uiNamespace setVariable ['mkk_ptg_explosionDisplay', displayNull];";
+    onUnload = "uiNamespace setVariable ['mkk_ptg_explosionDisplay', displayNull]; uiNamespace setVariable ['mkk_ptg_explosionWebControl', controlNull]; uiNamespace setVariable ['mkk_ptg_explosionWebReady', false];";
 
     class controlsBackground {
         class Background: MKK_PTG_RscText {
@@ -62,7 +62,7 @@ class MKK_PTG_ExplosionDisplay {
             w = 0.25;
             h = 0.04;
             text = "";
-            onKeyUp = QUOTE([] call FUNC(refreshExplosionAmmoList));
+            onKeyUp = QUOTE([] call FUNC(refreshExplosionAmmoList); ['explosion'] call FUNC(pushWebState));
         };
 
         class AmmoCategory: MKK_PTG_RscCombo {
@@ -146,6 +146,14 @@ class MKK_PTG_ExplosionDisplay {
             h = 0.04;
             text = "$STR_MKK_PTG_CLOSE";
             action = "closeDialog 0";
+        };
+
+        class WebSidebar: MKK_PTG_RscWebBrowser {
+            idc = 89090;
+            x = 0.04;
+            y = 0.04;
+            w = 0.28;
+            h = 0.88;
         };
     };
 };

@@ -235,15 +235,6 @@ class MKK_PTG_MainDisplay {
             onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
-        class DashboardPrepareInfo: MKK_PTG_RscDashboardHint {
-            idc = 88149;
-            x = 0.092;
-            y = 0.565;
-            w = 0.236;
-            h = 0.100;
-            text = "$STR_MKK_PTG_DASHBOARD_PREPARE_INFO";
-        };
-
         class DashboardCameraBtn: MKK_PTG_RscButtonPrimary {
             idc = 88120;
             x = 0.385;
@@ -364,23 +355,10 @@ class MKK_PTG_MainDisplay {
             onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
         };
 
-        class DashboardPenetrationBtn: MKK_PTG_RscButtonDisabledTile {
-            idc = 88109;
-            x = 0.385;
-            y = 0.564;
-            w = 0.230;
-            h = 0.046;
-            text = "$STR_MKK_PTG_PENETRATION_TEST_DEV";
-            action = "";
-            enabled = 0;
-            onMouseEnter = QUOTE(['STR_MKK_PTG_DASHBOARD_HINT_PENETRATION'] call FUNC(setDashboardInfoText));
-            onMouseExit = QUOTE([''] call FUNC(setDashboardInfoText));
-        };
-
         class DashboardExplosionBtn: MKK_PTG_RscButtonPrimary {
             idc = 88123;
-            x = 0.385;
-            y = 0.613;
+            x = 0.095;
+            y = 0.564;
             w = 0.230;
             h = 0.046;
             text = "$STR_MKK_PTG_CREATE_EXPLOSION";
@@ -515,7 +493,7 @@ class MKK_PTG_MainDisplay {
             w = 0.18;
             h = 0.04;
             text = "";
-            onKeyUp = QUOTE([] call FUNC(refreshVehicleList));
+            onKeyUp = QUOTE([] call FUNC(refreshVehicleList); [] call FUNC(pushWebState));
         };
 
         class SideLabel: MKK_PTG_RscText {
@@ -760,7 +738,7 @@ class MKK_PTG_MainDisplay {
             w = 0.18;
             h = 0.04;
             text = "";
-            onKeyUp = QUOTE([] call FUNC(refreshTargetList));
+            onKeyUp = QUOTE([] call FUNC(refreshTargetList); [] call FUNC(pushWebState));
         };
 
         class TargetDistanceLabel: MKK_PTG_RscText {
@@ -1079,6 +1057,14 @@ class MKK_PTG_MainDisplay {
             h = 0.05;
             text = "$STR_MKK_PTG_CLOSE";
             action = QUOTE([] call FUNC(closeRearmOverlay));
+        };
+
+        class WebInterface: MKK_PTG_RscWebBrowser {
+            idc = 88090;
+            x = 0.05;
+            y = 0.05;
+            w = 0.90;
+            h = 0.85;
         };
 
     };

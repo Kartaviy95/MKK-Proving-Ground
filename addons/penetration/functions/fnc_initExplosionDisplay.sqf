@@ -48,3 +48,4 @@ ctrlMapAnimCommit _ctrlMap;
 
 [] call FUNC(refreshExplosionAmmoList);
 [] call FUNC(updateExplosionAmmoInfo);
+[_display, "explosion"] call FUNC(initWebDisplay);

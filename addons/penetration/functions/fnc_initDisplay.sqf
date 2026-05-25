@@ -12,3 +12,4 @@ missionNamespace setVariable ["mkk_ptg_penetrationAmmoClass", ""];
 [] call FUNC(refreshVehicleList);
 [] call FUNC(refreshAmmoList);
 [] call FUNC(updateReport);
+[_display, "penetration"] call FUNC(initWebDisplay);

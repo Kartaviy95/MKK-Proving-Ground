@@ -1,0 +1,1486 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        :root {
+            --bg: #071018;
+            --bg-deep: #040a10;
+            --panel: rgba(10, 22, 31, 0.94);
+            --panel-soft: rgba(16, 32, 43, 0.78);
+            --line: rgba(116, 164, 187, 0.17);
+            --line-bright: rgba(62, 206, 239, 0.43);
+            --accent: #35d5f5;
+            --accent-soft: rgba(53, 213, 245, 0.13);
+            --accent-strong: #87edff;
+            --warning: #ffbe54;
+            --danger: #ff6259;
+            --good: #55e49a;
+            --text: #eef7fc;
+            --muted: #8ba5b4;
+            --subtle: #5e7787;
+            --radius: 12px;
+            --shadow: 0 26px 80px rgba(0, 0, 0, 0.45);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+            background: transparent;
+            color: var(--text);
+            font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 81% 10%, rgba(49, 175, 212, 0.15), transparent 35%),
+                radial-gradient(circle at 12% 100%, rgba(28, 94, 127, 0.20), transparent 40%),
+                linear-gradient(122deg, rgb(4, 10, 16), rgb(6, 16, 24));
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.30;
+            background-image:
+                linear-gradient(rgba(65, 123, 148, 0.12) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(65, 123, 148, 0.10) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: radial-gradient(circle at center, #000 30%, transparent 92%);
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        #app {
+            height: 100%;
+            opacity: 0;
+            transition: opacity 140ms ease-out;
+        }
+
+        #app.ready {
+            opacity: 1;
+        }
+
+        .shell {
+            height: 100%;
+            padding: 20px 22px 18px;
+            display: grid;
+            grid-template-rows: auto minmax(0, 1fr) auto;
+            gap: 15px;
+        }
+
+        .topbar {
+            display: grid;
+            grid-template-columns: minmax(340px, 1fr) auto;
+            align-items: end;
+            gap: 20px;
+            padding: 0 2px 14px;
+            border-bottom: 1px solid var(--line-bright);
+            position: relative;
+        }
+
+        .topbar::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 168px;
+            height: 2px;
+            background: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            margin: 0;
+            font-size: clamp(25px, 2.35vw, 37px);
+            line-height: 1.08;
+            font-weight: 700;
+            letter-spacing: 0.025em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            margin: 5px 0 0;
+            color: var(--muted);
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+            font-size: 12px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .meta > span {
+            padding: 9px 12px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: rgba(7, 16, 24, 0.56);
+        }
+
+        .workspace {
+            min-height: 0;
+            position: relative;
+        }
+
+        .screen-flow {
+            height: 100%;
+            display: grid;
+            grid-template-rows: minmax(0, 1fr) auto;
+            gap: 12px;
+            min-height: 0;
+        }
+
+        .panel {
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--panel);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        .panel-head {
+            padding: 16px 18px 13px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .panel-head h2,
+        .panel-head h3 {
+            margin: 0;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.13em;
+            color: var(--accent-strong);
+        }
+
+        .panel-head p {
+            color: var(--muted);
+            margin: 8px 0 0;
+            font-size: 13px;
+            line-height: 1.38;
+        }
+
+        .dashboard {
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .dashboard-column {
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .tile-stack {
+            padding: 14px;
+            display: grid;
+            grid-auto-rows: 46px;
+            gap: 8px;
+            align-content: start;
+            min-height: 0;
+            flex-shrink: 0;
+        }
+
+        .action {
+            min-height: 46px;
+            width: 100%;
+            border-radius: 7px;
+            border: 1px solid rgba(112, 160, 181, 0.18);
+            padding: 10px 13px;
+            color: var(--text);
+            background: rgba(17, 34, 45, 0.86);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            text-align: left;
+            letter-spacing: 0.035em;
+            transition: border-color 110ms ease, background 110ms ease, transform 110ms ease;
+        }
+
+        .action:hover:not(:disabled),
+        .action:focus:not(:disabled) {
+            border-color: rgba(53, 213, 245, 0.65);
+            background: rgba(30, 66, 81, 0.75);
+            transform: translateY(-1px);
+            outline: none;
+        }
+
+        .action:disabled {
+            opacity: 0.42;
+            cursor: default;
+        }
+
+        .action.primary {
+            border-color: rgba(53, 213, 245, 0.34);
+            background: linear-gradient(105deg, rgba(24, 70, 86, 0.72), rgba(17, 34, 45, 0.90));
+        }
+
+        .action.danger {
+            border-color: rgba(255, 98, 89, 0.33);
+            background: rgba(61, 24, 26, 0.80);
+        }
+
+        .action.danger:hover:not(:disabled) {
+            border-color: rgba(255, 98, 89, 0.72);
+            background: rgba(100, 33, 34, 0.85);
+        }
+
+        .action .mark {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            flex: none;
+            background: var(--subtle);
+        }
+
+        .action .mark.active {
+            background: var(--good);
+            box-shadow: 0 0 11px rgba(85, 228, 154, 0.75);
+        }
+
+        .compound {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 48px;
+            gap: 7px;
+        }
+
+        .settings-button {
+            justify-content: center;
+            font-size: 20px;
+            padding: 0;
+            color: var(--accent-strong);
+        }
+
+        .hint-card {
+            margin: auto 14px 14px;
+            padding: 13px;
+            border-radius: 8px;
+            background: var(--accent-soft);
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.38;
+            min-height: 58px;
+            flex-shrink: 0;
+        }
+
+        .dashboard-hover-info {
+            min-height: 58px;
+            visibility: hidden;
+        }
+
+        .dashboard-hover-info.active {
+            visibility: visible;
+        }
+
+        .size-box {
+            padding: 12px 14px 4px;
+            grid-row: span 2;
+        }
+
+        label.caption {
+            display: block;
+            margin-bottom: 7px;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+        }
+
+        select,
+        input {
+            width: 100%;
+            height: 40px;
+            padding: 0 11px;
+            border-radius: 6px;
+            border: 1px solid var(--line);
+            background: rgba(3, 11, 17, 0.76);
+            outline: none;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: rgba(53, 213, 245, 0.66);
+            box-shadow: 0 0 0 2px rgba(53, 213, 245, 0.10);
+        }
+
+        .native-input {
+            width: 100%;
+            height: 40px;
+            padding: 0 11px;
+            border-radius: 6px;
+            border: 1px solid var(--line);
+            background: rgba(3, 11, 17, 0.76);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            cursor: text;
+            white-space: pre;
+        }
+
+        .native-input.active {
+            border-color: rgba(53, 213, 245, 0.66);
+            box-shadow: 0 0 0 2px rgba(53, 213, 245, 0.10);
+        }
+
+        .native-input-value {
+            overflow: hidden;
+            white-space: pre;
+        }
+
+        .native-input-caret {
+            display: none;
+            flex: none;
+            width: 1px;
+            height: 20px;
+            margin-left: 1px;
+            background: var(--text);
+            animation: native-caret-blink 1s steps(1, end) infinite;
+        }
+
+        .native-input.active .native-input-caret {
+            display: inline-block;
+        }
+
+        @keyframes native-caret-blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .footer {
+            min-height: 39px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            padding: 7px 13px;
+            background: rgba(7, 16, 24, 0.75);
+            overflow: hidden;
+        }
+
+        .footer-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            border-right: 1px solid var(--line);
+            padding-right: 12px;
+            color: var(--muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .footer-chip:last-child {
+            border-right: 0;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--danger);
+        }
+
+        .status-dot.on {
+            background: var(--good);
+            box-shadow: 0 0 9px var(--good);
+        }
+
+        .catalog {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 248px minmax(290px, 1fr) 310px;
+            gap: 13px;
+        }
+
+        .filter-panel,
+        .list-panel,
+        .detail-panel {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .filters {
+            display: grid;
+            gap: 13px;
+            padding: 15px;
+            overflow: auto;
+        }
+
+        .inline-fields {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 9px;
+            align-items: end;
+        }
+
+        .results-count {
+            font-size: 12px;
+            color: var(--accent);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .result-list {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            padding: 8px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(66, 166, 195, 0.42) rgba(4, 12, 18, 0.45);
+        }
+
+        .result-row {
+            width: 100%;
+            border: 1px solid transparent;
+            background: transparent;
+            padding: 10px 11px;
+            border-radius: 7px;
+            color: var(--text);
+            display: block;
+            text-align: left;
+            margin-bottom: 4px;
+        }
+
+        .result-row:hover,
+        .result-row.selected {
+            border-color: rgba(53, 213, 245, 0.33);
+            background: rgba(53, 213, 245, 0.09);
+        }
+
+        .result-name {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .result-meta {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 0.04em;
+        }
+
+        .vehicle-preview {
+            min-height: 180px;
+            margin: 15px 15px 0;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: radial-gradient(circle, rgba(37, 68, 83, 0.35), rgba(3, 10, 15, 0.74));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .vehicle-preview img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .vehicle-preview .placeholder {
+            color: var(--subtle);
+            letter-spacing: 0.12em;
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        .detail-card {
+            padding: 15px;
+            overflow-y: auto;
+            min-height: 0;
+        }
+
+        .detail-name {
+            font-size: 19px;
+            margin-bottom: 13px;
+            color: var(--text);
+        }
+
+        .property {
+            display: grid;
+            grid-template-columns: 91px minmax(0, 1fr);
+            gap: 8px;
+            margin: 7px 0;
+            font-size: 13px;
+        }
+
+        .property .key {
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.075em;
+            font-size: 11px;
+        }
+
+        .property .value {
+            color: var(--text);
+            word-break: break-word;
+        }
+
+        .actions-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+            border-top: 1px solid var(--line);
+            background: rgba(6, 14, 21, 0.74);
+        }
+
+        .actions-bar .action {
+            flex: 1 1 143px;
+            min-height: 42px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .target-layout {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 260px minmax(300px, 1fr) 310px;
+            gap: 13px;
+        }
+
+        .rearm-layout {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 258px minmax(175px, 0.72fr) minmax(180px, 0.8fr) minmax(235px, 1fr);
+            gap: 13px;
+        }
+
+        .column-list {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .compact-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 8px;
+        }
+
+        .info-message {
+            padding: 15px;
+            color: var(--muted);
+            line-height: 1.45;
+            font-size: 13px;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(2, 7, 11, 0.76);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 22px;
+            z-index: 20;
+        }
+
+        .modal {
+            width: min(560px, 92%);
+            max-height: calc(100% - 16px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-content {
+            padding: 14px;
+            overflow-y: auto;
+            display: grid;
+            gap: 16px;
+        }
+
+        .settings-section h4 {
+            margin: 0 0 9px;
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .toggle-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 7px;
+        }
+
+        .toggle {
+            min-height: 40px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            color: var(--muted);
+            background: rgba(8, 18, 26, 0.86);
+            display: flex;
+            gap: 9px;
+            align-items: center;
+            padding: 8px 10px;
+            text-align: left;
+        }
+
+        .toggle.on {
+            color: var(--text);
+            border-color: rgba(53, 213, 245, 0.34);
+            background: rgba(53, 213, 245, 0.09);
+        }
+
+        .toggle:disabled {
+            opacity: 0.36;
+        }
+
+        .check {
+            width: 16px;
+            height: 16px;
+            border: 1px solid var(--subtle);
+            border-radius: 4px;
+            flex: none;
+            position: relative;
+        }
+
+        .toggle.on .check {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .toggle.on .check::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 4px;
+            left: 3px;
+            top: 4px;
+            border-left: 2px solid var(--bg);
+            border-bottom: 2px solid var(--bg);
+            transform: rotate(-45deg);
+        }
+
+        .swatch {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            flex: none;
+        }
+
+        .test-layout {
+            height: 100%;
+            display: grid;
+            grid-template-columns: minmax(235px, 0.85fr) minmax(260px, 1fr) minmax(260px, 1fr);
+            gap: 13px;
+        }
+
+        .ammo-info,
+        .report {
+            overflow-y: auto;
+            padding: 14px;
+            color: var(--muted);
+            line-height: 1.52;
+            font-size: 13px;
+        }
+
+        .ammo-info strong,
+        .report strong {
+            color: var(--text);
+        }
+
+        .report-title {
+            color: var(--accent-strong);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.11em;
+            margin-bottom: 12px;
+        }
+
+        .explosion-shell {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .explosion-shell .panel-head {
+            flex: none;
+        }
+
+        .explosion-sidebar {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            flex: 1;
+        }
+
+        .explosion-sidebar .filters {
+            flex: none;
+            gap: 10px;
+            padding-bottom: 8px;
+        }
+
+        .explosion-sidebar .result-list {
+            flex: 0 0 96px;
+            padding: 6px 8px;
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .explosion-sidebar .result-row {
+            overflow: hidden;
+            padding: 7px 9px;
+        }
+
+        .explosion-sidebar .result-name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-bottom: 0;
+        }
+
+        .explosion-sidebar .result-meta:empty {
+            display: none;
+        }
+
+        .explosion-sidebar .ammo-info {
+            flex: 1 1 auto;
+            min-height: 0;
+            padding: 10px 14px;
+            line-height: 1.38;
+        }
+
+        .explosion-sidebar .ammo-info strong {
+            display: block;
+            margin-bottom: 8px;
+            word-break: break-word;
+        }
+
+        .explosion-sidebar .ammo-info .property {
+            grid-template-columns: minmax(112px, 0.95fr) minmax(0, 1fr);
+            gap: 7px;
+            margin: 5px 0;
+        }
+
+        .explosion-sidebar .ammo-info .key {
+            word-break: break-word;
+            letter-spacing: 0.045em;
+        }
+
+        .empty {
+            color: var(--muted);
+            padding: 20px;
+            text-align: center;
+            line-height: 1.42;
+        }
+
+        @media (max-width: 970px) {
+            .shell {
+                padding: 14px;
+                gap: 11px;
+            }
+
+            .dashboard,
+            .catalog,
+            .target-layout,
+            .rearm-layout,
+            .test-layout {
+                gap: 8px;
+            }
+
+            .catalog,
+            .target-layout {
+                grid-template-columns: 220px minmax(250px, 1fr) 270px;
+            }
+
+            .rearm-layout {
+                grid-template-columns: 210px repeat(3, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-height: 760px) {
+            .dashboard .panel-head {
+                padding: 13px 14px 10px;
+            }
+
+            .dashboard .panel-head p {
+                margin-top: 6px;
+            }
+
+            .dashboard .tile-stack {
+                padding: 10px 14px;
+                grid-auto-rows: 42px;
+                gap: 6px;
+            }
+
+            .dashboard .action {
+                min-height: 42px;
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+
+            .dashboard .size-box {
+                padding: 7px 14px 2px;
+            }
+
+            .dashboard .size-box select {
+                height: 36px;
+            }
+
+            .dashboard .hint-card {
+                margin: auto 14px 10px;
+                padding: 10px 13px;
+                min-height: 0;
+                font-size: 12px;
+            }
+
+            .dashboard .dashboard-hover-info {
+                min-height: 56px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        (function () {
+            "use strict";
+
+            var app = document.getElementById("app");
+            var state = null;
+            var labels = {};
+            var settingsModal = "";
+            var textureCache = {};
+            var pendingFocus = "";
+            var pendingCursor = 0;
+            var activeNativeInput = "";
+
+            function esc(value) {
+                return String(value == null ? "" : value)
+                    .replace(/&/g, "&amp;")
+                    .replace(/</g, "&lt;")
+                    .replace(/>/g, "&gt;")
+                    .replace(/"/g, "&quot;")
+                    .replace(/'/g, "&#39;");
+            }
+
+            function l(key) {
+                return labels[key] || "";
+            }
+
+            function encodeBase64Utf8(payload) {
+                if (window.TextEncoder) {
+                    var bytes = new TextEncoder().encode(payload);
+                    var binary = "";
+                    for (var index = 0; index < bytes.length; index += 1) {
+                        binary += String.fromCharCode(bytes[index]);
+                    }
+                    return btoa(binary);
+                }
+                return btoa(unescape(encodeURIComponent(payload)));
+            }
+
+            function send(action, value) {
+                if (window.A3API && A3API.SendAlert) {
+                    var payload = JSON.stringify([action, value == null ? "" : value]);
+                    A3API.SendAlert("b64:" + encodeBase64Utf8(payload));
+                }
+            }
+
+            function nativeInput(action, value) {
+                var active = action === activeNativeInput ? " active" : "";
+                return "<div class=\"native-input" + active + "\" data-native-input=\"" + esc(action) + "\">" +
+                    "<span class=\"native-input-value\">" + esc(value) + "</span><span class=\"native-input-caret\"></span></div>";
+            }
+
+            function setActiveNativeInput(action) {
+                activeNativeInput = action || "";
+                var inputs = app.querySelectorAll("[data-native-input]");
+                Array.prototype.forEach.call(inputs, function (input) {
+                    input.classList.toggle("active", input.getAttribute("data-native-input") === activeNativeInput);
+                });
+            }
+
+            function listToOptions(items, action) {
+                return (items || []).map(function (item) {
+                    var selected = item[2] ? " selected" : "";
+                    return "<option value=\"" + esc(item[0]) + "\"" + selected + ">" + esc(item[1]) + "</option>";
+                }).join("");
+            }
+
+            function button(action, text, css, enabled, dot, hint) {
+                var disabled = enabled === false ? " disabled" : "";
+                var mark = dot === undefined ? "" : "<span class=\"mark" + (dot ? " active" : "") + "\"></span>";
+                var hintAttribute = hint ? " data-dashboard-hint=\"" + esc(hint) + "\"" : "";
+                return "<button class=\"action " + (css || "") + "\" data-action=\"" + esc(action) + "\"" + hintAttribute + disabled + "><span>" + esc(text) + "</span>" + mark + "</button>";
+            }
+
+            function compound(action, setting, text, settingTitle, enabled, dot, hint, settingHint) {
+                return "<div class=\"compound\">" +
+                    button(action, text, "", enabled, dot, hint) +
+                    "<button class=\"action settings-button\" data-settings=\"" + esc(setting) + "\" data-dashboard-hint=\"" + esc(settingHint) + "\" title=\"" + esc(settingTitle) + "\">&#9881;</button>" +
+                    "</div>";
+            }
+
+            function header(section) {
+                return "<header class=\"topbar\">" +
+                    "<div><div class=\"eyebrow\">" + esc(l("system")) + "</div><h1 class=\"title\">" + esc(l("modName")) + "</h1><p class=\"section-title\">" + esc(section) + "</p></div>" +
+                    "<div class=\"meta\"><span>" + esc(l("version")) + "</span><span>" + esc(l("author")) + "</span></div>" +
+                    "</header>";
+            }
+
+            function footer(status) {
+                var items = [
+                    [l("statusTracking"), status[0]],
+                    [l("statusTrajectory"), status[1]],
+                    [l("statusMarkers"), status[2]],
+                    [l("statusObject"), status[3]],
+                    [l("statusHitpoints"), status[4]],
+                    [l("statusAmmo"), status[5]],
+                    [l("statusGod"), status[6]]
+                ];
+                return "<footer class=\"footer\">" + items.map(function (item) {
+                    return "<span class=\"footer-chip\"><span class=\"status-dot" + (item[1] ? " on" : "") + "\"></span>" + esc(item[0]) + "</span>";
+                }).join("") + "</footer>";
+            }
+
+            function renderDashboard(data) {
+                var status = data[0];
+                var canRearm = data[1];
+                var teleportText = data[2];
+                var unlockText = data[3];
+                var sizes = data[4];
+
+                var prepare = button("vehicles", l("vehicleSpawn"), "", true, undefined, l("hintVehicle")) +
+                    button("targets", l("createTarget"), "", true, undefined, l("hintTargets")) +
+                    button("rearm", l("rearmPylons"), "", canRearm, undefined, l("hintRearm")) +
+                    button("unlock", unlockText, "", true, undefined, l("hintUnlock")) +
+                    button("teleport", teleportText, "", true, undefined, l("hintTeleport")) +
+                    button("explosion", l("explosion"), "", true, undefined, l("hintExplosion"));
+                var analyze = button("camera", l("camera"), "", true, undefined, l("hintCamera")) +
+                    button("tracking", l("tracking"), "", true, status[0], l("hintTracking")) +
+                    compound("trajectory", "trajectory", l("trajectory"), l("trajectorySettings"), true, status[1], l("hintTrajectory"), l("hintTrajectorySettings")) +
+                    compound("markers", "markers", l("markers"), l("markerSettings"), true, status[2], l("hintMarkers"), l("hintMarkerSettings")) +
+                    compound("objectStatus", "objectStatus", l("objectStatus"), l("objectSettings"), true, status[3], l("hintObjectStatus"), l("hintObjectSettings")) +
+                    compound("hitpoints", "hitpoints", l("hitpoints"), l("hitpointSettings"), true, status[4], l("hintHitpoints"), l("hintHitpointSettings")) +
+                    button("penetration", l("penetration"), "", false, undefined, l("hintPenetration"));
+                var system = button("infiniteAmmo", l("infiniteAmmo"), "", true, status[5], l("hintInfiniteAmmo")) +
+                    button("godMode", l("godMode"), "", true, status[6], l("hintGodMode")) +
+                    "<div class=\"size-box\"><label class=\"caption\">" + esc(l("interfaceSize")) + "</label><select data-change=\"interfaceSize\">" +
+                    listToOptions(sizes, "interfaceSize") + "</select></div>" +
+                    button("cleanup", l("cleanup"), "danger", true, undefined, l("hintCleanup")) +
+                    button("close", l("close"), "", true, undefined, l("hintClose"));
+
+                return "<div class=\"dashboard\">" +
+                    dashboardColumn(l("prepareTitle"), l("prepareHint"), prepare, "", true) +
+                    dashboardColumn(l("analyzeTitle"), l("analyzeHint"), analyze, "") +
+                    dashboardColumn(l("systemTitle"), l("systemHint"), system, l("systemInfo")) +
+                    "</div>";
+            }
+
+            function dashboardColumn(title, hint, content, info, hoverInfo) {
+                var infoHtml = hoverInfo
+                    ? "<div class=\"hint-card dashboard-hover-info\" data-dashboard-info=\"true\"></div>"
+                    : (info ? "<div class=\"hint-card\">" + esc(info) + "</div>" : "");
+                return "<section class=\"panel dashboard-column\"><div class=\"panel-head\"><h2>" + esc(title) + "</h2><p>" + esc(hint) + "</p></div>" +
+                    "<div class=\"tile-stack\">" + content + "</div>" +
+                    infoHtml + "</section>";
+            }
+
+            function preview(path, placeholder) {
+                if (!path) {
+                    return "<div class=\"vehicle-preview\"><span class=\"placeholder\">" + esc(placeholder) + "</span></div>";
+                }
+                return "<div class=\"vehicle-preview\"><img data-texture=\"" + esc(path) + "\" alt=\"\"></div>";
+            }
+
+            function properties(card) {
+                if (!card || !card[0]) {
+                    return "<div class=\"empty\">" + esc(l("selectVehicle")) + "</div>";
+                }
+                var fields = [
+                    [l("class"), card[1]],
+                    [l("side"), card[2]],
+                    [l("faction"), card[3]],
+                    [l("type"), card[4]],
+                    [l("group"), card[5]],
+                    [l("crew"), card[6]],
+                    [l("source"), card[7]]
+                ];
+                return "<div class=\"detail-name\">" + esc(card[0]) + "</div>" + fields.map(function (field) {
+                    return "<div class=\"property\"><span class=\"key\">" + esc(field[0]) + "</span><span class=\"value\">" + esc(field[1]) + "</span></div>";
+                }).join("");
+            }
+
+            function renderVehicle(data) {
+                var filters = data[0];
+                var search = data[1];
+                var distance = data[2];
+                var direction = data[3];
+                var rows = data[4];
+                var selected = data[5];
+                var card = data[6];
+                var ammo = data[7];
+                var showAmmo = data[8];
+                var found = data[9];
+
+                var left = "<section class=\"panel filter-panel\"><div class=\"panel-head\"><h2>" + esc(l("filters")) + "</h2></div><div class=\"filters\">" +
+                    field(l("search"), nativeInput("vehicleSearch", search)) +
+                    field(l("side"), "<select data-change=\"vehicleSide\">" + listToOptions(filters[0]) + "</select>") +
+                    field(l("faction"), "<select data-change=\"vehicleFaction\">" + listToOptions(filters[1]) + "</select>") +
+                    field(l("type"), "<select data-change=\"vehicleType\">" + listToOptions(filters[2]) + "</select>") +
+                    "<div class=\"inline-fields\">" +
+                    field(l("distance"), "<input data-input=\"vehicleDistance\" value=\"" + esc(distance) + "\">") +
+                    field(l("direction"), "<input data-input=\"vehicleDirection\" value=\"" + esc(direction) + "\">") +
+                    "</div>" +
+                    (showAmmo ? field(l("ammoBox"), "<select data-change=\"ammoBox\">" + listToOptions(ammo) + "</select>") : "") +
+                    "</div></section>";
+                var middle = "<section class=\"panel list-panel\"><div class=\"panel-head\"><h2>" + esc(l("vehicleSpawn")) + "</h2><p class=\"results-count\">" + esc(found) + "</p></div>" +
+                    "<div class=\"result-list\">" + resultRows(rows, selected, "selectVehicle") + "</div></section>";
+                var right = "<section class=\"panel detail-panel\">" + preview(card && card[8], l("selectVehicle")) +
+                    "<div class=\"detail-card\">" + properties(card) + "</div></section>";
+                var actions = "<div class=\"actions-bar\">" +
+                    button("spawnEmpty", l("spawnEmpty"), "primary", true) +
+                    button("spawnFullCrew", l("spawnFullCrew"), "", true) +
+                    button("spawnCrewControl", l("spawnWithCrew"), "", true) +
+                    button("copyVehicleClass", l("copyClass"), "", true) +
+                    button("cleanup", l("cleanup"), "danger", true) +
+                    button("dashboard", l("back"), "", true) + "</div>";
+                return "<div class=\"screen-flow\"><div class=\"catalog\">" + left + middle + right + "</div>" + actions + "</div>";
+            }
+
+            function field(caption, control) {
+                return "<div><label class=\"caption\">" + esc(caption) + "</label>" + control + "</div>";
+            }
+
+            function resultRows(rows, selected, action) {
+                if (!rows || !rows.length) {
+                    return "<div class=\"empty\">" + esc(l("notFound")) + "</div>";
+                }
+                return rows.map(function (row) {
+                    return "<button class=\"result-row" + (row[0] === selected ? " selected" : "") + "\" data-action=\"" + esc(action) + "\" data-value=\"" + esc(row[0]) + "\">" +
+                        "<span class=\"result-name\">" + esc(row[1]) + "</span><span class=\"result-meta\">" + esc(row[2] || "") + "</span></button>";
+                }).join("");
+            }
+
+            function renderTargets(data) {
+                var modes = data[0];
+                var mode = data[1];
+                var search = data[2];
+                var inputs = data[3];
+                var rows = data[4];
+                var selected = data[5];
+                var card = data[6];
+                var left = "<section class=\"panel filter-panel\"><div class=\"panel-head\"><h2>" + esc(l("createTarget")) + "</h2></div><div class=\"filters\">" +
+                    field(l("targetType"), "<select data-change=\"targetMode\">" + listToOptions(modes) + "</select>") +
+                    field(l("search"), nativeInput("targetSearch", search)) +
+                    field(l("distance"), "<input data-input=\"targetDistance\" value=\"" + esc(inputs[0]) + "\">") +
+                    (mode === "ground" ? field(l("patrolRadius"), "<input data-input=\"targetPatrol\" value=\"" + esc(inputs[1]) + "\">") : "") +
+                    (mode === "air" ? field(l("airRadius"), "<input data-input=\"targetAirRadius\" value=\"" + esc(inputs[2]) + "\">") +
+                        field(l("airHeight"), "<input data-input=\"targetAirHeight\" value=\"" + esc(inputs[3]) + "\">") : "") +
+                    "</div></section>";
+                var middle = "<section class=\"panel list-panel\"><div class=\"panel-head\"><h2>" + esc(l("selectTarget")) + "</h2></div><div class=\"result-list\">" +
+                    resultRows(rows, selected, "selectTarget") + "</div></section>";
+                var right = "<section class=\"panel detail-panel\">" + preview(card && card[2], l("selectTarget")) +
+                    "<div class=\"detail-card\">" + (card && card[0] ? "<div class=\"detail-name\">" + esc(card[0]) + "</div><div class=\"property\"><span class=\"key\">" + esc(l("class")) + "</span><span class=\"value\">" + esc(card[1]) + "</span></div>" : "<div class=\"empty\">" + esc(l("selectTarget")) + "</div>") + "</div></section>";
+                var actions = "<div class=\"actions-bar\">" + button("spawnTarget", l("createTarget"), "primary", true) +
+                    button("deleteTargets", l("deleteTargets"), "danger", true) +
+                    button("closeTargets", l("back"), "", true) + "</div>";
+                return "<div class=\"screen-flow\"><div class=\"target-layout\">" + left + middle + right + "</div>" + actions + "</div>";
+            }
+
+            function renderRearm(data) {
+                var active = data[0];
+                if (!active) {
+                    return "<div class=\"screen-flow\"><section class=\"panel\"><div class=\"empty\">" + esc(l("enterVehicle")) + "</div></section><div class=\"actions-bar\">" + button("closeRearm", l("back"), "", true) + "</div></div>";
+                }
+                var vehicle = data[1];
+                var slots = data[2];
+                var slotSelected = data[3];
+                var weapons = data[4];
+                var weaponSelected = data[5];
+                var mags = data[6];
+                var magSelected = data[7];
+                var magCard = data[8];
+                var first = "<section class=\"panel detail-panel\"><div class=\"panel-head\"><h2>" + esc(l("rearm")) + "</h2></div>" +
+                    preview(vehicle[2], vehicle[0]) + "<div class=\"detail-card\"><div class=\"detail-name\">" + esc(vehicle[0]) + "</div><div class=\"property\"><span class=\"key\">" + esc(l("class")) + "</span><span class=\"value\">" + esc(vehicle[1]) + "</span></div></div></section>";
+                var second = rearmColumn(l("crewPosition"), slots, slotSelected, "rearmSlot");
+                var third = rearmColumn(l("weapons"), weapons, weaponSelected, "rearmWeapon");
+                var fourth = "<section class=\"panel column-list\"><div class=\"panel-head\"><h2>" + esc(l("magazines")) + "</h2></div><div class=\"compact-list\">" +
+                    resultRows(mags, magSelected, "rearmMagazine") + "</div><div class=\"ammo-info\">" + magazineCard(magCard) + "</div></section>";
+                var actions = "<div class=\"actions-bar\">" + button("loadMagazine", l("loadNow"), "primary", true) +
+                    button("clearWeapon", l("clearWeapon"), "danger", true) +
+                    button("copyMagazine", l("magazineClass"), "", true) +
+                    button("closeRearm", l("back"), "", true) + "</div>";
+                return "<div class=\"screen-flow\"><div class=\"rearm-layout\">" + first + second + third + fourth + "</div>" + actions + "</div>";
+            }
+
+            function rearmColumn(title, rows, selected, action) {
+                return "<section class=\"panel column-list\"><div class=\"panel-head\"><h2>" + esc(title) + "</h2></div><div class=\"compact-list\">" +
+                    resultRows(rows, selected, action) + "</div></section>";
+            }
+
+            function magazineCard(card) {
+                if (!card || !card[0]) {
+                    return esc(l("magazineEmpty"));
+                }
+                return "<strong>" + esc(l("magazineInfo")) + "</strong>" +
+                    propertyHtml(l("class"), card[0]) +
+                    propertyHtml(l("ammo"), card[1]) +
+                    propertyHtml(l("count"), card[2]) +
+                    propertyHtml(l("pylonWeapon"), card[3]);
+            }
+
+            function propertyHtml(key, value) {
+                return "<div class=\"property\"><span class=\"key\">" + esc(key) + "</span><span class=\"value\">" + esc(value) + "</span></div>";
+            }
+
+            function renderSettings(data) {
+                if (!settingsModal) {
+                    return "";
+                }
+                var inner = "";
+                var title = "";
+                if (settingsModal === "trajectory") {
+                    title = l("trajectorySettings");
+                    inner = settingsSection(l("color"), (data[0] || []).map(function (item) {
+                        return settingButton("setColor", item[0], item[1], item[2], "<span class=\"swatch\" style=\"background:" + esc(item[3]) + "\"></span>");
+                    })) + settingsSection(l("lineWidth"), (data[1] || []).map(function (item) {
+                        return settingButton("setWidth", item[0], item[1], item[2]);
+                    }));
+                } else if (settingsModal === "markers") {
+                    title = l("markerSettings");
+                    inner = settingsSection(l("markers"), [settingButton("markerAmmo", "", l("markerAmmo"), data[2])]);
+                } else if (settingsModal === "objectStatus") {
+                    title = l("objectSettings");
+                    inner = settingsSection(l("objectFields"), data[3].slice(0, 6).map(settingFromArray)) +
+                        settingsSection(l("objectHitpoints"), data[3].slice(6).map(settingFromArray));
+                } else if (settingsModal === "hitpoints") {
+                    title = l("hitpointSettings");
+                    inner = settingsSection(l("hitpointFields"), data[4].slice(0, 7).map(settingFromArray)) +
+                        settingsSection(l("visualization"), data[4].slice(7).map(settingFromArray));
+                }
+                return "<div class=\"modal-backdrop\"><section class=\"panel modal\"><div class=\"panel-head\"><h2>" + esc(title) + "</h2></div>" +
+                    "<div class=\"modal-content\">" + inner + "</div><div class=\"actions-bar\">" +
+                    "<button class=\"action danger\" data-settings-close=\"true\"><span>" + esc(l("close")) + "</span></button></div></section></div>";
+            }
+
+            function settingsSection(title, children) {
+                return "<section class=\"settings-section\"><h4>" + esc(title) + "</h4><div class=\"toggle-grid\">" + children.join("") + "</div></section>";
+            }
+
+            function settingFromArray(item) {
+                return settingButton(item[0], item[1], item[2], item[3], "", item[4]);
+            }
+
+            function settingButton(action, value, text, on, before, enabled) {
+                var disabled = enabled === false ? " disabled" : "";
+                return "<button class=\"toggle" + (on ? " on" : "") + "\" data-action=\"" + esc(action) + "\" data-value=\"" + esc(value) + "\"" + disabled + ">" +
+                    (before || "<span class=\"check\"></span>") + "<span>" + esc(text) + "</span></button>";
+            }
+
+            function renderMain() {
+                var view = state[2];
+                var content = "";
+                var section = l("selectFunction");
+                if (view === "vehicles") {
+                    section = l("vehicleSpawn");
+                    content = renderVehicle(state[4]);
+                } else if (view === "targets") {
+                    section = l("createTarget");
+                    content = renderTargets(state[5]);
+                } else if (view === "rearm") {
+                    section = l("rearm");
+                    content = renderRearm(state[6]);
+                } else {
+                    content = renderDashboard(state[3]);
+                }
+                return "<div class=\"shell\">" + header(section) + "<main class=\"workspace\">" + content + renderSettings(state[7]) + "</main>" +
+                    footer(state[3][0]) + "</div>";
+            }
+
+            function renderPenetration(data) {
+                var vehicles = data[0];
+                var ammo = data[1];
+                var report = data[2];
+                var vSelected = vehicles[2];
+                var aSelected = ammo[2];
+                var left = "<section class=\"panel column-list\"><div class=\"panel-head\"><h2>" + esc(l("testVehicle")) + "</h2></div><div class=\"filters\">" +
+                    field(l("search"), nativeInput("penVehicleSearch", vehicles[0])) + "</div>" +
+                    preview(vehicles[3], l("selectVehicle")) + "<div class=\"result-list\">" + resultRows(vehicles[1], vSelected, "penVehicle") + "</div></section>";
+                var middle = "<section class=\"panel column-list\"><div class=\"panel-head\"><h2>" + esc(l("testAmmo")) + "</h2></div><div class=\"filters\">" +
+                    field(l("search"), nativeInput("penAmmoSearch", ammo[0])) + "</div><div class=\"ammo-info\">" +
+                    ammoCard(ammo[3]) + "</div><div class=\"result-list\">" + resultRows(ammo[1], aSelected, "penAmmo") + "</div></section>";
+                var right = "<section class=\"panel column-list\"><div class=\"panel-head\"><h2>" + esc(l("damageReport")) + "</h2></div><div class=\"report\">" +
+                    armaMarkup(report) + "</div></section>";
+                var actions = "<div class=\"actions-bar\">" + button("penCreateTarget", l("createTestTarget"), "primary", true) +
+                    button("penOrbit", l("orbitCamera"), "", true) + button("penFire", l("fireTest"), "primary", true) +
+                    button("penCopyAmmo", l("copyAmmo"), "", true) + button("penReset", l("resetTest"), "danger", true) +
+                    button("penBack", l("back"), "", true) + "</div>";
+                return "<div class=\"shell\">" + header(l("penetration")) + "<main class=\"workspace\"><div class=\"test-layout\">" + left + middle + right + "</div></main>" + actions + "</div>";
+            }
+
+            function ammoCard(card) {
+                if (!card || !card.length) {
+                    return esc(l("ammoEmpty"));
+                }
+                return "<strong>" + esc(card[0]) + "</strong>" +
+                    card.slice(1).map(function (entry) { return propertyHtml(entry[0], entry[1]); }).join("");
+            }
+
+            function armaMarkup(text) {
+                if (!text) {
+                    return esc(l("reportEmpty"));
+                }
+                return esc(text)
+                    .replace(/&lt;t color=&#39;(#[0-9A-Fa-f]{3,8})&#39;&gt;/g, "<span style=\"color:$1\">")
+                    .replace(/&lt;t size=&#39;[^&]+&#39;&gt;/g, "<span class=\"report-title\">")
+                    .replace(/&lt;\/t&gt;/g, "</span>")
+                    .replace(/&lt;br\/&gt;/g, "<br>");
+            }
+
+            function renderExplosion(data) {
+                var categories = data[0];
+                var rows = data[1];
+                var selected = data[2];
+                return "<div class=\"explosion-shell\"><section class=\"panel-head\"><h2>" + esc(l("explosion")) + "</h2><p>" + esc(l("explosionNote")) + "</p></section>" +
+                    "<div class=\"explosion-sidebar\"><div class=\"filters\">" +
+                    field(l("search"), nativeInput("explosionSearch", data[3])) +
+                    field(l("type"), "<select data-change=\"explosionCategory\">" + listToOptions(categories) + "</select>") +
+                    field(l("height"), "<input data-input=\"explosionHeight\" value=\"" + esc(data[4]) + "\">") +
+                    "</div><div class=\"result-list\">" + resultRows(rows, selected, "explosionAmmo") + "</div>" +
+                    "<div class=\"ammo-info\">" + ammoCard(data[5]) + "</div><div class=\"actions-bar\">" +
+                    button("explosionBack", l("back"), "", true) + button("explosionClose", l("close"), "danger", true) +
+                    "</div></div></div>";
+            }
+
+            function correctEditorPreviewColors(path, url) {
+                if (!/\.jpe?g$/i.test(path)) {
+                    return Promise.resolve(url);
+                }
+
+                return new Promise(function (resolve) {
+                    var source = new Image();
+                    source.onload = function () {
+                        var canvas = document.createElement("canvas");
+                        canvas.width = source.naturalWidth || source.width;
+                        canvas.height = source.naturalHeight || source.height;
+                        var context = canvas.getContext("2d");
+                        if (!context || !canvas.width || !canvas.height) {
+                            resolve(url);
+                            return;
+                        }
+                        try {
+                            context.drawImage(source, 0, 0);
+                            var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                            var pixels = imageData.data;
+                            for (var index = 0; index < pixels.length; index += 4) {
+                                var red = pixels[index];
+                                pixels[index] = pixels[index + 2];
+                                pixels[index + 2] = red;
+                            }
+                            context.putImageData(imageData, 0, 0);
+                            resolve(canvas.toDataURL("image/png"));
+                        } catch (error) {
+                            resolve(url);
+                        }
+                    };
+                    source.onerror = function () {
+                        resolve(url);
+                    };
+                    source.src = url;
+                });
+            }
+
+            function hydrateTextures() {
+                var images = app.querySelectorAll("img[data-texture]");
+                Array.prototype.forEach.call(images, function (image) {
+                    var path = image.getAttribute("data-texture");
+                    if (!path || !(window.A3API && A3API.RequestTexture)) {
+                        return;
+                    }
+                    if (textureCache[path]) {
+                        image.src = textureCache[path];
+                        return;
+                    }
+                    // Texture API paths are game-root relative, unlike config paths.
+                    var requestPath = path.replace(/^[\\/]+/, "");
+                    A3API.RequestTexture(requestPath, 512).then(function (url) {
+                        // Color editor previews arrive as BGRA while the browser reads RGBA.
+                        return correctEditorPreviewColors(path, url);
+                    }).then(function (url) {
+                        textureCache[path] = url;
+                        if (image.getAttribute("data-texture") === path) {
+                            image.src = url;
+                        }
+                    }).catch(function () {});
+                });
+            }
+
+            function render() {
+                if (!state) {
+                    return;
+                }
+                var surface = state[0];
+                if (surface === "main") {
+                    app.innerHTML = renderMain();
+                } else if (surface === "penetration") {
+                    app.innerHTML = renderPenetration(state[3]);
+                } else if (surface === "explosion") {
+                    app.innerHTML = renderExplosion(state[3]);
+                }
+                app.className = "ready";
+                hydrateTextures();
+                if (pendingFocus) {
+                    var input = app.querySelector("[data-input=\"" + pendingFocus + "\"]");
+                    if (input) {
+                        input.focus();
+                        if (input.setSelectionRange) {
+                            input.setSelectionRange(pendingCursor, pendingCursor);
+                        }
+                    }
+                    pendingFocus = "";
+                }
+            }
+
+            function decodeBase64Utf8(payload) {
+                var binary = atob(payload);
+                var bytes = new Uint8Array(binary.length);
+                var escaped = "";
+                for (var index = 0; index < binary.length; index += 1) {
+                    bytes[index] = binary.charCodeAt(index);
+                    escaped += "%" + ("0" + bytes[index].toString(16)).slice(-2);
+                }
+                if (window.TextDecoder) {
+                    return new TextDecoder("utf-8").decode(bytes);
+                }
+                return decodeURIComponent(escaped);
+            }
+
+            function showDashboardHint(text) {
+                var panel = app.querySelector("[data-dashboard-info]");
+                if (!panel) {
+                    return;
+                }
+                panel.textContent = text || "";
+                panel.classList.toggle("active", !!text);
+            }
+
+            app.addEventListener("mouseover", function (event) {
+                var button = event.target.closest("[data-dashboard-hint]");
+                var previous = event.relatedTarget && event.relatedTarget.closest
+                    ? event.relatedTarget.closest("[data-dashboard-hint]")
+                    : null;
+                if (button && button !== previous) {
+                    showDashboardHint(button.getAttribute("data-dashboard-hint"));
+                }
+            });
+
+            app.addEventListener("mouseout", function (event) {
+                var button = event.target.closest("[data-dashboard-hint]");
+                var next = event.relatedTarget && event.relatedTarget.closest
+                    ? event.relatedTarget.closest("[data-dashboard-hint]")
+                    : null;
+                if (button && !next) {
+                    showDashboardHint("");
+                }
+            });
+
+            app.addEventListener("click", function (event) {
+                var nativeInput = event.target.closest("[data-native-input]");
+                if (nativeInput) {
+                    var nativeAction = nativeInput.getAttribute("data-native-input");
+                    setActiveNativeInput(nativeAction);
+                    send("focusNativeInput", nativeAction);
+                    return;
+                }
+                setActiveNativeInput("");
+                var close = event.target.closest("[data-settings-close]");
+                if (close) {
+                    settingsModal = "";
+                    render();
+                    return;
+                }
+                var settings = event.target.closest("[data-settings]");
+                if (settings) {
+                    settingsModal = settings.getAttribute("data-settings");
+                    render();
+                    return;
+                }
+                var element = event.target.closest("[data-action]");
+                if (!element || element.disabled) {
+                    return;
+                }
+                send(element.getAttribute("data-action"), element.getAttribute("data-value") || "");
+            });
+
+            app.addEventListener("change", function (event) {
+                var action = event.target.getAttribute("data-change");
+                if (action) {
+                    send(action, event.target.value);
+                }
+            });
+
+            app.addEventListener("input", function (event) {
+                var action = event.target.getAttribute("data-input");
+                if (action) {
+                    pendingFocus = action;
+                    pendingCursor = event.target.selectionStart || 0;
+                    send(action, event.target.value);
+                }
+            });
+
+            window.PTG = {
+                receive: function (payload) {
+                    state = JSON.parse(payload);
+                    labels = {};
+                    (state[1] || []).forEach(function (pair) {
+                        labels[pair[0]] = pair[1];
+                    });
+                    if (state[0] !== "main") {
+                        settingsModal = "";
+                    }
+                    render();
+                },
+                receiveBase64: function (payload) {
+                    this.receive(decodeBase64Utf8(payload));
+                }
+            };
+        }());
+    </script>
+</body>
+</html>

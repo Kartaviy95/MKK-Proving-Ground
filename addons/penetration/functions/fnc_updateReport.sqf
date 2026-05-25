@@ -11,6 +11,8 @@ if (_report isEqualTo "") then {
 if !(isNull _display) then {
     private _ctrlReport = _display displayCtrl 88931;
     _ctrlReport ctrlSetStructuredText parseText _report;
+
+    ["penetration"] call FUNC(pushWebState);
 };
 
 private _hud = uiNamespace getVariable ["mkk_ptg_penetrationHud", displayNull];
