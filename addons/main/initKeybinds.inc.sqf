@@ -3,9 +3,22 @@
     "mkk_ptg_open_ui",
     localize "STR_MKK_PTG_OPEN",
     {
-        [] call FUNC(openMainUI);
+        uiNamespace setVariable ["mkk_ptg_openUIKeyDownSeen", true];
+        uiNamespace setVariable ["mkk_ptg_openUIKeyDownAt", diag_tickTime];
+        ["down"] call FUNC(openMainUIWithRetry);
+        true
     },
-    {},
+    {
+        private _keyDownSeen = uiNamespace getVariable ["mkk_ptg_openUIKeyDownSeen", false];
+        private _keyDownAt = uiNamespace getVariable ["mkk_ptg_openUIKeyDownAt", -1];
+        uiNamespace setVariable ["mkk_ptg_openUIKeyDownSeen", false];
+
+        if !(isNull (findDisplay 88000)) exitWith {true};
+        if (_keyDownSeen && {((diag_tickTime - _keyDownAt) < 0.35)}) exitWith {true};
+
+        ["up"] call FUNC(openMainUIWithRetry);
+        true
+    },
     [0xC7, [false, false, false]]
 ] call CBA_fnc_addKeybind;
 
