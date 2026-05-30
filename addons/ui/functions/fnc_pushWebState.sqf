@@ -13,9 +13,11 @@ if (isNull _browser) exitWith {};
 
 private _fncOptions = {
     params ["_rows", "_selected"];
+    private _selectedText = if (_selected isEqualType "") then {_selected} else {str _selected};
     _rows apply {
         private _value = _x # 0;
-        [str _value, _x # 1, _value isEqualTo _selected || {str _value isEqualTo str _selected}]
+        private _valueText = if (_value isEqualType "") then {_value} else {str _value};
+        [_valueText, _x # 1, _value isEqualTo _selected || {_valueText isEqualTo _selectedText}]
     }
 };
 
