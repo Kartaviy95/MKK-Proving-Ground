@@ -45,9 +45,6 @@ missionNamespace setVariable [_enabledVarName, _enabled];
 if (!_enabled) exitWith {
     [_pfhVarName] call _fncRemovePFH;
     [_hudVarName, _targetVarName, _visibleVarName, _workDataVarName] call _fncDestroyHud;
-
-    private _status = [localize "STR_MKK_PTG_DISABLED", localize "STR_MKK_PTG_ENABLED"] select false;
-    [format [localize "STR_MKK_PTG_HITPOINT_INSPECTOR_STATUS", _status]] call EFUNC(main,showTimedHint);
 };
 
 if (isNull player) exitWith {
@@ -1220,6 +1217,3 @@ private _pfh = [{
 ]] call CBA_fnc_addPerFrameHandler;
 
 missionNamespace setVariable [_pfhVarName, _pfh];
-
-private _status = [localize "STR_MKK_PTG_DISABLED", localize "STR_MKK_PTG_ENABLED"] select true;
-[format [localize "STR_MKK_PTG_HITPOINT_INSPECTOR_STATUS", _status]] call EFUNC(main,showTimedHint);

@@ -16,6 +16,3 @@ if (_enabled) then {
     _layer cutText ["", "PLAIN"];
     uiNamespace setVariable ["mkk_ptg_objectStatusDisplayHud", displayNull];
 };
-
-private _status = [localize "STR_MKK_PTG_DISABLED", localize "STR_MKK_PTG_ENABLED"] select _enabled;
-[format [localize "STR_MKK_PTG_OBJECT_STATUS_DISPLAY_STATUS", _status]] call EFUNC(main,showTimedHint);

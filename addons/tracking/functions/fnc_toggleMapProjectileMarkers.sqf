@@ -14,6 +14,3 @@ if (_enabled) then {
     } forEach _markers;
     missionNamespace setVariable ["mkk_ptg_mapProjectileMarkers", []];
 };
-
-private _status = [localize "STR_MKK_PTG_DISABLED", localize "STR_MKK_PTG_ENABLED"] select _enabled;
-[format [localize "STR_MKK_PTG_MAP_MARKERS_STATUS", _status]] call EFUNC(main,showTimedHint);

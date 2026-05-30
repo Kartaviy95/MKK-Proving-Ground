@@ -8,6 +8,3 @@ private _enabled = !(missionNamespace getVariable ["mkk_ptg_infiniteAmmoEnabled"
 missionNamespace setVariable ["mkk_ptg_infiniteAmmoEnabled", _enabled];
 
 [player, _enabled] call FUNC(applyInfiniteAmmo);
-
-private _status = [localize "STR_MKK_PTG_DISABLED", localize "STR_MKK_PTG_ENABLED"] select _enabled;
-[format [localize "STR_MKK_PTG_INFINITE_AMMO_STATUS", _status]] call EFUNC(main,showTimedHint);

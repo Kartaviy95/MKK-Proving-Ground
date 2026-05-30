@@ -13,6 +13,3 @@ if (_enabled) then {
 if !(_enabled) then {
     missionNamespace setVariable ["mkk_ptg_trajectoryLines", []];
 };
-
-private _status = [localize "STR_MKK_PTG_DISABLED", localize "STR_MKK_PTG_ENABLED"] select _enabled;
-[format [localize "STR_MKK_PTG_TRAJECTORY_STATUS", _status]] call EFUNC(main,showTimedHint);
