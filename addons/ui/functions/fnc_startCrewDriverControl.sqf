@@ -47,6 +47,8 @@ if (vehicle player isNotEqualTo _vehicle) exitWith {
     [localize "STR_MKK_PTG_CREW_CONTROL_NO_GUNNER"] call EFUNC(main,showTimedHint);
 };
 
+uiNamespace setVariable ["mkk_ptg_mainDisplayClosing", true];
+uiNamespace setVariable ["mkk_ptg_webReady", false];
 closeDialog 0;
 
 missionNamespace setVariable ["mkk_ptg_crewDriverControlState", createHashMapFromArray [

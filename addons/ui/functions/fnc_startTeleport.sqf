@@ -15,6 +15,8 @@ if !(_hasMap) then {
 };
 missionNamespace setVariable ["mkk_ptg_teleportTemporaryMap", !_hasMap];
 
+uiNamespace setVariable ["mkk_ptg_mainDisplayClosing", true];
+uiNamespace setVariable ["mkk_ptg_webReady", false];
 closeDialog 0;
 openMap true;
 [localize "STR_MKK_PTG_SELECT_TELEPORT_POINT"] call EFUNC(main,showTimedHint);

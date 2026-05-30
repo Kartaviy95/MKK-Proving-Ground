@@ -6,6 +6,7 @@ PREP(getKeybindName);
 PREP(isAuthorized);
 PREP(isCloseCameraKey);
 PREP(openMainUI);
+PREP(openMainUIWithRetry);
 PREP(openAceArsenal);
 PREP(openVirtualArsenal);
 PREP(serverDeleteObject);

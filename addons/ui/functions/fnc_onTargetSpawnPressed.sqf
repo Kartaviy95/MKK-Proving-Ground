@@ -2,11 +2,7 @@
 /*
     Отправляет запрос на создание выбранной цели.
 */
-private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
-if (isNull _display) exitWith {};
-
-private _ctrlMode = _display displayCtrl 88310;
-private _mode = _ctrlMode lbData (lbCurSel _ctrlMode);
+private _mode = uiNamespace getVariable ["mkk_ptg_targetMode", "bot"];
 if (_mode isEqualTo "") then {_mode = "bot";};
 
 private _className = missionNamespace getVariable ["mkk_ptg_targetSelection", ""];
@@ -14,9 +10,9 @@ if (_className isEqualTo "") exitWith {
     [localize "STR_MKK_PTG_TARGET_SELECT_FIRST"] call EFUNC(main,showTimedHint);
 };
 
-private _distance = parseNumber ctrlText (_display displayCtrl 88315);
-private _patrolRadius = parseNumber ctrlText (_display displayCtrl 88316);
-private _airRadius = parseNumber ctrlText (_display displayCtrl 88317);
-private _airHeight = parseNumber ctrlText (_display displayCtrl 88318);
+private _distance = parseNumber (uiNamespace getVariable ["mkk_ptg_targetDistance", "5"]);
+private _patrolRadius = parseNumber (uiNamespace getVariable ["mkk_ptg_targetPatrol", "50"]);
+private _airRadius = parseNumber (uiNamespace getVariable ["mkk_ptg_targetAirRadius", "150"]);
+private _airHeight = parseNumber (uiNamespace getVariable ["mkk_ptg_targetAirHeight", "100"]);
 
 [_mode, _className, player, _distance, _patrolRadius, _airRadius, _airHeight] call EFUNC(spawn,requestSpawnTarget);

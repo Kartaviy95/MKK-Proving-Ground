@@ -3,6 +3,7 @@
     Строит кэш каталога техники.
 */
 private _catalog = [];
+private _catalogByClass = createHashMap;
 private _cfgVehicles = configFile >> "CfgVehicles";
 
 {
@@ -53,7 +54,7 @@ private _cfgVehicles = configFile >> "CfgVehicles";
 
     private _modSource = [_cfg] call EFUNC(common,getModSource);
 
-    _catalog pushBack [
+    private _entry = [
         _className,
         _displayName,
         _sideId,
@@ -68,11 +69,14 @@ private _cfgVehicles = configFile >> "CfgVehicles";
         _factionDisplayName,
         _editorSubcategoryDisplayName
     ];
+    _catalog pushBack _entry;
+    _catalogByClass set [_className, _entry];
 } forEach ("true" configClasses _cfgVehicles);
 
 _catalog sort true;
 
 missionNamespace setVariable ["mkk_ptg_catalogCache", _catalog];
+missionNamespace setVariable ["mkk_ptg_catalogByClass", _catalogByClass];
 missionNamespace setVariable ["mkk_ptg_filteredCatalog", +_catalog];
 
 _catalog

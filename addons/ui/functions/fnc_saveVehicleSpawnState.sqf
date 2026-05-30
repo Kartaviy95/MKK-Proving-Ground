@@ -14,21 +14,11 @@ private _distance = missionNamespace getVariable ["mkk_ptg_spawnDefaultDistance"
 private _directionOffset = 0;
 private _ammoBoxClass = missionNamespace getVariable ["mkk_ptg_currentAmmoBoxSelection", ""];
 
-private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
-if !(isNull _display) then {
-    private _distanceValue = parseNumber ctrlText (_display displayCtrl 88015);
-    if (_distanceValue > 0) then {
-        _distance = _distanceValue;
-    };
-
-    _directionOffset = parseNumber ctrlText (_display displayCtrl 88016);
-
-    private _ctrlAmmoBox = _display displayCtrl 88017;
-    private _ammoBoxIndex = lbCurSel _ctrlAmmoBox;
-    if (_ammoBoxIndex >= 0) then {
-        _ammoBoxClass = _ctrlAmmoBox lbData _ammoBoxIndex;
-    };
+private _distanceValue = parseNumber (uiNamespace getVariable ["mkk_ptg_vehicleDistance", str _distance]);
+if (_distanceValue > 0) then {
+    _distance = _distanceValue;
 };
+_directionOffset = parseNumber (uiNamespace getVariable ["mkk_ptg_vehicleDirection", "0"]);
 
 private _maxDistance = missionNamespace getVariable ["mkk_ptg_spawnMaxDistance", 20000];
 _distance = (_distance max 1) min _maxDistance;

@@ -3,7 +3,10 @@
     Returns localized labels consumed by the browser UI. Keeping the visible
     copy here ensures that HTML never becomes a second localization source.
 */
-[
+private _cached = uiNamespace getVariable ["mkk_ptg_webLabelsCache", []];
+if (_cached isEqualType [] && {_cached isNotEqualTo []}) exitWith {_cached};
+
+private _labels = [
     ["modName", localize "STR_MKK_PTG_MOD_NAME"],
     ["system", localize "STR_MKK_PTG_CONTROL_CENTER"],
     ["version", format [localize "STR_MKK_PTG_VERSION", QUOTE(VERSION_STR)]],
@@ -122,4 +125,7 @@
     ["reportEmpty", localize "STR_MKK_PTG_DAMAGE_REPORT_EMPTY"],
     ["explosionNote", localize "STR_MKK_PTG_EXPLOSION_NOTE"],
     ["height", localize "STR_MKK_PTG_EXPLOSION_HEIGHT"]
-]
+];
+
+uiNamespace setVariable ["mkk_ptg_webLabelsCache", _labels];
+_labels

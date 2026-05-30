@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Serializes the existing SQF UI model into browser-friendly presentation data.
+    Serializes namespace-backed UI state into browser-friendly data.
 */
 disableSerialization;
 
@@ -12,26 +12,13 @@ private _browser = uiNamespace getVariable ["mkk_ptg_webControl", controlNull];
 if (isNull _browser) exitWith {};
 
 private _fncOptions = {
-    params ["_ctrl"];
-    private _items = [];
-    if (isNull _ctrl) exitWith {_items};
-
-    private _selected = lbCurSel _ctrl;
-    for "_i" from 0 to ((lbSize _ctrl) - 1) do {
-        _items pushBack [_ctrl lbData _i, _ctrl lbText _i, _i isEqualTo _selected];
-    };
-    _items
-};
-
-private _fncRows = {
-    params ["_ctrl"];
-    private _items = [];
-    if (isNull _ctrl) exitWith {_items};
-
-    for "_i" from 0 to ((lbSize _ctrl) - 1) do {
-        _items pushBack [_ctrl lbData _i, _ctrl lbText _i, ""];
-    };
-    _items
+    params ["_rows", "_selected"];
+    private _selectedText = if (_selected isEqualType "") then {_selected} else {str _selected};
+    _rows apply {
+        private _value = _x # 0;
+        private _valueText = if (_value isEqualType "") then {_value} else {str _value};
+        [_valueText, _x # 1, _value isEqualTo _selected || {_valueText isEqualTo _selectedText}]
+    }
 };
 
 private _fncSideText = {
@@ -67,152 +54,146 @@ private _status = [
     missionNamespace getVariable ["mkk_ptg_mapProjectileMarkerShowAmmo", false]
 ];
 
-private _sizes = [];
-private _sizeCtrl = _display displayCtrl 88131;
-if !(isNull _sizeCtrl) then {
-    private _selectedSize = lbCurSel _sizeCtrl;
-    for "_i" from 0 to ((lbSize _sizeCtrl) - 1) do {
-        _sizes pushBack [str (_sizeCtrl lbValue _i), _sizeCtrl lbText _i, _i isEqualTo _selectedSize];
-    };
-};
-
 private _dashboard = [
     _status,
     !(isNull objectParent player),
-    ctrlText (_display displayCtrl 88101),
-    ctrlText (_display displayCtrl 88106),
-    _sizes
+    uiNamespace getVariable ["mkk_ptg_dashboardTeleportLabel", localize "STR_MKK_PTG_TELEPORT"],
+    uiNamespace getVariable ["mkk_ptg_dashboardUnlockLabel", localize "STR_MKK_PTG_UNLOCK_VEHICLE"],
+    uiNamespace getVariable ["mkk_ptg_interfaceSizeOptions", []]
 ];
 
-private _vehicleRows = [];
-private _vehicleList = _display displayCtrl 88020;
-for "_i" from 0 to ((lbSize _vehicleList) - 1) do {
-    private _className = _vehicleList lbData _i;
-    private _info = [_className] call EFUNC(catalog,getVehicleInfo);
-    if (_info isNotEqualTo []) then {
+private _vehicle = [];
+if (_view isEqualTo "vehicles") then {
+    private _vehicleRows = [];
+    {
+        private _info = _x;
+        private _className = _info # 0;
         private _name = [_info # 1] call EFUNC(common,localizeString);
         private _type = [_info # 4] call EFUNC(common,localizeString);
         private _faction = _info param [11, _info # 3];
         _vehicleRows pushBack [_className, _name, format ["%1 / %2", _type, _faction]];
-    };
-};
+    } forEach (missionNamespace getVariable ["mkk_ptg_filteredCatalog", []]);
 
-private _selectedVehicle = missionNamespace getVariable ["mkk_ptg_currentSelection", ""];
-private _vehicleCard = [];
-if (_selectedVehicle isNotEqualTo "") then {
-    private _info = [_selectedVehicle] call EFUNC(catalog,getVehicleInfo);
-    if (_info isNotEqualTo []) then {
-        private _preview = [(_info # 10)] call EFUNC(common,getPreviewPath);
-        _vehicleCard = [
-            [_info # 1] call EFUNC(common,localizeString),
-            _selectedVehicle,
-            [_info # 2] call _fncSideText,
-            _info param [11, _info # 3],
-            [_info # 4] call EFUNC(common,localizeString),
-            _info param [12, _info # 8],
-            _info # 5,
-            _info # 9,
-            _preview
-        ];
-    };
-};
-
-private _showAmmoBox = _selectedVehicle isNotEqualTo "" && {_selectedVehicle isKindOf "StaticWeapon"};
-private _vehicle = [
-    [
-        [(_display displayCtrl 88011)] call _fncOptions,
-        [(_display displayCtrl 88012)] call _fncOptions,
-        [(_display displayCtrl 88014)] call _fncOptions
-    ],
-    ctrlText (_display displayCtrl 88010),
-    ctrlText (_display displayCtrl 88015),
-    ctrlText (_display displayCtrl 88016),
-    _vehicleRows,
-    _selectedVehicle,
-    _vehicleCard,
-    [(_display displayCtrl 88017)] call _fncOptions,
-    _showAmmoBox,
-    ctrlText (_display displayCtrl 88002)
-];
-
-private _targetModeCtrl = _display displayCtrl 88310;
-private _targetModeIndex = lbCurSel _targetModeCtrl;
-private _targetMode = if (_targetModeIndex >= 0) then {_targetModeCtrl lbData _targetModeIndex} else {"bot"};
-private _targetRows = [(_display displayCtrl 88320)] call _fncRows;
-private _selectedTarget = missionNamespace getVariable ["mkk_ptg_targetSelection", ""];
-private _targetCard = [];
-if (_selectedTarget isNotEqualTo "") then {
-    private _cfg = configFile >> "CfgVehicles" >> _selectedTarget;
-    if (isClass _cfg) then {
-        private _name = [_cfg, "displayName", _selectedTarget] call EFUNC(common,getSafeConfigText);
-        _name = [_name] call EFUNC(common,localizeString);
-        if (_name isEqualTo "") then {_name = _selectedTarget};
-        _targetCard = [_name, _selectedTarget, [_cfg] call EFUNC(common,getPreviewPath)];
-    };
-};
-private _targets = [
-    [_targetModeCtrl] call _fncOptions,
-    _targetMode,
-    ctrlText (_display displayCtrl 88311),
-    [
-        ctrlText (_display displayCtrl 88315),
-        ctrlText (_display displayCtrl 88316),
-        ctrlText (_display displayCtrl 88317),
-        ctrlText (_display displayCtrl 88318)
-    ],
-    _targetRows,
-    _selectedTarget,
-    _targetCard
-];
-
-private _rearmOpen = uiNamespace getVariable ["mkk_ptg_rearmOverlayVisible", false];
-private _rearmVehicle = uiNamespace getVariable ["mkk_ptg_rearmVehicle", objNull];
-private _rearmVehicleData = [];
-if (_rearmOpen && {!isNull _rearmVehicle}) then {
-    private _cfg = configOf _rearmVehicle;
-    private _name = [getText (_cfg >> "displayName")] call EFUNC(common,localizeString);
-    if (_name isEqualTo "") then {_name = typeOf _rearmVehicle};
-    _rearmVehicleData = [_name, typeOf _rearmVehicle, [_cfg] call EFUNC(common,getPreviewPath)];
-};
-
-private _rearmMagazineCard = [];
-private _selectedMagazine = uiNamespace getVariable ["mkk_ptg_rearmSelectedMagazine", ""];
-if (_selectedMagazine isNotEqualTo "") then {
-    private _magCfg = configFile >> "CfgMagazines" >> _selectedMagazine;
-    private _ammo = [_magCfg, "ammo", ""] call EFUNC(common,getSafeConfigText);
-    private _ammoName = _ammo;
-    private _ammoCfg = configFile >> "CfgAmmo" >> _ammo;
-    if (isClass _ammoCfg) then {
-        private _displayAmmo = [getText (_ammoCfg >> "displayName")] call EFUNC(common,localizeString);
-        if (_displayAmmo isNotEqualTo "") then {
-            _ammoName = format ["%1 (%2)", _displayAmmo, _ammo];
+    private _selectedVehicle = missionNamespace getVariable ["mkk_ptg_currentSelection", ""];
+    private _vehicleCard = [];
+    if (_selectedVehicle isNotEqualTo "") then {
+        private _info = [_selectedVehicle] call EFUNC(catalog,getVehicleInfo);
+        if (_info isNotEqualTo []) then {
+            private _preview = _info # 6;
+            if (_preview isEqualTo "") then {_preview = _info # 7;};
+            _vehicleCard = [
+                [_info # 1] call EFUNC(common,localizeString),
+                _selectedVehicle,
+                [_info # 2] call _fncSideText,
+                _info param [11, _info # 3],
+                [_info # 4] call EFUNC(common,localizeString),
+                _info param [12, _info # 8],
+                _info # 5,
+                _info # 9,
+                _preview
+            ];
         };
     };
-    _rearmMagazineCard = [
-        _selectedMagazine,
-        _ammoName,
-        str ([_magCfg, "count", 0] call EFUNC(common,getSafeConfigNumber)),
-        [_magCfg, "pylonWeapon", ""] call EFUNC(common,getSafeConfigText)
+
+    private _showAmmoBox = _selectedVehicle isNotEqualTo "" && {_selectedVehicle isKindOf "StaticWeapon"};
+    _vehicle = [
+        [
+            [uiNamespace getVariable ["mkk_ptg_vehicleSideOptions", []], uiNamespace getVariable ["mkk_ptg_vehicleFilterSide", -1]] call _fncOptions,
+            [uiNamespace getVariable ["mkk_ptg_vehicleFactionOptions", []], uiNamespace getVariable ["mkk_ptg_vehicleFilterFaction", ""]] call _fncOptions,
+            [uiNamespace getVariable ["mkk_ptg_vehicleTypeOptions", []], uiNamespace getVariable ["mkk_ptg_vehicleFilterType", ""]] call _fncOptions
+        ],
+        uiNamespace getVariable ["mkk_ptg_vehicleSearch", ""],
+        uiNamespace getVariable ["mkk_ptg_vehicleDistance", "10"],
+        uiNamespace getVariable ["mkk_ptg_vehicleDirection", "0"],
+        _vehicleRows,
+        _selectedVehicle,
+        _vehicleCard,
+        [uiNamespace getVariable ["mkk_ptg_vehicleAmmoBoxOptions", []], missionNamespace getVariable ["mkk_ptg_currentAmmoBoxSelection", ""]] call _fncOptions,
+        _showAmmoBox,
+        uiNamespace getVariable ["mkk_ptg_vehicleResultText", localize "STR_MKK_PTG_FOUND_ZERO"]
     ];
 };
 
-private _fncSelectedData = {
-    params ["_ctrl"];
-    private _index = lbCurSel _ctrl;
-    if (_index < 0) exitWith {""};
-    _ctrl lbData _index
+private _targets = [];
+if (_view isEqualTo "targets") then {
+    private _selectedTarget = missionNamespace getVariable ["mkk_ptg_targetSelection", ""];
+    private _targetCard = [];
+    if (_selectedTarget isNotEqualTo "") then {
+        private _cfg = configFile >> "CfgVehicles" >> _selectedTarget;
+        if (isClass _cfg) then {
+            private _name = [_cfg, "displayName", _selectedTarget] call EFUNC(common,getSafeConfigText);
+            _name = [_name] call EFUNC(common,localizeString);
+            if (_name isEqualTo "") then {_name = _selectedTarget};
+            _targetCard = [_name, _selectedTarget, [_cfg] call EFUNC(common,getPreviewPath)];
+        };
+    };
+    private _modes = [
+        ["bot", localize "STR_MKK_PTG_TARGET_BOTS"],
+        ["ground", localize "STR_MKK_PTG_TARGET_GROUND"],
+        ["air", localize "STR_MKK_PTG_TARGET_AIR"]
+    ];
+    private _targetMode = uiNamespace getVariable ["mkk_ptg_targetMode", "bot"];
+    _targets = [
+        [_modes, _targetMode] call _fncOptions,
+        _targetMode,
+        uiNamespace getVariable ["mkk_ptg_targetSearch", ""],
+        [
+            uiNamespace getVariable ["mkk_ptg_targetDistance", "5"],
+            uiNamespace getVariable ["mkk_ptg_targetPatrol", "50"],
+            uiNamespace getVariable ["mkk_ptg_targetAirRadius", "150"],
+            uiNamespace getVariable ["mkk_ptg_targetAirHeight", "100"]
+        ],
+        uiNamespace getVariable ["mkk_ptg_targetRows", []],
+        _selectedTarget,
+        _targetCard
+    ];
 };
-private _rearm = [
-    _rearmOpen && {!isNull _rearmVehicle},
-    _rearmVehicleData,
-    [(_display displayCtrl 88220)] call _fncRows,
-    [(_display displayCtrl 88220)] call _fncSelectedData,
-    [(_display displayCtrl 88221)] call _fncRows,
-    [(_display displayCtrl 88221)] call _fncSelectedData,
-    [(_display displayCtrl 88222)] call _fncRows,
-    [(_display displayCtrl 88222)] call _fncSelectedData,
-    _rearmMagazineCard
-];
+
+private _rearm = [];
+if (_view isEqualTo "rearm") then {
+    private _rearmOpen = uiNamespace getVariable ["mkk_ptg_rearmOverlayVisible", false];
+    private _rearmVehicle = uiNamespace getVariable ["mkk_ptg_rearmVehicle", objNull];
+    private _rearmVehicleData = [];
+    if (_rearmOpen && {!isNull _rearmVehicle}) then {
+        private _cfg = configOf _rearmVehicle;
+        private _name = [getText (_cfg >> "displayName")] call EFUNC(common,localizeString);
+        if (_name isEqualTo "") then {_name = typeOf _rearmVehicle};
+        _rearmVehicleData = [_name, typeOf _rearmVehicle, [_cfg] call EFUNC(common,getPreviewPath)];
+    };
+
+    private _rearmMagazineCard = [];
+    private _selectedMagazine = uiNamespace getVariable ["mkk_ptg_rearmSelectedMagazine", ""];
+    if (_selectedMagazine isNotEqualTo "") then {
+        private _magCfg = configFile >> "CfgMagazines" >> _selectedMagazine;
+        private _ammo = [_magCfg, "ammo", ""] call EFUNC(common,getSafeConfigText);
+        private _ammoName = _ammo;
+        private _ammoCfg = configFile >> "CfgAmmo" >> _ammo;
+        if (isClass _ammoCfg) then {
+            private _displayAmmo = [getText (_ammoCfg >> "displayName")] call EFUNC(common,localizeString);
+            if (_displayAmmo isNotEqualTo "") then {
+                _ammoName = format ["%1 (%2)", _displayAmmo, _ammo];
+            };
+        };
+        _rearmMagazineCard = [
+            _selectedMagazine,
+            _ammoName,
+            str ([_magCfg, "count", 0] call EFUNC(common,getSafeConfigNumber)),
+            [_magCfg, "pylonWeapon", ""] call EFUNC(common,getSafeConfigText)
+        ];
+    };
+
+    _rearm = [
+        _rearmOpen && {!isNull _rearmVehicle},
+        _rearmVehicleData,
+        uiNamespace getVariable ["mkk_ptg_rearmSlotRows", []],
+        str (uiNamespace getVariable ["mkk_ptg_rearmSelectedSlotIndex", -1]),
+        uiNamespace getVariable ["mkk_ptg_rearmWeaponRows", []],
+        str (uiNamespace getVariable ["mkk_ptg_rearmSelectedWeaponIndex", -1]),
+        uiNamespace getVariable ["mkk_ptg_rearmMagazineRows", []],
+        str (uiNamespace getVariable ["mkk_ptg_rearmSelectedMagazineIndex", -1]),
+        _rearmMagazineCard
+    ];
+};
 
 private _trajectoryColor = missionNamespace getVariable ["mkk_ptg_trajectoryColorIndex", 0];
 private _colors = [

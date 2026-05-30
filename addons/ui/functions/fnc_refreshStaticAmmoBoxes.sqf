@@ -1,15 +1,12 @@
 #include "..\script_component.hpp"
 /*
-    Обновляет список совместимых ammo boxes для выбранной статики.
+    Refreshes compatible ammo box options for the selected static weapon.
 */
-private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
-if (isNull _display) exitWith {};
-
-private _ctrlLabel = _display displayCtrl 88057;
-private _ctrlCombo = _display displayCtrl 88017;
 private _className = missionNamespace getVariable ["mkk_ptg_currentSelection", ""];
+uiNamespace setVariable ["mkk_ptg_vehicleAmmoBoxOptions", []];
+missionNamespace setVariable ["mkk_ptg_currentAmmoBoxSelection", ""];
 
-lbClear _ctrlCombo;
+if (_className isEqualTo "" || {!(_className isKindOf "StaticWeapon")}) exitWith {};
 
 private _spawnState = missionNamespace getVariable [
     "mkk_ptg_vehicleSpawnState",
@@ -24,41 +21,22 @@ private _savedAmmoBoxClass = "";
 if (_savedClassName isEqualTo _className) then {
     _savedAmmoBoxClass = _spawnState param [3, ""];
 };
-missionNamespace setVariable ["mkk_ptg_currentAmmoBoxSelection", ""];
 
-if (_className isEqualTo "" || {!(_className isKindOf "StaticWeapon")}) exitWith {
-    _ctrlLabel ctrlShow false;
-    _ctrlCombo ctrlShow false;
-};
-
-_ctrlLabel ctrlShow true;
-_ctrlCombo ctrlShow true;
-_ctrlCombo ctrlEnable true;
-
-private _noneIdx = _ctrlCombo lbAdd localize "STR_MKK_PTG_NO_AMMO_BOX";
-_ctrlCombo lbSetData [_noneIdx, ""];
-private _selectionIndex = _noneIdx;
-
+private _options = [["", localize "STR_MKK_PTG_NO_AMMO_BOX"]];
+private _selection = "";
 private _boxes = [_className] call EFUNC(catalog,getCompatibleAmmoBoxes);
 
 if (_boxes isEqualTo []) exitWith {
-    private _idx = _ctrlCombo lbAdd localize "STR_MKK_PTG_NO_COMPATIBLE_AMMO_BOXES";
-    _ctrlCombo lbSetData [_idx, ""];
-    _ctrlCombo lbSetCurSel _idx;
-    missionNamespace setVariable ["mkk_ptg_currentAmmoBoxSelection", ""];
-    _ctrlCombo ctrlEnable false;
+    uiNamespace setVariable ["mkk_ptg_vehicleAmmoBoxOptions", [["", localize "STR_MKK_PTG_NO_COMPATIBLE_AMMO_BOXES"]]];
 };
 
 {
     _x params ["_boxClass", "_displayName", "_source"];
-
-    private _idx = _ctrlCombo lbAdd format ["%1 | %2", _displayName, _source];
-    _ctrlCombo lbSetData [_idx, _boxClass];
-    _ctrlCombo lbSetTooltip [_idx, _boxClass];
+    _options pushBack [_boxClass, format ["%1 | %2", _displayName, _source]];
     if (_boxClass isEqualTo _savedAmmoBoxClass) then {
-        _selectionIndex = _idx;
+        _selection = _boxClass;
     };
 } forEach _boxes;
 
-_ctrlCombo lbSetCurSel _selectionIndex;
-missionNamespace setVariable ["mkk_ptg_currentAmmoBoxSelection", _ctrlCombo lbData _selectionIndex];
+uiNamespace setVariable ["mkk_ptg_vehicleAmmoBoxOptions", _options];
+missionNamespace setVariable ["mkk_ptg_currentAmmoBoxSelection", _selection];

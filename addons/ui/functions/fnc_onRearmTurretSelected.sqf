@@ -1,23 +1,24 @@
 #include "..\script_component.hpp"
 /*
-    Обрабатывает выбранную позицию экипажа, турель или пилон для перевооружения.
+    Selects a rearm slot and builds its weapon rows.
 */
 disableSerialization;
-params ["_control", "_selectedIndex"];
+params [
+    ["_selectedIndexOrControl", -1],
+    ["_legacyIndex", -1]
+];
 
-private _display = ctrlParent _control;
-private _weaponCtrl = _display displayCtrl 88221;
-private _magCtrl = _display displayCtrl 88222;
-private _infoCtrl = _display displayCtrl 88232;
-private _statusCtrl = _display displayCtrl 88233;
-lbClear _weaponCtrl;
-lbClear _magCtrl;
-if (!isNull _infoCtrl) then {
-    _infoCtrl ctrlSetStructuredText parseText localize "STR_MKK_PTG_REARM_MAGAZINE_INFO_EMPTY";
+private _selectedIndex = _selectedIndexOrControl;
+if (_selectedIndexOrControl isEqualType controlNull) then {
+    _selectedIndex = _legacyIndex;
 };
-if (!isNull _statusCtrl) then {
-    _statusCtrl ctrlSetStructuredText parseText "";
-};
+if !(_selectedIndex isEqualType 0) then {_selectedIndex = parseNumber str _selectedIndex;};
+
+uiNamespace setVariable ["mkk_ptg_rearmWeaponRows", []];
+uiNamespace setVariable ["mkk_ptg_rearmMagazineRows", []];
+uiNamespace setVariable ["mkk_ptg_rearmSelectedSlotIndex", _selectedIndex];
+uiNamespace setVariable ["mkk_ptg_rearmSelectedWeaponIndex", -1];
+uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazineIndex", -1];
 
 private _turretRows = uiNamespace getVariable ["mkk_ptg_rearmTurrets", []];
 if (_selectedIndex < 0 || {_selectedIndex >= count _turretRows}) exitWith {};
@@ -28,6 +29,7 @@ uiNamespace setVariable ["mkk_ptg_rearmSelectedWeapon", ""];
 uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazine", ""];
 uiNamespace setVariable ["mkk_ptg_rearmCompatibleMagazines", []];
 
+private _weaponRows = [];
 if (_mode isEqualTo "pylon") exitWith {
     _path params ["_pylonIndex", ["_pylonTurret", []]];
     uiNamespace setVariable ["mkk_ptg_rearmSelectedTurret", _pylonTurret];
@@ -41,12 +43,12 @@ if (_mode isEqualTo "pylon") exitWith {
     } else {
         private _cfg = configFile >> "CfgMagazines" >> _currentMagazine;
         private _displayName = [getText (_cfg >> "displayName")] call EFUNC(common,localizeString);
-        if (_displayName != "") then {_currentName = _displayName};
+        if (_displayName isNotEqualTo "") then {_currentName = _displayName};
     };
 
-    private _index = _weaponCtrl lbAdd format [localize "STR_MKK_PTG_REARM_PYLON_CURRENT", _pylonIndex, _currentName];
-    _weaponCtrl lbSetData [_index, format ["__PTG_PYLON_%1", _pylonIndex]];
-    _weaponCtrl lbSetCurSel 0;
+    _weaponRows pushBack ["0", format [localize "STR_MKK_PTG_REARM_PYLON_CURRENT", _pylonIndex, _currentName], ""];
+    uiNamespace setVariable ["mkk_ptg_rearmWeaponRows", _weaponRows];
+    [0] call FUNC(onRearmWeaponSelected);
 };
 
 uiNamespace setVariable ["mkk_ptg_rearmSelectedTurret", _path];
@@ -57,10 +59,10 @@ uiNamespace setVariable ["mkk_ptg_rearmSelectedPylonTurret", []];
     private _cfg = configFile >> "CfgWeapons" >> _x;
     private _displayName = [getText (_cfg >> "displayName")] call EFUNC(common,localizeString);
     if (_displayName isEqualTo "") then {_displayName = _x};
-    private _index = _weaponCtrl lbAdd _displayName;
-    _weaponCtrl lbSetData [_index, _x];
+    _weaponRows pushBack [str _forEachIndex, _displayName, _x];
 } forEach _weapons;
 
-if ((lbSize _weaponCtrl) > 0) then {
-    _weaponCtrl lbSetCurSel 0;
+uiNamespace setVariable ["mkk_ptg_rearmWeaponRows", _weaponRows];
+if (_weaponRows isNotEqualTo []) then {
+    [0] call FUNC(onRearmWeaponSelected);
 };

@@ -36,12 +36,27 @@ if !(_ammoBoxClass isEqualType "") then {
     _ammoBoxClass = "";
 };
 missionNamespace setVariable ["mkk_ptg_currentAmmoBoxSelection", _ammoBoxClass];
+uiNamespace setVariable ["mkk_ptg_vehicleSearch", ""];
+uiNamespace setVariable ["mkk_ptg_vehicleFilterSide", -1];
+uiNamespace setVariable ["mkk_ptg_vehicleFilterFaction", ""];
+uiNamespace setVariable ["mkk_ptg_vehicleFilterType", ""];
+uiNamespace setVariable ["mkk_ptg_vehicleDistance", str _distance];
+uiNamespace setVariable ["mkk_ptg_vehicleDirection", str _directionOffset];
+uiNamespace setVariable ["mkk_ptg_vehicleAmmoBoxOptions", []];
+uiNamespace setVariable ["mkk_ptg_vehicleResultText", localize "STR_MKK_PTG_FOUND_ZERO"];
+uiNamespace setVariable ["mkk_ptg_targetMode", "bot"];
+uiNamespace setVariable ["mkk_ptg_targetSearch", ""];
+uiNamespace setVariable ["mkk_ptg_targetDistance", "5"];
+uiNamespace setVariable ["mkk_ptg_targetPatrol", "50"];
+uiNamespace setVariable ["mkk_ptg_targetAirRadius", "150"];
+uiNamespace setVariable ["mkk_ptg_targetAirHeight", "100"];
+uiNamespace setVariable ["mkk_ptg_targetRows", []];
+missionNamespace setVariable ["mkk_ptg_targetSelection", ""];
+uiNamespace setVariable ["mkk_ptg_targetOverlayVisible", false];
+uiNamespace setVariable ["mkk_ptg_rearmOverlayVisible", false];
+uiNamespace setVariable ["mkk_ptg_dashboardVisible", true];
+uiNamespace setVariable ["mkk_ptg_vehicleFiltersReady", false];
 
-(_display displayCtrl 88005) ctrlSetText format [localize "STR_MKK_PTG_VERSION", QUOTE(VERSION_STR)];
-(_display displayCtrl 88015) ctrlSetText str _distance;
-(_display displayCtrl 88016) ctrlSetText str _directionOffset;
-
-[] call FUNC(refreshFilters);
 [] call FUNC(initInterfaceSizeCombo);
 [] call FUNC(showDashboardView);
 [_display] call FUNC(initWebDisplay);

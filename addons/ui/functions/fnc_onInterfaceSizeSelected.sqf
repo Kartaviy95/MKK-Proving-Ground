@@ -2,10 +2,21 @@
 /*
     Применяет и сохраняет выбранный игроком размер интерфейса.
 */
-params ["_combo", "_index"];
-if (isNull _combo || {_index < 0}) exitWith {};
+params [
+    ["_valueOrCombo", 100],
+    ["_index", -1]
+];
 
-private _value = (_combo lbValue _index) / 100;
+private _value = 1;
+if (_valueOrCombo isEqualType controlNull) then {
+    if (isNull _valueOrCombo || {_index < 0}) exitWith {};
+    _value = (_valueOrCombo lbValue _index) / 100;
+} else {
+    _value = parseNumber str _valueOrCombo;
+    if (_value > 10) then {
+        _value = _value / 100;
+    };
+};
 if !(_value isEqualType 0) exitWith {};
 _value = (_value max 0.80) min 1.30;
 
@@ -17,6 +28,7 @@ private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
 if (isNull _display) exitWith {};
 
 [_display] call EFUNC(common,applyDisplayScale);
+[] call FUNC(initInterfaceSizeCombo);
 
 /*
     Active RscTitles / ctrlCreate overlays are not children of the main dialog,

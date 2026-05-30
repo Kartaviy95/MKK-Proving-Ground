@@ -1,45 +1,24 @@
 #include "..\script_component.hpp"
 /*
-    Сохраняет classname выбранного магазина перевооружения и обновляет информационную панель магазина.
+    Stores selected rearm magazine.
 */
 disableSerialization;
-params ["_control", "_selectedIndex"];
-
-private _display = ctrlParent _control;
-private _infoCtrl = _display displayCtrl 88232;
-
-if (_selectedIndex < 0) exitWith {
-    uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazine", ""];
-    if (!isNull _infoCtrl) then {
-        _infoCtrl ctrlSetStructuredText parseText localize "STR_MKK_PTG_REARM_MAGAZINE_INFO_EMPTY";
-    };
-};
-
-private _magazine = _control lbData _selectedIndex;
-uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazine", _magazine];
-
-private _magCfg = configFile >> "CfgMagazines" >> _magazine;
-private _ammo = getText (_magCfg >> "ammo");
-private _count = getNumber (_magCfg >> "count");
-private _pylonWeapon = getText (_magCfg >> "pylonWeapon");
-private _ammoName = _ammo;
-
-private _ammoCfg = configFile >> "CfgAmmo" >> _ammo;
-if (isClass _ammoCfg) then {
-    private _ammoDisplayName = [getText (_ammoCfg >> "displayName")] call EFUNC(common,localizeString);
-    if (_ammoDisplayName != "") then {
-        _ammoName = format ["%1 (%2)", _ammoDisplayName, _ammo];
-    };
-};
-
-_infoCtrl ctrlSetStructuredText parseText format [
-    "<t color='#B8E0FF'>%1</t><br/><t size='0.85'>%2: %3<br/>%4: %5<br/>%6: %7<br/>pylonWeapon: %8</t>",
-    localize "STR_MKK_PTG_REARM_MAGAZINE_INFO",
-    localize "STR_MKK_PTG_REARM_MAGAZINE_CLASSNAME",
-    _magazine,
-    localize "STR_MKK_PTG_REARM_MAGAZINE_AMMO",
-    _ammoName,
-    localize "STR_MKK_PTG_REARM_MAGAZINE_COUNT",
-    _count,
-    _pylonWeapon
+params [
+    ["_selectedIndexOrControl", -1],
+    ["_legacyIndex", -1]
 ];
+
+private _selectedIndex = _selectedIndexOrControl;
+if (_selectedIndexOrControl isEqualType controlNull) then {
+    _selectedIndex = _legacyIndex;
+};
+if !(_selectedIndex isEqualType 0) then {_selectedIndex = parseNumber str _selectedIndex;};
+
+private _magazines = uiNamespace getVariable ["mkk_ptg_rearmCompatibleMagazines", []];
+if (_selectedIndex < 0 || {_selectedIndex >= count _magazines}) exitWith {
+    uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazine", ""];
+    uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazineIndex", -1];
+};
+
+uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazine", _magazines # _selectedIndex];
+uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazineIndex", _selectedIndex];
