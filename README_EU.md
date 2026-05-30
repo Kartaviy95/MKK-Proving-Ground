@@ -1,6 +1,6 @@
 # MKK Proving Ground
 
-A modular Arma 3 proving ground with the technical name `mkk_ptg` and build prefix `ptg`. Current build: `1.3.5.0`, minimum Arma 3 version: `2.20`. The project is designed for quick testing of vehicles, weapons, ammunition, trajectories, penetration, map-created explosive projectiles, teleportation, and local player utilities.
+A modular Arma 3 proving ground with the technical name `mkk_ptg` and build prefix `ptg`. Current build: `1.3.6.0`, minimum Arma 3 version: `2.20`. The project is designed for quick testing of vehicles, weapons, ammunition, trajectories, penetration, map-created explosive projectiles, teleportation, and local player utilities.
 
 ## Modules
 

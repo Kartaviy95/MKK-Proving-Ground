@@ -1,6 +1,6 @@
 # MKK Proving Ground
 
-Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build-Praefix `ptg`. Aktueller Build: `1.3.5.0`, minimale Arma-3-Version: `2.20`. Das Projekt dient zum schnellen Testen von Fahrzeugen, Waffen, Munition, Flugbahnen, Durchschlag, per Karte erzeugten explosiven Projektilen, Teleportation und lokalen Spieler-Werkzeugen.
+Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build-Praefix `ptg`. Aktueller Build: `1.3.6.0`, minimale Arma-3-Version: `2.20`. Das Projekt dient zum schnellen Testen von Fahrzeugen, Waffen, Munition, Flugbahnen, Durchschlag, per Karte erzeugten explosiven Projektilen, Teleportation und lokalen Spieler-Werkzeugen.
 
 ## Module
 
