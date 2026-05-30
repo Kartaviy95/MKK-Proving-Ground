@@ -1,6 +1,6 @@
 # MKK Proving Ground
 
-A modular Arma 3 proving ground with the technical name `mkk_ptg` and build prefix `ptg`. Current build: `1.3.3.0`, minimum Arma 3 version: `2.20`. The project is designed for quick testing of vehicles, weapons, ammunition, trajectories, penetration, teleportation, and local player utilities.
+A modular Arma 3 proving ground with the technical name `mkk_ptg` and build prefix `ptg`. Current build: `1.3.5.0`, minimum Arma 3 version: `2.20`. The project is designed for quick testing of vehicles, weapons, ammunition, trajectories, penetration, map-created explosive projectiles, teleportation, and local player utilities.
 
 ## Modules
 
@@ -10,7 +10,7 @@ A modular Arma 3 proving ground with the technical name `mkk_ptg` and build pref
 - `ptg_ui` - main window, start menu, small auxiliary settings windows, vehicle spawn screen, driver+gunner mode, camera, teleport, rearm, test targets, HUD settings, hitpoint inspector, interface scale, and button handlers.
 - `ptg_spawn` - global spawning of vehicles, drivers/crews, and test targets, registration of created objects, deletion and range cleanup without requiring the addon to be loaded on a dedicated server.
 - `ptg_tracking` - projectile tracking, tracking HUD, trajectory lines, and projectile markers on the map.
-- `ptg_penetration` - vehicle penetration test, orbit camera, test projectile, damage/AllowDamage/hitpoints/crew report, and `CfgAmmo` parameters.
+- `ptg_penetration` - vehicle penetration test, orbit camera, test projectile, damage/AllowDamage/hitpoints/crew report, `CfgAmmo` parameters, and a map-click explosion creation tool.
 - `ptg_player` - infinite ammo, god mode, fired handlers, and respawn handlers.
 - `ptg_player_ace` - god mode compatibility with ACE medical damage.
 - `ptg_ace` - ACE self-action and ACE actions on terminals.
@@ -40,13 +40,14 @@ A modular Arma 3 proving ground with the technical name `mkk_ptg` and build pref
 - object status display on cursor hover with configurable damage/AllowDamage/hitpoints fields;
 - hitpoint inspector for the vehicle under the cursor with compact radial cards for total damage and key hitpoints;
 - penetration test with vehicle and ammo selection, orbit camera, shot at the selected point, damage report, and ammo classname copying;
+- "Create Explosion" tool: grouped explosive `CfgAmmo` selection for bombs/rockets/ATGM/mortars, height input, projectile creation by map click, `triggerDistance` protection for `submunitionAmmo`, and tracking-camera integration;
 - infinite ammo and god mode with reapplication after respawn;
 - Virtual Arsenal and ACE3 Arsenal through keybinds;
 - classname copying for the object under the cursor;
 - object deletion under the cursor with access check and player deletion protection;
 - unlocking the vehicle under the cursor;
 - interface scale: small, normal, large, extra large;
-- visible text localization through `addons/main/stringtable.xml` in English, Russian, and German; the current stringtable contains 300 keys, all with English, Russian, and German entries.
+- visible text localization through `addons/main/stringtable.xml` in English, Russian, and German; the current stringtable contains 306 keys, all with English, Russian, and German entries.
 
 ## Documentation
 
@@ -55,7 +56,7 @@ The main up-to-date documents are in `docs/ptg/`:
 - `overview.md` - product idea, style, and principles;
 - `ui-ux.md` - interface structure, start menu, vehicle screen, camera, rearm, and overlays;
 - `catalog-and-spawn.md` - catalog, filters, spawning, ammo boxes, and cleanup;
-- `features.md` - teleport, camera, tracking, trajectories, markers, hitpoints, penetration test, access, and settings;
+- `features.md` - teleport, camera, tracking, trajectories, markers, hitpoints, penetration test, map explosion creation, access, and settings;
 - `architecture-and-localization.md` - modules, dependencies, UI surfaces, gameplay flows, and localization rules;
 - `design-full.md` - full original design, use only when the split documents are not enough.
 
