@@ -1,12 +1,14 @@
 #include "..\script_component.hpp"
 /*
-    Запоминает выбранную цель и обновляет карточку.
+    Stores selected target classname.
 */
-params ["_control", "_selectedIndex"];
+params [
+    ["_className", ""],
+    ["_selectedIndex", -1]
+];
 
-private _className = "";
-if (_selectedIndex >= 0) then {
-    _className = _control lbData _selectedIndex;
+if (_className isEqualType controlNull) then {
+    _className = if (_selectedIndex >= 0) then {_className lbData _selectedIndex} else {""};
 };
+if !(_className isEqualType "") then {_className = "";};
 missionNamespace setVariable ["mkk_ptg_targetSelection", _className];
-[] call FUNC(updateTargetPreview);

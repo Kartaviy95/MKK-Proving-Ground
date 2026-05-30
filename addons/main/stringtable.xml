@@ -371,11 +371,6 @@
             <Russian>Показывает выпущенные снаряды локальными маркерами на карте.</Russian>
             <German>Verfolgt abgefeuerte Projektile mit lokalen Markern auf der Karte.</German>
         </Key>
-        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKER_AMMO">
-            <English>Toggles ammo classname text on projectile map markers.</English>
-            <Russian>Включает или выключает classname ammo у маркеров снарядов на карте.</Russian>
-            <German>Schaltet den ammo-classname-Text auf Projektilmarkern um.</German>
-        </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKER_SETTINGS">
             <English>Opens settings for projectile map marker labels.</English>
             <Russian>Открывает настройки подписей маркеров снарядов на карте.</Russian>
@@ -435,11 +430,6 @@
             <English>Opens the vehicle catalog for search, preview and spawn.</English>
             <Russian>Открывает каталог техники для поиска, просмотра и спавна.</Russian>
             <German>Öffnet den Fahrzeugkatalog für Suche, Vorschau und Spawn.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_DASHBOARD_INFO">
-            <English>Workflow: prepare vehicle and targets, enable camera/tracking, analyze trajectories and damage, then clean the range when the test is complete.</English>
-            <Russian>Сценарий работы: подготовьте технику и цели, включите камеру/слежение, проанализируйте траектории и повреждения, затем очистите полигон после теста.</Russian>
-            <German>Ablauf: Fahrzeuge und Ziele vorbereiten, Kamera/Tracking aktivieren, Flugbahnen und Schaden analysieren, danach das Testgelände räumen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_PREPARE_HINT">
             <English>Vehicles, targets, pylons and position.</English>
@@ -1036,11 +1026,6 @@
             <Russian>Тест пробития</Russian>
             <German>Panzerungstest</German>
         </Key>
-        <Key ID="STR_MKK_PTG_PENETRATION_TEST_DEV">
-            <English>Armor Test (DEV)</English>
-            <Russian>Тест пробития (DEV)</Russian>
-            <German>Panzerungstest (DEV)</German>
-        </Key>
         <Key ID="STR_MKK_PTG_PROJECTILE_TRACKING">
             <English>Projectile Tracking</English>
             <Russian>Слежение за пулей</Russian>
@@ -1065,11 +1050,6 @@
             <English>Crew position</English>
             <Russian>Место экипажа</Russian>
             <German>Besatzungsposition</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_REARM_CURRENT_VEHICLE">
-            <English>Current vehicle</English>
-            <Russian>Текущая техника</Russian>
-            <German>Aktuelles Fahrzeug</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_DRIVER">
             <English>Driver / pilot</English>
@@ -1111,11 +1091,6 @@
             <Russian>Класс магазина</Russian>
             <German>Magazinklasse</German>
         </Key>
-        <Key ID="STR_MKK_PTG_REARM_MAGAZINE_CLASSNAME">
-            <English>className</English>
-            <Russian>Класс</Russian>
-            <German>className</German>
-        </Key>
         <Key ID="STR_MKK_PTG_REARM_MAGAZINE_COUNT">
             <English>count</English>
             <Russian>Количество</Russian>
@@ -1131,25 +1106,10 @@
             <Russian>Выберите магазин, чтобы увидеть className, ammo и count.</Russian>
             <German>Wähle ein Magazin, um className, Munition und Anzahl zu sehen.</German>
         </Key>
-        <Key ID="STR_MKK_PTG_REARM_NOTE">
-            <English>Select a crew position, weapon/pylon, and compatible magazine. For pylons the list uses getCompatiblePylonMagazines and applies the loadout to the selected pylon.</English>
-            <Russian>Выберите место экипажа, оружие/пилон и совместимый магазин. Для пилонов список берётся через getCompatiblePylonMagazines, а выбранный loadout применяется к выбранному пилону.</Russian>
-            <German>Wähle Besatzungsposition, Waffe/Pylon und kompatibles Magazin. Für Pylone nutzt die Liste getCompatiblePylonMagazines und wendet das Loadout auf den gewählten Pylon an.</German>
-        </Key>
         <Key ID="STR_MKK_PTG_REARM_NO_MAGAZINES">
             <English>No compatible magazines found for this weapon.</English>
             <Russian>Для этого оружия не найдены совместимые магазины.</Russian>
             <German>Keine kompatiblen Magazine für diese Waffe gefunden.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_REARM_NO_PYLON_MAGAZINES">
-            <English>No compatible pylon magazines found for this pylon.</English>
-            <Russian>Для этого пилона не найдены совместимые pylon-магазины.</Russian>
-            <German>Keine kompatiblen Pylon-Magazine für diesen Pylon gefunden.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_REARM_NO_WEAPONS">
-            <English>No turret weapons found in this vehicle.</English>
-            <Russian>В этой технике не найдены орудия на местах экипажа.</Russian>
-            <German>In diesem Fahrzeug wurden keine Turmwaffen gefunden.</German>
         </Key>
         <Key ID="STR_MKK_PTG_REARM_PYLON">
             <English>Pylon %1</English>
@@ -1205,11 +1165,6 @@
             <English>Selected weapon magazines removed globally.</English>
             <Russian>Магазины выбранного орудия удалены глобально.</Russian>
             <German>Magazine der ausgewählten Waffe global entfernt.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_REFRESH">
-            <English>Refresh</English>
-            <Russian>Обновить</Russian>
-            <German>Aktualisieren</German>
         </Key>
         <Key ID="STR_MKK_PTG_RESET_TEST">
             <English>Reset Test</English>
@@ -1320,16 +1275,6 @@
             <English>Status</English>
             <Russian>Статус</Russian>
             <German>Status</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_STATUS_OFF">
-            <English>OFF</English>
-            <Russian>ВЫКЛ</Russian>
-            <German>AUS</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_STATUS_ON">
-            <English>ON</English>
-            <Russian>ВКЛ</Russian>
-            <German>EIN</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATUS_TRACKING">
             <English>Track</English>

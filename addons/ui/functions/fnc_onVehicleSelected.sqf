@@ -1,18 +1,19 @@
 #include "..\script_component.hpp"
 /*
-    Обновляет текущий выбор и карточку техники.
+    Stores the selected vehicle classname.
 */
 params [
-    ["_control", controlNull],
+    ["_className", ""],
     ["_selectedIndex", -1]
 ];
 
-if (isNull _control) exitWith {};
-if (_selectedIndex < 0) exitWith {};
+if (_className isEqualType controlNull) then {
+    if (isNull _className || {_selectedIndex < 0}) exitWith {};
+    _className = _className lbData _selectedIndex;
+};
+if !(_className isEqualType "") exitWith {};
+if (_className isEqualTo "") exitWith {};
 
-private _className = _control lbData _selectedIndex;
 missionNamespace setVariable ["mkk_ptg_currentSelection", _className];
-
-[] call FUNC(updateVehicleCard);
 [] call FUNC(refreshStaticAmmoBoxes);
 [false] call FUNC(saveVehicleSpawnState);

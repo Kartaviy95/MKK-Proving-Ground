@@ -1,29 +1,28 @@
 #include "..\script_component.hpp"
 /*
-    Обрабатывает выбранное оружие перевооружения и выводит совместимые магазины из CfgWeapons.
+    Selects a rearm weapon and builds compatible magazine rows.
 */
 disableSerialization;
-params ["_control", "_selectedIndex"];
+params [
+    ["_selectedIndexOrControl", -1],
+    ["_legacyIndex", -1]
+];
 
-private _display = ctrlParent _control;
-private _magCtrl = _display displayCtrl 88222;
-private _infoCtrl = _display displayCtrl 88232;
-private _statusCtrl = _display displayCtrl 88233;
-lbClear _magCtrl;
+private _selectedIndex = _selectedIndexOrControl;
+if (_selectedIndexOrControl isEqualType controlNull) then {
+    _selectedIndex = _legacyIndex;
+};
+if !(_selectedIndex isEqualType 0) then {_selectedIndex = parseNumber str _selectedIndex;};
+
+uiNamespace setVariable ["mkk_ptg_rearmMagazineRows", []];
+uiNamespace setVariable ["mkk_ptg_rearmSelectedWeaponIndex", _selectedIndex];
+uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazineIndex", -1];
 uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazine", ""];
 uiNamespace setVariable ["mkk_ptg_rearmCompatibleMagazines", []];
-
-if (!isNull _infoCtrl) then {
-    _infoCtrl ctrlSetStructuredText parseText localize "STR_MKK_PTG_REARM_MAGAZINE_INFO_EMPTY";
-};
-if (!isNull _statusCtrl) then {
-    _statusCtrl ctrlSetStructuredText parseText "";
-};
 
 if (_selectedIndex < 0) exitWith {
     uiNamespace setVariable ["mkk_ptg_rearmSelectedWeapon", ""];
 };
-
 
 private _mode = uiNamespace getVariable ["mkk_ptg_rearmSelectedMode", "turret"];
 if (_mode isEqualTo "pylon") exitWith {
@@ -33,32 +32,35 @@ if (_mode isEqualTo "pylon") exitWith {
 
     private _magazines = _vehicle getCompatiblePylonMagazines _pylonIndex;
     private _currentMagazine = (getPylonMagazines _vehicle) param [_pylonIndex - 1, ""];
-    if (_currentMagazine != "" && {!(_currentMagazine in _magazines)}) then {
+    if (_currentMagazine isNotEqualTo "" && {!(_currentMagazine in _magazines)}) then {
         _magazines pushBack _currentMagazine;
     };
     _magazines sort true;
-    uiNamespace setVariable ["mkk_ptg_rearmSelectedWeapon", _control lbData _selectedIndex];
+    uiNamespace setVariable ["mkk_ptg_rearmSelectedWeapon", format ["__PTG_PYLON_%1", _pylonIndex]];
     uiNamespace setVariable ["mkk_ptg_rearmCompatibleMagazines", _magazines];
 
+    private _magRows = [];
     {
         private _cfg = configFile >> "CfgMagazines" >> _x;
         private _displayName = [getText (_cfg >> "displayName")] call EFUNC(common,localizeString);
         if (_displayName isEqualTo "") then {_displayName = _x};
-        private _index = _magCtrl lbAdd _displayName;
-        _magCtrl lbSetData [_index, _x];
+        _magRows pushBack [str _forEachIndex, _displayName, _x];
     } forEach _magazines;
+    uiNamespace setVariable ["mkk_ptg_rearmMagazineRows", _magRows];
 
-    if ((lbSize _magCtrl) > 0) then {
-        if (!isNull _statusCtrl) then {_statusCtrl ctrlSetStructuredText parseText "";};
-        _magCtrl lbSetCurSel 0;
-    } else {
-        if (!isNull _statusCtrl) then {
-            _statusCtrl ctrlSetStructuredText parseText format ["<t color='#FFB8B8'>%1</t>", localize "STR_MKK_PTG_REARM_NO_PYLON_MAGAZINES"];
-        };
+    if (_magRows isNotEqualTo []) then {
+        [0] call FUNC(onRearmMagazineSelected);
     };
 };
 
-private _weapon = _control lbData _selectedIndex;
+private _turretRows = uiNamespace getVariable ["mkk_ptg_rearmTurrets", []];
+private _slotIndex = uiNamespace getVariable ["mkk_ptg_rearmSelectedSlotIndex", -1];
+if (_slotIndex < 0 || {_slotIndex >= count _turretRows}) exitWith {};
+
+private _weapons = (_turretRows # _slotIndex) # 2;
+if (_selectedIndex >= count _weapons) exitWith {};
+
+private _weapon = _weapons # _selectedIndex;
 uiNamespace setVariable ["mkk_ptg_rearmSelectedWeapon", _weapon];
 
 private _weaponCfg = configFile >> "CfgWeapons" >> _weapon;
@@ -66,7 +68,7 @@ private _magazines = [];
 
 private _fncAddMagazine = {
     params ["_magazine"];
-    if (_magazine != "" && {!(_magazine in _magazines)} && {isClass (configFile >> "CfgMagazines" >> _magazine)}) then {
+    if (_magazine isNotEqualTo "" && {!(_magazine in _magazines)} && {isClass (configFile >> "CfgMagazines" >> _magazine)}) then {
         _magazines pushBack _magazine;
     };
 };
@@ -85,7 +87,6 @@ private _fncAddMagazineWellMagazines = {
     } forEach configProperties [_cfg, "true", true];
 };
 
-// Использовать config выбранного оружия как источник истины. Магазины техники здесь намеренно не читаются.
 {[_x] call _fncAddMagazine} forEach getArray (_weaponCfg >> "magazines");
 
 {
@@ -103,21 +104,15 @@ private _fncAddMagazineWellMagazines = {
 _magazines sort true;
 uiNamespace setVariable ["mkk_ptg_rearmCompatibleMagazines", _magazines];
 
+private _magRows = [];
 {
     private _cfg = configFile >> "CfgMagazines" >> _x;
     private _displayName = [getText (_cfg >> "displayName")] call EFUNC(common,localizeString);
     if (_displayName isEqualTo "") then {_displayName = _x};
-    private _index = _magCtrl lbAdd _displayName;
-    _magCtrl lbSetData [_index, _x];
+    _magRows pushBack [str _forEachIndex, _displayName, _x];
 } forEach _magazines;
 
-if ((lbSize _magCtrl) > 0) then {
-    if (!isNull _statusCtrl) then {
-        _statusCtrl ctrlSetStructuredText parseText "";
-    };
-    _magCtrl lbSetCurSel 0;
-} else {
-    if (!isNull _statusCtrl) then {
-        _statusCtrl ctrlSetStructuredText parseText format ["<t color='#FFB8B8'>%1</t>", localize "STR_MKK_PTG_REARM_NO_MAGAZINES"];
-    };
+uiNamespace setVariable ["mkk_ptg_rearmMagazineRows", _magRows];
+if (_magRows isNotEqualTo []) then {
+    [0] call FUNC(onRearmMagazineSelected);
 };

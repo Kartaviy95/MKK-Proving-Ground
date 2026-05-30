@@ -12,6 +12,8 @@ params [
 
 if (_selectedMapPos isEqualTo []) exitWith {
     [] call FUNC(stopMapCamera);
+    uiNamespace setVariable ["mkk_ptg_mainDisplayClosing", true];
+    uiNamespace setVariable ["mkk_ptg_webReady", false];
     closeDialog 0;
 
     private _hasMap = "ItemMap" in assignedItems player;

@@ -1,12 +1,7 @@
 #include "..\script_component.hpp"
 /*
-    Обновляет подписи dashboard-кнопок, у которых есть CBA keybind.
+    Stores dashboard labels that include current keybind names.
 */
-disableSerialization;
-
-private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
-if (isNull _display) exitWith {};
-
 private _fncLabel = {
     params [
         ["_labelKey", "", [""]],
@@ -19,27 +14,18 @@ private _fncLabel = {
         [_actionId, _defaultKeybind] call EFUNC(main,getKeybindName)
     };
 
-    if (_keyName isEqualTo "") exitWith {
-        _label
-    };
-
+    if (_keyName isEqualTo "") exitWith {_label};
     format [localize "STR_MKK_PTG_KEYBIND_LABEL_FORMAT", _label, _keyName]
 };
 
-private _ctrlTeleport = _display displayCtrl 88101;
-if !(isNull _ctrlTeleport) then {
-    _ctrlTeleport ctrlSetText ([
-        "STR_MKK_PTG_TELEPORT",
-        "mkk_ptg_start_teleport",
-        [DIK_T, [false, false, false]]
-    ] call _fncLabel);
-};
+uiNamespace setVariable ["mkk_ptg_dashboardTeleportLabel", [
+    "STR_MKK_PTG_TELEPORT",
+    "mkk_ptg_start_teleport",
+    [DIK_T, [false, false, false]]
+] call _fncLabel];
 
-private _ctrlUnlock = _display displayCtrl 88106;
-if !(isNull _ctrlUnlock) then {
-    _ctrlUnlock ctrlSetText ([
-        "STR_MKK_PTG_UNLOCK_VEHICLE",
-        "mkk_ptg_unlock_cursor_vehicle",
-        [DIK_F, [false, true, false]]
-    ] call _fncLabel);
-};
+uiNamespace setVariable ["mkk_ptg_dashboardUnlockLabel", [
+    "STR_MKK_PTG_UNLOCK_VEHICLE",
+    "mkk_ptg_unlock_cursor_vehicle",
+    [DIK_F, [false, true, false]]
+] call _fncLabel];

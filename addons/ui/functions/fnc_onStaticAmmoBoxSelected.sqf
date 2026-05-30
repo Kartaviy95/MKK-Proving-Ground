@@ -1,14 +1,17 @@
 #include "..\script_component.hpp"
 /*
-    Запоминает выбранный ammo box для выбранной статики.
+    Stores the selected ammo box for the selected static weapon.
 */
 params [
-    ["_control", controlNull],
+    ["_boxClass", ""],
     ["_selectedIndex", -1]
 ];
 
-if (isNull _control) exitWith {};
-if (_selectedIndex < 0) exitWith {};
+if (_boxClass isEqualType controlNull) then {
+    if (isNull _boxClass || {_selectedIndex < 0}) exitWith {};
+    _boxClass = _boxClass lbData _selectedIndex;
+};
+if !(_boxClass isEqualType "") then {_boxClass = "";};
 
-missionNamespace setVariable ["mkk_ptg_currentAmmoBoxSelection", _control lbData _selectedIndex];
+missionNamespace setVariable ["mkk_ptg_currentAmmoBoxSelection", _boxClass];
 [false] call FUNC(saveVehicleSpawnState);

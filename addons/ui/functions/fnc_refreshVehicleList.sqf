@@ -1,21 +1,18 @@
 #include "..\script_component.hpp"
 /*
-    Обновляет список техники по текущим фильтрам.
+    Refreshes the vehicle list from namespace-backed browser filters.
 */
-private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
-if (isNull _display) exitWith {};
+private _sideFilter = uiNamespace getVariable ["mkk_ptg_vehicleFilterSide", -1];
+if !(_sideFilter isEqualType 0) then {_sideFilter = parseNumber str _sideFilter;};
 
-private _ctrlSide = _display displayCtrl 88011;
-private _ctrlFaction = _display displayCtrl 88012;
-private _ctrlType = _display displayCtrl 88014;
-private _ctrlSearch = _display displayCtrl 88010;
-private _ctrlList = _display displayCtrl 88020;
-private _ctrlCount = _display displayCtrl 88002;
+private _factionFilter = uiNamespace getVariable ["mkk_ptg_vehicleFilterFaction", ""];
+if !(_factionFilter isEqualType "") then {_factionFilter = "";};
 
-private _sideFilter = parseNumber (_ctrlSide lbData (lbCurSel _ctrlSide));
-private _factionFilter = _ctrlFaction lbData (lbCurSel _ctrlFaction);
-private _typeFilter = _ctrlType lbData (lbCurSel _ctrlType);
-private _searchText = ctrlText _ctrlSearch;
+private _typeFilter = uiNamespace getVariable ["mkk_ptg_vehicleFilterType", ""];
+if !(_typeFilter isEqualType "") then {_typeFilter = "";};
+
+private _searchText = uiNamespace getVariable ["mkk_ptg_vehicleSearch", ""];
+if !(_searchText isEqualType "") then {_searchText = "";};
 
 private _filtered = [
     _sideFilter,
@@ -23,41 +20,17 @@ private _filtered = [
     _typeFilter,
     _searchText
 ] call EFUNC(catalog,filterCatalog);
-
-lbClear _ctrlList;
+missionNamespace setVariable ["mkk_ptg_filteredCatalog", _filtered];
 
 private _preferredClassName = missionNamespace getVariable ["mkk_ptg_currentSelection", ""];
-private _preferredIndex = -1;
-
-{
-    private _className = _x # 0;
-    private _displayName = [_x # 1] call EFUNC(common,localizeString);
-    private _vehicleType = _x # 4;
-    private _vehicleTypeLabel = [_vehicleType] call EFUNC(common,localizeString);
-    private _factionDisplayName = _x param [11, _x # 3];
-
-    private _idx = _ctrlList lbAdd format ["%1 | %2 | %3", _displayName, _vehicleTypeLabel, _factionDisplayName];
-    _ctrlList lbSetData [_idx, _className];
-    if (_className isEqualTo _preferredClassName) then {
-        _preferredIndex = _idx;
-    };
-} forEach _filtered;
-
-_ctrlCount ctrlSetText format [localize "STR_MKK_PTG_FOUND", count _filtered];
+private _preferredIndex = _filtered findIf {(_x # 0) isEqualTo _preferredClassName};
 
 if ((count _filtered) > 0) then {
-    private _selectionIndex = _preferredIndex;
-    if (_selectionIndex < 0) then {
-        _selectionIndex = 0;
-    };
-
-    private _className = _ctrlList lbData _selectionIndex;
-    missionNamespace setVariable ["mkk_ptg_currentSelection", _className];
-    _ctrlList lbSetCurSel _selectionIndex;
-    [] call FUNC(updateVehicleCard);
-    [] call FUNC(refreshStaticAmmoBoxes);
+    if (_preferredIndex < 0) then {_preferredIndex = 0;};
+    missionNamespace setVariable ["mkk_ptg_currentSelection", (_filtered # _preferredIndex) # 0];
 } else {
     missionNamespace setVariable ["mkk_ptg_currentSelection", ""];
-    [] call FUNC(updateVehicleCard);
-    [] call FUNC(refreshStaticAmmoBoxes);
 };
+
+uiNamespace setVariable ["mkk_ptg_vehicleResultText", format [localize "STR_MKK_PTG_FOUND", count _filtered]];
+[] call FUNC(refreshStaticAmmoBoxes);

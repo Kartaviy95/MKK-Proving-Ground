@@ -5,6 +5,7 @@ PREP(getWebLabels);
 PREP(initWebDisplay);
 PREP(pushWebState);
 PREP(handleWebEvent);
+PREP(queueSearchRefresh);
 PREP(openSettingsDialog);
 PREP(initSettingsDisplay);
 PREP(closeSettingsDialog);

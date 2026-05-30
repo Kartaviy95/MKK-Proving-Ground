@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Открывает overlay перевооружения техники поверх главного меню.
+    Opens the browser rearm screen.
 */
 disableSerialization;
 
@@ -13,14 +13,7 @@ if (isNull _vehicle) exitWith {
 };
 
 [] call FUNC(closeTargetOverlay);
+uiNamespace setVariable ["mkk_ptg_dashboardVisible", true];
 uiNamespace setVariable ["mkk_ptg_rearmOverlayVisible", true];
-[] call FUNC(setDashboardControlsBlocked);
-
-{
-    private _ctrl = _display displayCtrl _x;
-    if (!isNull _ctrl) then {
-        _ctrl ctrlShow true;
-    };
-} forEach [88200, 88201, 88202, 88203, 88204, 88205, 88206, 88207, 88220, 88221, 88222, 88230, 88231, 88232, 88233, 88240, 88241, 88242, 88243];
-
 [] call FUNC(refreshRearmOverlay);
+[] call FUNC(setDashboardControlsBlocked);

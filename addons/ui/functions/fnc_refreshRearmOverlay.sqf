@@ -1,31 +1,13 @@
 #include "..\script_component.hpp"
 /*
-    Обновляет списки overlay перевооружения техники.
+    Refreshes browser-backed rearm state.
 */
 disableSerialization;
-
-private _display = uiNamespace getVariable ["mkk_ptg_display", displayNull];
-if (isNull _display) exitWith {};
 
 private _vehicle = objectParent player;
 if (isNull _vehicle) exitWith {[] call FUNC(closeRearmOverlay)};
 
 uiNamespace setVariable ["mkk_ptg_rearmVehicle", _vehicle];
-
-private _vehicleCfg = configOf _vehicle;
-private _vehicleName = [getText (_vehicleCfg >> "displayName")] call EFUNC(common,localizeString);
-if (_vehicleName isEqualTo "") then {_vehicleName = typeOf _vehicle};
-
-(_display displayCtrl 88201) ctrlSetText format ["%1: %2", localize "STR_MKK_PTG_REARM", _vehicleName];
-(_display displayCtrl 88230) ctrlSetText ([_vehicleCfg] call EFUNC(common,getPreviewPath));
-(_display displayCtrl 88231) ctrlSetStructuredText parseText format ["<t color='#B8E0FF'>%1</t><br/><t size='0.85'>%2</t>", _vehicleName, typeOf _vehicle];
-
-private _slotCtrl = _display displayCtrl 88220;
-lbClear _slotCtrl;
-lbClear (_display displayCtrl 88221);
-lbClear (_display displayCtrl 88222);
-(_display displayCtrl 88232) ctrlSetStructuredText parseText localize "STR_MKK_PTG_REARM_MAGAZINE_INFO_EMPTY";
-(_display displayCtrl 88233) ctrlSetStructuredText parseText "";
 uiNamespace setVariable ["mkk_ptg_rearmSelectedMode", "turret"];
 uiNamespace setVariable ["mkk_ptg_rearmSelectedTurret", []];
 uiNamespace setVariable ["mkk_ptg_rearmSelectedPylon", -1];
@@ -33,6 +15,13 @@ uiNamespace setVariable ["mkk_ptg_rearmSelectedPylonTurret", []];
 uiNamespace setVariable ["mkk_ptg_rearmSelectedWeapon", ""];
 uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazine", ""];
 uiNamespace setVariable ["mkk_ptg_rearmCompatibleMagazines", []];
+uiNamespace setVariable ["mkk_ptg_rearmWeaponRows", []];
+uiNamespace setVariable ["mkk_ptg_rearmMagazineRows", []];
+uiNamespace setVariable ["mkk_ptg_rearmSelectedSlotIndex", -1];
+uiNamespace setVariable ["mkk_ptg_rearmSelectedWeaponIndex", -1];
+uiNamespace setVariable ["mkk_ptg_rearmSelectedMagazineIndex", -1];
+
+private _vehicleCfg = configOf _vehicle;
 
 private _fncTurretConfig = {
     params ["_baseCfg", "_path"];
@@ -69,10 +58,10 @@ private _fncSlotName = {
         private _lowerName = toLower _name;
         private _lowerCfgName = toLower configName _cfg;
         if (_role isEqualTo "" && {(_lowerName find "loader") >= 0 || {(_lowerCfgName find "loader") >= 0} || {(_lowerName find "заряжа") >= 0}}) then {
-            _role = "Заряжающий";
+            _role = localize "STR_MKK_PTG_CREW_LOADER";
         };
 
-        if (_role != "" && {(_name find _role) < 0}) then {
+        if (_role isNotEqualTo "" && {(_name find _role) < 0}) then {
             _name = format ["%1 - %2", _role, _name];
         };
     };
@@ -116,7 +105,7 @@ private _turretRows = [];
 {
     private _path = _x;
     private _cfg = [_vehicleCfg, _path] call _fncTurretConfig;
-    private _weapons = (_vehicle weaponsTurret _path) select {_x != ""};
+    private _weapons = (_vehicle weaponsTurret _path) select {_x isNotEqualTo ""};
     private _unit = _vehicle turretUnit _path;
 
     if (!isNull _cfg || {_weapons isNotEqualTo []} || {!isNull _unit}) then {
@@ -125,7 +114,7 @@ private _turretRows = [];
     };
 } forEach _turretPaths;
 
-private _driverWeapons = (_vehicle weaponsTurret [-1]) select {_x != ""};
+private _driverWeapons = (_vehicle weaponsTurret [-1]) select {_x isNotEqualTo ""};
 if (_driverWeapons isNotEqualTo []) then {
     _turretRows = [[localize "STR_MKK_PTG_REARM_DRIVER", [-1], _driverWeapons, "turret"]] + _turretRows;
 };
@@ -150,15 +139,12 @@ if (_pylonMagazines isNotEqualTo []) then {
 };
 
 uiNamespace setVariable ["mkk_ptg_rearmTurrets", _turretRows];
-
+private _slotRows = [];
 {
-    _x params ["_name", "_path"];
-    private _index = _slotCtrl lbAdd _name;
-    _slotCtrl lbSetData [_index, str _path];
+    _slotRows pushBack [str _forEachIndex, _x # 0, ""];
 } forEach _turretRows;
+uiNamespace setVariable ["mkk_ptg_rearmSlotRows", _slotRows];
 
-if ((lbSize _slotCtrl) > 0) then {
-    _slotCtrl lbSetCurSel 0;
-} else {
-    (_display displayCtrl 88231) ctrlSetStructuredText parseText format ["<t color='#FFB8B8'>%1</t>", localize "STR_MKK_PTG_REARM_NO_WEAPONS"];
+if (_turretRows isNotEqualTo []) then {
+    [0] call FUNC(onRearmTurretSelected);
 };
