@@ -29,3 +29,9 @@ uiNamespace setVariable ["mkk_ptg_dashboardUnlockLabel", [
     "mkk_ptg_unlock_cursor_vehicle",
     [DIK_F, [false, true, false]]
 ] call _fncLabel];
+
+uiNamespace setVariable ["mkk_ptg_dashboardCameraLabel", [
+    "STR_MKK_PTG_CAMERA",
+    "mkk_ptg_start_map_camera",
+    [DIK_K, [false, false, false]]
+] call _fncLabel];

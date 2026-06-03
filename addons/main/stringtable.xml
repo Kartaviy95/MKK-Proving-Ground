@@ -171,6 +171,11 @@
             <Russian>Закрыть камеру</Russian>
             <German>Kamera schließen</German>
         </Key>
+        <Key ID="STR_MKK_PTG_START_CAMERA">
+            <English>Start Camera</English>
+            <Russian>Включить камеру</Russian>
+            <German>Kamera starten</German>
+        </Key>
         <Key ID="STR_MKK_PTG_COLOR">
             <English>Color</English>
             <Russian>Цвет</Russian>

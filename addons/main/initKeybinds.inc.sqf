@@ -106,6 +106,21 @@ if !(isNil "CBA_fnc_hashGet" || {isNil "CBA_fnc_hashSet"}) then {
 
 [
     localize "STR_MKK_PTG_MOD_NAME",
+    "mkk_ptg_start_map_camera",
+    localize "STR_MKK_PTG_START_CAMERA",
+    {
+        if !(isNil "ptg_ui_fnc_startMapCamera") exitWith {
+            [] call ptg_ui_fnc_startMapCamera;
+            true
+        };
+        false
+    },
+    {},
+    [DIK_K, [false, false, false]]
+] call CBA_fnc_addKeybind;
+
+[
+    localize "STR_MKK_PTG_MOD_NAME",
     "mkk_ptg_start_teleport",
     localize "STR_MKK_PTG_TELEPORT",
     {

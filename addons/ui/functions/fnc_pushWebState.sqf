@@ -59,6 +59,7 @@ private _dashboard = [
     !(isNull objectParent player),
     uiNamespace getVariable ["mkk_ptg_dashboardTeleportLabel", localize "STR_MKK_PTG_TELEPORT"],
     uiNamespace getVariable ["mkk_ptg_dashboardUnlockLabel", localize "STR_MKK_PTG_UNLOCK_VEHICLE"],
+    uiNamespace getVariable ["mkk_ptg_dashboardCameraLabel", localize "STR_MKK_PTG_CAMERA"],
     uiNamespace getVariable ["mkk_ptg_interfaceSizeOptions", []]
 ];
 

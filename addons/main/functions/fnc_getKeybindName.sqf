@@ -28,6 +28,7 @@ private _formatKeybind = {
         case 0x17: {"I"};
         case DIK_C: {"C"};
         case DIK_F: {"F"};
+        case DIK_K: {"K"};
         case DIK_T: {"T"};
         case DIK_ESCAPE: {"Esc"};
         case DIK_DELETE: {"Delete"};
