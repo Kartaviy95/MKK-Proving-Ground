@@ -7,7 +7,7 @@ Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build
 - `ptg_main` - Basiskonfiguration, Tastenzuweisungen, UI-Einstieg, Virtual/ACE Arsenal, Kopieren von Classnames, Loeschen und Entsperren des Objekts unter dem Cursor.
 - `ptg_common` - gemeinsame Helper, sicheres Lesen von Configs, Lokalisierung auf Englisch/Russisch/Deutsch, UI/HUD-Skalierung.
 - `ptg_catalog` - dynamischer `CfgVehicles`-Katalog, Filterung, Sortierung, Erkennung des Fahrzeugtyps und Suche nach kompatiblen Munitionskisten fuer statische Waffen.
-- `ptg_ui` - Hauptfenster, Startmenue, kleine Zusatzfenster fuer Einstellungen, Fahrzeug-Erstellungsbildschirm, Fahrer+Schuetze-Modus, Kamera, Teleport, Wiederbewaffnung, Testziele, HUD-Einstellungen, Hitpoint-Inspektor, Interface-Skalierung und Button-Handler.
+- `ptg_ui` - Hauptfenster, Startmenue, kleine Zusatzfenster fuer Einstellungen, Fahrzeug-Erstellungsbildschirm, Fahrer+Schuetze-Modus, Kamera, Teleport, Karten-Timings, Wiederbewaffnung, Testziele, HUD-Einstellungen, Hitpoint-Inspektor, Interface-Skalierung und Button-Handler.
 - `ptg_spawn` - globales Spawnen von Fahrzeugen, Fahrern/Besatzungen und Testzielen, Registrierung erstellter Objekte, Loeschen und Aufraeumen des Testplatzes ohne Pflicht, das Addon auf einem Dedicated Server zu laden.
 - `ptg_tracking` - Projectile-Tracking, Tracking-HUD, Flugbahnlinien und Projektilmarker auf der Karte.
 - `ptg_penetration` - Fahrzeug-Durchschlagstest, Orbit-Kamera, Testprojektil, Bericht zu damage/AllowDamage/hitpoints/crew, `CfgAmmo`-Parametern und Werkzeug zum Erzeugen von Explosionen per Kartenklick.
@@ -33,6 +33,7 @@ Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build
 - separates Testzielmenue und globales Erstellen/Loeschen von Zielen;
 - Teleport per Kartenklick oder konfigurierbarer Taste "Teleport", standardmaessig T;
 - freie Kamera: Bereichsauswahl auf der Karte, Erstellen der Kamera am gewaehlten Punkt, Steuerung mit WASD/Q/Z/Shift/Maus/Mausrad, temporaere Geschwindigkeitsanzeige beim Scrollen, Nachtsicht mit N, Steuerungshinweis mit F1, Verlegen der Kamera per LMB und Schliessen ueber eine konfigurierbare Taste;
+- Karten-Timings: lokale Zeitmessung fuer Spielerbewegung, farbige Positionsmarker, finaler Marker beim Stoppen und Loeschen lokaler Timing-Marker;
 - Wiederbewaffnung des Spielerfahrzeugs: Auswahl von Besatzungs-/Turmposition, Waffe, Laden kompatibler Magazine, Entfernen von Waffen und Pylon-Verwaltung ueber `setPylonLoadout`;
 - Projectile-Tracking mit lokaler Kamera, HUD fuer ammo/Flugzeit/Distanz/Modus/Geschwindigkeit, Timeout und Cooldown;
 - Flugbahnlinien mit konfigurierbarer Farbe und Breite;
@@ -47,7 +48,7 @@ Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build
 - Loeschen des Objekts unter dem Cursor mit Zugriffspruefung und Schutz vor dem Loeschen von Spielern;
 - Entsperren des Fahrzeugs unter dem Cursor;
 - Interface-Skalierung: small, normal, large, extra large;
-- Lokalisierung sichtbarer Texte ueber `addons/main/stringtable.xml` auf Englisch, Russisch und Deutsch; die aktuelle stringtable enthaelt 306 Keys, alle mit English-, Russian- und German-Eintraegen.
+- Lokalisierung sichtbarer Texte ueber `addons/main/stringtable.xml` auf Englisch, Russisch und Deutsch; die aktuelle stringtable enthaelt 351 Keys, alle mit English-, Russian- und German-Eintraegen.
 
 ## Dokumentation
 
