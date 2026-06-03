@@ -56,6 +56,30 @@ switch (_action) do {
         uiNamespace setVariable ["mkk_ptg_webReady", false];
         [] call FUNC(startMapCamera);
     };
+    case "mapTimingStart": {
+        _shouldPushState = false;
+
+        private _payload = createHashMap;
+        if (_value isNotEqualTo "") then {
+            private _decoded = fromJSON _value;
+            if (_decoded isEqualType createHashMap) then {
+                _payload = _decoded;
+            };
+        };
+
+        private _color = _payload getOrDefault ["color", "ColorBlack"];
+        if !(_color isEqualType "") then {_color = "ColorBlack";};
+
+        [_color] call FUNC(startMapTiming);
+    };
+    case "mapTimingStop": {
+        _shouldPushState = false;
+        [] call FUNC(stopMapTiming);
+    };
+    case "mapTimingClear": {
+        _shouldPushState = false;
+        [] call FUNC(clearMapTimings);
+    };
     case "mapHeight": {
         [] call FUNC(startMapHeightProbe);
     };
