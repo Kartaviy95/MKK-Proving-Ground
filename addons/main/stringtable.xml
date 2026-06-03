@@ -171,11 +171,6 @@
             <Russian>Закрыть камеру</Russian>
             <German>Kamera schließen</German>
         </Key>
-        <Key ID="STR_MKK_PTG_START_CAMERA">
-            <English>Start Camera</English>
-            <Russian>Включить камеру</Russian>
-            <German>Kamera starten</German>
-        </Key>
         <Key ID="STR_MKK_PTG_COLOR">
             <English>Color</English>
             <Russian>Цвет</Russian>
@@ -370,6 +365,11 @@
             <English>Toggles infinite ammo for the local player.</English>
             <Russian>Включает или выключает бесконечные патроны для локального игрока.</Russian>
             <German>Schaltet unendliche Munition für den lokalen Spieler um.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_HEIGHT">
+            <English>Toggle map height markers. When enabled, open the map and press H under the cursor.</English>
+            <Russian>Включает метки высоты на карте. Когда режим включен, откройте карту и нажмите H под курсором.</Russian>
+            <German>Schaltet Höhenmarker auf der Karte um. Wenn aktiv, Karte öffnen und H unter dem Cursor drücken.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKERS">
             <English>Tracks fired projectiles with local markers on the map.</English>
@@ -606,11 +606,6 @@
             <Russian>Режим бога</Russian>
             <German>Gottmodus</German>
         </Key>
-        <Key ID="STR_MKK_PTG_GOD_MODE_STATUS">
-            <English>God mode: %1</English>
-            <Russian>Режим бога: %1</Russian>
-            <German>Gottmodus: %1</German>
-        </Key>
         <Key ID="STR_MKK_PTG_GROUP">
             <English>Group</English>
             <Russian>Группа</Russian>
@@ -660,11 +655,6 @@
             <English>3D points and radii</English>
             <Russian>3D-точки и радиусы</Russian>
             <German>3D-Punkte und Radien</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_STATUS">
-            <English>Hitpoint inspector: %1</English>
-            <Russian>Инспектор hitpoints: %1</Russian>
-            <German>Hitpoint-Inspektor: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_HITPOINT_INSPECTOR_TARGET">
             <English>TARGET</English>
@@ -831,11 +821,6 @@
             <Russian>Бесконечные патроны</Russian>
             <German>Unendliche Munition</German>
         </Key>
-        <Key ID="STR_MKK_PTG_INFINITE_AMMO_STATUS">
-            <English>Infinite ammo: %1</English>
-            <Russian>Бесконечные патроны: %1</Russian>
-            <German>Unendliche Munition: %1</German>
-        </Key>
         <Key ID="STR_MKK_PTG_INFO_NOT_FOUND">
             <English>Information not found</English>
             <Russian>Информация не найдена</Russian>
@@ -886,10 +871,25 @@
             <Russian>Класс магазина скопирован: %1</Russian>
             <German>Magazinklasse kopiert: %1</German>
         </Key>
-        <Key ID="STR_MKK_PTG_MAP_MARKERS_STATUS">
-            <English>Projectile map markers: %1</English>
-            <Russian>Маркеры снарядов на карте: %1</Russian>
-            <German>Projektil-Kartenmarker: %1</German>
+        <Key ID="STR_MKK_PTG_MAP_HEIGHT">
+            <English>Map Height</English>
+            <Russian>Высота точки</Russian>
+            <German>Kartenhöhe</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_HEIGHT_DISABLED">
+            <English>Map height markers disabled.</English>
+            <Russian>Метки высоты на карте выключены.</Russian>
+            <German>Höhenmarker auf der Karte deaktiviert.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_HEIGHT_ENABLED">
+            <English>Map height markers enabled. Open the map and press H under the cursor.</English>
+            <Russian>Метки высоты на карте включены. Откройте карту и нажмите H под курсором.</Russian>
+            <German>Höhenmarker auf der Karte aktiviert. Karte öffnen und H unter dem Cursor drücken.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_HEIGHT_MARKER">
+            <English>%1m</English>
+            <Russian>%1м</Russian>
+            <German>%1m</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO">
             <English>Ammo Class on Marker</English>
@@ -955,11 +955,6 @@
             <English>Object Status Display</English>
             <Russian>Статус-дисплей объектов</Russian>
             <German>Objektstatusanzeige</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_OBJECT_STATUS_DISPLAY_STATUS">
-            <English>Object status display: %1</English>
-            <Russian>Статус-дисплей объектов: %1</Russian>
-            <German>Objektstatusanzeige: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_OBJECT_STATUS_FIELDS">
             <English>Displayed fields</English>
@@ -1236,6 +1231,11 @@
             <Russian>Создать с экипажем</Russian>
             <German>Mit Besatzung spawnen</German>
         </Key>
+        <Key ID="STR_MKK_PTG_START_CAMERA">
+            <English>Start Camera</English>
+            <Russian>Включить камеру</Russian>
+            <German>Kamera starten</German>
+        </Key>
         <Key ID="STR_MKK_PTG_STATE_CRITICAL">
             <English>CRITICAL</English>
             <Russian>КРИТИЧНО</Russian>
@@ -1270,6 +1270,11 @@
             <English>Inf. ammo</English>
             <Russian>Беск. патроны</Russian>
             <German>Unendl. Mun.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_STATUS_MAP_HEIGHT">
+            <English>Height</English>
+            <Russian>Выс.</Russian>
+            <German>Höhe</German>
         </Key>
         <Key ID="STR_MKK_PTG_STATUS_MAP_MARKERS">
             <English>Markers</English>
@@ -1406,11 +1411,6 @@
             <Russian>MKK Projectile Tracking&lt;br/&gt;Класс боеприпаса: %1&lt;br/&gt;Время полета: %2 сек&lt;br/&gt;Дистанция: %3 м&lt;br/&gt;Режим: %4&lt;br/&gt;Скорость: %5 м/с</Russian>
             <German>MKK-Projektilverfolgung&lt;br/&gt;Munitionsklasse: %1&lt;br/&gt;Flugzeit: %2 Sek.&lt;br/&gt;Entfernung: %3 m&lt;br/&gt;Modus: %4&lt;br/&gt;Geschwindigkeit: %5 m/s</German>
         </Key>
-        <Key ID="STR_MKK_PTG_TRACKING_STATUS">
-            <English>Tracking: %1</English>
-            <Russian>Tracking: %1</Russian>
-            <German>Tracking: %1</German>
-        </Key>
         <Key ID="STR_MKK_PTG_TRAJECTORY_LINES">
             <English>Bullet Trajectory Line</English>
             <Russian>Линия траектории пули</Russian>
@@ -1420,11 +1420,6 @@
             <English>Trajectory line settings</English>
             <Russian>Настройки линии траектории</Russian>
             <German>Einstellungen der Flugbahnlinie</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_TRAJECTORY_STATUS">
-            <English>Trajectory line: %1</English>
-            <Russian>Линия траектории: %1</Russian>
-            <German>Flugbahnlinie: %1</German>
         </Key>
         <Key ID="STR_MKK_PTG_TRIGGER_DISTANCE">
             <English>triggerDistance</English>

@@ -1097,6 +1097,7 @@
                     [l("statusTracking"), status[0]],
                     [l("statusTrajectory"), status[1]],
                     [l("statusMarkers"), status[2]],
+                    [l("statusMapHeight"), status[8]],
                     [l("statusObject"), status[3]],
                     [l("statusHitpoints"), status[4]],
                     [l("statusAmmo"), status[5]],
@@ -1122,6 +1123,7 @@
                     button("teleport", teleportText, "", true, undefined, l("hintTeleport")) +
                     button("explosion", l("explosion"), "", true, undefined, l("hintExplosion"));
                 var analyze = button("camera", cameraText, "", true, undefined, l("hintCamera")) +
+                    button("mapHeight", l("mapHeight"), "", true, status[8], l("hintMapHeight")) +
                     button("tracking", l("tracking"), "", true, status[0], l("hintTracking")) +
                     compound("trajectory", "trajectory", l("trajectory"), l("trajectorySettings"), true, status[1], l("hintTrajectory"), l("hintTrajectorySettings")) +
                     compound("markers", "markers", l("markers"), l("markerSettings"), true, status[2], l("hintMarkers"), l("hintMarkerSettings")) +
