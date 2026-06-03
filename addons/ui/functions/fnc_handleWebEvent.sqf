@@ -56,6 +56,9 @@ switch (_action) do {
         uiNamespace setVariable ["mkk_ptg_webReady", false];
         [] call FUNC(startMapCamera);
     };
+    case "mapHeight": {
+        [] call FUNC(startMapHeightProbe);
+    };
     case "unlock": {[] call EFUNC(main,unlockCursorVehicle)};
     case "cleanup": {[] call FUNC(onCleanupPressed)};
     case "tracking": {[] call FUNC(toggleTracking)};
