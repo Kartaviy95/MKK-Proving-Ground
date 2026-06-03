@@ -26,7 +26,7 @@ German.
 Текущее состояние stringtable:
 
 ключи имеют префикс `STR_MKK_PTG_`;
-в `addons/main/stringtable.xml` сейчас 306 ключей;
+в `addons/main/stringtable.xml` сейчас 307 ключей;
 у всех текущих key есть English, Russian и German.
 
 24. Внутренняя архитектура

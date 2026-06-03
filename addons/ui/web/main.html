@@ -1112,7 +1112,8 @@
                 var canRearm = data[1];
                 var teleportText = data[2];
                 var unlockText = data[3];
-                var sizes = data[4];
+                var cameraText = data[4];
+                var sizes = data[5];
 
                 var prepare = button("vehicles", l("vehicleSpawn"), "", true, undefined, l("hintVehicle")) +
                     button("targets", l("createTarget"), "", true, undefined, l("hintTargets")) +
@@ -1120,7 +1121,7 @@
                     button("unlock", unlockText, "", true, undefined, l("hintUnlock")) +
                     button("teleport", teleportText, "", true, undefined, l("hintTeleport")) +
                     button("explosion", l("explosion"), "", true, undefined, l("hintExplosion"));
-                var analyze = button("camera", l("camera"), "", true, undefined, l("hintCamera")) +
+                var analyze = button("camera", cameraText, "", true, undefined, l("hintCamera")) +
                     button("tracking", l("tracking"), "", true, status[0], l("hintTracking")) +
                     compound("trajectory", "trajectory", l("trajectory"), l("trajectorySettings"), true, status[1], l("hintTrajectory"), l("hintTrajectorySettings")) +
                     compound("markers", "markers", l("markers"), l("markerSettings"), true, status[2], l("hintMarkers"), l("hintMarkerSettings")) +
