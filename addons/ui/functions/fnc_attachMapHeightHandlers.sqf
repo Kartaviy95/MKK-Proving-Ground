@@ -13,7 +13,7 @@ private _attachedDisplay = if (_handlers isEqualTo []) then {displayNull} else {
 if (_attachedDisplay isEqualTo _display) exitWith {};
 
 [] call FUNC(detachMapHeightHandlers);
-missionNamespace setVariable ["mkk_ptg_mapHeightHPressed", false];
+missionNamespace setVariable ["mkk_ptg_mapHeightKeyPressed", false];
 
 private _keyDownEH = _display displayAddEventHandler ["KeyDown", {
     params ["_display", "_key", "_shift", "_ctrl", "_alt"];
@@ -67,10 +67,10 @@ private _keyDownEH = _display displayAddEventHandler ["KeyDown", {
         missionNamespace setVariable ["mkk_ptg_mapHeightMarkers", _markers];
         true
     };
-    if (_key isNotEqualTo DIK_H) exitWith {false};
-    if (missionNamespace getVariable ["mkk_ptg_mapHeightHPressed", false]) exitWith {true};
-    missionNamespace setVariable ["mkk_ptg_mapHeightHPressed", true];
-    if (_shift || {_ctrl} || {_alt}) exitWith {false};
+    if (isNil "ptg_main_fnc_isMapHeightKey") exitWith {false};
+    if !([_key, _shift, _ctrl, _alt] call ptg_main_fnc_isMapHeightKey) exitWith {false};
+    if (missionNamespace getVariable ["mkk_ptg_mapHeightKeyPressed", false]) exitWith {true};
+    missionNamespace setVariable ["mkk_ptg_mapHeightKeyPressed", true];
 
     private _map = _display displayCtrl 51;
     if (isNull _map) exitWith {false};
@@ -108,11 +108,7 @@ private _keyDownEH = _display displayAddEventHandler ["KeyDown", {
 }];
 
 private _keyUpEH = _display displayAddEventHandler ["KeyUp", {
-    params ["_display", "_key"];
-
-    if (_key isEqualTo DIK_H) then {
-        missionNamespace setVariable ["mkk_ptg_mapHeightHPressed", false];
-    };
+    missionNamespace setVariable ["mkk_ptg_mapHeightKeyPressed", false];
 
     false
 }];

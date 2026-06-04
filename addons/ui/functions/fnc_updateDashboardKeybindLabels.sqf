@@ -2,36 +2,207 @@
 /*
     Stores dashboard labels that include current keybind names.
 */
-private _fncLabel = {
+private _fncStripKeyNameQuotes = {
+    params [["_keyName", "", [""]]];
+
+    if ((count _keyName) >= 2 && {
+        (_keyName select [0, 1]) isEqualTo """" && {
+            (_keyName select [(count _keyName) - 1, 1]) isEqualTo """"
+        }
+    }) then {
+        _keyName = _keyName select [1, (count _keyName) - 2];
+    };
+
+    _keyName
+};
+
+private _fncFormatKeybind = {
+    params ["_keybind"];
+
+    if !(_keybind isEqualType [] && {(count _keybind) >= 2}) exitWith {""};
+
+    private _key = _keybind # 0;
+    private _modifiers = _keybind # 1;
+    if !(_key isEqualType 0 && {_modifiers isEqualType [] && {(count _modifiers) >= 3}}) exitWith {""};
+    if (_key <= 0) exitWith {""};
+
+    if (_key >= 0xFA && {_key <= 0x10D}) then {
+        private _userAction = format ["User%1", _key - 0xFA + 1];
+        private _userActionKeys = actionKeysNamesArray [_userAction, 1, "Unsorted"];
+        if (_userActionKeys isNotEqualTo [] && {(_userActionKeys # 0) isNotEqualTo ""}) exitWith {
+            [_userActionKeys # 0] call _fncStripKeyNameQuotes
+        };
+
+        private _userActionName = actionName _userAction;
+        if (_userActionName isNotEqualTo "") exitWith {[_userActionName] call _fncStripKeyNameQuotes};
+    };
+
+    private _parts = [];
+    if (_modifiers # 0) then {_parts pushBack "Shift"};
+    if (_modifiers # 1) then {_parts pushBack "Ctrl"};
+    if (_modifiers # 2) then {_parts pushBack "Alt"};
+
+    private _keyName = switch (_key) do {
+        case 0xF0: {keyName 0x10000};
+        case 0xF1: {keyName 0x10081};
+        case 0xF2: {keyName 0x10002};
+        case 0xF3: {keyName 0x10003};
+        case 0xF4: {keyName 0x10004};
+        case 0xF5: {keyName 0x10005};
+        case 0xF6: {keyName 0x10006};
+        case 0xF7: {keyName 0x10007};
+        case 0xF8: {keyName 0x100004};
+        case 0xF9: {keyName 0x100005};
+        case 0xFA: {actionName "User1"};
+        case 0xFB: {actionName "User2"};
+        case 0xFC: {actionName "User3"};
+        case 0xFD: {actionName "User4"};
+        case 0xFE: {actionName "User5"};
+        case 0xFF: {actionName "User6"};
+        case 0x100: {actionName "User7"};
+        case 0x101: {actionName "User8"};
+        case 0x102: {actionName "User9"};
+        case 0x103: {actionName "User10"};
+        case 0x104: {actionName "User11"};
+        case 0x105: {actionName "User12"};
+        case 0x106: {actionName "User13"};
+        case 0x107: {actionName "User14"};
+        case 0x108: {actionName "User15"};
+        case 0x109: {actionName "User16"};
+        case 0x10A: {actionName "User17"};
+        case 0x10B: {actionName "User18"};
+        case 0x10C: {actionName "User19"};
+        case 0x10D: {actionName "User20"};
+        case 0xC7: {"Home"};
+        case 0x16: {"U"};
+        case 0x17: {"I"};
+        case DIK_C: {"C"};
+        case DIK_F: {"F"};
+        case DIK_K: {"K"};
+        case DIK_T: {"T"};
+        case DIK_ESCAPE: {"Esc"};
+        case DIK_DELETE: {"Delete"};
+        case DIK_LSHIFT: {"Shift"};
+        case DIK_RSHIFT: {"Shift"};
+        case DIK_LCONTROL: {"Ctrl"};
+        case DIK_RCONTROL: {"Ctrl"};
+        case DIK_LALT: {"Alt"};
+        case DIK_RALT: {"Alt"};
+        default {keyName _key};
+    };
+    if (_keyName isEqualTo "") then {_keyName = str _key};
+    _keyName = [_keyName] call _fncStripKeyNameQuotes;
+
+    _parts pushBack _keyName;
+    _parts joinString "+"
+};
+
+private _fncFindKeyNames = {
+    params ["_value"];
+
+    private _keyNames = [];
+    private _pending = [_value];
+
+    while {_pending isNotEqualTo []} do {
+        private _item = _pending deleteAt 0;
+        private _keyName = [_item] call _fncFormatKeybind;
+
+        if (_keyName isNotEqualTo "") then {
+            _keyNames pushBackUnique _keyName;
+        } else {
+            if (_item isEqualType []) then {
+                {
+                    if (_x isEqualType []) then {
+                        _pending pushBack _x;
+                    };
+                } forEach _item;
+            };
+        };
+    };
+
+    _keyNames
+};
+
+private _fncFormatKeyNames = {
+    params ["_value"];
+
+    private _keyNames = [_value] call _fncFindKeyNames;
+    _keyNames joinString " / "
+};
+
+private _fncKeyName = {
+    params [
+        ["_actionId", "", [""]],
+        ["_defaultKeybind", [], [[]]]
+    ];
+
+    private _keyName = "";
+    private _mainReader = missionNamespace getVariable ["ptg_main_fnc_getKeybindName", ""];
+    if (_mainReader isEqualType {}) then {
+        private _mainKeyName = [_actionId, _defaultKeybind] call _mainReader;
+        if (_mainKeyName isEqualType "") then {
+            _keyName = _mainKeyName;
+        };
+    };
+    if (_keyName isNotEqualTo "") exitWith {_keyName};
+
+    if (_actionId isNotEqualTo "") then {
+        if !(isNil "CBA_fnc_getKeybind") then {
+            private _entry = [localize "STR_MKK_PTG_MOD_NAME", _actionId] call CBA_fnc_getKeybind;
+            if !(isNil "_entry" || {!(_entry isEqualType [])}) then {
+                if ((count _entry) > 8 && {(_entry # 8) isEqualType []}) then {
+                    _keyName = [_entry # 8] call _fncFormatKeyNames;
+                };
+
+                if (_keyName isEqualTo "") then {
+                    if ((count _entry) > 5 && {(_entry # 5) isEqualType []}) then {
+                        _keyName = [_entry # 5] call _fncFormatKeyNames;
+                    } else {
+                        _keyName = [_entry] call _fncFormatKeyNames;
+                    };
+                };
+            };
+        };
+
+        if (_keyName isEqualTo "" && {!(isNil "CBA_fnc_hashGet")}) then {
+            private _action = toLower format ["%1$%2", localize "STR_MKK_PTG_MOD_NAME", _actionId];
+            private _registry = profileNamespace getVariable "cba_keybinding_registry_v3";
+            if !(isNil "_registry") then {
+                private _storedKeybinds = [_registry, _action] call CBA_fnc_hashGet;
+                if !(isNil "_storedKeybinds") then {
+                    _keyName = [_storedKeybinds] call _fncFormatKeyNames;
+                };
+            };
+        };
+    };
+
+    if (_keyName isEqualTo "") then {
+        _keyName = [_defaultKeybind] call _fncFormatKeybind;
+    };
+
+    _keyName
+};
+
+private _fncRow = {
     params [
         ["_labelKey", "", [""]],
         ["_actionId", "", [""]],
         ["_defaultKeybind", [], [[]]]
     ];
 
-    private _label = localize _labelKey;
-    private _keyName = if (isNil "ptg_main_fnc_getKeybindName") then {""} else {
-        [_actionId, _defaultKeybind] call EFUNC(main,getKeybindName)
-    };
-
-    if (_keyName isEqualTo "") exitWith {_label};
-    format [localize "STR_MKK_PTG_KEYBIND_LABEL_FORMAT", _label, _keyName]
+    [localize _labelKey, [_actionId, _defaultKeybind] call _fncKeyName, [_defaultKeybind] call _fncFormatKeybind]
 };
 
-uiNamespace setVariable ["mkk_ptg_dashboardTeleportLabel", [
-    "STR_MKK_PTG_TELEPORT",
-    "mkk_ptg_start_teleport",
-    [DIK_T, [false, false, false]]
-] call _fncLabel];
+uiNamespace setVariable ["mkk_ptg_dashboardUnlockLabel", localize "STR_MKK_PTG_UNLOCK_VEHICLE"];
 
-uiNamespace setVariable ["mkk_ptg_dashboardUnlockLabel", [
-    "STR_MKK_PTG_UNLOCK_VEHICLE",
-    "mkk_ptg_unlock_cursor_vehicle",
-    [DIK_F, [false, true, false]]
-] call _fncLabel];
-
-uiNamespace setVariable ["mkk_ptg_dashboardCameraLabel", [
-    "STR_MKK_PTG_CAMERA",
-    "mkk_ptg_start_map_camera",
-    [DIK_K, [false, false, false]]
-] call _fncLabel];
+uiNamespace setVariable ["mkk_ptg_dashboardKeybindRows", [
+    ["STR_MKK_PTG_OPEN_VIRTUAL_ARSENAL", "mkk_ptg_open_virtual_arsenal", [0x16, [true, false, false]]] call _fncRow,
+    ["STR_MKK_PTG_OPEN_ACE_ARSENAL", "mkk_ptg_open_ace_arsenal", [0x17, [true, false, false]]] call _fncRow,
+    ["STR_MKK_PTG_TELEPORT", "mkk_ptg_start_teleport", [DIK_T, [false, false, false]]] call _fncRow,
+    ["STR_MKK_PTG_START_CAMERA", "mkk_ptg_start_map_camera", [DIK_K, [false, false, false]]] call _fncRow,
+    ["STR_MKK_PTG_MAP_HEIGHT", "mkk_ptg_place_map_height_marker", [DIK_H, [false, false, false]]] call _fncRow,
+    ["STR_MKK_PTG_MAP_SMOKE", "mkk_ptg_place_quick_map_marker", [DIK_Q, [false, false, false]]] call _fncRow,
+    ["STR_MKK_PTG_UNLOCK_CURSOR_VEHICLE", "mkk_ptg_unlock_cursor_vehicle", [DIK_F, [false, true, false]]] call _fncRow,
+    ["STR_MKK_PTG_COPY_CURSOR_OBJECT_CLASS", "mkk_ptg_copy_cursor_object_class", [DIK_C, [false, true, false]]] call _fncRow,
+    ["STR_MKK_PTG_DELETE_CURSOR_OBJECT", "mkk_ptg_delete_cursor_object", [DIK_DELETE, [false, false, false]]] call _fncRow
+]];

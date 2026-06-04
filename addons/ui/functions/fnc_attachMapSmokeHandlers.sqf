@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Adds the Q map key handler for placing a smoke highlight.
+    Adds the quick map marker key handler for placing a smoke highlight.
 */
 if !(hasInterface) exitWith {};
 
@@ -22,8 +22,8 @@ if (_attachedDisplay isEqualTo _display) exitWith {};
 private _keyEH = _display displayAddEventHandler ["KeyDown", {
     params ["_display", "_key", "_shift", "_ctrl", "_alt"];
 
-    if (_key isNotEqualTo DIK_Q) exitWith {false};
-    if (_shift || {_ctrl} || {_alt}) exitWith {false};
+    if (isNil "ptg_main_fnc_isQuickMapMarkerKey") exitWith {false};
+    if !([_key, _shift, _ctrl, _alt] call ptg_main_fnc_isQuickMapMarkerKey) exitWith {false};
 
     if (missionNamespace getVariable ["mkk_ptg_teleportSelecting", false]) then {
         onMapSingleClick "";

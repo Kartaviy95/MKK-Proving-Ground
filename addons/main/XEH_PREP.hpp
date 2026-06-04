@@ -5,6 +5,8 @@ PREP(getCloseCameraKeyName);
 PREP(getKeybindName);
 PREP(isAuthorized);
 PREP(isCloseCameraKey);
+PREP(isMapHeightKey);
+PREP(isQuickMapMarkerKey);
 PREP(openMainUI);
 PREP(openMainUIWithRetry);
 PREP(openAceArsenal);

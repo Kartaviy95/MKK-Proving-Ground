@@ -135,3 +135,21 @@ if !(isNil "CBA_fnc_hashGet" || {isNil "CBA_fnc_hashSet"}) then {
     {},
     [DIK_T, [false, false, false]]
 ] call CBA_fnc_addKeybind;
+
+[
+    localize "STR_MKK_PTG_MOD_NAME",
+    "mkk_ptg_place_quick_map_marker",
+    localize "STR_MKK_PTG_MAP_SMOKE",
+    {},
+    {},
+    [DIK_Q, [false, false, false]]
+] call CBA_fnc_addKeybind;
+
+[
+    localize "STR_MKK_PTG_MOD_NAME",
+    "mkk_ptg_place_map_height_marker",
+    localize "STR_MKK_PTG_MAP_HEIGHT",
+    {},
+    {},
+    [DIK_H, [false, false, false]]
+] call CBA_fnc_addKeybind;

@@ -55,6 +55,8 @@ private _status = [
     missionNamespace getVariable ["mkk_ptg_mapHeightEnabled", false]
 ];
 
+[] call FUNC(updateDashboardKeybindLabels);
+
 private _mapSmokeColor = missionNamespace getVariable ["mkk_ptg_mapSmokeColor", "ColorYellow"];
 if !(_mapSmokeColor in ["ColorWhite", "ColorRed", "ColorGreen", "ColorYellow", "ColorBlue", "ColorOrange", "ColorPink"]) then {
     _mapSmokeColor = "ColorYellow";
@@ -130,12 +132,11 @@ private _timingSettings = [
 private _dashboard = [
     _status,
     !(isNull objectParent player),
-    uiNamespace getVariable ["mkk_ptg_dashboardTeleportLabel", localize "STR_MKK_PTG_TELEPORT"],
     uiNamespace getVariable ["mkk_ptg_dashboardUnlockLabel", localize "STR_MKK_PTG_UNLOCK_VEHICLE"],
-    uiNamespace getVariable ["mkk_ptg_dashboardCameraLabel", localize "STR_MKK_PTG_CAMERA"],
     uiNamespace getVariable ["mkk_ptg_interfaceSizeOptions", []],
     _smokeColors,
-    missionNamespace getVariable ["mkk_ptg_mapTimingActive", false]
+    missionNamespace getVariable ["mkk_ptg_mapTimingActive", false],
+    uiNamespace getVariable ["mkk_ptg_dashboardKeybindRows", []]
 ];
 
 private _vehicle = [];

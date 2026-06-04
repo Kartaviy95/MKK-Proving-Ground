@@ -366,6 +366,16 @@
             <Russian>Наблюдение и анализ</Russian>
             <German>Beobachtung und Analyse</German>
         </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_ACTION_INFO_IDLE">
+            <English>Point at a dashboard button to see what it does.</English>
+            <Russian>Наведите курсор на кнопку панели, чтобы увидеть ее действие.</Russian>
+            <German>Zeige auf eine Dashboard-Schaltfläche, um ihre Funktion zu sehen.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_ACTION_INFO_TITLE">
+            <English>Button action</English>
+            <Russian>Действие кнопки</Russian>
+            <German>Schaltflächenaktion</German>
+        </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_CAMERA">
             <English>Free camera: pick a map point, then inspect the range from the air.</English>
             <Russian>Свободная камера: выберите точку на карте и осмотрите полигон с воздуха.</Russian>
@@ -407,9 +417,9 @@
             <German>Schaltet unendliche Munition für den lokalen Spieler um.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_HEIGHT">
-            <English>Toggle map height markers. When enabled, open the map and press H under the cursor.</English>
-            <Russian>Включает метки высоты на карте. Когда режим включен, откройте карту и нажмите H под курсором.</Russian>
-            <German>Schaltet Höhenmarker auf der Karte um. Wenn aktiv, Karte öffnen und H unter dem Cursor drücken.</German>
+            <English>Toggle map height markers. When enabled, open the map and press the configured hotkey under the cursor.</English>
+            <Russian>Включает метки высоты на карте. Когда режим включен, откройте карту и нажмите настроенную горячую клавишу под курсором.</Russian>
+            <German>Schaltet Höhenmarker auf der Karte um. Wenn aktiv, Karte öffnen und die konfigurierte Taste unter dem Cursor drücken.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_HEIGHT_SETTINGS">
             <English>Opens color settings for map height markers.</English>
@@ -427,9 +437,9 @@
             <German>Öffnet Einstellungen für Farbe, Intervall und Geschwindigkeitsanzeige der Timing-Marker.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_SMOKE">
-            <English>Select smoke color, then place smoke on the opened map with Q.</English>
-            <Russian>Выберите цвет дыма, затем поставьте дым на открытой карте клавишей Q.</Russian>
-            <German>Rauchfarbe wählen, dann Rauch auf der geöffneten Karte mit Q setzen.</German>
+            <English>Select marker smoke color, then place a quick marker on the opened map with the configured hotkey.</English>
+            <Russian>Выберите цвет дыма маркера, затем поставьте быстрый маркер на открытой карте настроенной горячей клавишей.</Russian>
+            <German>Marker-Rauchfarbe wählen, dann mit der konfigurierten Taste einen schnellen Kartenmarker setzen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKERS">
             <English>Tracks fired projectiles with local markers on the map.</English>
@@ -495,6 +505,11 @@
             <English>Opens the vehicle catalog for search, preview and spawn.</English>
             <Russian>Открывает каталог техники для поиска, просмотра и спавна.</Russian>
             <German>Öffnet den Fahrzeugkatalog für Suche, Vorschau und Spawn.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_KEYBINDS_TITLE">
+            <English>Important hotkeys</English>
+            <Russian>Важные горячие клавиши</Russian>
+            <German>Wichtige Hotkeys</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_PREPARE_HINT">
             <English>Vehicles, targets, pylons and position.</English>
@@ -916,6 +931,11 @@
             <Russian>%1 [%2]</Russian>
             <German>%1 [%2]</German>
         </Key>
+        <Key ID="STR_MKK_PTG_KEYBIND_UNASSIGNED">
+            <English>Not assigned</English>
+            <Russian>Не назначено</Russian>
+            <German>Nicht belegt</German>
+        </Key>
         <Key ID="STR_MKK_PTG_LINE_WIDTH">
             <English>Line width</English>
             <Russian>Толщина линии</Russian>
@@ -942,9 +962,9 @@
             <German>Höhenmarker auf der Karte deaktiviert.</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_HEIGHT_ENABLED">
-            <English>Map height markers enabled. Open the map and press H under the cursor.</English>
-            <Russian>Метки высоты на карте включены. Откройте карту и нажмите H под курсором.</Russian>
-            <German>Höhenmarker auf der Karte aktiviert. Karte öffnen und H unter dem Cursor drücken.</German>
+            <English>Map height markers enabled. Open the map and press the configured hotkey under the cursor.</English>
+            <Russian>Метки высоты на карте включены. Откройте карту и нажмите настроенную горячую клавишу под курсором.</Russian>
+            <German>Höhenmarker auf der Karte aktiviert. Karte öffnen und die konfigurierte Taste unter dem Cursor drücken.</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_HEIGHT_MARKER_COLOR">
             <English>Height marker color</English>
@@ -962,14 +982,14 @@
             <German>Höhenmarker-Einstellungen</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_SMOKE">
-            <English>Map Smoke</English>
-            <Russian>Дым на карте</Russian>
-            <German>Kartenrauch</German>
+            <English>Quick Map Marker</English>
+            <Russian>Быстрый маркер на карте</Russian>
+            <German>Schneller Kartenmarker</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_SMOKE_COLOR">
-            <English>Smoke color</English>
-            <Russian>Цвет дыма</Russian>
-            <German>Rauchfarbe</German>
+            <English>Marker smoke color</English>
+            <Russian>Цвет дыма маркера</Russian>
+            <German>Marker-Rauchfarbe</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_TIMING">
             <English>Map Timings</English>

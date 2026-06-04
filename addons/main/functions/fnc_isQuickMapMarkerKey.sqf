@@ -1,7 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Проверяет, совпадает ли нажатие с CBA keybind "Закрыть камеру".
-    Нужен отдельный перехват keydown внутри локальных camera display handlers.
+    Checks whether the pressed key matches the CBA keybind for quick map marker placement.
 */
 params [
     ["_key", -1, [0]],
@@ -11,7 +10,7 @@ params [
 ];
 
 private _pressedKeybind = [_key, [_shift, _ctrl, _alt]];
-private _action = toLower format ["%1$%2", localize "STR_MKK_PTG_MOD_NAME", "mkk_ptg_close_map_camera"];
+private _action = toLower format ["%1$%2", localize "STR_MKK_PTG_MOD_NAME", "mkk_ptg_place_quick_map_marker"];
 private _matchesPressedKeybind = {
     params ["_keybind"];
 
@@ -32,7 +31,7 @@ private _matchesPressedKeybind = {
 
 private _keybinds = [];
 if !(isNil "CBA_fnc_getKeybind") then {
-    private _entry = [localize "STR_MKK_PTG_MOD_NAME", "mkk_ptg_close_map_camera"] call CBA_fnc_getKeybind;
+    private _entry = [localize "STR_MKK_PTG_MOD_NAME", "mkk_ptg_place_quick_map_marker"] call CBA_fnc_getKeybind;
     if !(isNil "_entry" || {!(_entry isEqualType [])}) then {
         if ((count _entry) > 8 && {(_entry # 8) isEqualType []}) then {
             _keybinds = _entry # 8;
@@ -55,7 +54,7 @@ if (_keybinds isEqualTo [] && {!(isNil "CBA_fnc_hashGet")}) then {
 };
 
 if (_keybinds isEqualTo []) exitWith {
-    _pressedKeybind isEqualTo [DIK_F, [false, false, false]]
+    _pressedKeybind isEqualTo [DIK_Q, [false, false, false]]
 };
 
 (_keybinds findIf {

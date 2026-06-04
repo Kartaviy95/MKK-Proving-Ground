@@ -58,8 +58,8 @@ ptg_ace.
 main — внутренняя конфигурация, keybind, открытие UI, виртуальный/ACE арсенал, копирование classname, удаление и разблокировка объекта под прицелом;
 common — общие helpers, безопасное чтение конфигов, локализация строк, масштабирование UI/HUD;
 catalog — сбор, фильтрация и описание техники, поиск совместимых ящиков БК для статики;
-ui — диалог, стартовое меню, экран техники, режим водитель+стрелок, свободная камера, телепорт, дым и тайминги на карте, перевооружение техники, тестовые цели, обработчики кнопок, локальный статус-дисплей объектов при наведении;
-spawn — глобальный спавн, создание водителей/экипажей, создание/удаление тестовых целей, дымовая подсветка по карте и реестр созданных объектов без обязательной загрузки аддона на dedicated server;
+ui — диалог, стартовое меню, экран техники, режим водитель+стрелок, свободная камера, телепорт, быстрый маркер и тайминги на карте, перевооружение техники, тестовые цели, обработчики кнопок, локальный статус-дисплей объектов при наведении;
+spawn — глобальный спавн, создание водителей/экипажей, создание/удаление тестовых целей, быстрая дымовая подсветка по карте и реестр созданных объектов без обязательной загрузки аддона на dedicated server;
 tracking — слежение за projectile;
 penetration — тест пробития техники, тестовый projectile, отчет damage/hitpoints/crew, preview техники, параметры CfgAmmo и создание взрывов по клику на карте;
 player — бесконечные патроны, режим бога, обработчики респавна и выстрелов;
@@ -93,7 +93,8 @@ Browser presentation загружает локальную HTML-страницу
 
 спавн техники: клиентский `ptg_spawn_fnc_requestSpawnVehicle` проверяет доступ и вызывает `ptg_spawn_fnc_serverSpawnVehicle` локально; `createVehicle`, `createVehicleCrew` и `createUnit` синхронизируются Arma 3 глобально;
 режим водитель+стрелок: UI вызывает `ptg_ui_fnc_onSpawnCrewControlPressed`, спавн создает водителя классом игрока через `ptg_spawn_fnc_spawnDriver`, после чего `ptg_ui_fnc_startCrewDriverControl` сажает игрока в слот стрелка и оставляет движение штатным input actions Arma 3;
-дым на карте: `ptg_ui_fnc_attachMapSmokeHandlers` подключает локальный `Q` handler карты, а `ptg_ui_fnc_placeMapSmokeAtPosition` передает позицию, цвет и игрока в `ptg_spawn_fnc_requestPlaceMapSmoke` / `ptg_spawn_fnc_serverPlaceMapSmoke`;
+быстрый маркер на карте: `ptg_ui_fnc_attachMapSmokeHandlers` подключает локальный handler карты для настраиваемой CBA-клавиши `mkk_ptg_place_quick_map_marker`, а `ptg_ui_fnc_placeMapSmokeAtPosition` передает позицию, цвет и игрока в `ptg_spawn_fnc_requestPlaceMapSmoke` / `ptg_spawn_fnc_serverPlaceMapSmoke`;
+метки высоты на карте: `ptg_ui_fnc_startMapHeightProbe` включает локальный режим, `ptg_ui_fnc_attachMapHeightHandlers` подключает handler карты для настраиваемой CBA-клавиши `mkk_ptg_place_map_height_marker`, маркеры создаются локально через `createMarkerLocal`;
 очистка полигона: UI вызывает `ptg_spawn_fnc_cleanupRange`;
 удаление объекта под прицелом: клиент `ptg_main_fnc_deleteCursorObject` вызывает `ptg_main_fnc_serverDeleteObject` локально; функция сохраняет старое имя, но не требует выполнения на сервере;
 тестовая цель в тесте пробития: `ptg_penetration_fnc_serverCreateTarget` создает/заменяет цель в текущем runtime;

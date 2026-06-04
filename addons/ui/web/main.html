@@ -406,6 +406,13 @@
             font-size: 20px;
             padding: 0;
             color: var(--accent-strong);
+            line-height: 1;
+        }
+
+        .settings-button span {
+            overflow: visible;
+            font-size: 20px;
+            line-height: 1;
         }
 
         .hint-card {
@@ -427,6 +434,76 @@
 
         .dashboard-hover-info.active {
             visibility: visible;
+        }
+
+        .dashboard-info-card,
+        .keybind-card {
+            margin: auto 14px 14px;
+            padding: 12px;
+            border: 1px solid rgba(112, 160, 181, 0.18);
+            border-radius: 8px;
+            background: rgba(7, 16, 24, 0.58);
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.35;
+            flex-shrink: 0;
+        }
+
+        .dashboard-info-card {
+            min-height: 88px;
+        }
+
+        .dashboard-column .dashboard-info-card + .map-tools-box {
+            margin-top: 0;
+        }
+
+        .info-title {
+            margin-bottom: 7px;
+            color: var(--accent-strong);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            line-height: 1.18;
+            text-transform: uppercase;
+        }
+
+        .info-body {
+            color: var(--muted);
+        }
+
+        .dashboard-info-card.active .info-body {
+            color: var(--text);
+        }
+
+        .keybind-list {
+            display: grid;
+            gap: 6px;
+        }
+
+        .keybind-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .keybind-action {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .keybind-key {
+            max-width: 112px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 2px 7px;
+            border: 1px solid rgba(53, 213, 245, 0.26);
+            border-radius: 5px;
+            background: rgba(53, 213, 245, 0.08);
+            color: var(--text);
         }
 
         .size-box {
@@ -467,7 +544,7 @@
 
         .timing-actions {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 36px;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) var(--dashboard-action-height, 46px);
             gap: 7px;
         }
 
@@ -485,8 +562,10 @@
         }
 
         .timing-actions .settings-button {
-            min-width: 36px;
-            padding: 6px 0;
+            width: var(--dashboard-action-height, 46px);
+            min-width: var(--dashboard-action-height, 46px);
+            min-height: var(--dashboard-action-height, 46px);
+            padding: 0;
         }
 
         .map-tools-box select {
@@ -1067,6 +1146,21 @@
                 min-height: 56px;
             }
 
+            .dashboard .dashboard-info-card,
+            .dashboard .keybind-card {
+                margin: auto 14px 10px;
+                padding: 9px 11px;
+                font-size: 11px;
+            }
+
+            .dashboard .dashboard-info-card {
+                min-height: 70px;
+            }
+
+            .dashboard .keybind-list {
+                gap: 4px;
+            }
+
             .dashboard .map-tools-box {
                 margin: auto 14px 10px;
                 padding: 8px;
@@ -1085,6 +1179,12 @@
 
             .dashboard .timing-actions .action {
                 padding: 4px 7px;
+            }
+
+            .dashboard .timing-actions .settings-button {
+                height: var(--dashboard-action-height, 46px);
+                min-height: var(--dashboard-action-height, 46px);
+                padding: 0;
             }
         }
     </style>
@@ -1161,7 +1261,7 @@
             function compound(action, setting, text, settingTitle, enabled, dot, hint, settingHint) {
                 return "<div class=\"compound\">" +
                     button(action, text, "", enabled, dot, hint) +
-                    "<button class=\"action settings-button\" data-settings=\"" + esc(setting) + "\" data-dashboard-hint=\"" + esc(settingHint) + "\" title=\"" + esc(settingTitle) + "\">&#9881;</button>" +
+                    "<button class=\"action settings-button\" data-settings=\"" + esc(setting) + "\" data-dashboard-hint=\"" + esc(settingHint) + "\" title=\"" + esc(settingTitle) + "\"><span>&#9881;</span></button>" +
                     "</div>";
             }
 
@@ -1180,6 +1280,27 @@
                     "</div>" +
                     "</div>" +
                     "</div>";
+            }
+
+            function dashboardInfoPanel() {
+                return "<div class=\"dashboard-info-card\" data-dashboard-info=\"true\">" +
+                    "<div class=\"info-title\">" + esc(l("actionInfoTitle")) + "</div>" +
+                    "<div class=\"info-body\" data-dashboard-info-text=\"true\">" + esc(l("actionInfoIdle")) + "</div>" +
+                    "</div>";
+            }
+
+            function keybindPanel(rows) {
+                rows = rows || [];
+                if (!rows.length) {
+                    return "";
+                }
+                return "<div class=\"keybind-card\">" +
+                    "<div class=\"info-title\">" + esc(l("keybindsTitle")) + "</div>" +
+                    "<div class=\"keybind-list\">" + rows.map(function (row) {
+                        var keyName = row[1] || row[2] || l("keybindUnassigned");
+                        return "<div class=\"keybind-row\"><span class=\"keybind-action\">" + esc(row[0]) + "</span>" +
+                            "<span class=\"keybind-key\">" + esc(keyName) + "</span></div>";
+                    }).join("") + "</div></div>";
             }
 
             function header(section) {
@@ -1208,20 +1329,19 @@
             function renderDashboard(data) {
                 var status = data[0];
                 var canRearm = data[1];
-                var teleportText = data[2];
-                var unlockText = data[3];
-                var sizes = data[5];
-                var smokeColors = data[6] || [];
-                var mapTimingActive = data[7] === true;
+                var unlockText = data[2];
+                var sizes = data[3];
+                var smokeColors = data[4] || [];
+                var mapTimingActive = data[5] === true;
+                var keybindRows = data[6] || [];
 
                 var prepare = button("vehicles", l("vehicleSpawn"), "", true, undefined, l("hintVehicle")) +
                     button("targets", l("createTarget"), "", true, undefined, l("hintTargets")) +
                     button("rearm", l("rearmPylons"), "", canRearm, undefined, l("hintRearm")) +
                     button("unlock", unlockText, "", true, undefined, l("hintUnlock")) +
-                    button("teleport", teleportText, "", true, undefined, l("hintTeleport")) +
                     button("explosion", l("explosion"), "", true, undefined, l("hintExplosion"));
-                var analyze = compound("mapHeight", "mapHeight", l("mapHeight"), l("mapHeightSettings"), true, status[8], l("hintMapHeight"), l("hintMapHeightSettings")) +
-                    button("tracking", l("tracking"), "", true, status[0], l("hintTracking")) +
+                var analyze = button("tracking", l("tracking"), "", true, status[0], l("hintTracking")) +
+                    compound("mapHeight", "mapHeight", l("mapHeight"), l("mapHeightSettings"), true, status[8], l("hintMapHeight"), l("hintMapHeightSettings")) +
                     compound("trajectory", "trajectory", l("trajectory"), l("trajectorySettings"), true, status[1], l("hintTrajectory"), l("hintTrajectorySettings")) +
                     compound("markers", "markers", l("markers"), l("markerSettings"), true, status[2], l("hintMarkers"), l("hintMarkerSettings")) +
                     compound("objectStatus", "objectStatus", l("objectStatus"), l("objectSettings"), true, status[3], l("hintObjectStatus"), l("hintObjectSettings")) +
@@ -1234,19 +1354,19 @@
                     button("close", l("close"), "", true, undefined, l("hintClose"));
 
                 return "<div class=\"dashboard\">" +
-                    dashboardColumn(l("prepareTitle"), l("prepareHint"), prepare, "", false, mapToolsPanel(smokeColors, mapTimingActive)) +
-                    dashboardColumn(l("analyzeTitle"), l("analyzeHint"), analyze, "") +
+                    dashboardColumn(l("prepareTitle"), l("prepareHint"), prepare, "", true, mapToolsPanel(smokeColors, mapTimingActive)) +
+                    dashboardColumn(l("analyzeTitle"), l("analyzeHint"), analyze, "", false, keybindPanel(keybindRows)) +
                     dashboardColumn(l("systemTitle"), l("systemHint"), system, l("systemInfo")) +
                     "</div>";
             }
 
             function dashboardColumn(title, hint, content, info, hoverInfo, bottomHtml) {
-                var infoHtml = bottomHtml || (hoverInfo
-                    ? "<div class=\"hint-card dashboard-hover-info\" data-dashboard-info=\"true\"></div>"
-                    : (info ? "<div class=\"hint-card\">" + esc(info) + "</div>" : ""));
+                var infoHtml = hoverInfo
+                    ? dashboardInfoPanel()
+                    : (info ? "<div class=\"hint-card\">" + esc(info) + "</div>" : "");
                 return "<section class=\"panel dashboard-column\"><div class=\"panel-head\"><h2>" + esc(title) + "</h2><p>" + esc(hint) + "</p></div>" +
                     "<div class=\"tile-stack\">" + content + "</div>" +
-                    infoHtml + "</section>";
+                    infoHtml + (bottomHtml || "") + "</section>";
             }
 
             function preview(path, placeholder) {
@@ -1647,7 +1767,11 @@
                 if (!panel) {
                     return;
                 }
-                panel.textContent = text || "";
+                var body = panel.querySelector("[data-dashboard-info-text]");
+                if (!body) {
+                    return;
+                }
+                body.textContent = text || l("actionInfoIdle");
                 panel.classList.toggle("active", !!text);
             }
 
@@ -1667,6 +1791,20 @@
                     ? event.relatedTarget.closest("[data-dashboard-hint]")
                     : null;
                 if (button && !next) {
+                    showDashboardHint("");
+                }
+            });
+
+            app.addEventListener("focusin", function (event) {
+                var button = event.target.closest("[data-dashboard-hint]");
+                if (button) {
+                    showDashboardHint(button.getAttribute("data-dashboard-hint"));
+                }
+            });
+
+            app.addEventListener("focusout", function (event) {
+                var button = event.target.closest("[data-dashboard-hint]");
+                if (button) {
                     showDashboardHint("");
                 }
             });

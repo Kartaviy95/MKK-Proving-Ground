@@ -6,7 +6,7 @@ if !(hasInterface) exitWith {};
 
 private _handlers = missionNamespace getVariable ["mkk_ptg_mapHeightMapEHs", []];
 if (_handlers isEqualTo []) exitWith {
-    missionNamespace setVariable ["mkk_ptg_mapHeightHPressed", false];
+    missionNamespace setVariable ["mkk_ptg_mapHeightKeyPressed", false];
 };
 
 _handlers params [
@@ -25,4 +25,4 @@ if !(isNull _display) then {
 };
 
 missionNamespace setVariable ["mkk_ptg_mapHeightMapEHs", []];
-missionNamespace setVariable ["mkk_ptg_mapHeightHPressed", false];
+missionNamespace setVariable ["mkk_ptg_mapHeightKeyPressed", false];
