@@ -226,6 +226,11 @@
             <Russian>Розовый</Russian>
             <German>Pink</German>
         </Key>
+        <Key ID="STR_MKK_PTG_COLOR_PURPLE">
+            <English>Purple</English>
+            <Russian>Фиолетовый</Russian>
+            <German>Violett</German>
+        </Key>
         <Key ID="STR_MKK_PTG_COLOR_RED">
             <English>Red</English>
             <Russian>Красный</Russian>
@@ -410,6 +415,11 @@
             <English>Start or stop local elapsed-time markers for player movement.</English>
             <Russian>Запустить или остановить локальные метки времени движения игрока.</Russian>
             <German>Startet oder stoppt lokale Zeitmarken für die Spielerbewegung.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_SMOKE">
+            <English>Select smoke color, then place smoke on the opened map with Q.</English>
+            <Russian>Выберите цвет дыма, затем поставьте дым на открытой карте клавишей Q.</Russian>
+            <German>Rauchfarbe wählen, dann Rauch auf der geöffneten Karte mit Q setzen.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKERS">
             <English>Tracks fired projectiles with local markers on the map.</English>
@@ -930,6 +940,16 @@
             <English>%1m</English>
             <Russian>%1м</Russian>
             <German>%1m</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_SMOKE">
+            <English>Map Smoke</English>
+            <Russian>Дым на карте</Russian>
+            <German>Kartenrauch</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_SMOKE_COLOR">
+            <English>Smoke color</English>
+            <Russian>Цвет дыма</Russian>
+            <German>Rauchfarbe</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_TIMING">
             <English>Map Timings</English>
