@@ -54,6 +54,7 @@ private _labels = [
     ["mapHeightSettings", localize "STR_MKK_PTG_MAP_HEIGHT_SETTINGS"],
     ["mapHeightMarkerColor", localize "STR_MKK_PTG_MAP_HEIGHT_MARKER_COLOR"],
     ["mapTiming", localize "STR_MKK_PTG_MAP_TIMING"],
+    ["mapTimingToggle", localize "STR_MKK_PTG_MAP_TIMING_TOGGLE"],
     ["mapTimingStart", localize "STR_MKK_PTG_MAP_TIMING_START"],
     ["mapTimingStop", localize "STR_MKK_PTG_MAP_TIMING_STOP"],
     ["mapTimingClear", localize "STR_MKK_PTG_MAP_TIMING_CLEAR"],

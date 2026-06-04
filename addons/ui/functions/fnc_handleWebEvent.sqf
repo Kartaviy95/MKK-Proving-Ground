@@ -72,12 +72,30 @@ switch (_action) do {
 
         [_color] call FUNC(startMapTiming);
     };
+    case "mapTimingToggle": {
+        if (missionNamespace getVariable ["mkk_ptg_mapTimingActive", false]) then {
+            [] call FUNC(stopMapTiming);
+        } else {
+            _shouldPushState = false;
+
+            private _payload = createHashMap;
+            if (_value isNotEqualTo "") then {
+                private _decoded = fromJSON _value;
+                if (_decoded isEqualType createHashMap) then {
+                    _payload = _decoded;
+                };
+            };
+
+            private _color = _payload getOrDefault ["color", "ColorBlack"];
+            if !(_color isEqualType "") then {_color = "ColorBlack";};
+
+            [_color] call FUNC(startMapTiming);
+        };
+    };
     case "mapTimingStop": {
-        _shouldPushState = false;
         [] call FUNC(stopMapTiming);
     };
     case "mapTimingClear": {
-        _shouldPushState = false;
         [] call FUNC(clearMapTimings);
     };
     case "mapSmokeColor": {

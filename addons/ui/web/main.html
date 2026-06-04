@@ -314,7 +314,7 @@
         }
 
         .dashboard {
-            --dashboard-action-height: 46px;
+            --dashboard-action-height: 40px;
             height: 100%;
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -328,10 +328,10 @@
         }
 
         .tile-stack {
-            padding: 14px;
+            padding: 12px 14px;
             display: grid;
             grid-auto-rows: var(--dashboard-action-height, 46px);
-            gap: 8px;
+            gap: 7px;
             align-content: start;
             min-height: 0;
             flex-shrink: 0;
@@ -342,7 +342,7 @@
             width: 100%;
             border-radius: 7px;
             border: 1px solid rgba(112, 160, 181, 0.18);
-            padding: 10px 13px;
+            padding: 8px 12px;
             color: var(--text);
             background: rgba(17, 34, 45, 0.86);
             display: flex;
@@ -438,30 +438,30 @@
             height: calc(var(--dashboard-action-height, 46px) - 6px);
         }
 
-        .timing-box,
-        .smoke-box {
+        .map-tools-box {
+            margin: auto 14px 14px;
             display: grid;
-            gap: 10px;
-            align-content: start;
+            gap: 7px;
             border: 1px solid rgba(112, 160, 181, 0.18);
             border-radius: 8px;
-            padding: 12px;
+            padding: 10px;
             background: rgba(7, 16, 24, 0.58);
+            flex-shrink: 0;
         }
 
-        .timing-box {
-            grid-row: span 5;
-        }
-
-        .smoke-box {
-            grid-row: span 3;
+        .map-tool-row {
+            display: grid;
+            grid-template-columns: minmax(86px, 0.72fr) minmax(0, 1fr);
+            gap: 8px;
+            align-items: center;
         }
 
         .timing-title {
             color: var(--accent-strong);
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 700;
             letter-spacing: 0.13em;
+            line-height: 1.16;
             text-transform: uppercase;
         }
 
@@ -472,7 +472,13 @@
         }
 
         .timing-actions .action {
-            min-height: 40px;
+            min-height: 34px;
+            padding: 6px 9px;
+            font-size: 12px;
+        }
+
+        .map-tools-box select {
+            height: 34px;
         }
 
         label.caption {
@@ -1012,7 +1018,7 @@
 
         @media (max-height: 760px) {
             .dashboard {
-                --dashboard-action-height: 42px;
+                --dashboard-action-height: 34px;
             }
 
             .dashboard .panel-head {
@@ -1024,13 +1030,14 @@
             }
 
             .dashboard .tile-stack {
-                padding: 10px 14px;
-                gap: 6px;
+                padding: 8px 14px;
+                gap: 5px;
             }
 
             .dashboard .action {
                 padding-top: 8px;
                 padding-bottom: 8px;
+                font-size: 12px;
             }
 
             .dashboard .size-box {
@@ -1046,6 +1053,26 @@
 
             .dashboard .dashboard-hover-info {
                 min-height: 56px;
+            }
+
+            .dashboard .map-tools-box {
+                margin: auto 14px 10px;
+                padding: 8px;
+                gap: 5px;
+            }
+
+            .dashboard .map-tool-row {
+                gap: 7px;
+            }
+
+            .dashboard .map-tools-box select,
+            .dashboard .timing-actions .action {
+                height: 30px;
+                min-height: 30px;
+            }
+
+            .dashboard .timing-actions .action {
+                padding: 4px 7px;
             }
         }
     </style>
@@ -1129,8 +1156,8 @@
                     "</div>";
             }
 
-            function mapTimingPanel() {
-                var colors = [
+            function mapToolsPanel(smokeColors, mapTimingActive) {
+                var timingColors = [
                     ["ColorGreen", l("colorGreen")],
                     ["ColorBlue", l("colorBlue")],
                     ["ColorYellow", l("colorYellow")],
@@ -1143,16 +1170,21 @@
                     ["ColorGrey", l("colorGrey")],
                     ["ColorWhite", l("colorWhite")]
                 ];
-                var colorOptions = colors.map(function (item) {
+                var colorOptions = timingColors.map(function (item) {
                     return option(item[0], item[1], item[0] === mapTimingSettings.color);
                 }).join("");
 
-                return "<div class=\"timing-box\" data-map-timing-panel=\"true\" data-dashboard-hint=\"" + esc(l("hintMapTiming")) + "\">" +
+                return "<div class=\"map-tools-box\">" +
+                    "<div class=\"map-tool-row\" data-dashboard-hint=\"" + esc(l("hintMapSmoke")) + "\">" +
+                    "<div class=\"timing-title\">" + esc(l("mapSmoke")) + "</div>" +
+                    "<select data-change=\"mapSmokeColor\">" + listToOptions(smokeColors || [], "mapSmokeColor") + "</select>" +
+                    "</div>" +
+                    "<div class=\"map-tool-row\" data-map-timing-panel=\"true\" data-dashboard-hint=\"" + esc(l("hintMapTiming")) + "\">" +
                     "<div class=\"timing-title\">" + esc(l("mapTiming")) + "</div>" +
-                    field(l("mapTimingColor"), "<select data-map-timing=\"color\">" + colorOptions + "</select>") +
-                    "<div class=\"timing-actions\">" +
-                    button("mapTimingStart", l("mapTimingStart"), "primary", true, undefined, l("hintMapTiming")) +
-                    button("mapTimingStop", l("mapTimingStop"), "", true, undefined, l("hintMapTiming")) +
+                    "<select data-map-timing=\"color\">" + colorOptions + "</select>" +
+                    "</div>" +
+                    "<div class=\"timing-actions\" data-dashboard-hint=\"" + esc(l("hintMapTiming")) + "\">" +
+                    button("mapTimingToggle", l("mapTimingToggle"), "primary", true, mapTimingActive, l("hintMapTiming")) +
                     button("mapTimingClear", l("mapTimingClear"), "danger", true, undefined, l("hintMapTiming")) +
                     "</div>" +
                     "</div>";
@@ -1172,13 +1204,6 @@
                 return {
                     color: mapTimingSettings.color
                 };
-            }
-
-            function mapSmokePanel(colors) {
-                return "<div class=\"smoke-box\" data-dashboard-hint=\"" + esc(l("hintMapSmoke")) + "\">" +
-                    "<div class=\"timing-title\">" + esc(l("mapSmoke")) + "</div>" +
-                    field(l("mapSmokeColor"), "<select data-change=\"mapSmokeColor\">" + listToOptions(colors || [], "mapSmokeColor") + "</select>") +
-                    "</div>";
             }
 
             function header(section) {
@@ -1209,9 +1234,9 @@
                 var canRearm = data[1];
                 var teleportText = data[2];
                 var unlockText = data[3];
-                var cameraText = data[4];
                 var sizes = data[5];
                 var smokeColors = data[6] || [];
+                var mapTimingActive = data[7] === true;
 
                 var prepare = button("vehicles", l("vehicleSpawn"), "", true, undefined, l("hintVehicle")) +
                     button("targets", l("createTarget"), "", true, undefined, l("hintTargets")) +
@@ -1219,16 +1244,12 @@
                     button("unlock", unlockText, "", true, undefined, l("hintUnlock")) +
                     button("teleport", teleportText, "", true, undefined, l("hintTeleport")) +
                     button("explosion", l("explosion"), "", true, undefined, l("hintExplosion"));
-                var analyze = button("camera", cameraText, "", true, undefined, l("hintCamera")) +
-                    compound("mapHeight", "mapHeight", l("mapHeight"), l("mapHeightSettings"), true, status[8], l("hintMapHeight"), l("hintMapHeightSettings")) +
-                    mapSmokePanel(smokeColors) +
-                    mapTimingPanel() +
+                var analyze = compound("mapHeight", "mapHeight", l("mapHeight"), l("mapHeightSettings"), true, status[8], l("hintMapHeight"), l("hintMapHeightSettings")) +
                     button("tracking", l("tracking"), "", true, status[0], l("hintTracking")) +
                     compound("trajectory", "trajectory", l("trajectory"), l("trajectorySettings"), true, status[1], l("hintTrajectory"), l("hintTrajectorySettings")) +
                     compound("markers", "markers", l("markers"), l("markerSettings"), true, status[2], l("hintMarkers"), l("hintMarkerSettings")) +
                     compound("objectStatus", "objectStatus", l("objectStatus"), l("objectSettings"), true, status[3], l("hintObjectStatus"), l("hintObjectSettings")) +
-                    compound("hitpoints", "hitpoints", l("hitpoints"), l("hitpointSettings"), true, status[4], l("hintHitpoints"), l("hintHitpointSettings")) +
-                    button("penetration", l("penetration"), "", false, undefined, l("hintPenetration"));
+                    compound("hitpoints", "hitpoints", l("hitpoints"), l("hitpointSettings"), true, status[4], l("hintHitpoints"), l("hintHitpointSettings"));
                 var system = button("infiniteAmmo", l("infiniteAmmo"), "", true, status[5], l("hintInfiniteAmmo")) +
                     button("godMode", l("godMode"), "", true, status[6], l("hintGodMode")) +
                     "<div class=\"size-box\"><label class=\"caption\">" + esc(l("interfaceSize")) + "</label><select data-change=\"interfaceSize\">" +
@@ -1237,16 +1258,16 @@
                     button("close", l("close"), "", true, undefined, l("hintClose"));
 
                 return "<div class=\"dashboard\">" +
-                    dashboardColumn(l("prepareTitle"), l("prepareHint"), prepare, "", true) +
+                    dashboardColumn(l("prepareTitle"), l("prepareHint"), prepare, "", false, mapToolsPanel(smokeColors, mapTimingActive)) +
                     dashboardColumn(l("analyzeTitle"), l("analyzeHint"), analyze, "") +
                     dashboardColumn(l("systemTitle"), l("systemHint"), system, l("systemInfo")) +
                     "</div>";
             }
 
-            function dashboardColumn(title, hint, content, info, hoverInfo) {
-                var infoHtml = hoverInfo
+            function dashboardColumn(title, hint, content, info, hoverInfo, bottomHtml) {
+                var infoHtml = bottomHtml || (hoverInfo
                     ? "<div class=\"hint-card dashboard-hover-info\" data-dashboard-info=\"true\"></div>"
-                    : (info ? "<div class=\"hint-card\">" + esc(info) + "</div>" : "");
+                    : (info ? "<div class=\"hint-card\">" + esc(info) + "</div>" : ""));
                 return "<section class=\"panel dashboard-column\"><div class=\"panel-head\"><h2>" + esc(title) + "</h2><p>" + esc(hint) + "</p></div>" +
                     "<div class=\"tile-stack\">" + content + "</div>" +
                     infoHtml + "</section>";
@@ -1682,7 +1703,7 @@
                     return;
                 }
                 var action = element.getAttribute("data-action");
-                if (action === "mapTimingStart") {
+                if (action === "mapTimingStart" || action === "mapTimingToggle") {
                     send(action, JSON.stringify(mapTimingPayload()));
                     return;
                 }

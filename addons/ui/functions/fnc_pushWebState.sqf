@@ -93,7 +93,8 @@ private _dashboard = [
     uiNamespace getVariable ["mkk_ptg_dashboardUnlockLabel", localize "STR_MKK_PTG_UNLOCK_VEHICLE"],
     uiNamespace getVariable ["mkk_ptg_dashboardCameraLabel", localize "STR_MKK_PTG_CAMERA"],
     uiNamespace getVariable ["mkk_ptg_interfaceSizeOptions", []],
-    _smokeColors
+    _smokeColors,
+    missionNamespace getVariable ["mkk_ptg_mapTimingActive", false]
 ];
 
 private _vehicle = [];

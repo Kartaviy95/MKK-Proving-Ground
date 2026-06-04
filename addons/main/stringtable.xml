@@ -991,6 +991,11 @@
             <Russian>Выберите цвет тайминга.</Russian>
             <German>Wähle eine Timing-Farbe.</German>
         </Key>
+        <Key ID="STR_MKK_PTG_MAP_TIMING_TOGGLE">
+            <English>Start/Stop</English>
+            <Russian>Старт/Стоп</Russian>
+            <German>Start/Stopp</German>
+        </Key>
         <Key ID="STR_MKK_PTG_MAP_TIMING_START">
             <English>Start timing</English>
             <Russian>Начать замер</Russian>
