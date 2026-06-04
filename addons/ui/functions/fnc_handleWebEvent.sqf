@@ -80,6 +80,9 @@ switch (_action) do {
         _shouldPushState = false;
         [] call FUNC(clearMapTimings);
     };
+    case "mapSmokeColor": {
+        [_value] call FUNC(setMapSmokeColor);
+    };
     case "mapHeight": {
         [] call FUNC(startMapHeightProbe);
     };

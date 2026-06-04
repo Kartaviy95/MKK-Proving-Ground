@@ -11,7 +11,7 @@
 игрок нажимает кнопку “Телепорт” или настраиваемую CBA-клавишу “Телепорт” (по умолчанию T);
 функциональное меню скрывается или закрывается, чтобы не перекрывать карту;
 открывается карта;
-следующий клик по карте переносит текущий `vehicle player` в выбранную точку на ATL-высоте 0, а при выборе воды — на ASL-высоту 3 над уровнем моря;
+следующий обычный ЛКМ по карте переносит текущий `vehicle player` в выбранную точку на ATL-высоте 0, а при выборе воды — на ASL-высоту 3 над уровнем моря; клики с модификаторами не используются для телепорта;
 карта закрывается;
 игрок получает локализованное уведомление.
 
@@ -51,6 +51,12 @@ F1 переключает подсказку управления;
 Текст каждого маркера — прошедшее время с начала замера в формате `HH:MM:SS`. Скорость, маршрут A/B, дистанция, дороги, препятствия, уклон и pathfinding не рассчитываются.
 
 Кнопка “Остановить замер” завершает поток и всегда ставит финальный timing-маркер с актуальным временем в текущей позиции игрока. Кнопка “Очистить тайминги” останавливает активный замер и удаляет локальные timing-маркеры текущего клиента. Все timing-маркеры создаются через `createMarkerLocal`; глобальные маркеры не используются.
+
+16.4. Дым на карте
+
+Блок “Дым на карте” в колонке анализа задает цвет дымовой подсветки и сохраняет выбор в `profileNamespace` как `mkk_ptg_mapSmokeColor`. Доступные цвета соответствуют vanilla `SmokeShell`, `SmokeShellRed`, `SmokeShellGreen`, `SmokeShellYellow`, `SmokeShellBlue`, `SmokeShellOrange` и `SmokeShellPurple`; дефолт — желтый.
+
+Обработчик карты подключается локально при открытии обычной карты и снимается при закрытии. `Q` под курсором отправляет запрос в `ptg_spawn`: создается глобальный `mil_dot` marker выбранного цвета с именем игрока и глобальный дымовой shell в выбранной точке. Marker удаляется через 3 секунды; для защиты от бесконечного спама клиент дополнительно хранит до 40 созданных smoke-маркеров и удаляет самые старые.
 
 В будущем телепорт можно расширить ограничениями доступа, выбором высоты, сохраненными точками и телепортом группы.
 
@@ -352,7 +358,7 @@ Tracking: `mkk_ptg_trackingEnabled`, `mkk_ptg_trackingModeDefault`, `mkk_ptg_tra
 Spawn: `mkk_ptg_spawnDefaultDistance`, `mkk_ptg_spawnMaxDistance`;
 Penetration: `mkk_ptg_penetrationTargetDistance`, `mkk_ptg_penetrationShotDistance`;
 Player: `mkk_ptg_infiniteAmmoEnabled`, `mkk_ptg_godModeEnabled`;
-UI/HUD: `mkk_ptg_hudSize` в `profileNamespace` для выбранного масштаба интерфейса; `mkk_ptg_mapTimingActive`, `mkk_ptg_mapTimingColor`, `mkk_ptg_mapTimingStartTime`, `mkk_ptg_mapTimingNextTime`, `mkk_ptg_mapTimingLastPosition`, `mkk_ptg_mapTimingThread`, `mkk_ptg_mapTimingMarkers` для локального инструмента таймингов на карте.
+UI/HUD: `mkk_ptg_hudSize` в `profileNamespace` для выбранного масштаба интерфейса; `mkk_ptg_mapTimingActive`, `mkk_ptg_mapTimingColor`, `mkk_ptg_mapTimingStartTime`, `mkk_ptg_mapTimingNextTime`, `mkk_ptg_mapTimingLastPosition`, `mkk_ptg_mapTimingThread`, `mkk_ptg_mapTimingMarkers` для локального инструмента таймингов на карте; `mkk_ptg_mapSmokeColor`, `mkk_ptg_mapSmokeMarkers` для дымовой подсветки по `Q` на карте.
 
 Текущие дефолты:
 
@@ -364,6 +370,7 @@ tracking cooldown 1 second;
 allowed ammo kinds `bullet`, `shell`, `missile`, `rocket`;
 spawn distance 10, max distance 20000;
 penetration target distance 120, shot distance 70;
+map smoke color yellow;
 infinite ammo and god mode disabled.
 
 Внешние блокировки, whitelist и отдельные пользовательские меню настроек для этой версии не нужны.

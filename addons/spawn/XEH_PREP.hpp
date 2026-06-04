@@ -8,5 +8,7 @@ PREP(spawnDriver);
 PREP(registerTargetEntity);
 PREP(requestSpawnTarget);
 PREP(serverSpawnTarget);
+PREP(requestPlaceMapSmoke);
+PREP(serverPlaceMapSmoke);
 PREP(requestDeleteTargets);
 PREP(serverDeleteTargets);

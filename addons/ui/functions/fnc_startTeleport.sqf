@@ -4,6 +4,9 @@
 */
 if !(hasInterface) exitWith {};
 
+[] call FUNC(detachTeleportHandlers);
+onMapSingleClick "";
+
 if (missionNamespace getVariable ["mkk_ptg_teleportTemporaryMap", false]) then {
     player unlinkItem "ItemMap";
     missionNamespace setVariable ["mkk_ptg_teleportTemporaryMap", false];
@@ -22,6 +25,9 @@ openMap true;
 [localize "STR_MKK_PTG_SELECT_TELEPORT_POINT"] call EFUNC(main,showTimedHint);
 missionNamespace setVariable ["mkk_ptg_teleportSelecting", true];
 
+private _teleportToken = format ["%1_%2", diag_tickTime, floor (random 1000000)];
+missionNamespace setVariable ["mkk_ptg_teleportSelectionToken", _teleportToken];
+
 private _marker = missionNamespace getVariable ["mkk_ptg_teleportCurrentPositionMarker", ""];
 if (_marker isNotEqualTo "") then {
     deleteMarkerLocal _marker;
@@ -38,27 +44,65 @@ _marker setMarkerTypeLocal "mil_start";
 _marker setMarkerColorLocal "ColorWEST";
 _marker setMarkerTextLocal format [localize "STR_MKK_PTG_TELEPORT_CURRENT_LOCATION", mapGridPosition _targetPos];
 
-onMapSingleClick "
-    private _result = [_pos] call ptg_ui_fnc_applyTeleport;
-    if ((_result # 0) isEqualTo false) exitWith {
+[] spawn {
+    waitUntil {
+        uiSleep 0.01;
+        !(missionNamespace getVariable ["mkk_ptg_teleportSelecting", false]) || {!isNull (findDisplay 12)} || {!isNull (findDisplay 52)}
+    };
+
+    if !(missionNamespace getVariable ["mkk_ptg_teleportSelecting", false]) exitWith {};
+
+    private _display = findDisplay 12;
+    if (isNull _display) then {
+        _display = findDisplay 52;
+    };
+    if (isNull _display) exitWith {};
+
+    private _map = _display displayCtrl 51;
+    if (isNull _map) exitWith {};
+
+    [] call ptg_ui_fnc_detachTeleportHandlers;
+
+    private _mouseEH = _map ctrlAddEventHandler ["MouseButtonDown", {
+        params ["_control", "_button", "_x", "_y", "_shift", "_ctrl", "_alt"];
+
+        if !(missionNamespace getVariable ["mkk_ptg_teleportSelecting", false]) exitWith {false};
+        if (_button isNotEqualTo 0) exitWith {false};
+        if (_shift || {_ctrl} || {_alt}) exitWith {false};
+
+        private _pos = _control ctrlMapScreenToWorld [_x, _y];
+        if ((count _pos) < 2) exitWith {true};
+
+        private _token = missionNamespace getVariable ["mkk_ptg_teleportSelectionToken", ""];
+        private _result = [_pos, _token] call ptg_ui_fnc_applyTeleport;
+        if ((_result # 0) isEqualTo false) exitWith {
+            [_result # 1] call ptg_main_fnc_showTimedHint;
+            true
+        };
+
+        missionNamespace setVariable ["mkk_ptg_teleportSelecting", false];
+        missionNamespace setVariable ["mkk_ptg_teleportSelectionToken", ""];
+        [] call ptg_ui_fnc_detachTeleportHandlers;
+
+        private _marker = missionNamespace getVariable ["mkk_ptg_teleportCurrentPositionMarker", ""];
+        if (_marker isNotEqualTo "") then {
+            deleteMarkerLocal _marker;
+            missionNamespace setVariable ["mkk_ptg_teleportCurrentPositionMarker", ""];
+        };
+
+        onMapSingleClick "";
+        openMap false;
+        if (missionNamespace getVariable ["mkk_ptg_teleportTemporaryMap", false]) then {
+            player unlinkItem "ItemMap";
+            missionNamespace setVariable ["mkk_ptg_teleportTemporaryMap", false];
+        };
+
         [_result # 1] call ptg_main_fnc_showTimedHint;
         true
-    };
-    missionNamespace setVariable ['mkk_ptg_teleportSelecting', false];
-    private _marker = missionNamespace getVariable ['mkk_ptg_teleportCurrentPositionMarker', ''];
-    if (_marker isNotEqualTo '') then {
-        deleteMarkerLocal _marker;
-        missionNamespace setVariable ['mkk_ptg_teleportCurrentPositionMarker', ''];
-    };
-    onMapSingleClick '';
-    openMap false;
-    if (missionNamespace getVariable ['mkk_ptg_teleportTemporaryMap', false]) then {
-        player unlinkItem 'ItemMap';
-        missionNamespace setVariable ['mkk_ptg_teleportTemporaryMap', false];
-    };
-    [_result # 1] call ptg_main_fnc_showTimedHint;
-    true
-";
+    }];
+
+    missionNamespace setVariable ["mkk_ptg_teleportMapEHs", [_display, _map, _mouseEH]];
+};
 
 [_marker] spawn {
     params ["_marker"];
@@ -74,6 +118,8 @@ onMapSingleClick "
     };
 
     missionNamespace setVariable ["mkk_ptg_teleportSelecting", false];
+    missionNamespace setVariable ["mkk_ptg_teleportSelectionToken", ""];
+    [] call ptg_ui_fnc_detachTeleportHandlers;
     onMapSingleClick "";
 
     if (missionNamespace getVariable ["mkk_ptg_teleportTemporaryMap", false]) then {

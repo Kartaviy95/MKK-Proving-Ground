@@ -7,8 +7,8 @@ A modular Arma 3 proving ground with the technical name `mkk_ptg` and build pref
 - `ptg_main` - base configuration, keybinds, UI entry point, Virtual/ACE Arsenal, classname copying, deletion and unlocking of the object under the cursor.
 - `ptg_common` - shared helpers, safe config reading, English/Russian/German localization, UI/HUD scaling.
 - `ptg_catalog` - dynamic `CfgVehicles` catalog, filtering, sorting, vehicle type detection, and compatible ammo box lookup for static weapons.
-- `ptg_ui` - main window, start menu, small auxiliary settings windows, vehicle spawn screen, driver+gunner mode, camera, teleport, map timings, rearm, test targets, HUD settings, hitpoint inspector, interface scale, and button handlers.
-- `ptg_spawn` - global spawning of vehicles, drivers/crews, and test targets, registration of created objects, deletion and range cleanup without requiring the addon to be loaded on a dedicated server.
+- `ptg_ui` - main window, start menu, small auxiliary settings windows, vehicle spawn screen, driver+gunner mode, camera, teleport, map smoke and timings, rearm, test targets, HUD settings, hitpoint inspector, interface scale, and button handlers.
+- `ptg_spawn` - global spawning of vehicles, drivers/crews, test targets, and map smoke highlights, registration of created objects, deletion and range cleanup without requiring the addon to be loaded on a dedicated server.
 - `ptg_tracking` - projectile tracking, tracking HUD, trajectory lines, and projectile markers on the map.
 - `ptg_penetration` - vehicle penetration test, orbit camera, test projectile, damage/AllowDamage/hitpoints/crew report, `CfgAmmo` parameters, and a map-click explosion creation tool.
 - `ptg_player` - infinite ammo, god mode, fired handlers, and respawn handlers.
@@ -34,6 +34,7 @@ A modular Arma 3 proving ground with the technical name `mkk_ptg` and build pref
 - teleport by map click or configurable "Teleport" keybind, T by default;
 - free camera: area selection on the map, camera creation at the selected point, WASD/Q/Z/Shift/mouse/wheel controls, temporary speed indicator while scrolling, night vision on N, controls hint on F1, camera relocation by LMB, and closing through a configurable keybind;
 - map timings: local elapsed-time measurement for player movement, colored position markers, final marker on stop, and cleanup of local timing markers;
+- map smoke: dashboard color selection and global smoke shell placement with a player-name marker through Alt+LMB on the opened map;
 - player vehicle rearm: crew/turret position selection, weapon selection, compatible magazine loading, weapon clearing, and pylon handling through `setPylonLoadout`;
 - projectile tracking with local camera, HUD for ammo/flight time/distance/mode/speed, timeout, and cooldown;
 - trajectory lines with configurable color and thickness;
@@ -48,7 +49,7 @@ A modular Arma 3 proving ground with the technical name `mkk_ptg` and build pref
 - object deletion under the cursor with access check and player deletion protection;
 - unlocking the vehicle under the cursor;
 - interface scale: small, normal, large, extra large;
-- visible text localization through `addons/main/stringtable.xml` in English, Russian, and German; the current stringtable contains 351 keys, all with English, Russian, and German entries.
+- visible text localization through `addons/main/stringtable.xml` in English, Russian, and German; the current stringtable contains 355 keys, all with English, Russian, and German entries.
 
 ## Documentation
 

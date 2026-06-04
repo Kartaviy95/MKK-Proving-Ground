@@ -55,13 +55,28 @@ private _status = [
     missionNamespace getVariable ["mkk_ptg_mapHeightEnabled", false]
 ];
 
+private _mapSmokeColor = missionNamespace getVariable ["mkk_ptg_mapSmokeColor", "ColorYellow"];
+if !(_mapSmokeColor in ["ColorWhite", "ColorRed", "ColorGreen", "ColorYellow", "ColorBlue", "ColorOrange", "ColorPink"]) then {
+    _mapSmokeColor = "ColorYellow";
+};
+private _smokeColors = [
+    ["ColorWhite", localize "STR_MKK_PTG_COLOR_WHITE", _mapSmokeColor isEqualTo "ColorWhite"],
+    ["ColorRed", localize "STR_MKK_PTG_COLOR_RED", _mapSmokeColor isEqualTo "ColorRed"],
+    ["ColorGreen", localize "STR_MKK_PTG_COLOR_GREEN", _mapSmokeColor isEqualTo "ColorGreen"],
+    ["ColorYellow", localize "STR_MKK_PTG_COLOR_YELLOW", _mapSmokeColor isEqualTo "ColorYellow"],
+    ["ColorBlue", localize "STR_MKK_PTG_COLOR_BLUE", _mapSmokeColor isEqualTo "ColorBlue"],
+    ["ColorOrange", localize "STR_MKK_PTG_COLOR_ORANGE", _mapSmokeColor isEqualTo "ColorOrange"],
+    ["ColorPink", localize "STR_MKK_PTG_COLOR_PURPLE", _mapSmokeColor isEqualTo "ColorPink"]
+];
+
 private _dashboard = [
     _status,
     !(isNull objectParent player),
     uiNamespace getVariable ["mkk_ptg_dashboardTeleportLabel", localize "STR_MKK_PTG_TELEPORT"],
     uiNamespace getVariable ["mkk_ptg_dashboardUnlockLabel", localize "STR_MKK_PTG_UNLOCK_VEHICLE"],
     uiNamespace getVariable ["mkk_ptg_dashboardCameraLabel", localize "STR_MKK_PTG_CAMERA"],
-    uiNamespace getVariable ["mkk_ptg_interfaceSizeOptions", []]
+    uiNamespace getVariable ["mkk_ptg_interfaceSizeOptions", []],
+    _smokeColors
 ];
 
 private _vehicle = [];

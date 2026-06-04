@@ -438,8 +438,8 @@
             height: calc(var(--dashboard-action-height, 46px) - 6px);
         }
 
-        .timing-box {
-            grid-row: span 5;
+        .timing-box,
+        .smoke-box {
             display: grid;
             gap: 10px;
             align-content: start;
@@ -447,6 +447,14 @@
             border-radius: 8px;
             padding: 12px;
             background: rgba(7, 16, 24, 0.58);
+        }
+
+        .timing-box {
+            grid-row: span 5;
+        }
+
+        .smoke-box {
+            grid-row: span 3;
         }
 
         .timing-title {
@@ -1166,6 +1174,13 @@
                 };
             }
 
+            function mapSmokePanel(colors) {
+                return "<div class=\"smoke-box\" data-dashboard-hint=\"" + esc(l("hintMapSmoke")) + "\">" +
+                    "<div class=\"timing-title\">" + esc(l("mapSmoke")) + "</div>" +
+                    field(l("mapSmokeColor"), "<select data-change=\"mapSmokeColor\">" + listToOptions(colors || [], "mapSmokeColor") + "</select>") +
+                    "</div>";
+            }
+
             function header(section) {
                 return "<header class=\"topbar\">" +
                     "<div><div class=\"eyebrow\">" + esc(l("system")) + "</div><h1 class=\"title\">" + esc(l("modName")) + "</h1><p class=\"section-title\">" + esc(section) + "</p></div>" +
@@ -1196,6 +1211,7 @@
                 var unlockText = data[3];
                 var cameraText = data[4];
                 var sizes = data[5];
+                var smokeColors = data[6] || [];
 
                 var prepare = button("vehicles", l("vehicleSpawn"), "", true, undefined, l("hintVehicle")) +
                     button("targets", l("createTarget"), "", true, undefined, l("hintTargets")) +
@@ -1205,6 +1221,7 @@
                     button("explosion", l("explosion"), "", true, undefined, l("hintExplosion"));
                 var analyze = button("camera", cameraText, "", true, undefined, l("hintCamera")) +
                     button("mapHeight", l("mapHeight"), "", true, status[8], l("hintMapHeight")) +
+                    mapSmokePanel(smokeColors) +
                     mapTimingPanel() +
                     button("tracking", l("tracking"), "", true, status[0], l("hintTracking")) +
                     compound("trajectory", "trajectory", l("trajectory"), l("trajectorySettings"), true, status[1], l("hintTrajectory"), l("hintTrajectorySettings")) +

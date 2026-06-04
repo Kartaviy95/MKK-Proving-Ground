@@ -3,9 +3,17 @@
     Applies map-click teleport. Ground vehicles are dropped onto the clicked
     land position from a fixed 1.5 meter ATL height.
 */
-params ["_mapPos"];
+params [
+    ["_mapPos", [], [[]]],
+    ["_token", "", [""]]
+];
 
 if !(hasInterface) exitWith {[false, ""]};
+if !(missionNamespace getVariable ["mkk_ptg_teleportSelecting", false]) exitWith {[false, localize "STR_MKK_PTG_TELEPORT_FAILED"]};
+
+private _activeToken = missionNamespace getVariable ["mkk_ptg_teleportSelectionToken", ""];
+if (_token isEqualTo "" || {_token isNotEqualTo _activeToken}) exitWith {[false, localize "STR_MKK_PTG_TELEPORT_FAILED"]};
+if ((count _mapPos) < 2) exitWith {[false, localize "STR_MKK_PTG_TELEPORT_FAILED"]};
 
 private _target = vehicle player;
 if (isNull _target) exitWith {[false, localize "STR_MKK_PTG_TELEPORT_FAILED"]};
