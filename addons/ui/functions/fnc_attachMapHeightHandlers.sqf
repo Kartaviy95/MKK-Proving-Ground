@@ -19,6 +19,54 @@ private _keyDownEH = _display displayAddEventHandler ["KeyDown", {
     params ["_display", "_key", "_shift", "_ctrl", "_alt"];
 
     if !(missionNamespace getVariable ["mkk_ptg_mapHeightEnabled", false]) exitWith {false};
+    if (_key isEqualTo DIK_DELETE) exitWith {
+        if (_shift || {_ctrl} || {_alt}) exitWith {false};
+
+        private _map = _display displayCtrl 51;
+        if (isNull _map) exitWith {false};
+
+        private _mouse = getMousePosition;
+        private _markers = missionNamespace getVariable ["mkk_ptg_mapHeightMarkers", []];
+        private _activeMarkers = [];
+        {
+            if ((markerType _x) isNotEqualTo "") then {
+                _activeMarkers pushBackUnique _x;
+            };
+        } forEach _markers;
+        {
+            if ((_x find "mkk_ptg_map_height_") isEqualTo 0) then {
+                _activeMarkers pushBackUnique _x;
+            };
+        } forEach allMapMarkers;
+        _markers = _activeMarkers;
+        missionNamespace setVariable ["mkk_ptg_mapHeightMarkers", _markers];
+
+        private _nearestMarker = "";
+        private _nearestDistance = 999;
+        {
+            private _screenPos = _map ctrlMapWorldToScreen (markerPos _x);
+            if ((count _screenPos) >= 2) then {
+                private _dx = (_screenPos # 0) - (_mouse # 0);
+                private _dy = (_screenPos # 1) - (_mouse # 1);
+                private _distance = sqrt ((_dx * _dx) + (_dy * _dy));
+
+                if (_distance < _nearestDistance) then {
+                    _nearestMarker = _x;
+                    _nearestDistance = _distance;
+                };
+            };
+        } forEach _markers;
+
+        if (_nearestDistance > 0.045) exitWith {false};
+
+        deleteMarkerLocal _nearestMarker;
+        private _markerIndex = _markers find _nearestMarker;
+        if (_markerIndex >= 0) then {
+            _markers deleteAt _markerIndex;
+        };
+        missionNamespace setVariable ["mkk_ptg_mapHeightMarkers", _markers];
+        true
+    };
     if (_key isNotEqualTo DIK_H) exitWith {false};
     if (missionNamespace getVariable ["mkk_ptg_mapHeightHPressed", false]) exitWith {true};
     missionNamespace setVariable ["mkk_ptg_mapHeightHPressed", true];
@@ -47,6 +95,10 @@ private _keyDownEH = _display displayAddEventHandler ["KeyDown", {
     _marker setMarkerDirLocal 180;
     _marker setMarkerSizeLocal [0.5, 0.5];
     _marker setMarkerTextLocal _markerText;
+
+    private _markers = missionNamespace getVariable ["mkk_ptg_mapHeightMarkers", []];
+    _markers pushBackUnique _marker;
+    missionNamespace setVariable ["mkk_ptg_mapHeightMarkers", _markers];
 
     true
 }];
