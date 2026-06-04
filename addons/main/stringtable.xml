@@ -196,15 +196,15 @@
             <Russian>Голубой</Russian>
             <German>Cyan</German>
         </Key>
-        <Key ID="STR_MKK_PTG_COLOR_GREY">
-            <English>Grey</English>
-            <Russian>Серый</Russian>
-            <German>Grau</German>
-        </Key>
         <Key ID="STR_MKK_PTG_COLOR_GREEN">
             <English>Green</English>
             <Russian>Зеленый</Russian>
             <German>Grün</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_COLOR_GREY">
+            <English>Grey</English>
+            <Russian>Серый</Russian>
+            <German>Grau</German>
         </Key>
         <Key ID="STR_MKK_PTG_COLOR_KHAKI">
             <English>Khaki</English>
@@ -356,16 +356,6 @@
             <Russian>Создайте тестовую цель и выпустите выбранный снаряд, чтобы увидеть данные повреждений.</Russian>
             <German>Erstelle ein Testziel und feuere die ausgewählte Munition ab, um Schadensdaten zu sehen.</German>
         </Key>
-        <Key ID="STR_MKK_PTG_DASHBOARD_ANALYZE_HINT">
-            <English>Camera, projectile tools, markers, HUD and damage inspection.</English>
-            <Russian>Камера, снаряды, маркеры, HUD и инспектор повреждений.</Russian>
-            <German>Kamera, Projektilwerkzeuge, Marker, HUD und Schadensanalyse.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_DASHBOARD_ANALYZE_TITLE">
-            <English>Observation and analysis</English>
-            <Russian>Наблюдение и анализ</Russian>
-            <German>Beobachtung und Analyse</German>
-        </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_ACTION_INFO_IDLE">
             <English>Point at a dashboard button to see what it does.</English>
             <Russian>Наведите курсор на кнопку панели, чтобы увидеть ее действие.</Russian>
@@ -375,6 +365,16 @@
             <English>Button action</English>
             <Russian>Действие кнопки</Russian>
             <German>Schaltflächenaktion</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_ANALYZE_HINT">
+            <English>Camera, projectile tools, markers, HUD and damage inspection.</English>
+            <Russian>Камера, снаряды, маркеры, HUD и инспектор повреждений.</Russian>
+            <German>Kamera, Projektilwerkzeuge, Marker, HUD und Schadensanalyse.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_ANALYZE_TITLE">
+            <English>Observation and analysis</English>
+            <Russian>Наблюдение и анализ</Russian>
+            <German>Beobachtung und Analyse</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_CAMERA">
             <English>Free camera: pick a map point, then inspect the range from the air.</English>
@@ -426,21 +426,6 @@
             <Russian>Открывает настройку цвета меток высоты на карте.</Russian>
             <German>Öffnet Farbeinstellungen für Höhenmarker auf der Karte.</German>
         </Key>
-        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_TIMING">
-            <English>Start or stop local elapsed-time markers for player movement.</English>
-            <Russian>Запустить или остановить локальные метки времени движения игрока.</Russian>
-            <German>Startet oder stoppt lokale Zeitmarken für die Spielerbewegung.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_TIMING_SETTINGS">
-            <English>Opens settings for timing marker color, interval and speed label.</English>
-            <Russian>Открывает настройки цвета, шага и скорости для маркеров тайминга.</Russian>
-            <German>Öffnet Einstellungen für Farbe, Intervall und Geschwindigkeitsanzeige der Timing-Marker.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_SMOKE">
-            <English>Select marker smoke color, then place a quick marker on the opened map with the configured hotkey.</English>
-            <Russian>Выберите цвет дыма маркера, затем поставьте быстрый маркер на открытой карте настроенной горячей клавишей.</Russian>
-            <German>Marker-Rauchfarbe wählen, dann mit der konfigurierten Taste einen schnellen Kartenmarker setzen.</German>
-        </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_MARKERS">
             <English>Tracks fired projectiles with local markers on the map.</English>
             <Russian>Показывает выпущенные снаряды локальными маркерами на карте.</Russian>
@@ -450,6 +435,21 @@
             <English>Opens settings for projectile map marker labels.</English>
             <Russian>Открывает настройки подписей маркеров снарядов на карте.</Russian>
             <German>Öffnet Einstellungen für Beschriftungen der Projektilmarker.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_SMOKE">
+            <English>Select marker smoke color, then place a quick marker on the opened map with the configured hotkey.</English>
+            <Russian>Выберите цвет дыма маркера, затем поставьте быстрый маркер на открытой карте настроенной горячей клавишей.</Russian>
+            <German>Marker-Rauchfarbe wählen, dann mit der konfigurierten Taste einen schnellen Kartenmarker setzen.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_TIMING">
+            <English>Start or stop local elapsed-time markers for player movement.</English>
+            <Russian>Запустить или остановить локальные метки времени движения игрока.</Russian>
+            <German>Startet oder stoppt lokale Zeitmarken für die Spielerbewegung.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_TIMING_SETTINGS">
+            <English>Opens settings for timing marker color, interval and speed label.</English>
+            <Russian>Открывает настройки цвета, шага и скорости для маркеров тайминга.</Russian>
+            <German>Öffnet Einstellungen für Farbe, Intervall und Geschwindigkeitsanzeige der Timing-Marker.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_OBJECT_STATUS">
             <English>Shows class, distance, damage and optional hitpoints for the object under the cursor.</English>
@@ -966,20 +966,40 @@
             <Russian>Метки высоты на карте включены. Откройте карту и нажмите настроенную горячую клавишу под курсором.</Russian>
             <German>Höhenmarker auf der Karte aktiviert. Karte öffnen und die konfigurierte Taste unter dem Cursor drücken.</German>
         </Key>
-        <Key ID="STR_MKK_PTG_MAP_HEIGHT_MARKER_COLOR">
-            <English>Height marker color</English>
-            <Russian>Цвет метки высоты</Russian>
-            <German>Farbe des Höhenmarkers</German>
-        </Key>
         <Key ID="STR_MKK_PTG_MAP_HEIGHT_MARKER">
             <English>%1m</English>
             <Russian>%1м</Russian>
             <German>%1m</German>
         </Key>
+        <Key ID="STR_MKK_PTG_MAP_HEIGHT_MARKER_COLOR">
+            <English>Height marker color</English>
+            <Russian>Цвет метки высоты</Russian>
+            <German>Farbe des Höhenmarkers</German>
+        </Key>
         <Key ID="STR_MKK_PTG_MAP_HEIGHT_SETTINGS">
             <English>Height marker settings</English>
             <Russian>Настройки меток высоты</Russian>
             <German>Höhenmarker-Einstellungen</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO">
+            <English>Ammo Class on Marker</English>
+            <Russian>Класс ammo на маркере</Russian>
+            <German>Munitionsklasse am Marker</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO_STATUS">
+            <English>Ammo class on marker: %1</English>
+            <Russian>Класс ammo на маркере: %1</Russian>
+            <German>Munitionsklasse am Marker: %1</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_MARKER_SETTINGS">
+            <English>Map marker settings</English>
+            <Russian>Настройки маркеров на карте</Russian>
+            <German>Kartenmarker-Einstellungen</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_PROJECTILE_MARKERS">
+            <English>Projectile Map Markers</English>
+            <Russian>Маркеры снарядов на карте</Russian>
+            <German>Projektil-Kartenmarker</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_SMOKE">
             <English>Quick Map Marker</English>
@@ -1041,6 +1061,11 @@
             <Russian>%1 %2км/ч</Russian>
             <German>%1 %2km/h</German>
         </Key>
+        <Key ID="STR_MKK_PTG_MAP_TIMING_NOT_RUNNING">
+            <English>Timing is not running.</English>
+            <Russian>Замер времени не запущен.</Russian>
+            <German>Timing läuft nicht.</German>
+        </Key>
         <Key ID="STR_MKK_PTG_MAP_TIMING_SETTINGS">
             <English>Timing settings</English>
             <Russian>Настройки таймингов</Russian>
@@ -1050,11 +1075,6 @@
             <English>Show speed on marker</English>
             <Russian>Показывать скорость на маркере</Russian>
             <German>Geschwindigkeit am Marker anzeigen</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_TOGGLE">
-            <English>Start/Stop</English>
-            <Russian>Старт/Стоп</Russian>
-            <German>Start/Stopp</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_TIMING_START">
             <English>Start timing</English>
@@ -1076,30 +1096,10 @@
             <Russian>Замер времени остановлен.</Russian>
             <German>Timing gestoppt.</German>
         </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_NOT_RUNNING">
-            <English>Timing is not running.</English>
-            <Russian>Замер времени не запущен.</Russian>
-            <German>Timing läuft nicht.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO">
-            <English>Ammo Class on Marker</English>
-            <Russian>Класс ammo на маркере</Russian>
-            <German>Munitionsklasse am Marker</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO_STATUS">
-            <English>Ammo class on marker: %1</English>
-            <Russian>Класс ammo на маркере: %1</Russian>
-            <German>Munitionsklasse am Marker: %1</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_MARKER_SETTINGS">
-            <English>Map marker settings</English>
-            <Russian>Настройки маркеров на карте</Russian>
-            <German>Kartenmarker-Einstellungen</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_PROJECTILE_MARKERS">
-            <English>Projectile Map Markers</English>
-            <Russian>Маркеры снарядов на карте</Russian>
-            <German>Projektil-Kartenmarker</German>
+        <Key ID="STR_MKK_PTG_MAP_TIMING_TOGGLE">
+            <English>Start/Stop</English>
+            <Russian>Старт/Стоп</Russian>
+            <German>Start/Stopp</German>
         </Key>
         <Key ID="STR_MKK_PTG_METERS_SHORT">
             <English>m</English>
