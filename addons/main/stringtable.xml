@@ -411,6 +411,11 @@
             <Russian>Включает метки высоты на карте. Когда режим включен, откройте карту и нажмите H под курсором.</Russian>
             <German>Schaltet Höhenmarker auf der Karte um. Wenn aktiv, Karte öffnen und H unter dem Cursor drücken.</German>
         </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_HEIGHT_SETTINGS">
+            <English>Opens color settings for map height markers.</English>
+            <Russian>Открывает настройку цвета меток высоты на карте.</Russian>
+            <German>Öffnet Farbeinstellungen für Höhenmarker auf der Karte.</German>
+        </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_TIMING">
             <English>Start or stop local elapsed-time markers for player movement.</English>
             <Russian>Запустить или остановить локальные метки времени движения игрока.</Russian>
@@ -936,10 +941,20 @@
             <Russian>Метки высоты на карте включены. Откройте карту и нажмите H под курсором.</Russian>
             <German>Höhenmarker auf der Karte aktiviert. Karte öffnen und H unter dem Cursor drücken.</German>
         </Key>
+        <Key ID="STR_MKK_PTG_MAP_HEIGHT_MARKER_COLOR">
+            <English>Height marker color</English>
+            <Russian>Цвет метки высоты</Russian>
+            <German>Farbe des Höhenmarkers</German>
+        </Key>
         <Key ID="STR_MKK_PTG_MAP_HEIGHT_MARKER">
             <English>%1m</English>
             <Russian>%1м</Russian>
             <German>%1m</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_HEIGHT_SETTINGS">
+            <English>Height marker settings</English>
+            <Russian>Настройки меток высоты</Russian>
+            <German>Höhenmarker-Einstellungen</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_SMOKE">
             <English>Map Smoke</English>
@@ -966,125 +981,15 @@
             <Russian>Тайминги на карте очищены.</Russian>
             <German>Karten-Timings gelöscht.</German>
         </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_CLEAR_OLD">
-            <English>Clear old timings before creating</English>
-            <Russian>Очищать старые перед созданием</Russian>
-            <German>Alte Timings vor dem Erstellen löschen</German>
-        </Key>
         <Key ID="STR_MKK_PTG_MAP_TIMING_COLOR">
             <English>Color</English>
             <Russian>Цвет</Russian>
             <German>Farbe</German>
         </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_DONE">
-            <English>Timing created. Distance: %1 km | Speed: %2 | Time: %3 | Step: %4</English>
-            <Russian>Тайминг построен. Дистанция: %1 км | Скорость: %2 | Время: %3 | Шаг: %4</Russian>
-            <German>Timing erstellt. Entfernung: %1 km | Geschwindigkeit: %2 | Zeit: %3 | Intervall: %4</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_FINISH_MARKER">
-            <English>Finish: %1 | Distance: %2 km | Speed: %3</English>
-            <Russian>Финиш: %1 | Дистанция: %2 км | Скорость: %3</Russian>
-            <German>Ziel: %1 | Entfernung: %2 km | Geschwindigkeit: %3</German>
-        </Key>
         <Key ID="STR_MKK_PTG_MAP_TIMING_INVALID_COLOR">
             <English>Select a timing color.</English>
             <Russian>Выберите цвет тайминга.</Russian>
             <German>Wähle eine Timing-Farbe.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_INVALID_POINTS">
-            <English>Select point A and point B first.</English>
-            <Russian>Сначала выберите точку А и точку Б.</Russian>
-            <German>Wähle zuerst Punkt A und Punkt B.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_INVALID_SPEED">
-            <English>Speed must be greater than zero.</English>
-            <Russian>Скорость должна быть больше нуля.</Russian>
-            <German>Die Geschwindigkeit muss größer als null sein.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_INVALID_STEP">
-            <English>Time step must be greater than zero.</English>
-            <Russian>Шаг времени должен быть больше нуля.</Russian>
-            <German>Das Zeitintervall muss größer als null sein.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_MINUTES">
-            <English>minutes</English>
-            <Russian>минуты</Russian>
-            <German>Minuten</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_POINT_A">
-            <English>A</English>
-            <Russian>А</Russian>
-            <German>A</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_POINT_B">
-            <English>B</English>
-            <Russian>Б</Russian>
-            <German>B</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_PRESET">
-            <English>Speed preset</English>
-            <Russian>Пресет скорости</Russian>
-            <German>Geschwindigkeitspreset</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_PRESET_CUSTOM">
-            <English>Custom</English>
-            <Russian>Вручную</Russian>
-            <German>Benutzerdefiniert</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_PRESET_INFANTRY_MARCH">
-            <English>Infantry march - 6 km/h</English>
-            <Russian>Пехота марш — 6 км/ч</Russian>
-            <German>Infanterie Marsch - 6 km/h</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_PRESET_INFANTRY_RUN">
-            <English>Infantry run - 10 km/h</English>
-            <Russian>Пехота бег — 10 км/ч</Russian>
-            <German>Infanterie Lauf - 10 km/h</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_PRESET_INFANTRY_SLOW">
-            <English>Infantry slow - 4 km/h</English>
-            <Russian>Пехота медленно — 4 км/ч</Russian>
-            <German>Infanterie langsam - 4 km/h</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_PRESET_VEHICLE_FAST">
-            <English>Vehicle fast - 60 km/h</English>
-            <Russian>Техника быстро — 60 км/ч</Russian>
-            <German>Fahrzeug schnell - 60 km/h</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_PRESET_VEHICLE_SLOW">
-            <English>Vehicle column slow - 20 km/h</English>
-            <Russian>Колонна техника медленно — 20 км/ч</Russian>
-            <German>Fahrzeugkolonne langsam - 20 km/h</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_PRESET_VEHICLE_STANDARD">
-            <English>Vehicle column standard - 40 km/h</English>
-            <Russian>Колонна техника стандарт — 40 км/ч</Russian>
-            <German>Fahrzeugkolonne Standard - 40 km/h</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_SECONDS">
-            <English>seconds</English>
-            <Russian>секунды</Russian>
-            <German>Sekunden</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_SELECT_A">
-            <English>Click on the map to select point A.</English>
-            <Russian>Кликните по карте, чтобы выбрать точку А.</Russian>
-            <German>Klicke auf die Karte, um Punkt A auszuwählen.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_SELECT_B">
-            <English>Point A selected. Click on the map to select point B.</English>
-            <Russian>Точка А выбрана. Кликните по карте, чтобы выбрать точку Б.</Russian>
-            <German>Punkt A ausgewählt. Klicke auf die Karte, um Punkt B auszuwählen.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_SPEED">
-            <English>Speed</English>
-            <Russian>Скорость</Russian>
-            <German>Geschwindigkeit</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_SPEED_UNIT">
-            <English>Speed unit</English>
-            <Russian>Единицы скорости</Russian>
-            <German>Geschwindigkeitseinheit</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_TIMING_START">
             <English>Start timing</English>
@@ -1110,31 +1015,6 @@
             <English>Timing is not running.</English>
             <Russian>Замер времени не запущен.</Russian>
             <German>Timing läuft nicht.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_STEP">
-            <English>Time step</English>
-            <Russian>Шаг времени</Russian>
-            <German>Zeitintervall</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_STEP_UNIT">
-            <English>Step unit</English>
-            <Russian>Единицы шага</Russian>
-            <German>Intervalleinheit</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_TOO_SHORT">
-            <English>Distance is too short to create timing.</English>
-            <Russian>Расстояние слишком маленькое для построения тайминга.</Russian>
-            <German>Die Entfernung ist zu kurz, um ein Timing zu erstellen.</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_UNIT_KMH">
-            <English>km/h</English>
-            <Russian>км/ч</Russian>
-            <German>km/h</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_MAP_TIMING_UNIT_MS">
-            <English>m/s</English>
-            <Russian>м/с</Russian>
-            <German>m/s</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO">
             <English>Ammo Class on Marker</English>

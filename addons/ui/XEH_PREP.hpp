@@ -58,6 +58,7 @@ PREP(renderMapTiming);
 PREP(clearMapTimings);
 PREP(formatTimingTime);
 PREP(setMapSmokeColor);
+PREP(setMapHeightMarkerColor);
 PREP(setTrajectoryColor);
 PREP(setTrajectoryWidth);
 PREP(toggleHitpointInspector);

@@ -1220,7 +1220,7 @@
                     button("teleport", teleportText, "", true, undefined, l("hintTeleport")) +
                     button("explosion", l("explosion"), "", true, undefined, l("hintExplosion"));
                 var analyze = button("camera", cameraText, "", true, undefined, l("hintCamera")) +
-                    button("mapHeight", l("mapHeight"), "", true, status[8], l("hintMapHeight")) +
+                    compound("mapHeight", "mapHeight", l("mapHeight"), l("mapHeightSettings"), true, status[8], l("hintMapHeight"), l("hintMapHeightSettings")) +
                     mapSmokePanel(smokeColors) +
                     mapTimingPanel() +
                     button("tracking", l("tracking"), "", true, status[0], l("hintTracking")) +
@@ -1412,6 +1412,11 @@
                         return settingButton("setColor", item[0], item[1], item[2], "<span class=\"swatch\" style=\"background:" + esc(item[3]) + "\"></span>");
                     })) + settingsSection(l("lineWidth"), (data[1] || []).map(function (item) {
                         return settingButton("setWidth", item[0], item[1], item[2]);
+                    }));
+                } else if (settingsModal === "mapHeight") {
+                    title = l("mapHeightSettings");
+                    inner = settingsSection(l("mapHeightMarkerColor"), (data[5] || []).map(function (item) {
+                        return settingButton("mapHeightMarkerColor", item[0], item[1], item[2], "<span class=\"swatch\" style=\"background:" + esc(item[3]) + "\"></span>");
                     }));
                 } else if (settingsModal === "markers") {
                     title = l("markerSettings");

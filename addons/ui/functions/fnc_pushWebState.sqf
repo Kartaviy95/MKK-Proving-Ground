@@ -68,6 +68,23 @@ private _smokeColors = [
     ["ColorOrange", localize "STR_MKK_PTG_COLOR_ORANGE", _mapSmokeColor isEqualTo "ColorOrange"],
     ["ColorPink", localize "STR_MKK_PTG_COLOR_PURPLE", _mapSmokeColor isEqualTo "ColorPink"]
 ];
+private _mapHeightMarkerColor = missionNamespace getVariable ["mkk_ptg_mapHeightMarkerColor", "ColorBlack"];
+private _markerColors = [
+    ["ColorBlue", localize "STR_MKK_PTG_COLOR_BLUE", _mapHeightMarkerColor isEqualTo "ColorBlue", "#335CFF"],
+    ["ColorGreen", localize "STR_MKK_PTG_COLOR_GREEN", _mapHeightMarkerColor isEqualTo "ColorGreen", "#36FF55"],
+    ["ColorYellow", localize "STR_MKK_PTG_COLOR_YELLOW", _mapHeightMarkerColor isEqualTo "ColorYellow", "#FFE640"],
+    ["ColorOrange", localize "STR_MKK_PTG_COLOR_ORANGE", _mapHeightMarkerColor isEqualTo "ColorOrange", "#FF8B2F"],
+    ["ColorPink", localize "STR_MKK_PTG_COLOR_PINK", _mapHeightMarkerColor isEqualTo "ColorPink", "#FF66C8"],
+    ["ColorRed", localize "STR_MKK_PTG_COLOR_RED", _mapHeightMarkerColor isEqualTo "ColorRed", "#FF3333"],
+    ["ColorBrown", localize "STR_MKK_PTG_COLOR_BROWN", _mapHeightMarkerColor isEqualTo "ColorBrown", "#8A5A2B"],
+    ["ColorKhaki", localize "STR_MKK_PTG_COLOR_KHAKI", _mapHeightMarkerColor isEqualTo "ColorKhaki", "#B6A768"],
+    ["ColorBlack", localize "STR_MKK_PTG_COLOR_BLACK", _mapHeightMarkerColor isEqualTo "ColorBlack", "#111111"],
+    ["ColorGrey", localize "STR_MKK_PTG_COLOR_GREY", _mapHeightMarkerColor isEqualTo "ColorGrey", "#8C8C8C"],
+    ["ColorWhite", localize "STR_MKK_PTG_COLOR_WHITE", _mapHeightMarkerColor isEqualTo "ColorWhite", "#FFFFFF"]
+];
+if !(_mapHeightMarkerColor in (_markerColors apply {_x # 0})) then {
+    _markerColors set [8, ["ColorBlack", localize "STR_MKK_PTG_COLOR_BLACK", true, "#111111"]];
+};
 
 private _dashboard = [
     _status,
@@ -256,7 +273,8 @@ private _settings = [
     _widths,
     missionNamespace getVariable ["mkk_ptg_mapProjectileMarkerShowAmmo", false],
     _objectSettings,
-    _inspectorSettings
+    _inspectorSettings,
+    _markerColors
 ];
 
 private _state = [

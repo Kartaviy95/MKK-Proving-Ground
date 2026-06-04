@@ -83,6 +83,10 @@ private _keyDownEH = _display displayAddEventHandler ["KeyDown", {
     private _heightASL = getTerrainHeightASL [_x, _y];
     private _heightText = _heightASL toFixed 0;
     private _markerText = format [localize "STR_MKK_PTG_MAP_HEIGHT_MARKER", _heightText];
+    private _markerColor = missionNamespace getVariable ["mkk_ptg_mapHeightMarkerColor", "ColorBlack"];
+    if !(_markerColor in ["ColorBlue", "ColorGreen", "ColorYellow", "ColorOrange", "ColorPink", "ColorRed", "ColorBrown", "ColorKhaki", "ColorBlack", "ColorGrey", "ColorWhite"]) then {
+        _markerColor = "ColorBlack";
+    };
 
     private _markerIndex = (missionNamespace getVariable ["mkk_ptg_mapHeightMarkerIndex", 0]) + 1;
     missionNamespace setVariable ["mkk_ptg_mapHeightMarkerIndex", _markerIndex];
@@ -91,7 +95,7 @@ private _keyDownEH = _display displayAddEventHandler ["KeyDown", {
     createMarkerLocal [_marker, [_x, _y, 0]];
     _marker setMarkerShapeLocal "ICON";
     _marker setMarkerTypeLocal "mil_triangle";
-    _marker setMarkerColorLocal "ColorBlack";
+    _marker setMarkerColorLocal _markerColor;
     _marker setMarkerDirLocal 180;
     _marker setMarkerSizeLocal [0.5, 0.5];
     _marker setMarkerTextLocal _markerText;

@@ -83,6 +83,9 @@ switch (_action) do {
     case "mapSmokeColor": {
         [_value] call FUNC(setMapSmokeColor);
     };
+    case "mapHeightMarkerColor": {
+        [_value] call FUNC(setMapHeightMarkerColor);
+    };
     case "mapHeight": {
         [] call FUNC(startMapHeightProbe);
     };
