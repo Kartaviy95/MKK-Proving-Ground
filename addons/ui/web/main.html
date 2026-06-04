@@ -467,7 +467,7 @@
 
         .timing-actions {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 36px;
             gap: 7px;
         }
 
@@ -475,6 +475,18 @@
             min-height: 34px;
             padding: 6px 9px;
             font-size: 12px;
+        }
+
+        .timing-actions .action span {
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .timing-actions .settings-button {
+            min-width: 36px;
+            padding: 6px 0;
         }
 
         .map-tools-box select {
@@ -1091,9 +1103,6 @@
             var pendingFocus = "";
             var pendingCursor = 0;
             var firstBoot = true;
-            var mapTimingSettings = {
-                color: "ColorBlack"
-            };
 
             function esc(value) {
                 return String(value == null ? "" : value)
@@ -1157,23 +1166,6 @@
             }
 
             function mapToolsPanel(smokeColors, mapTimingActive) {
-                var timingColors = [
-                    ["ColorGreen", l("colorGreen")],
-                    ["ColorBlue", l("colorBlue")],
-                    ["ColorYellow", l("colorYellow")],
-                    ["ColorOrange", l("colorOrange")],
-                    ["ColorPink", l("colorPink")],
-                    ["ColorRed", l("colorRed")],
-                    ["ColorBrown", l("colorBrown")],
-                    ["ColorKhaki", l("colorKhaki")],
-                    ["ColorBlack", l("colorBlack")],
-                    ["ColorGrey", l("colorGrey")],
-                    ["ColorWhite", l("colorWhite")]
-                ];
-                var colorOptions = timingColors.map(function (item) {
-                    return option(item[0], item[1], item[0] === mapTimingSettings.color);
-                }).join("");
-
                 return "<div class=\"map-tools-box\">" +
                     "<div class=\"map-tool-row\" data-dashboard-hint=\"" + esc(l("hintMapSmoke")) + "\">" +
                     "<div class=\"timing-title\">" + esc(l("mapSmoke")) + "</div>" +
@@ -1181,29 +1173,13 @@
                     "</div>" +
                     "<div class=\"map-tool-row\" data-map-timing-panel=\"true\" data-dashboard-hint=\"" + esc(l("hintMapTiming")) + "\">" +
                     "<div class=\"timing-title\">" + esc(l("mapTiming")) + "</div>" +
-                    "<select data-map-timing=\"color\">" + colorOptions + "</select>" +
-                    "</div>" +
                     "<div class=\"timing-actions\" data-dashboard-hint=\"" + esc(l("hintMapTiming")) + "\">" +
                     button("mapTimingToggle", l("mapTimingToggle"), "primary", true, mapTimingActive, l("hintMapTiming")) +
                     button("mapTimingClear", l("mapTimingClear"), "danger", true, undefined, l("hintMapTiming")) +
+                    "<button class=\"action settings-button\" data-settings=\"mapTiming\" data-dashboard-hint=\"" + esc(l("hintMapTimingSettings")) + "\" title=\"" + esc(l("mapTimingSettings")) + "\"><span>&#9881;</span></button>" +
+                    "</div>" +
                     "</div>" +
                     "</div>";
-            }
-
-            function updateMapTimingSetting(target) {
-                var key = target.getAttribute("data-map-timing");
-                if (!key) {
-                    return false;
-                }
-
-                mapTimingSettings[key] = target.value;
-                return true;
-            }
-
-            function mapTimingPayload() {
-                return {
-                    color: mapTimingSettings.color
-                };
             }
 
             function header(section) {
@@ -1439,6 +1415,16 @@
                     inner = settingsSection(l("mapHeightMarkerColor"), (data[5] || []).map(function (item) {
                         return settingButton("mapHeightMarkerColor", item[0], item[1], item[2], "<span class=\"swatch\" style=\"background:" + esc(item[3]) + "\"></span>");
                     }));
+                } else if (settingsModal === "mapTiming") {
+                    var timingSettings = data[6] || [[], [], false];
+                    title = l("mapTimingSettings");
+                    inner = settingsSection(l("mapTimingColor"), (timingSettings[0] || []).map(function (item) {
+                        return settingButton("mapTimingColor", item[0], item[1], item[2], "<span class=\"swatch\" style=\"background:" + esc(item[3]) + "\"></span>");
+                    })) + settingsSection(l("mapTimingInterval"), (timingSettings[1] || []).map(function (item) {
+                        return settingButton("mapTimingInterval", item[0], item[1], item[2]);
+                    })) + settingsSection(l("mapTimingMarkerDetails"), [
+                        settingButton("mapTimingShowSpeed", "", l("mapTimingShowSpeed"), timingSettings[2] === true)
+                    ]);
                 } else if (settingsModal === "markers") {
                     title = l("markerSettings");
                     inner = settingsSection(l("markers"), [settingButton("markerAmmo", "", l("markerAmmo"), data[2])]);
@@ -1703,17 +1689,10 @@
                     return;
                 }
                 var action = element.getAttribute("data-action");
-                if (action === "mapTimingStart" || action === "mapTimingToggle") {
-                    send(action, JSON.stringify(mapTimingPayload()));
-                    return;
-                }
                 send(action, element.getAttribute("data-value") || "");
             });
 
             app.addEventListener("change", function (event) {
-                if (updateMapTimingSetting(event.target)) {
-                    return;
-                }
                 var action = event.target.getAttribute("data-change");
                 if (action) {
                     send(action, event.target.value);
@@ -1721,9 +1700,6 @@
             });
 
             app.addEventListener("input", function (event) {
-                if (updateMapTimingSetting(event.target)) {
-                    return;
-                }
                 var action = event.target.getAttribute("data-input");
                 if (action) {
                     pendingFocus = action;

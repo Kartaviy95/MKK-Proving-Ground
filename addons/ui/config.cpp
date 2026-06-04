@@ -339,4 +339,53 @@ class RscTitles {
             };
         };
     };
+
+    class MKK_PTG_MapTimingHUD {
+        idd = -1;
+        movingEnable = 0;
+        duration = 100000;
+        fadeIn = 0;
+        fadeOut = 0;
+        onLoad = "uiNamespace setVariable ['mkk_ptg_mapTimingHud', _this # 0]; {((_this # 0) displayCtrl _x) ctrlShow false;} forEach [88250,88251,88252,88253];";
+        onUnload = "uiNamespace setVariable ['mkk_ptg_mapTimingHud', displayNull];";
+
+        class controls {
+            class Panel: MKK_PTG_RscText {
+                idc = 88250;
+                x = 0.78;
+                y = 0.15;
+                w = 0.16;
+                h = 0.06;
+                colorBackground[] = {0.02,0.035,0.045,0.82};
+            };
+
+            class AccentTop: MKK_PTG_RscText {
+                idc = 88251;
+                x = 0.78;
+                y = 0.15;
+                w = 0.16;
+                h = 0.004;
+                colorBackground[] = {0.10,0.72,0.92,0.95};
+            };
+
+            class AccentSide: MKK_PTG_RscText {
+                idc = 88252;
+                x = 0.78;
+                y = 0.15;
+                w = 0.004;
+                h = 0.06;
+                colorBackground[] = {0.10,0.72,0.92,0.95};
+            };
+
+            class TimingText: MKK_PTG_RscStructuredText {
+                idc = 88253;
+                x = 0.79;
+                y = 0.156;
+                w = 0.14;
+                h = 0.048;
+                text = "";
+                colorText[] = {1,1,1,1};
+            };
+        };
+    };
 };

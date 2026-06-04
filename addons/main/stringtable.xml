@@ -421,6 +421,11 @@
             <Russian>Запустить или остановить локальные метки времени движения игрока.</Russian>
             <German>Startet oder stoppt lokale Zeitmarken für die Spielerbewegung.</German>
         </Key>
+        <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_TIMING_SETTINGS">
+            <English>Opens settings for timing marker color, interval and speed label.</English>
+            <Russian>Открывает настройки цвета, шага и скорости для маркеров тайминга.</Russian>
+            <German>Öffnet Einstellungen für Farbe, Intervall und Geschwindigkeitsanzeige der Timing-Marker.</German>
+        </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_SMOKE">
             <English>Select smoke color, then place smoke on the opened map with Q.</English>
             <Russian>Выберите цвет дыма, затем поставьте дым на открытой карте клавишей Q.</Russian>
@@ -986,10 +991,45 @@
             <Russian>Цвет</Russian>
             <German>Farbe</German>
         </Key>
+        <Key ID="STR_MKK_PTG_MAP_TIMING_HUD_TITLE">
+            <English>TIMER</English>
+            <Russian>ТАЙМЕР</Russian>
+            <German>TIMER</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_TIMING_INTERVAL">
+            <English>Marker interval</English>
+            <Russian>Шаг меток</Russian>
+            <German>Markerintervall</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_TIMING_INTERVAL_VALUE">
+            <English>%1 sec</English>
+            <Russian>%1 с</Russian>
+            <German>%1 s</German>
+        </Key>
         <Key ID="STR_MKK_PTG_MAP_TIMING_INVALID_COLOR">
             <English>Select a timing color.</English>
             <Russian>Выберите цвет тайминга.</Russian>
             <German>Wähle eine Timing-Farbe.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_TIMING_MARKER_DETAILS">
+            <English>Marker label</English>
+            <Russian>Подпись маркера</Russian>
+            <German>Markerbeschriftung</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_TIMING_MARKER_WITH_SPEED">
+            <English>%1 %2km/h</English>
+            <Russian>%1 %2км/ч</Russian>
+            <German>%1 %2km/h</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_TIMING_SETTINGS">
+            <English>Timing settings</English>
+            <Russian>Настройки таймингов</Russian>
+            <German>Timing-Einstellungen</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_MAP_TIMING_SHOW_SPEED">
+            <English>Show speed on marker</English>
+            <Russian>Показывать скорость на маркере</Russian>
+            <German>Geschwindigkeit am Marker anzeigen</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_TIMING_TOGGLE">
             <English>Start/Stop</English>

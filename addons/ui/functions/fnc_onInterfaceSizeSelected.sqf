@@ -35,6 +35,7 @@ if (isNull _display) exitWith {};
     so they must be refreshed separately after the player changes size.
 */
 [] call FUNC(drawObjectStatusDisplay);
+[] call FUNC(drawMapTimingHud);
 
 if !(isNil "ptg_penetration_fnc_updateReport") then {
     [] call ptg_penetration_fnc_updateReport;

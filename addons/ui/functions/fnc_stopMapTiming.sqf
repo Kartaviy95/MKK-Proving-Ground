@@ -12,6 +12,7 @@ missionNamespace setVariable ["mkk_ptg_mapTimingThread", scriptNull];
 
 private _wasActive = missionNamespace getVariable ["mkk_ptg_mapTimingActive", false];
 missionNamespace setVariable ["mkk_ptg_mapTimingActive", false];
+[] call FUNC(hideMapTimingHud);
 
 if !(_wasActive) exitWith {
     [localize "STR_MKK_PTG_MAP_TIMING_NOT_RUNNING"] call EFUNC(main,showTimedHint);

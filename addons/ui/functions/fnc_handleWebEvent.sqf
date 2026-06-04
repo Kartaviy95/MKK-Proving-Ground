@@ -67,8 +67,8 @@ switch (_action) do {
             };
         };
 
-        private _color = _payload getOrDefault ["color", "ColorBlack"];
-        if !(_color isEqualType "") then {_color = "ColorBlack";};
+        private _color = _payload getOrDefault ["color", ""];
+        if !(_color isEqualType "") then {_color = "";};
 
         [_color] call FUNC(startMapTiming);
     };
@@ -86,8 +86,8 @@ switch (_action) do {
                 };
             };
 
-            private _color = _payload getOrDefault ["color", "ColorBlack"];
-            if !(_color isEqualType "") then {_color = "ColorBlack";};
+            private _color = _payload getOrDefault ["color", ""];
+            if !(_color isEqualType "") then {_color = "";};
 
             [_color] call FUNC(startMapTiming);
         };
@@ -103,6 +103,15 @@ switch (_action) do {
     };
     case "mapHeightMarkerColor": {
         [_value] call FUNC(setMapHeightMarkerColor);
+    };
+    case "mapTimingColor": {
+        ["color", _value] call FUNC(setMapTimingSetting);
+    };
+    case "mapTimingInterval": {
+        ["interval", _value] call FUNC(setMapTimingSetting);
+    };
+    case "mapTimingShowSpeed": {
+        ["showSpeed", _value] call FUNC(setMapTimingSetting);
     };
     case "mapHeight": {
         [] call FUNC(startMapHeightProbe);

@@ -22,6 +22,7 @@ missionNamespace setVariable ["mkk_ptg_mapTimingMarkers", []];
 missionNamespace setVariable ["mkk_ptg_mapTimingActive", false];
 missionNamespace setVariable ["mkk_ptg_mapTimingThread", scriptNull];
 missionNamespace setVariable ["mkk_ptg_mapTimingLastPosition", position player];
+[] call FUNC(hideMapTimingHud);
 
 if !(_silent) then {
     [localize "STR_MKK_PTG_MAP_TIMING_CLEARED"] call EFUNC(main,showTimedHint);

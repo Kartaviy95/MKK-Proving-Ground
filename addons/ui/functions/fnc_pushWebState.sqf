@@ -86,6 +86,47 @@ if !(_mapHeightMarkerColor in (_markerColors apply {_x # 0})) then {
     _markerColors set [8, ["ColorBlack", localize "STR_MKK_PTG_COLOR_BLACK", true, "#111111"]];
 };
 
+private _mapTimingColor = missionNamespace getVariable ["mkk_ptg_mapTimingColor", profileNamespace getVariable ["mkk_ptg_mapTimingColor", "ColorBlack"]];
+private _timingColors = [
+    ["ColorBlue", localize "STR_MKK_PTG_COLOR_BLUE", _mapTimingColor isEqualTo "ColorBlue", "#335CFF"],
+    ["ColorGreen", localize "STR_MKK_PTG_COLOR_GREEN", _mapTimingColor isEqualTo "ColorGreen", "#36FF55"],
+    ["ColorYellow", localize "STR_MKK_PTG_COLOR_YELLOW", _mapTimingColor isEqualTo "ColorYellow", "#FFE640"],
+    ["ColorOrange", localize "STR_MKK_PTG_COLOR_ORANGE", _mapTimingColor isEqualTo "ColorOrange", "#FF8B2F"],
+    ["ColorPink", localize "STR_MKK_PTG_COLOR_PINK", _mapTimingColor isEqualTo "ColorPink", "#FF66C8"],
+    ["ColorRed", localize "STR_MKK_PTG_COLOR_RED", _mapTimingColor isEqualTo "ColorRed", "#FF3333"],
+    ["ColorBrown", localize "STR_MKK_PTG_COLOR_BROWN", _mapTimingColor isEqualTo "ColorBrown", "#8A5A2B"],
+    ["ColorKhaki", localize "STR_MKK_PTG_COLOR_KHAKI", _mapTimingColor isEqualTo "ColorKhaki", "#B6A768"],
+    ["ColorBlack", localize "STR_MKK_PTG_COLOR_BLACK", _mapTimingColor isEqualTo "ColorBlack", "#111111"],
+    ["ColorGrey", localize "STR_MKK_PTG_COLOR_GREY", _mapTimingColor isEqualTo "ColorGrey", "#8C8C8C"],
+    ["ColorWhite", localize "STR_MKK_PTG_COLOR_WHITE", _mapTimingColor isEqualTo "ColorWhite", "#FFFFFF"]
+];
+if !(_mapTimingColor in (_timingColors apply {_x # 0})) then {
+    _timingColors set [8, ["ColorBlack", localize "STR_MKK_PTG_COLOR_BLACK", true, "#111111"]];
+};
+
+private _mapTimingInterval = missionNamespace getVariable ["mkk_ptg_mapTimingInterval", profileNamespace getVariable ["mkk_ptg_mapTimingInterval", 10]];
+if !(_mapTimingInterval isEqualType 0) then {
+    _mapTimingInterval = 10;
+};
+_mapTimingInterval = round _mapTimingInterval;
+if !(_mapTimingInterval in [5, 10, 15, 20, 30, 60]) then {
+    _mapTimingInterval = 10;
+};
+private _timingIntervals = [];
+{
+    _timingIntervals pushBack [str _x, format [localize "STR_MKK_PTG_MAP_TIMING_INTERVAL_VALUE", _x], _x isEqualTo _mapTimingInterval];
+} forEach [5, 10, 15, 20, 30, 60];
+
+private _mapTimingShowSpeed = missionNamespace getVariable ["mkk_ptg_mapTimingShowSpeed", profileNamespace getVariable ["mkk_ptg_mapTimingShowSpeed", false]];
+if !(_mapTimingShowSpeed isEqualType false) then {
+    _mapTimingShowSpeed = false;
+};
+private _timingSettings = [
+    _timingColors,
+    _timingIntervals,
+    _mapTimingShowSpeed
+];
+
 private _dashboard = [
     _status,
     !(isNull objectParent player),
@@ -275,7 +316,8 @@ private _settings = [
     missionNamespace getVariable ["mkk_ptg_mapProjectileMarkerShowAmmo", false],
     _objectSettings,
     _inspectorSettings,
-    _markerColors
+    _markerColors,
+    _timingSettings
 ];
 
 private _state = [
