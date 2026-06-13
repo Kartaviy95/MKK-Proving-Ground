@@ -69,6 +69,7 @@ PREP(toggleHitpointInspectorSetting);
 PREP(toggleHitpointInspectorSettings);
 PREP(toggleMapProjectileMarkerSettings);
 PREP(toggleMapProjectileMarkerAmmoSetting);
+PREP(toggleMapTiming);
 PREP(toggleObjectStatusDisplay);
 PREP(toggleObjectStatusSetting);
 PREP(toggleObjectStatusSettings);

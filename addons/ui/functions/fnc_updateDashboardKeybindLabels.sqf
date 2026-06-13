@@ -80,6 +80,7 @@ private _fncFormatKeybind = {
         case DIK_F: {"F"};
         case DIK_K: {"K"};
         case DIK_T: {"T"};
+        case DIK_X: {"X"};
         case DIK_ESCAPE: {"Esc"};
         case DIK_DELETE: {"Delete"};
         case DIK_LSHIFT: {"Shift"};
@@ -200,6 +201,7 @@ uiNamespace setVariable ["mkk_ptg_dashboardKeybindRows", [
     ["STR_MKK_PTG_OPEN_ACE_ARSENAL", "mkk_ptg_open_ace_arsenal", [0x17, [true, false, false]]] call _fncRow,
     ["STR_MKK_PTG_TELEPORT", "mkk_ptg_start_teleport", [DIK_T, [false, false, false]]] call _fncRow,
     ["STR_MKK_PTG_START_CAMERA", "mkk_ptg_start_map_camera", [DIK_K, [false, false, false]]] call _fncRow,
+    ["STR_MKK_PTG_MAP_TIMING_TOGGLE_KEYBIND", "mkk_ptg_toggle_map_timing", [DIK_X, [false, true, false]]] call _fncRow,
     ["STR_MKK_PTG_MAP_HEIGHT", "mkk_ptg_place_map_height_marker", [DIK_H, [false, false, false]]] call _fncRow,
     ["STR_MKK_PTG_MAP_SMOKE", "mkk_ptg_place_quick_map_marker", [DIK_Q, [false, false, false]]] call _fncRow,
     ["STR_MKK_PTG_UNLOCK_CURSOR_VEHICLE", "mkk_ptg_unlock_cursor_vehicle", [DIK_F, [false, true, false]]] call _fncRow,
