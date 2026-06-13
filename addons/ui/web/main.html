@@ -1342,11 +1342,11 @@
                 var prepare = button("vehicles", l("vehicleSpawn"), "", true, undefined, l("hintVehicle")) +
                     button("targets", l("createTarget"), "", true, undefined, l("hintTargets")) +
                     button("rearm", l("rearmPylons"), "", canRearm, undefined, l("hintRearm")) +
-                    button("camera", l("camera"), "", true, undefined, l("hintCamera")) +
-                    button("teleport", l("teleport"), "", true, undefined, l("hintTeleport")) +
                     button("unlock", unlockText, "", true, undefined, l("hintUnlock")) +
                     button("explosion", l("explosion"), "", true, undefined, l("hintExplosion"));
-                var analyze = button("tracking", l("tracking"), "", true, status[0], l("hintTracking")) +
+                var analyze = button("teleport", l("teleport"), "", true, undefined, l("hintTeleport")) +
+                    button("camera", l("camera"), "", true, undefined, l("hintCamera")) +
+                    button("tracking", l("tracking"), "", true, status[0], l("hintTracking")) +
                     compound("trajectory", "trajectory", l("trajectory"), l("trajectorySettings"), true, status[1], l("hintTrajectory"), l("hintTrajectorySettings")) +
                     compound("markers", "markers", l("markers"), l("markerSettings"), true, status[2], l("hintMarkers"), l("hintMarkerSettings")) +
                     compound("objectStatus", "objectStatus", l("objectStatus"), l("objectSettings"), true, status[3], l("hintObjectStatus"), l("hintObjectSettings")) +
@@ -1360,17 +1360,18 @@
 
                 return "<div class=\"dashboard\">" +
                     dashboardColumn(l("prepareTitle"), l("prepareHint"), prepare, "", true, mapToolsPanel(smokeColors, mapTimingActive, markerColors)) +
-                    dashboardColumn(l("analyzeTitle"), l("analyzeHint"), analyze, "", false, keybindPanel(keybindRows)) +
-                    dashboardColumn(l("systemTitle"), l("systemHint"), system, l("systemInfo")) +
+                    dashboardColumn(l("analyzeTitle"), l("analyzeHint"), analyze) +
+                    dashboardColumn(l("systemTitle"), l("systemHint"), system, l("systemInfo"), false, "", keybindPanel(keybindRows)) +
                     "</div>";
             }
 
-            function dashboardColumn(title, hint, content, info, hoverInfo, bottomHtml) {
+            function dashboardColumn(title, hint, content, info, hoverInfo, bottomHtml, afterStackHtml) {
                 var infoHtml = hoverInfo
                     ? dashboardInfoPanel()
                     : (info ? "<div class=\"hint-card\">" + esc(info) + "</div>" : "");
                 return "<section class=\"panel dashboard-column\"><div class=\"panel-head\"><h2>" + esc(title) + "</h2><p>" + esc(hint) + "</p></div>" +
                     "<div class=\"tile-stack\">" + content + "</div>" +
+                    (afterStackHtml || "") +
                     infoHtml + (bottomHtml || "") + "</section>";
             }
 
