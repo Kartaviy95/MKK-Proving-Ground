@@ -52,7 +52,7 @@ private _status = [
     missionNamespace getVariable ["mkk_ptg_infiniteAmmoEnabled", false],
     missionNamespace getVariable ["mkk_ptg_godModeEnabled", false],
     missionNamespace getVariable ["mkk_ptg_mapProjectileMarkerShowAmmo", false],
-    missionNamespace getVariable ["mkk_ptg_mapHeightEnabled", false]
+    true
 ];
 
 [] call FUNC(updateDashboardKeybindLabels);

@@ -3,7 +3,7 @@
     Вешает локальные обработчики инструмента высоты на открытую карту.
 */
 if !(hasInterface) exitWith {};
-if !(missionNamespace getVariable ["mkk_ptg_mapHeightEnabled", false]) exitWith {};
+if !(missionNamespace getVariable ["mkk_ptg_mapHeightEnabled", true]) exitWith {};
 
 private _display = findDisplay 12;
 if (isNull _display) exitWith {};
@@ -18,7 +18,7 @@ missionNamespace setVariable ["mkk_ptg_mapHeightKeyPressed", false];
 private _keyDownEH = _display displayAddEventHandler ["KeyDown", {
     params ["_display", "_key", "_shift", "_ctrl", "_alt"];
 
-    if !(missionNamespace getVariable ["mkk_ptg_mapHeightEnabled", false]) exitWith {false};
+    if !(missionNamespace getVariable ["mkk_ptg_mapHeightEnabled", true]) exitWith {false};
     if (_key isEqualTo DIK_DELETE) exitWith {
         if (_shift || {_ctrl} || {_alt}) exitWith {false};
 

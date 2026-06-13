@@ -417,9 +417,9 @@
             <German>Schaltet unendliche Munition für den lokalen Spieler um.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_HEIGHT">
-            <English>Toggle map height markers. When enabled, open the map and press the configured hotkey under the cursor.</English>
-            <Russian>Включает метки высоты на карте. Когда режим включен, откройте карту и нажмите настроенную горячую клавишу под курсором.</Russian>
-            <German>Schaltet Höhenmarker auf der Karte um. Wenn aktiv, Karte öffnen und die konfigurierte Taste unter dem Cursor drücken.</German>
+            <English>Map height markers are always ready: open the map and press the configured hotkey under the cursor.</English>
+            <Russian>Метки высоты всегда готовы: откройте карту и нажмите настроенную горячую клавишу под курсором.</Russian>
+            <German>Höhenmarker sind immer bereit: Karte öffnen und die konfigurierte Taste unter dem Cursor drücken.</German>
         </Key>
         <Key ID="STR_MKK_PTG_DASHBOARD_HINT_MAP_HEIGHT_SETTINGS">
             <English>Opens color settings for map height markers.</English>
@@ -962,9 +962,9 @@
             <German>Höhenmarker auf der Karte deaktiviert.</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_HEIGHT_ENABLED">
-            <English>Map height markers enabled. Open the map and press the configured hotkey under the cursor.</English>
-            <Russian>Метки высоты на карте включены. Откройте карту и нажмите настроенную горячую клавишу под курсором.</Russian>
-            <German>Höhenmarker auf der Karte aktiviert. Karte öffnen und die konfigurierte Taste unter dem Cursor drücken.</German>
+            <English>Map height markers are ready. Open the map and press the configured hotkey under the cursor.</English>
+            <Russian>Метки высоты на карте готовы. Откройте карту и нажмите настроенную горячую клавишу под курсором.</Russian>
+            <German>Höhenmarker auf der Karte sind bereit. Karte öffnen und die konfigurierte Taste unter dem Cursor drücken.</German>
         </Key>
         <Key ID="STR_MKK_PTG_MAP_HEIGHT_MARKER">
             <English>%1m</English>

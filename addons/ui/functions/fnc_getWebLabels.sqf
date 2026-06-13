@@ -54,6 +54,7 @@ private _labels = [
     ["createTarget", localize "STR_MKK_PTG_CREATE_TARGET"],
     ["rearm", localize "STR_MKK_PTG_REARM"],
     ["rearmPylons", localize "STR_MKK_PTG_REARM_PYLONS"],
+    ["teleport", localize "STR_MKK_PTG_TELEPORT"],
     ["camera", localize "STR_MKK_PTG_CAMERA"],
     ["mapHeight", localize "STR_MKK_PTG_MAP_HEIGHT"],
     ["mapHeightSettings", localize "STR_MKK_PTG_MAP_HEIGHT_SETTINGS"],
