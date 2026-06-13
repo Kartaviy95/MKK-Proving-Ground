@@ -1265,11 +1265,15 @@
                     "</div>";
             }
 
-            function mapToolsPanel(smokeColors, mapTimingActive) {
+            function mapToolsPanel(smokeColors, mapTimingActive, markerColors) {
                 return "<div class=\"map-tools-box\">" +
                     "<div class=\"map-tool-row\" data-dashboard-hint=\"" + esc(l("hintMapSmoke")) + "\">" +
                     "<div class=\"timing-title\">" + esc(l("mapSmoke")) + "</div>" +
                     "<select data-change=\"mapSmokeColor\">" + listToOptions(smokeColors || [], "mapSmokeColor") + "</select>" +
+                    "</div>" +
+                    "<div class=\"map-tool-row\" data-dashboard-hint=\"" + esc(l("hintMapHeightSettings")) + "\">" +
+                    "<div class=\"timing-title\">" + esc(l("mapHeightMarkerColor")) + "</div>" +
+                    "<select data-change=\"mapHeightMarkerColor\">" + listToOptions(markerColors || [], "mapHeightMarkerColor") + "</select>" +
                     "</div>" +
                     "<div class=\"map-tool-row\" data-map-timing-panel=\"true\" data-dashboard-hint=\"" + esc(l("hintMapTiming")) + "\">" +
                     "<div class=\"timing-title\">" + esc(l("mapTiming")) + "</div>" +
@@ -1315,7 +1319,6 @@
                     [l("statusTracking"), status[0]],
                     [l("statusTrajectory"), status[1]],
                     [l("statusMarkers"), status[2]],
-                    [l("statusMapHeight"), status[8]],
                     [l("statusObject"), status[3]],
                     [l("statusHitpoints"), status[4]],
                     [l("statusAmmo"), status[5]],
@@ -1334,6 +1337,7 @@
                 var smokeColors = data[4] || [];
                 var mapTimingActive = data[5] === true;
                 var keybindRows = data[6] || [];
+                var markerColors = data[7] || [];
 
                 var prepare = button("vehicles", l("vehicleSpawn"), "", true, undefined, l("hintVehicle")) +
                     button("targets", l("createTarget"), "", true, undefined, l("hintTargets")) +
@@ -1343,7 +1347,6 @@
                     button("unlock", unlockText, "", true, undefined, l("hintUnlock")) +
                     button("explosion", l("explosion"), "", true, undefined, l("hintExplosion"));
                 var analyze = button("tracking", l("tracking"), "", true, status[0], l("hintTracking")) +
-                    compound("mapHeight", "mapHeight", l("mapHeight"), l("mapHeightSettings"), true, status[8], l("hintMapHeight"), l("hintMapHeightSettings")) +
                     compound("trajectory", "trajectory", l("trajectory"), l("trajectorySettings"), true, status[1], l("hintTrajectory"), l("hintTrajectorySettings")) +
                     compound("markers", "markers", l("markers"), l("markerSettings"), true, status[2], l("hintMarkers"), l("hintMarkerSettings")) +
                     compound("objectStatus", "objectStatus", l("objectStatus"), l("objectSettings"), true, status[3], l("hintObjectStatus"), l("hintObjectSettings")) +
@@ -1356,7 +1359,7 @@
                     button("close", l("close"), "", true, undefined, l("hintClose"));
 
                 return "<div class=\"dashboard\">" +
-                    dashboardColumn(l("prepareTitle"), l("prepareHint"), prepare, "", true, mapToolsPanel(smokeColors, mapTimingActive)) +
+                    dashboardColumn(l("prepareTitle"), l("prepareHint"), prepare, "", true, mapToolsPanel(smokeColors, mapTimingActive, markerColors)) +
                     dashboardColumn(l("analyzeTitle"), l("analyzeHint"), analyze, "", false, keybindPanel(keybindRows)) +
                     dashboardColumn(l("systemTitle"), l("systemHint"), system, l("systemInfo")) +
                     "</div>";

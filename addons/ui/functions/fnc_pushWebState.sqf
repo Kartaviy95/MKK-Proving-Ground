@@ -51,8 +51,7 @@ private _status = [
     missionNamespace getVariable ["mkk_ptg_hitpointInspectorEnabled", false],
     missionNamespace getVariable ["mkk_ptg_infiniteAmmoEnabled", false],
     missionNamespace getVariable ["mkk_ptg_godModeEnabled", false],
-    missionNamespace getVariable ["mkk_ptg_mapProjectileMarkerShowAmmo", false],
-    true
+    missionNamespace getVariable ["mkk_ptg_mapProjectileMarkerShowAmmo", false]
 ];
 
 [] call FUNC(updateDashboardKeybindLabels);
@@ -136,7 +135,8 @@ private _dashboard = [
     uiNamespace getVariable ["mkk_ptg_interfaceSizeOptions", []],
     _smokeColors,
     missionNamespace getVariable ["mkk_ptg_mapTimingActive", false],
-    uiNamespace getVariable ["mkk_ptg_dashboardKeybindRows", []]
+    uiNamespace getVariable ["mkk_ptg_dashboardKeybindRows", []],
+    _markerColors
 ];
 
 private _vehicle = [];
