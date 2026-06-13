@@ -1,6 +1,8 @@
 #include "script_component.hpp"
 
 if (hasInterface) then {
+    [false] call FUNC(startMapHeightProbe);
+
     private _mapEH = addMissionEventHandler ["Map", {
         params ["_mapIsOpened"];
 

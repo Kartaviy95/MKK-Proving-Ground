@@ -1,10 +1,14 @@
 #include "..\script_component.hpp"
 /*
-    Переключает локальное измерение высоты точки на обычной карте.
+    Гарантирует включенное локальное измерение высоты точки на обычной карте.
     Отображается именно высота рельефа ASL по движку Arma 3 через
     getTerrainHeightASL, а не высота зданий или объектов.
 */
 if !(hasInterface) exitWith {};
+
+params [
+    ["_showHint", true, [false]]
+];
 
 if (missionNamespace getVariable ["mkk_ptg_mapHeightSelecting", false]) then {
     missionNamespace setVariable ["mkk_ptg_mapHeightSelecting", false];
@@ -24,23 +28,16 @@ private _fncRemoveMapMissionEH = {
     };
 };
 
-private _enabled = !(missionNamespace getVariable ["mkk_ptg_mapHeightEnabled", false]);
-missionNamespace setVariable ["mkk_ptg_mapHeightEnabled", _enabled];
+missionNamespace setVariable ["mkk_ptg_mapHeightEnabled", true];
 missionNamespace setVariable ["mkk_ptg_mapHeightSupervisorRunning", false];
 
-if !(_enabled) exitWith {
-    [] call _fncRemoveMapMissionEH;
-    [] call FUNC(detachMapHeightHandlers);
-    [localize "STR_MKK_PTG_MAP_HEIGHT_DISABLED"] call EFUNC(main,showTimedHint);
+if (_showHint) then {
+    [localize "STR_MKK_PTG_MAP_HEIGHT_ENABLED"] call EFUNC(main,showTimedHint);
 };
-
-[localize "STR_MKK_PTG_MAP_HEIGHT_ENABLED"] call EFUNC(main,showTimedHint);
 [] call _fncRemoveMapMissionEH;
 
 private _mapEH = addMissionEventHandler ["Map", {
     params ["_mapIsOpened"];
-
-    if !(missionNamespace getVariable ["mkk_ptg_mapHeightEnabled", false]) exitWith {};
 
     if !(_mapIsOpened) exitWith {
         [] call ptg_ui_fnc_detachMapHeightHandlers;
@@ -49,9 +46,10 @@ private _mapEH = addMissionEventHandler ["Map", {
     [] spawn {
         waitUntil {
             uiSleep 0.01;
-            !(missionNamespace getVariable ["mkk_ptg_mapHeightEnabled", false]) || {!isNull (findDisplay 12)}
+            !isNull (findDisplay 12) || {!isNull (findDisplay 52)} || {!visibleMap}
         };
 
+        if (isNull (findDisplay 12)) exitWith {};
         [] call ptg_ui_fnc_attachMapHeightHandlers;
     };
 }];
