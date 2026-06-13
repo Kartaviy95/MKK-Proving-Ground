@@ -138,6 +138,20 @@ if !(isNil "CBA_fnc_hashGet" || {isNil "CBA_fnc_hashSet"}) then {
 
 [
     localize "STR_MKK_PTG_MOD_NAME",
+    "mkk_ptg_toggle_map_timing",
+    localize "STR_MKK_PTG_MAP_TIMING_TOGGLE_KEYBIND",
+    {
+        if !(hasInterface) exitWith {false};
+        if (isNil "ptg_ui_fnc_toggleMapTiming") exitWith {false};
+        [] call ptg_ui_fnc_toggleMapTiming;
+        true
+    },
+    {},
+    [DIK_X, [false, true, false]]
+] call CBA_fnc_addKeybind;
+
+[
+    localize "STR_MKK_PTG_MOD_NAME",
     "mkk_ptg_place_quick_map_marker",
     localize "STR_MKK_PTG_MAP_SMOKE",
     {},

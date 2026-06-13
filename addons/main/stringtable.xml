@@ -1101,6 +1101,11 @@
             <Russian>Старт/Стоп</Russian>
             <German>Start/Stopp</German>
         </Key>
+        <Key ID="STR_MKK_PTG_MAP_TIMING_TOGGLE_KEYBIND">
+            <English>Start/Stop timing</English>
+            <Russian>Старт/Стоп таймингов</Russian>
+            <German>Timing starten/stoppen</German>
+        </Key>
         <Key ID="STR_MKK_PTG_METERS_SHORT">
             <English>m</English>
             <Russian>м</Russian>
