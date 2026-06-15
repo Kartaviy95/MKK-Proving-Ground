@@ -1,6 +1,6 @@
 # MKK Proving Ground
 
-Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build-Praefix `ptg`. Aktueller Build: `1.3.6.0`, minimale Arma-3-Version: `2.20`. Das Projekt dient zum schnellen Testen von Fahrzeugen, Waffen, Munition, Flugbahnen, Durchschlag, per Karte erzeugten explosiven Projektilen, Teleportation und lokalen Spieler-Werkzeugen.
+Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build-Praefix `ptg`. Aktueller Build: `1.3.8.0`, minimale Arma-3-Version: `2.20`. Das Projekt dient zum schnellen Testen von Fahrzeugen, Waffen, Munition, Flugbahnen, Durchschlag, per Karte erzeugten explosiven Projektilen, Teleportation und lokalen Spieler-Werkzeugen.
 
 ## Module
 
@@ -46,10 +46,10 @@ Ein modularer Arma-3-Testplatz mit dem technischen Namen `mkk_ptg` und dem Build
 - unendliche Munition und God Mode mit erneuter Anwendung nach Respawn;
 - Virtual Arsenal und ACE3 Arsenal ueber Tastenzuweisungen;
 - Kopieren des Classname des Objekts unter dem Cursor;
-- Loeschen des Objekts unter dem Cursor mit Zugriffspruefung und Schutz vor dem Loeschen von Spielern;
+- Loeschen des Objekts unter dem Cursor mit Zugriffspruefung, Schutz vor dem Loeschen von Spielern und Beschraenkung auf von PTG erstellte Objekte;
 - Entsperren des Fahrzeugs unter dem Cursor;
 - Interface-Skalierung: small, normal, large, extra large;
-- Lokalisierung sichtbarer Texte ueber `addons/main/stringtable.xml` auf Englisch, Russisch und Deutsch; die aktuelle stringtable enthaelt 355 Keys, alle mit English-, Russian- und German-Eintraegen.
+- Lokalisierung sichtbarer Texte ueber `addons/main/stringtable.xml` auf Englisch, Russisch und Deutsch; die aktuelle stringtable enthaelt 346 Keys, alle mit English-, Russian- und German-Eintraegen.
 
 ## Dokumentation
 

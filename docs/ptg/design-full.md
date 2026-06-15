@@ -45,7 +45,7 @@ MKK Proving Ground — это отдельный модульный полиго
 
 техническое имя: `mkk_ptg`;
 префикс сборки: `ptg`;
-версия из `script_version.hpp`: 1.3.5.0;
+версия из `script_version.hpp`: 1.3.8.0;
 минимальная версия Arma 3: 2.20;
 базовая зависимость: CBA.
 
@@ -417,12 +417,15 @@ picture;
 
 Очистка должна удалять:
 
+созданные цели;
 созданную технику;
 прочие зарегистрированные объекты полигона.
 
-Удаление выполняется сервером.
+Удаление выполняется функцией очистки текущего runtime; созданные объекты удаляются через глобальные эффекты Arma 3.
 
-Реестр очистки хранится в `mkk_ptg_spawnedVehicles` и `mkk_ptg_spawnedObjects`.
+Карта, редакторские объекты и объекты, поставленные картоделом в миссии, не должны удаляться очисткой PTG. Для этого сущности, которые PTG должен уметь удалять, помечаются публичной переменной `mkk_ptg_spawnedByPTG`, а очистка и отдельное удаление целей удаляют только объекты с этим признаком.
+
+Реестр очистки хранится в `mkk_ptg_spawnedTargets`, `mkk_ptg_spawnedVehicles` и `mkk_ptg_spawnedObjects`.
 
 16. Телепорт
 
@@ -767,7 +770,7 @@ Russian.
 техническое имя проекта: `mkk_ptg`;
 префикс сборки: `ptg`;
 `PREFIX` в коде: `ptg`;
-версия из `script_version.hpp`: 1.3.5.0;
+версия из `script_version.hpp`: 1.3.8.0;
 `REQUIRED_VERSION`: 2.20;
 автор: Tarantino.
 
@@ -822,8 +825,8 @@ ace — ACE self actions и terminal actions.
 
 спавн техники: клиентский `ptg_spawn_fnc_requestSpawnVehicle` проверяет доступ и вызывает `ptg_spawn_fnc_serverSpawnVehicle` локально; `createVehicle`, `createVehicleCrew` и `createUnit` синхронизируются Arma 3 глобально;
 режим водитель+стрелок: UI вызывает `ptg_ui_fnc_onSpawnCrewControlPressed`, спавн создает водителя классом игрока через `ptg_spawn_fnc_spawnDriver`, после чего `ptg_ui_fnc_startCrewDriverControl` сажает игрока в слот стрелка и оставляет движение штатным input actions Arma 3;
-очистка полигона: UI вызывает `ptg_spawn_fnc_cleanupRange`;
-удаление объекта под прицелом: клиент `ptg_main_fnc_deleteCursorObject` вызывает `ptg_main_fnc_serverDeleteObject` локально; функция сохраняет старое имя, но не требует выполнения на сервере;
+очистка полигона: UI вызывает `ptg_spawn_fnc_cleanupRange`; очистка удаляет только сущности с публичным маркером `mkk_ptg_spawnedByPTG`;
+удаление объекта под прицелом: клиент `ptg_main_fnc_deleteCursorObject` вызывает `ptg_main_fnc_serverDeleteObject` локально; функция сохраняет старое имя, но не требует выполнения на сервере; удаление разрешено только для объектов, созданных через PTG;
 тестовая цель в тесте пробития: `ptg_penetration_fnc_serverCreateTarget` создает/заменяет цель в текущем runtime;
 тестовый projectile: клиент `ptg_penetration_fnc_createTestShot` или клик в orbit-камере вызывает `ptg_penetration_fnc_serverFireTestShot`;
 создание взрыва по карте: `ptg_penetration_fnc_createExplosionAtMapClick` создает projectile над выбранной точкой, направляет его вниз и передает событие в tracking;

@@ -1,6 +1,6 @@
 # MKK Proving Ground
 
-A modular Arma 3 proving ground with the technical name `mkk_ptg` and build prefix `ptg`. Current build: `1.3.6.0`, minimum Arma 3 version: `2.20`. The project is designed for quick testing of vehicles, weapons, ammunition, trajectories, penetration, map-created explosive projectiles, teleportation, and local player utilities.
+A modular Arma 3 proving ground with the technical name `mkk_ptg` and build prefix `ptg`. Current build: `1.3.8.0`, minimum Arma 3 version: `2.20`. The project is designed for quick testing of vehicles, weapons, ammunition, trajectories, penetration, map-created explosive projectiles, teleportation, and local player utilities.
 
 ## Modules
 
@@ -46,10 +46,10 @@ A modular Arma 3 proving ground with the technical name `mkk_ptg` and build pref
 - infinite ammo and god mode with reapplication after respawn;
 - Virtual Arsenal and ACE3 Arsenal through keybinds;
 - classname copying for the object under the cursor;
-- object deletion under the cursor with access check and player deletion protection;
+- object deletion under the cursor with access check, player deletion protection, and a PTG-created object restriction;
 - unlocking the vehicle under the cursor;
 - interface scale: small, normal, large, extra large;
-- visible text localization through `addons/main/stringtable.xml` in English, Russian, and German; the current stringtable contains 355 keys, all with English, Russian, and German entries.
+- visible text localization through `addons/main/stringtable.xml` in English, Russian, and German; the current stringtable contains 346 keys, all with English, Russian, and German entries.
 
 ## Documentation
 

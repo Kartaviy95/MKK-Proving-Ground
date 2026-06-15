@@ -9,11 +9,11 @@
 - Проект: MKK Proving Ground.
 - Техническое имя: `mkk_ptg`.
 - Префикс сборки: `ptg`.
-- Текущая версия из `addons/main/script_version.hpp`: `1.3.5.0`.
+- Текущая версия из `addons/main/script_version.hpp`: `1.3.8.0`.
 - Минимальная версия Arma 3 из `REQUIRED_VERSION`: `2.20`.
 - Базовая зависимость: `CBA_A3` / `cba_main`.
 - Optional ACE-зависимости: `ptg_ace` через `ace_interact_menu`, `ptg_player_ace` через `ace_medical_damage`; оба используют `skipWhenMissingDependencies = 1`.
-- Локализация: `addons/main/stringtable.xml`, 306 ключей `STR_MKK_PTG_*`, у текущих ключей есть `English`, `Russian`, `German`.
+- Локализация: `addons/main/stringtable.xml`, 346 ключей `STR_MKK_PTG_*`, у текущих ключей есть `English`, `Russian`, `German`.
 - Назначение: модульный полигон Arma 3 для проверки техники, вооружения, projectile, траекторий, пробития, взрывных боеприпасов по карте, телепортации, камеры, перевооружения и локальных утилит игрока.
 
 ## Рабочие правила по умолчанию
