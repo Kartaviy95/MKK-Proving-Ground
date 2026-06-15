@@ -4,6 +4,7 @@ PREP(blockAceMedicalDamage);
 PREP(handleDamage);
 PREP(handleFiredMan);
 PREP(registerPlayerHandlers);
+PREP(repairVehicleDamage);
 PREP(refillWeaponMagazine);
 PREP(toggleGodMode);
 PREP(toggleInfiniteAmmo);

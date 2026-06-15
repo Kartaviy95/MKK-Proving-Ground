@@ -36,7 +36,7 @@ if (_enabled) then {
 
     private _vehicle = vehicle _unit;
     if (_vehicle isNotEqualTo _unit) then {
-        _vehicle setDamage 0;
+        [_vehicle] call FUNC(repairVehicleDamage);
     };
 
     resetCamShake;
