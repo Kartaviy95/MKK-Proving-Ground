@@ -1572,9 +1572,9 @@
             <German>Teleportpunkt ist durch ein Kartenobjekt blockiert.</German>
         </Key>
         <Key ID="STR_MKK_PTG_TELEPORT_CURRENT_LOCATION">
-            <English>Current location: %1</English>
-            <Russian>Текущее местоположение: %1</Russian>
-            <German>Aktuelle Position: %1</German>
+            <English>Current location</English>
+            <Russian>Текущее местоположение</Russian>
+            <German>Aktuelle Position</German>
         </Key>
         <Key ID="STR_MKK_PTG_TELEPORT_DONE">
             <English>Teleport complete.</English>
