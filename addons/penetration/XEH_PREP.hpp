@@ -1,4 +1,5 @@
 PREP(backToDashboard);
+PREP(cleanupWebWheelHandlers);
 PREP(collectDamageReport);
 PREP(createTestShot);
 PREP(buildExplosionAmmoCatalog);

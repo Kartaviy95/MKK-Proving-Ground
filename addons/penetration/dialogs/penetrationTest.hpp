@@ -3,7 +3,7 @@ class MKK_PTG_PenetrationDisplay {
     movingEnable = 1;
     enableSimulation = 1;
     onLoad = QUOTE(_this call FUNC(initDisplay));
-    onUnload = "if !(missionNamespace getVariable ['mkk_ptg_penetrationClosingForCamera', false]) then {[] call ptg_penetration_fnc_stopOrbitCamera}; uiNamespace setVariable ['mkk_ptg_penetrationDisplay', displayNull]; uiNamespace setVariable ['mkk_ptg_penetrationWebControl', controlNull]; uiNamespace setVariable ['mkk_ptg_penetrationWebReady', false];";
+    onUnload = "if !(missionNamespace getVariable ['mkk_ptg_penetrationClosingForCamera', false]) then {[] call ptg_penetration_fnc_stopOrbitCamera}; ['penetration'] call ptg_penetration_fnc_cleanupWebWheelHandlers; uiNamespace setVariable ['mkk_ptg_penetrationDisplay', displayNull]; uiNamespace setVariable ['mkk_ptg_penetrationWebControl', controlNull]; uiNamespace setVariable ['mkk_ptg_penetrationWebReady', false];";
 
     class controlsBackground {
         class Background: MKK_PTG_RscText {
