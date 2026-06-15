@@ -561,6 +561,11 @@
             <Russian>Под прицелом нет объекта.</Russian>
             <German>Kein Objekt im Fadenkreuz.</German>
         </Key>
+        <Key ID="STR_MKK_PTG_DELETE_CURSOR_OBJECT_NOT_PTG">
+            <English>Only objects created by PTG can be deleted.</English>
+            <Russian>Можно удалить только объекты, созданные через PTG.</Russian>
+            <German>Nur von PTG erstellte Objekte können gelöscht werden.</German>
+        </Key>
         <Key ID="STR_MKK_PTG_DELETE_CURSOR_OBJECT_PLAYER">
             <English>Player objects cannot be deleted.</English>
             <Russian>Объекты игроков нельзя удалить.</Russian>

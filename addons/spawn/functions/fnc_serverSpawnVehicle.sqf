@@ -25,6 +25,8 @@ private _vehicle = createVehicle [_className, _spawnPos, [], 0, "NONE"];
 _vehicle setDir _vehicleDir;
 _vehicle setPosATL _spawnPos;
 
+[_vehicle, "vehicle"] call FUNC(registerSpawnedEntity);
+
 if (_withCrew) then {
     if (_driverClass isNotEqualTo "") then {
         [_vehicle, _requestor, _driverClass] call FUNC(spawnDriver);
@@ -35,8 +37,6 @@ if (_withCrew) then {
         _vehicle setFuel 0;
     };
 };
-
-[_vehicle, "vehicle"] call FUNC(registerSpawnedEntity);
 
 if (_ammoBoxClass isNotEqualTo "" && {
     _className isKindOf "StaticWeapon"

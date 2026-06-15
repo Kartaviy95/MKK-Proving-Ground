@@ -24,5 +24,13 @@ if (isPlayer _entity || {(crew _entity) findIf {isPlayer _x} >= 0}) exitWith {
     [localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_PLAYER"] call FUNC(showTimedHint);
 };
 
-[_entity, player] call FUNC(serverDeleteObject);
-[localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_DONE"] call FUNC(showTimedHint);
+if !([_entity] call FUNC(isPTGCreatedEntity)) exitWith {
+    [localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_NOT_PTG"] call FUNC(showTimedHint);
+};
+
+private _deleted = [_entity, player] call FUNC(serverDeleteObject);
+if (_deleted) then {
+    [localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_DONE"] call FUNC(showTimedHint);
+} else {
+    [localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT_NOT_PTG"] call FUNC(showTimedHint);
+};

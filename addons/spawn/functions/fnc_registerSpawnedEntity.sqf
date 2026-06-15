@@ -1,6 +1,6 @@
 #include "..\script_component.hpp"
 /*
-    Регистрирует созданную сущность в серверном реестре полигона.
+    Регистрирует созданную сущность в реестре полигона.
 */
 params [
     ["_entity", objNull],
@@ -8,6 +8,9 @@ params [
 ];
 
 if (isNull _entity) exitWith {};
+
+_entity setVariable ["mkk_ptg_spawnedByPTG", true, true];
+_entity setVariable ["mkk_ptg_spawnedKind", toLowerANSI _kind, true];
 
 switch (toLowerANSI _kind) do {
     case "vehicle": {

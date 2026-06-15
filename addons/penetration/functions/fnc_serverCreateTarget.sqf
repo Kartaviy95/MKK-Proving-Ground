@@ -26,8 +26,13 @@ if (_className isEqualTo "") exitWith {};
 if (isNull _requestor) exitWith {};
 
 private _oldTarget = missionNamespace getVariable ["mkk_ptg_penetrationTarget", objNull];
-if !(isNull _oldTarget) then {
-    deleteVehicleCrew _oldTarget;
+if (!isNull _oldTarget && {[_oldTarget] call EFUNC(main,isPTGCreatedEntity)}) then {
+    {
+        if (!isNull _x && {!isPlayer _x} && {[_x] call EFUNC(main,isPTGCreatedEntity)}) then {
+            deleteVehicle _x;
+        };
+    } forEach crew _oldTarget;
+
     deleteVehicle _oldTarget;
 };
 
@@ -41,11 +46,11 @@ _vehicle setDir (_dir + 180);
 _vehicle setPosATL _spawnPos;
 _vehicle allowDamage true;
 
-if (_withCrew) then {
-    createVehicleCrew _vehicle;
-};
-
 [_vehicle, "vehicle"] call EFUNC(spawn,registerSpawnedEntity);
+
+if (_withCrew) then {
+    [_vehicle] call EFUNC(spawn,spawnCrew);
+};
 
 missionNamespace setVariable ["mkk_ptg_penetrationTarget", _vehicle, true];
 missionNamespace setVariable ["mkk_ptg_penetrationTargetClass", _className, true];
