@@ -1564,7 +1564,7 @@
                         settingsSection(l("visualization"), data[4].slice(7).map(settingFromArray));
                 }
                 return "<div class=\"modal-backdrop\"><section class=\"panel modal\"><div class=\"panel-head\"><h2>" + esc(title) + "</h2></div>" +
-                    "<div class=\"modal-content\">" + inner + "</div><div class=\"actions-bar\">" +
+                    "<div class=\"modal-content\" data-scroll-id=\"settings:" + esc(settingsModal) + "\">" + inner + "</div><div class=\"actions-bar\">" +
                     "<button class=\"action danger\" data-settings-close=\"true\"><span>" + esc(l("close")) + "</span></button></div></section></div>";
             }
 
@@ -1720,10 +1720,34 @@
                 });
             }
 
+            function saveScrollPositions() {
+                var positions = {};
+                var nodes = app.querySelectorAll("[data-scroll-id]");
+                Array.prototype.forEach.call(nodes, function (node) {
+                    var key = node.getAttribute("data-scroll-id");
+                    if (key) {
+                        positions[key] = [node.scrollTop, node.scrollLeft || 0];
+                    }
+                });
+                return positions;
+            }
+
+            function restoreScrollPositions(positions) {
+                var nodes = app.querySelectorAll("[data-scroll-id]");
+                Array.prototype.forEach.call(nodes, function (node) {
+                    var key = node.getAttribute("data-scroll-id");
+                    if (key && Object.prototype.hasOwnProperty.call(positions, key)) {
+                        node.scrollTop = positions[key][0];
+                        node.scrollLeft = positions[key][1] || 0;
+                    }
+                });
+            }
+
             function render() {
                 if (!state) {
                     return;
                 }
+                var scrollPositions = saveScrollPositions();
                 var surface = state[0];
                 if (surface === "main") {
                     app.innerHTML = renderMain();
@@ -1752,6 +1776,7 @@
                     }
                     pendingFocus = "";
                 }
+                restoreScrollPositions(scrollPositions);
             }
 
             function decodeBase64Utf8(payload) {
@@ -1780,6 +1805,88 @@
                 body.textContent = text || l("actionInfoIdle");
                 panel.classList.toggle("active", !!text);
             }
+
+            var hoveredElement = null;
+
+            function rememberHoveredElement(event) {
+                hoveredElement = event && event.target ? event.target : null;
+            }
+
+            function getHoveredElement() {
+                if (document.querySelectorAll) {
+                    var hovered = document.querySelectorAll(":hover");
+                    if (hovered.length) {
+                        return hovered[hovered.length - 1];
+                    }
+                }
+                return hoveredElement;
+            }
+
+            function canScrollElement(element, direction) {
+                if (!element || element.scrollHeight <= element.clientHeight + 1) {
+                    return false;
+                }
+                if (direction > 0) {
+                    return element.scrollTop + element.clientHeight < element.scrollHeight - 1;
+                }
+                return element.scrollTop > 0;
+            }
+
+            function isScrollableElement(element) {
+                if (!element || element === document.body || element === document.documentElement) {
+                    return false;
+                }
+                if (element.scrollHeight <= element.clientHeight + 1) {
+                    return false;
+                }
+                if (!window.getComputedStyle) {
+                    return false;
+                }
+                var style = window.getComputedStyle(element);
+                return style.overflowY === "auto" || style.overflowY === "scroll";
+            }
+
+            function scrollHovered(scroll) {
+                var raw = Number(scroll);
+                var currentHover = getHoveredElement();
+                if (!raw || !currentHover) {
+                    return false;
+                }
+                var direction = raw < 0 ? 1 : -1;
+                var amount = Math.max(64, Math.min(220, Math.abs(raw) * 92));
+                var element = currentHover.nodeType === 1 ? currentHover : currentHover.parentElement;
+
+                while (element && element !== document.body && element !== document.documentElement) {
+                    if (isScrollableElement(element) && canScrollElement(element, direction)) {
+                        element.scrollTop += direction * amount;
+                        return true;
+                    }
+                    element = element.parentElement;
+                }
+                return false;
+            }
+
+            function suppressNativeWheel(event) {
+                if (event && event.preventDefault) {
+                    event.preventDefault();
+                }
+                if (event && event.stopPropagation) {
+                    event.stopPropagation();
+                }
+                return false;
+            }
+
+            app.addEventListener("mouseover", rememberHoveredElement);
+            app.addEventListener("mousemove", rememberHoveredElement);
+            app.addEventListener("wheel", suppressNativeWheel, false);
+            app.addEventListener("mousewheel", suppressNativeWheel, false);
+
+            app.addEventListener("mouseout", function (event) {
+                var next = event.relatedTarget;
+                if (!next || !app.contains(next)) {
+                    hoveredElement = null;
+                }
+            });
 
             app.addEventListener("mouseover", function (event) {
                 var button = event.target.closest("[data-dashboard-hint]");
@@ -1866,6 +1973,9 @@
                 },
                 receiveBase64: function (payload) {
                     this.receive(decodeBase64Utf8(payload));
+                },
+                scrollHovered: function (scroll) {
+                    return scrollHovered(scroll);
                 }
             };
         }());

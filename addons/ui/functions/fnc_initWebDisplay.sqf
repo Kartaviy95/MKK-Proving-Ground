@@ -25,4 +25,30 @@ _browser ctrlAddEventHandler ["JSDialog", {
     _this call FUNC(handleWebEvent)
 }];
 
+private _wheelEH = _display displayAddEventHandler ["MouseZChanged", {
+    params ["_display", "_scroll"];
+
+    if (uiNamespace getVariable ["mkk_ptg_mainDisplayClosing", false]) exitWith {false};
+    if !(uiNamespace getVariable ["mkk_ptg_webReady", false]) exitWith {false};
+
+    private _browser = uiNamespace getVariable ["mkk_ptg_webControl", controlNull];
+    if (isNull _browser) exitWith {false};
+
+    private _browserPos = ctrlPosition _browser;
+    getMousePosition params ["_mouseX", "_mouseY"];
+    if (
+        _mouseX < (_browserPos # 0)
+        || {_mouseX > ((_browserPos # 0) + (_browserPos # 2))}
+        || {_mouseY < (_browserPos # 1)}
+        || {_mouseY > ((_browserPos # 1) + (_browserPos # 3))}
+    ) exitWith {false};
+
+    _browser ctrlWebBrowserAction [
+        "ExecJS",
+        format ["if (window.PTG && window.PTG.scrollHovered) { window.PTG.scrollHovered(%1); }", _scroll]
+    ];
+    true
+}];
+uiNamespace setVariable ["mkk_ptg_webWheelHandlers", [_display, _wheelEH]];
+
 _browser ctrlWebBrowserAction ["LoadFile", "x\ptg\addons\ui\web\main.html"];
