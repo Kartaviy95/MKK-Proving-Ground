@@ -42,7 +42,7 @@ createMarkerLocal [_marker, _targetPos];
 _marker setMarkerShapeLocal "ICON";
 _marker setMarkerTypeLocal "mil_start";
 _marker setMarkerColorLocal "ColorWEST";
-_marker setMarkerTextLocal format [localize "STR_MKK_PTG_TELEPORT_CURRENT_LOCATION", mapGridPosition _targetPos];
+_marker setMarkerTextLocal localize "STR_MKK_PTG_TELEPORT_CURRENT_LOCATION";
 
 [] spawn {
     waitUntil {
@@ -75,10 +75,6 @@ _marker setMarkerTextLocal format [localize "STR_MKK_PTG_TELEPORT_CURRENT_LOCATI
 
         private _token = missionNamespace getVariable ["mkk_ptg_teleportSelectionToken", ""];
         private _result = [_pos, _token] call ptg_ui_fnc_applyTeleport;
-        if ((_result # 0) isEqualTo false) exitWith {
-            [_result # 1] call ptg_main_fnc_showTimedHint;
-            true
-        };
 
         missionNamespace setVariable ["mkk_ptg_teleportSelecting", false];
         missionNamespace setVariable ["mkk_ptg_teleportSelectionToken", ""];
@@ -91,10 +87,21 @@ _marker setMarkerTextLocal format [localize "STR_MKK_PTG_TELEPORT_CURRENT_LOCATI
         };
 
         onMapSingleClick "";
-        openMap false;
-        if (missionNamespace getVariable ["mkk_ptg_teleportTemporaryMap", false]) then {
-            player unlinkItem "ItemMap";
-            missionNamespace setVariable ["mkk_ptg_teleportTemporaryMap", false];
+        private _temporaryMap = missionNamespace getVariable ["mkk_ptg_teleportTemporaryMap", false];
+        missionNamespace setVariable ["mkk_ptg_teleportTemporaryMap", false];
+        [_temporaryMap] spawn {
+            params ["_temporaryMap"];
+
+            private _timeout = diag_tickTime + 0.5;
+            waitUntil {
+                uiSleep 0.01;
+                openMap false;
+                !visibleMap || {diag_tickTime > _timeout}
+            };
+
+            if (_temporaryMap) then {
+                player unlinkItem "ItemMap";
+            };
         };
 
         [_result # 1] call ptg_main_fnc_showTimedHint;
@@ -114,7 +121,6 @@ _marker setMarkerTextLocal format [localize "STR_MKK_PTG_TELEPORT_CURRENT_LOCATI
         private _target = vehicle player;
         private _targetPos = getPos _target;
         _marker setMarkerPosLocal _targetPos;
-        _marker setMarkerTextLocal format [localize "STR_MKK_PTG_TELEPORT_CURRENT_LOCATION", mapGridPosition _targetPos];
     };
 
     missionNamespace setVariable ["mkk_ptg_teleportSelecting", false];
