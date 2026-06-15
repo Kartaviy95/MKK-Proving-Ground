@@ -56,6 +56,7 @@ uiNamespace setVariable ["mkk_ptg_targetOverlayVisible", false];
 uiNamespace setVariable ["mkk_ptg_rearmOverlayVisible", false];
 uiNamespace setVariable ["mkk_ptg_dashboardVisible", true];
 uiNamespace setVariable ["mkk_ptg_vehicleFiltersReady", false];
+uiNamespace setVariable ["mkk_ptg_dashboardKeybindLabelsReady", false];
 
 [] call FUNC(initInterfaceSizeCombo);
 [] call FUNC(showDashboardView);

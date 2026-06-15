@@ -10,36 +10,49 @@ private _catalog = missionNamespace getVariable ["mkk_ptg_catalogCache", []];
 if (_forceRebuild || {_catalog isEqualTo []}) then {
     [] call EFUNC(catalog,buildVehicleCatalog);
     _catalog = missionNamespace getVariable ["mkk_ptg_catalogCache", []];
+    missionNamespace setVariable ["mkk_ptg_vehicleFilterOptionsCache", []];
 };
 
-private _allSides = [[-1, localize "STR_MKK_PTG_ALL"]];
-private _allFactions = [["", localize "STR_MKK_PTG_ALL"]];
-private _allTypes = [["", localize "STR_MKK_PTG_ALL"]];
+private _allSides = [];
+private _allFactions = [];
+private _allTypes = [];
+private _optionsCache = missionNamespace getVariable ["mkk_ptg_vehicleFilterOptionsCache", []];
+if (!_forceRebuild && {_optionsCache isEqualType []} && {(count _optionsCache) isEqualTo 3}) then {
+    _allSides = +(_optionsCache # 0);
+    _allFactions = +(_optionsCache # 1);
+    _allTypes = +(_optionsCache # 2);
+} else {
+    _allSides = [[-1, localize "STR_MKK_PTG_ALL"]];
+    _allFactions = [["", localize "STR_MKK_PTG_ALL"]];
+    _allTypes = [["", localize "STR_MKK_PTG_ALL"]];
 
-{
-    private _sideId = _x # 2;
-    private _faction = _x # 3;
-    private _vehicleType = _x # 4;
-    private _factionDisplayName = _x param [11, _faction];
+    {
+        private _sideId = _x # 2;
+        private _faction = _x # 3;
+        private _vehicleType = _x # 4;
+        private _factionDisplayName = _x param [11, _faction];
 
-    if ((_allSides findIf {(_x # 0) isEqualTo _sideId}) < 0) then {
-        private _sideName = switch (_sideId) do {
-            case 0: {localize "STR_MKK_PTG_OPFOR"};
-            case 1: {localize "STR_MKK_PTG_BLUFOR"};
-            case 2: {localize "STR_MKK_PTG_INDEPENDENT"};
-            case 3: {localize "STR_MKK_PTG_CIVILIAN"};
-            default {localize "STR_MKK_PTG_UNKNOWN"};
+        if ((_allSides findIf {(_x # 0) isEqualTo _sideId}) < 0) then {
+            private _sideName = switch (_sideId) do {
+                case 0: {localize "STR_MKK_PTG_OPFOR"};
+                case 1: {localize "STR_MKK_PTG_BLUFOR"};
+                case 2: {localize "STR_MKK_PTG_INDEPENDENT"};
+                case 3: {localize "STR_MKK_PTG_CIVILIAN"};
+                default {localize "STR_MKK_PTG_UNKNOWN"};
+            };
+            _allSides pushBack [_sideId, _sideName];
         };
-        _allSides pushBack [_sideId, _sideName];
-    };
 
-    if ((_allFactions findIf {(_x # 0) isEqualTo _faction}) < 0) then {
-        _allFactions pushBack [_faction, _factionDisplayName];
-    };
-    if ((_allTypes findIf {(_x # 0) isEqualTo _vehicleType}) < 0) then {
-        _allTypes pushBack [_vehicleType, [_vehicleType] call EFUNC(common,localizeString)];
-    };
-} forEach _catalog;
+        if ((_allFactions findIf {(_x # 0) isEqualTo _faction}) < 0) then {
+            _allFactions pushBack [_faction, _factionDisplayName];
+        };
+        if ((_allTypes findIf {(_x # 0) isEqualTo _vehicleType}) < 0) then {
+            _allTypes pushBack [_vehicleType, [_vehicleType] call EFUNC(common,localizeString)];
+        };
+    } forEach _catalog;
+
+    missionNamespace setVariable ["mkk_ptg_vehicleFilterOptionsCache", [_allSides, _allFactions, _allTypes]];
+};
 
 uiNamespace setVariable ["mkk_ptg_vehicleSideOptions", _allSides];
 uiNamespace setVariable ["mkk_ptg_vehicleFactionOptions", _allFactions];

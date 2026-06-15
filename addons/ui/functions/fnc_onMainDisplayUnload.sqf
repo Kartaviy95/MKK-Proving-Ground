@@ -17,6 +17,7 @@ uiNamespace setVariable ["mkk_ptg_webWheelHandlers", []];
 uiNamespace setVariable ["mkk_ptg_display", displayNull];
 uiNamespace setVariable ["mkk_ptg_webControl", controlNull];
 uiNamespace setVariable ["mkk_ptg_webReady", false];
+uiNamespace setVariable ["mkk_ptg_webLabelsSent", false];
 uiNamespace setVariable ["mkk_ptg_mainDisplayClosing", false];
 uiNamespace setVariable ["mkk_ptg_mainDisplayOpenQueued", false];
 uiNamespace setVariable ["mkk_ptg_vehicleFiltersReady", false];

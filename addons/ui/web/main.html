@@ -1202,6 +1202,7 @@
             var textureCache = {};
             var pendingFocus = "";
             var pendingCursor = 0;
+            var inputDebounceTimers = {};
             var firstBoot = true;
 
             function esc(value) {
@@ -1234,6 +1235,21 @@
                     var payload = JSON.stringify([action, value == null ? "" : value]);
                     A3API.SendAlert("b64:" + encodeBase64Utf8(payload));
                 }
+            }
+
+            function sendInput(action, value) {
+                if (action.indexOf("Search") === -1) {
+                    send(action, value);
+                    return;
+                }
+
+                if (inputDebounceTimers[action]) {
+                    clearTimeout(inputDebounceTimers[action]);
+                }
+                inputDebounceTimers[action] = setTimeout(function () {
+                    inputDebounceTimers[action] = null;
+                    send(action, value);
+                }, 150);
             }
 
             function nativeInput(action, value) {
@@ -1955,17 +1971,19 @@
                 if (action) {
                     pendingFocus = action;
                     pendingCursor = event.target.selectionStart || 0;
-                    send(action, event.target.value);
+                    sendInput(action, event.target.value);
                 }
             });
 
             window.PTG = {
                 receive: function (payload) {
                     state = JSON.parse(payload);
-                    labels = {};
-                    (state[1] || []).forEach(function (pair) {
-                        labels[pair[0]] = pair[1];
-                    });
+                    if ((state[1] || []).length > 0) {
+                        labels = {};
+                        state[1].forEach(function (pair) {
+                            labels[pair[0]] = pair[1];
+                        });
+                    }
                     if (state[0] !== "main") {
                         settingsModal = "";
                     }

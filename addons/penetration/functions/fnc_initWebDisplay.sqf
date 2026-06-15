@@ -30,9 +30,11 @@ if (_surface isEqualTo "explosion") then {
 
 private _controlVar = format ["mkk_ptg_%1WebControl", _surface];
 private _readyVar = format ["mkk_ptg_%1WebReady", _surface];
+private _labelsSentVar = format ["mkk_ptg_%1WebLabelsSent", _surface];
 private _wheelHandlersVar = format ["mkk_ptg_%1WebWheelHandlers", _surface];
 uiNamespace setVariable [_controlVar, _browser];
 uiNamespace setVariable [_readyVar, false];
+uiNamespace setVariable [_labelsSentVar, false];
 [_surface] call FUNC(cleanupWebWheelHandlers);
 _browser setVariable ["mkk_ptg_webSurface", _surface];
 _display setVariable ["mkk_ptg_webSurface", _surface];
@@ -40,6 +42,7 @@ _display setVariable ["mkk_ptg_webSurface", _surface];
 _browser ctrlAddEventHandler ["PageLoaded", {
     params ["_control"];
     private _surface = _control getVariable ["mkk_ptg_webSurface", "penetration"];
+    uiNamespace setVariable [format ["mkk_ptg_%1WebLabelsSent", _surface], false];
     uiNamespace setVariable [format ["mkk_ptg_%1WebReady", _surface], true];
     [_surface] call FUNC(pushWebState);
 }];

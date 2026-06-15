@@ -11,6 +11,12 @@ if !(uiNamespace getVariable ["mkk_ptg_webReady", false]) exitWith {};
 private _browser = uiNamespace getVariable ["mkk_ptg_webControl", controlNull];
 if (isNull _browser) exitWith {};
 
+private _sendLabels = !(uiNamespace getVariable ["mkk_ptg_webLabelsSent", false]);
+private _labels = [];
+if (_sendLabels) then {
+    _labels = [] call FUNC(getWebLabels);
+};
+
 private _fncOptions = {
     params ["_rows", "_selected"];
     private _selectedText = if (_selected isEqualType "") then {_selected} else {str _selected};
@@ -53,8 +59,6 @@ private _status = [
     missionNamespace getVariable ["mkk_ptg_godModeEnabled", false],
     missionNamespace getVariable ["mkk_ptg_mapProjectileMarkerShowAmmo", false]
 ];
-
-[] call FUNC(updateDashboardKeybindLabels);
 
 private _mapSmokeColor = missionNamespace getVariable ["mkk_ptg_mapSmokeColor", "ColorYellow"];
 if !(_mapSmokeColor in ["ColorWhite", "ColorRed", "ColorGreen", "ColorYellow", "ColorBlue", "ColorOrange", "ColorPink"]) then {
@@ -323,7 +327,7 @@ private _settings = [
 
 private _state = [
     "main",
-    [] call FUNC(getWebLabels),
+    _labels,
     _view,
     _dashboard,
     _vehicle,
@@ -333,3 +337,6 @@ private _state = [
 ];
 private _payload = _browser ctrlWebBrowserAction ["ToBase64", toJSON _state];
 _browser ctrlWebBrowserAction ["ExecJS", format ["window.PTG.receiveBase64(""%1"");", _payload]];
+if (_sendLabels) then {
+    uiNamespace setVariable ["mkk_ptg_webLabelsSent", true];
+};
