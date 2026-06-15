@@ -5,6 +5,7 @@ PREP(getCloseCameraKeyName);
 PREP(getKeybindName);
 PREP(isAuthorized);
 PREP(isCloseCameraKey);
+PREP(isPTGCreatedEntity);
 PREP(isMapHeightKey);
 PREP(isQuickMapMarkerKey);
 PREP(openMainUI);

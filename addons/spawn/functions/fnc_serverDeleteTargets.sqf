@@ -3,11 +3,16 @@
     Удаляет все цели, созданные через меню целей.
 */
 {
-    if !(isNull _x) then {
+    if (!isNull _x && {[_x] call EFUNC(main,isPTGCreatedEntity)}) then {
         if (_x isKindOf "Man") then {
             deleteVehicle _x;
         } else {
-            {deleteVehicle _x;} forEach crew _x;
+            {
+                if (!isNull _x && {!isPlayer _x} && {[_x] call EFUNC(main,isPTGCreatedEntity)}) then {
+                    deleteVehicle _x;
+                };
+            } forEach crew _x;
+
             deleteVehicle _x;
         };
     };

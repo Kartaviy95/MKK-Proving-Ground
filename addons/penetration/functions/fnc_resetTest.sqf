@@ -6,10 +6,16 @@
 
 private _target = missionNamespace getVariable ["mkk_ptg_penetrationTarget", objNull];
 private _className = missionNamespace getVariable ["mkk_ptg_penetrationTargetClass", ""];
-if (_className != "") then {
+if (_className isNotEqualTo "") then {
     [_className, player, true] call FUNC(serverCreateTarget);
 } else {
-    if !(isNull _target) then {
+    if (!isNull _target && {[_target] call EFUNC(main,isPTGCreatedEntity)}) then {
+        {
+            if (!isNull _x && {!isPlayer _x} && {[_x] call EFUNC(main,isPTGCreatedEntity)}) then {
+                deleteVehicle _x;
+            };
+        } forEach crew _target;
+
         deleteVehicle _target;
     };
 };

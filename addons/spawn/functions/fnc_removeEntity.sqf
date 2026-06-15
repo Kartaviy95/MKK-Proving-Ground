@@ -7,5 +7,6 @@ params [
 ];
 
 if (isNull _entity) exitWith {};
+if !([_entity] call EFUNC(main,isPTGCreatedEntity)) exitWith {};
 
 deleteVehicle _entity;

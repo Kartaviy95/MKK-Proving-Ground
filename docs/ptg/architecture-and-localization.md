@@ -26,7 +26,7 @@ German.
 Текущее состояние stringtable:
 
 ключи имеют префикс `STR_MKK_PTG_`;
-в `addons/main/stringtable.xml` сейчас 355 ключей;
+в `addons/main/stringtable.xml` сейчас 346 ключей;
 у всех текущих key есть English, Russian и German.
 
 24. Внутренняя архитектура
@@ -95,8 +95,8 @@ Browser presentation загружает локальную HTML-страницу
 режим водитель+стрелок: UI вызывает `ptg_ui_fnc_onSpawnCrewControlPressed`, спавн создает водителя классом игрока через `ptg_spawn_fnc_spawnDriver`, после чего `ptg_ui_fnc_startCrewDriverControl` сажает игрока в слот стрелка и оставляет движение штатным input actions Arma 3;
 быстрый маркер на карте: `ptg_ui_fnc_attachMapSmokeHandlers` подключает локальный handler карты для настраиваемой CBA-клавиши `mkk_ptg_place_quick_map_marker`, а `ptg_ui_fnc_placeMapSmokeAtPosition` передает позицию, цвет и игрока в `ptg_spawn_fnc_requestPlaceMapSmoke` / `ptg_spawn_fnc_serverPlaceMapSmoke`;
 метки высоты на карте: `ptg_ui_fnc_startMapHeightProbe` гарантирует постоянно активный локальный режим, `ptg_ui_fnc_attachMapHeightHandlers` подключает handler карты для настраиваемой CBA-клавиши `mkk_ptg_place_map_height_marker`, маркеры создаются локально через `createMarkerLocal`, а dashboard меняет только цвет marker;
-очистка полигона: UI вызывает `ptg_spawn_fnc_cleanupRange`;
-удаление объекта под прицелом: клиент `ptg_main_fnc_deleteCursorObject` вызывает `ptg_main_fnc_serverDeleteObject` локально; функция сохраняет старое имя, но не требует выполнения на сервере;
+очистка полигона: UI вызывает `ptg_spawn_fnc_cleanupRange`; очистка удаляет только сущности с публичным маркером `mkk_ptg_spawnedByPTG`;
+удаление объекта под прицелом: клиент `ptg_main_fnc_deleteCursorObject` вызывает `ptg_main_fnc_serverDeleteObject` локально; функция сохраняет старое имя, но не требует выполнения на сервере; удаление разрешено только для объектов, созданных через PTG;
 тестовая цель в тесте пробития: `ptg_penetration_fnc_serverCreateTarget` создает/заменяет цель в текущем runtime;
 тестовый projectile: клиент `ptg_penetration_fnc_createTestShot` или клик в orbit-камере вызывает `ptg_penetration_fnc_serverFireTestShot`;
 создание взрыва по карте: `ptg_penetration_fnc_createExplosionAtMapClick` создает projectile над выбранной точкой, направляет его вниз и передает событие в tracking;

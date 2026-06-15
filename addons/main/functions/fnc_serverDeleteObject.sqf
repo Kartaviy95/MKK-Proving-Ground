@@ -10,17 +10,19 @@ params [
     ["_requestor", objNull, [objNull]]
 ];
 
-if (isNull _entity || {isNull _requestor}) exitWith {};
-if !([_requestor] call FUNC(isAuthorized)) exitWith {};
-if (_entity isEqualTo _requestor) exitWith {};
+if (isNull _entity || {isNull _requestor}) exitWith {false};
+if !([_requestor] call FUNC(isAuthorized)) exitWith {false};
+if (_entity isEqualTo _requestor) exitWith {false};
+if !([_entity] call FUNC(isPTGCreatedEntity)) exitWith {false};
 
 private _crew = crew _entity;
-if (isPlayer _entity || {_crew findIf {isPlayer _x} >= 0}) exitWith {};
+if (isPlayer _entity || {_crew findIf {isPlayer _x} >= 0}) exitWith {false};
 
 {
-    if (!isNull _x && {!isPlayer _x}) then {
+    if (!isNull _x && {!isPlayer _x} && {[_x] call FUNC(isPTGCreatedEntity)}) then {
         deleteVehicle _x;
     };
 } forEach _crew;
 
 deleteVehicle _entity;
+true
