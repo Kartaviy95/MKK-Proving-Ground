@@ -16,6 +16,13 @@ if !(uiNamespace getVariable [format ["mkk_ptg_%1WebReady", _surface], false]) e
 private _browser = uiNamespace getVariable [format ["mkk_ptg_%1WebControl", _surface], controlNull];
 if (isNull _browser) exitWith {};
 
+private _labelsSentVar = format ["mkk_ptg_%1WebLabelsSent", _surface];
+private _sendLabels = !(uiNamespace getVariable [_labelsSentVar, false]);
+private _labels = [];
+if (_sendLabels) then {
+    _labels = [] call EFUNC(ui,getWebLabels);
+};
+
 private _fncOptions = {
     params ["_ctrl"];
     private _items = [];
@@ -134,6 +141,9 @@ if (!_isExplosion) then {
     ];
 };
 
-private _state = [_surface, [] call EFUNC(ui,getWebLabels), "", _data];
+private _state = [_surface, _labels, "", _data];
 private _payload = _browser ctrlWebBrowserAction ["ToBase64", toJSON _state];
 _browser ctrlWebBrowserAction ["ExecJS", format ["window.PTG.receiveBase64(""%1"");", _payload]];
+if (_sendLabels) then {
+    uiNamespace setVariable [_labelsSentVar, true];
+};

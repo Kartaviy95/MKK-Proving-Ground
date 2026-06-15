@@ -12,12 +12,14 @@ if (isNull _browser) exitWith {};
 
 uiNamespace setVariable ["mkk_ptg_webControl", _browser];
 uiNamespace setVariable ["mkk_ptg_webReady", false];
+uiNamespace setVariable ["mkk_ptg_webLabelsSent", false];
 
 _browser ctrlAddEventHandler ["PageLoaded", {
     params ["_control"];
     if (uiNamespace getVariable ["mkk_ptg_mainDisplayClosing", false]) exitWith {};
     uiNamespace setVariable ["mkk_ptg_webControl", _control];
     uiNamespace setVariable ["mkk_ptg_webReady", true];
+    uiNamespace setVariable ["mkk_ptg_webLabelsSent", false];
     [] call FUNC(pushWebState);
 }];
 

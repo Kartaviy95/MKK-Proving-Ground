@@ -138,7 +138,8 @@ switch (_action) do {
     };
     case "vehicleSearch": {
         uiNamespace setVariable ["mkk_ptg_vehicleSearch", _value];
-        [] call FUNC(refreshVehicleList);
+        _shouldPushState = false;
+        ["vehicle"] call FUNC(queueSearchRefresh);
     };
     case "vehicleSide": {
         uiNamespace setVariable ["mkk_ptg_vehicleFilterSide", parseNumber _value];
@@ -176,7 +177,8 @@ switch (_action) do {
     };
     case "targetSearch": {
         uiNamespace setVariable ["mkk_ptg_targetSearch", _value];
-        [] call FUNC(refreshTargetList);
+        _shouldPushState = false;
+        ["target"] call FUNC(queueSearchRefresh);
     };
     case "targetDistance": {uiNamespace setVariable ["mkk_ptg_targetDistance", _value]};
     case "targetPatrol": {uiNamespace setVariable ["mkk_ptg_targetPatrol", _value]};

@@ -74,8 +74,7 @@
     "mkk_ptg_delete_cursor_object",
     localize "STR_MKK_PTG_DELETE_CURSOR_OBJECT",
     {
-        if !(isNull (findDisplay 12)) exitWith {false};
-        if !(isNull (findDisplay 52)) exitWith {false};
+        if (visibleMap || {!(isNull (findDisplay 52))}) exitWith {false};
         [] call FUNC(deleteCursorObject);
         true
     },

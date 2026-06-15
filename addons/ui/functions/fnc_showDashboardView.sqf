@@ -14,6 +14,9 @@ uiNamespace setVariable ["mkk_ptg_mapProjectileMarkerSettingsVisible", false];
 uiNamespace setVariable ["mkk_ptg_hitpointInspectorSettingsVisible", false];
 
 [] call FUNC(closeRearmOverlay);
-[] call FUNC(updateDashboardKeybindLabels);
+if !(uiNamespace getVariable ["mkk_ptg_dashboardKeybindLabelsReady", false]) then {
+    [] call FUNC(updateDashboardKeybindLabels);
+    uiNamespace setVariable ["mkk_ptg_dashboardKeybindLabelsReady", true];
+};
 [] call FUNC(initInterfaceSizeCombo);
 [] call FUNC(setDashboardControlsBlocked);
