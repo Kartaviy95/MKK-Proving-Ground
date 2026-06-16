@@ -10,7 +10,8 @@ params [
     ["_distance", missionNamespace getVariable ["mkk_ptg_spawnDefaultDistance", 10]],
     ["_directionOffset", 0],
     ["_ammoBoxClass", ""],
-    ["_driverClass", ""]
+    ["_driverClass", ""],
+    ["_crewSideId", -1]
 ];
 
 if (_className isEqualTo "") exitWith {};
@@ -38,6 +39,14 @@ if (_driverClass isNotEqualTo "" && {
     _driverClass = "";
 };
 
+if !(_crewSideId isEqualType 0) then {
+    _crewSideId = parseNumber str _crewSideId;
+};
+_crewSideId = round _crewSideId;
+if !(_crewSideId in [0, 1, 2]) then {
+    _crewSideId = -1;
+};
+
 [
     _className,
     _requestor,
@@ -45,5 +54,6 @@ if (_driverClass isNotEqualTo "" && {
     _distance,
     _directionOffset,
     _ammoBoxClass,
-    _driverClass
+    _driverClass,
+    _crewSideId
 ] call FUNC(serverSpawnVehicle);

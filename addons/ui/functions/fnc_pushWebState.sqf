@@ -177,6 +177,19 @@ if (_view isEqualTo "vehicles") then {
     };
 
     private _showAmmoBox = _selectedVehicle isNotEqualTo "" && {_selectedVehicle isKindOf "StaticWeapon"};
+    private _crewSide = uiNamespace getVariable ["mkk_ptg_vehicleCrewSide", 1];
+    if !(_crewSide isEqualType 0) then {
+        _crewSide = parseNumber str _crewSide;
+    };
+    _crewSide = round _crewSide;
+    if !(_crewSide in [0, 1, 2]) then {
+        _crewSide = 1;
+    };
+    private _crewSides = [
+        [0, localize "STR_MKK_PTG_CREW_SIDE_RED"],
+        [1, localize "STR_MKK_PTG_CREW_SIDE_BLUE"],
+        [2, localize "STR_MKK_PTG_CREW_SIDE_GREEN"]
+    ];
     _vehicle = [
         [
             [uiNamespace getVariable ["mkk_ptg_vehicleSideOptions", []], uiNamespace getVariable ["mkk_ptg_vehicleFilterSide", -1]] call _fncOptions,
@@ -191,7 +204,8 @@ if (_view isEqualTo "vehicles") then {
         _vehicleCard,
         [uiNamespace getVariable ["mkk_ptg_vehicleAmmoBoxOptions", []], missionNamespace getVariable ["mkk_ptg_currentAmmoBoxSelection", ""]] call _fncOptions,
         _showAmmoBox,
-        uiNamespace getVariable ["mkk_ptg_vehicleResultText", localize "STR_MKK_PTG_FOUND_ZERO"]
+        uiNamespace getVariable ["mkk_ptg_vehicleResultText", localize "STR_MKK_PTG_FOUND_ZERO"],
+        [_crewSides, _crewSide] call _fncOptions
     ];
 };
 
@@ -214,6 +228,19 @@ if (_view isEqualTo "targets") then {
         ["air", localize "STR_MKK_PTG_TARGET_AIR"]
     ];
     private _targetMode = uiNamespace getVariable ["mkk_ptg_targetMode", "bot"];
+    private _targetCrewSide = uiNamespace getVariable ["mkk_ptg_targetCrewSide", 0];
+    if !(_targetCrewSide isEqualType 0) then {
+        _targetCrewSide = parseNumber str _targetCrewSide;
+    };
+    _targetCrewSide = round _targetCrewSide;
+    if !(_targetCrewSide in [0, 1, 2]) then {
+        _targetCrewSide = 0;
+    };
+    private _targetCrewSides = [
+        [0, localize "STR_MKK_PTG_CREW_SIDE_RED"],
+        [1, localize "STR_MKK_PTG_CREW_SIDE_BLUE"],
+        [2, localize "STR_MKK_PTG_CREW_SIDE_GREEN"]
+    ];
     _targets = [
         [_modes, _targetMode] call _fncOptions,
         _targetMode,
@@ -226,7 +253,8 @@ if (_view isEqualTo "targets") then {
         ],
         uiNamespace getVariable ["mkk_ptg_targetRows", []],
         _selectedTarget,
-        _targetCard
+        _targetCard,
+        [_targetCrewSides, _targetCrewSide] call _fncOptions
     ];
 };
 

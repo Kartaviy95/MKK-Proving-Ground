@@ -161,6 +161,14 @@ switch (_action) do {
         uiNamespace setVariable ["mkk_ptg_vehicleDirection", _value];
         [false] call FUNC(saveVehicleSpawnState);
     };
+    case "vehicleCrewSide": {
+        private _crewSideId = round (parseNumber _value);
+        if (_crewSideId in [0, 1, 2]) then {
+            uiNamespace setVariable ["mkk_ptg_vehicleCrewSide", _crewSideId];
+            uiNamespace setVariable ["mkk_ptg_vehicleCrewSideTouched", true];
+            [false] call FUNC(saveVehicleSpawnState);
+        };
+    };
     case "ammoBox": {
         [_value] call FUNC(onStaticAmmoBoxSelected);
     };
@@ -174,6 +182,13 @@ switch (_action) do {
     case "targetMode": {
         uiNamespace setVariable ["mkk_ptg_targetMode", _value];
         [] call FUNC(refreshTargetList);
+    };
+    case "targetCrewSide": {
+        private _crewSideId = round (parseNumber _value);
+        if (_crewSideId in [0, 1, 2]) then {
+            uiNamespace setVariable ["mkk_ptg_targetCrewSide", _crewSideId];
+            uiNamespace setVariable ["mkk_ptg_targetCrewSideTouched", true];
+        };
     };
     case "targetSearch": {
         uiNamespace setVariable ["mkk_ptg_targetSearch", _value];

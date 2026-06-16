@@ -598,6 +598,40 @@
             box-shadow: 0 0 0 2px rgba(53, 213, 245, 0.10);
         }
 
+        .segmented {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 4px;
+            padding: 4px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            background: rgba(3, 11, 17, 0.76);
+        }
+
+        .segment {
+            min-width: 0;
+            min-height: 32px;
+            border: 0;
+            border-radius: 4px;
+            color: var(--muted);
+            background: transparent;
+            font-size: 11px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .segment.active,
+        .segment:hover,
+        .segment:focus {
+            color: var(--text);
+            background: rgba(53, 213, 245, 0.13);
+            box-shadow: inset 0 0 0 1px rgba(53, 213, 245, 0.28);
+            outline: none;
+        }
+
         .footer {
             min-height: 39px;
             display: flex;
@@ -1267,6 +1301,13 @@
                 return "<option value=\"" + esc(value) + "\"" + (selected ? " selected" : "") + ">" + esc(text) + "</option>";
             }
 
+            function segmented(action, items) {
+                return "<div class=\"segmented\">" + (items || []).map(function (item) {
+                    var active = item[2] ? " active" : "";
+                    return "<button class=\"segment" + active + "\" data-action=\"" + esc(action) + "\" data-value=\"" + esc(item[0]) + "\">" + esc(item[1]) + "</button>";
+                }).join("") + "</div>";
+            }
+
             function button(action, text, css, enabled, dot, hint) {
                 var disabled = enabled === false ? " disabled" : "";
                 var mark = dot === undefined ? "" : "<span class=\"mark" + (dot ? " active" : "") + "\"></span>";
@@ -1427,8 +1468,9 @@
                 var ammo = data[7];
                 var showAmmo = data[8];
                 var found = data[9];
+                var crewSides = data[10] || [];
 
-                var left = "<section class=\"panel filter-panel\"><div class=\"panel-head\"><h2>" + esc(l("filters")) + "</h2></div><div class=\"filters\">" +
+                var left = "<section class=\"panel filter-panel\"><div class=\"panel-head\"><h2>" + esc(l("filters")) + "</h2></div><div class=\"filters\" data-scroll-id=\"vehicleFilters\">" +
                     field(l("search"), nativeInput("vehicleSearch", search)) +
                     field(l("side"), "<select data-change=\"vehicleSide\">" + listToOptions(filters[0]) + "</select>") +
                     field(l("faction"), "<select data-change=\"vehicleFaction\">" + listToOptions(filters[1]) + "</select>") +
@@ -1437,6 +1479,7 @@
                     field(l("distance"), "<input data-input=\"vehicleDistance\" value=\"" + esc(distance) + "\">") +
                     field(l("direction"), "<input data-input=\"vehicleDirection\" value=\"" + esc(direction) + "\">") +
                     "</div>" +
+                    field(l("crewSide"), segmented("vehicleCrewSide", crewSides)) +
                     (showAmmo ? field(l("ammoBox"), "<select data-change=\"ammoBox\">" + listToOptions(ammo) + "</select>") : "") +
                     "</div></section>";
                 var middle = "<section class=\"panel list-panel\"><div class=\"panel-head\"><h2>" + esc(l("vehicleSpawn")) + "</h2><p class=\"results-count\">" + esc(found) + "</p></div>" +
@@ -1475,15 +1518,17 @@
                 var rows = data[4];
                 var selected = data[5];
                 var card = data[6];
-                var left = "<section class=\"panel filter-panel\"><div class=\"panel-head\"><h2>" + esc(l("createTarget")) + "</h2></div><div class=\"filters\">" +
+                var crewSides = data[7] || [];
+                var left = "<section class=\"panel filter-panel\"><div class=\"panel-head\"><h2>" + esc(l("createTarget")) + "</h2></div><div class=\"filters\" data-scroll-id=\"targetFilters\">" +
                     field(l("targetType"), "<select data-change=\"targetMode\">" + listToOptions(modes) + "</select>") +
                     field(l("search"), nativeInput("targetSearch", search)) +
                     field(l("distance"), "<input data-input=\"targetDistance\" value=\"" + esc(inputs[0]) + "\">") +
+                    (mode !== "bot" ? field(l("crewSide"), segmented("targetCrewSide", crewSides)) : "") +
                     (mode === "ground" ? field(l("patrolRadius"), "<input data-input=\"targetPatrol\" value=\"" + esc(inputs[1]) + "\">") : "") +
                     (mode === "air" ? field(l("airRadius"), "<input data-input=\"targetAirRadius\" value=\"" + esc(inputs[2]) + "\">") +
                         field(l("airHeight"), "<input data-input=\"targetAirHeight\" value=\"" + esc(inputs[3]) + "\">") : "") +
                     "</div></section>";
-                var middle = "<section class=\"panel list-panel\"><div class=\"panel-head\"><h2>" + esc(l("selectTarget")) + "</h2></div><div class=\"result-list\">" +
+                var middle = "<section class=\"panel list-panel\"><div class=\"panel-head\"><h2>" + esc(l("selectTarget")) + "</h2></div><div class=\"result-list\" data-scroll-id=\"targetRows\">" +
                     resultRows(rows, selected, "selectTarget") + "</div></section>";
                 var right = "<section class=\"panel detail-panel\">" + preview(card && card[2], l("selectTarget")) +
                     "<div class=\"detail-card\">" + (card && card[0] ? "<div class=\"detail-name\">" + esc(card[0]) + "</div><div class=\"property\"><span class=\"key\">" + esc(l("class")) + "</span><span class=\"value\">" + esc(card[1]) + "</span></div>" : "<div class=\"empty\">" + esc(l("selectTarget")) + "</div>") + "</div></section>";

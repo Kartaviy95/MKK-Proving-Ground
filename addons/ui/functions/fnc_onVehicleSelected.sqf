@@ -15,5 +15,6 @@ if !(_className isEqualType "") exitWith {};
 if (_className isEqualTo "") exitWith {};
 
 missionNamespace setVariable ["mkk_ptg_currentSelection", _className];
+[] call FUNC(updateVehicleCrewSideDefault);
 [] call FUNC(refreshStaticAmmoBoxes);
 [false] call FUNC(saveVehicleSpawnState);

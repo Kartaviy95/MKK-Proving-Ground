@@ -33,4 +33,5 @@ if ((count _filtered) > 0) then {
 };
 
 uiNamespace setVariable ["mkk_ptg_vehicleResultText", format [localize "STR_MKK_PTG_FOUND", count _filtered]];
+[] call FUNC(updateVehicleCrewSideDefault);
 [] call FUNC(refreshStaticAmmoBoxes);

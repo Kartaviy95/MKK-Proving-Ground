@@ -107,6 +107,7 @@ private _labels = [
     ["spawnEmpty", localize "STR_MKK_PTG_SPAWN_EMPTY"],
     ["spawnFullCrew", localize "STR_MKK_PTG_SPAWN_FULL_CREW"],
     ["spawnWithCrew", localize "STR_MKK_PTG_SPAWN_WITH_CREW"],
+    ["crewSide", localize "STR_MKK_PTG_CREW_SIDE"],
     ["copyClass", localize "STR_MKK_PTG_COPY_CLASS"],
     ["back", localize "STR_MKK_PTG_BACK"],
     ["class", localize "STR_MKK_PTG_CLASS"],
