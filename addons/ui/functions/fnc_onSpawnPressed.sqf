@@ -15,9 +15,17 @@ if (_className isEqualTo "") exitWith {
 private _distance = missionNamespace getVariable ["mkk_ptg_spawnDefaultDistance", 10];
 private _directionOffset = 0;
 private _ammoBoxClass = "";
+private _crewSideId = uiNamespace getVariable ["mkk_ptg_vehicleCrewSide", -1];
 
 _distance = parseNumber (uiNamespace getVariable ["mkk_ptg_vehicleDistance", str _distance]);
 _directionOffset = parseNumber (uiNamespace getVariable ["mkk_ptg_vehicleDirection", "0"]);
+if !(_crewSideId isEqualType 0) then {
+    _crewSideId = parseNumber str _crewSideId;
+};
+_crewSideId = round _crewSideId;
+if !(_crewSideId in [0, 1, 2]) then {
+    _crewSideId = -1;
+};
 
 if (_className isKindOf "StaticWeapon") then {
     _ammoBoxClass = missionNamespace getVariable ["mkk_ptg_currentAmmoBoxSelection", ""];
@@ -30,7 +38,7 @@ if (_enterAsGunner) then {
     _driverClass = typeOf player;
 };
 
-private _vehicle = [_className, player, _withCrew, _distance, _directionOffset, _ammoBoxClass, _driverClass] call EFUNC(spawn,requestSpawnVehicle);
+private _vehicle = [_className, player, _withCrew, _distance, _directionOffset, _ammoBoxClass, _driverClass, _crewSideId] call EFUNC(spawn,requestSpawnVehicle);
 if (_enterAsGunner) then {
     [_vehicle] call FUNC(startCrewDriverControl);
 };

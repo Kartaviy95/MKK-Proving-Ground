@@ -10,7 +10,8 @@ params [
     ["_distance", 50],
     ["_patrolRadius", 50],
     ["_airRadius", 150],
-    ["_airHeight", 100]
+    ["_airHeight", 100],
+    ["_crewSideId", -1]
 ];
 
 if (_className isEqualTo "") exitWith {};
@@ -30,6 +31,14 @@ if (_mode isEqualTo "bot" && {!(_className in ["B_Survivor_F", "O_Survivor_F", "
 if (_mode isEqualTo "ground" && {!(_className isKindOf "LandVehicle")}) exitWith {};
 if (_mode isEqualTo "air" && {!(_className isKindOf "Air")}) exitWith {};
 
+if !(_crewSideId isEqualType 0) then {
+    _crewSideId = parseNumber str _crewSideId;
+};
+_crewSideId = round _crewSideId;
+if !(_crewSideId in [0, 1, 2]) then {
+    _crewSideId = -1;
+};
+
 [
     _mode,
     _className,
@@ -37,5 +46,6 @@ if (_mode isEqualTo "air" && {!(_className isKindOf "Air")}) exitWith {};
     _distance,
     _patrolRadius,
     _airRadius,
-    _airHeight
+    _airHeight,
+    _crewSideId
 ] call FUNC(serverSpawnTarget);

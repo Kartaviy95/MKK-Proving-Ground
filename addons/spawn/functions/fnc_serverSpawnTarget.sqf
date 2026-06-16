@@ -10,7 +10,8 @@ params [
     ["_distance", 50],
     ["_patrolRadius", 50],
     ["_airRadius", 150],
-    ["_airHeight", 100]
+    ["_airHeight", 100],
+    ["_crewSideId", -1]
 ];
 
 if (_className isEqualTo "") exitWith {};
@@ -90,7 +91,7 @@ private _special = ["NONE", "FLY"] select (_mode isEqualTo "air");
 private _vehicle = createVehicle [_className, _spawnPos, [], 0, _special];
 _vehicle setDir _faceRequesterDir;
 _vehicle setPosATL _spawnPos;
-[_vehicle] call FUNC(spawnCrew);
+[_vehicle, _crewSideId] call FUNC(spawnCrew);
 _vehicle setVehicleAmmo 0;
 
 if (_mode isEqualTo "air") then {

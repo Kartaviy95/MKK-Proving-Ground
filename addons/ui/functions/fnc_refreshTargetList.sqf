@@ -73,3 +73,5 @@ if (_rows isNotEqualTo []) then {
 } else {
     missionNamespace setVariable ["mkk_ptg_targetSelection", ""];
 };
+
+[] call FUNC(updateTargetCrewSideDefault);

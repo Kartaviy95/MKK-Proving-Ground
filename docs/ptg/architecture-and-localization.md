@@ -91,8 +91,8 @@ Browser presentation загружает локальную HTML-страницу
 
 Игровые потоки создания/удаления объектов:
 
-спавн техники: клиентский `ptg_spawn_fnc_requestSpawnVehicle` проверяет доступ и вызывает `ptg_spawn_fnc_serverSpawnVehicle` локально; `createVehicle`, `createVehicleCrew` и `createUnit` синхронизируются Arma 3 глобально;
-режим водитель+стрелок: UI вызывает `ptg_ui_fnc_onSpawnCrewControlPressed`, спавн создает водителя классом игрока через `ptg_spawn_fnc_spawnDriver`, после чего `ptg_ui_fnc_startCrewDriverControl` сажает игрока в слот стрелка и оставляет движение штатным input actions Arma 3;
+спавн техники: клиентский `ptg_spawn_fnc_requestSpawnVehicle` проверяет доступ и вызывает `ptg_spawn_fnc_serverSpawnVehicle` локально; `createVehicle`, `createVehicleCrew` и `createUnit` синхронизируются Arma 3 глобально; выбранная сторона экипажа передается как RED/BLUE/GREEN и применяется к ботам;
+режим водитель+стрелок: UI вызывает `ptg_ui_fnc_onSpawnCrewControlPressed`, спавн создает водителя классом игрока за выбранную сторону через `ptg_spawn_fnc_spawnDriver`, после чего `ptg_ui_fnc_startCrewDriverControl` сажает игрока в слот стрелка и оставляет движение штатным input actions Arma 3;
 быстрый маркер на карте: `ptg_ui_fnc_attachMapSmokeHandlers` подключает локальный handler карты для настраиваемой CBA-клавиши `mkk_ptg_place_quick_map_marker`, а `ptg_ui_fnc_placeMapSmokeAtPosition` передает позицию, цвет и игрока в `ptg_spawn_fnc_requestPlaceMapSmoke` / `ptg_spawn_fnc_serverPlaceMapSmoke`;
 метки высоты на карте: `ptg_ui_fnc_startMapHeightProbe` гарантирует постоянно активный локальный режим, `ptg_ui_fnc_attachMapHeightHandlers` подключает handler карты для настраиваемой CBA-клавиши `mkk_ptg_place_map_height_marker`, маркеры создаются локально через `createMarkerLocal`, а dashboard меняет только цвет marker;
 очистка полигона: UI вызывает `ptg_spawn_fnc_cleanupRange`; очистка удаляет только сущности с публичным маркером `mkk_ptg_spawnedByPTG`;
@@ -100,5 +100,5 @@ Browser presentation загружает локальную HTML-страницу
 тестовая цель в тесте пробития: `ptg_penetration_fnc_serverCreateTarget` создает/заменяет цель в текущем runtime;
 тестовый projectile: клиент `ptg_penetration_fnc_createTestShot` или клик в orbit-камере вызывает `ptg_penetration_fnc_serverFireTestShot`;
 создание взрыва по карте: `ptg_penetration_fnc_createExplosionAtMapClick` создает projectile над выбранной точкой, направляет его вниз и передает событие в tracking;
-тестовые цели из оверлея: `ptg_spawn_fnc_requestSpawnTarget` / `ptg_spawn_fnc_requestDeleteTargets` проверяют вход и вызывают `ptg_spawn_fnc_serverSpawnTarget` / `ptg_spawn_fnc_serverDeleteTargets`;
+тестовые цели из оверлея: `ptg_spawn_fnc_requestSpawnTarget` / `ptg_spawn_fnc_requestDeleteTargets` проверяют вход и вызывают `ptg_spawn_fnc_serverSpawnTarget` / `ptg_spawn_fnc_serverDeleteTargets`; для наземной и воздушной техники выбранная сторона экипажа RED/BLUE/GREEN передается в `spawnCrew`, а режим ботов использует сторону выбранного класса бота;
 перевооружение: turret magazines меняются на владельце техники через remoteExec к объекту, pylon loadout применяется через `setPylonLoadout` на машине, где техника local.

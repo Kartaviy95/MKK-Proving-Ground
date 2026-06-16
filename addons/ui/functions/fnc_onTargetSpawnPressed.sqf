@@ -14,5 +14,13 @@ private _distance = parseNumber (uiNamespace getVariable ["mkk_ptg_targetDistanc
 private _patrolRadius = parseNumber (uiNamespace getVariable ["mkk_ptg_targetPatrol", "50"]);
 private _airRadius = parseNumber (uiNamespace getVariable ["mkk_ptg_targetAirRadius", "150"]);
 private _airHeight = parseNumber (uiNamespace getVariable ["mkk_ptg_targetAirHeight", "100"]);
+private _crewSideId = uiNamespace getVariable ["mkk_ptg_targetCrewSide", -1];
+if !(_crewSideId isEqualType 0) then {
+    _crewSideId = parseNumber str _crewSideId;
+};
+_crewSideId = round _crewSideId;
+if !(_crewSideId in [0, 1, 2]) then {
+    _crewSideId = -1;
+};
 
-[_mode, _className, player, _distance, _patrolRadius, _airRadius, _airHeight] call EFUNC(spawn,requestSpawnTarget);
+[_mode, _className, player, _distance, _patrolRadius, _airRadius, _airHeight, _crewSideId] call EFUNC(spawn,requestSpawnTarget);

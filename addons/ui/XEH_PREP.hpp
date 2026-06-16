@@ -79,6 +79,8 @@ PREP(updateMapProjectileMarkerSettingsMenu);
 PREP(updateHitpointInspectorSettingsMenu);
 PREP(updateDashboardStatusLine);
 PREP(updateDashboardKeybindLabels);
+PREP(updateVehicleCrewSideDefault);
+PREP(updateTargetCrewSideDefault);
 PREP(updateObjectStatusSettingsMenu);
 PREP(updateTrajectorySettingsMenu);
 PREP(updateVehicleCard);

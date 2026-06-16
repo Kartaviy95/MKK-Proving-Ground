@@ -36,6 +36,24 @@ if !(_ammoBoxClass isEqualType "") then {
     _ammoBoxClass = "";
 };
 missionNamespace setVariable ["mkk_ptg_currentAmmoBoxSelection", _ammoBoxClass];
+
+private _crewSideId = _spawnState param [4, -1];
+if !(_crewSideId isEqualType 0) then {
+    _crewSideId = parseNumber str _crewSideId;
+};
+_crewSideId = round _crewSideId;
+private _crewSideTouched = _spawnState param [5, false];
+if !(_crewSideTouched isEqualType false) then {
+    _crewSideTouched = false;
+};
+private _crewSideSaved = (_crewSideId in [0, 1, 2]) && {_crewSideTouched};
+uiNamespace setVariable ["mkk_ptg_vehicleCrewSideTouched", _crewSideSaved];
+if (_crewSideSaved) then {
+    uiNamespace setVariable ["mkk_ptg_vehicleCrewSide", _crewSideId];
+} else {
+    [] call FUNC(updateVehicleCrewSideDefault);
+};
+
 uiNamespace setVariable ["mkk_ptg_vehicleSearch", ""];
 uiNamespace setVariable ["mkk_ptg_vehicleFilterSide", -1];
 uiNamespace setVariable ["mkk_ptg_vehicleFilterFaction", ""];
@@ -52,6 +70,8 @@ uiNamespace setVariable ["mkk_ptg_targetAirRadius", "150"];
 uiNamespace setVariable ["mkk_ptg_targetAirHeight", "100"];
 uiNamespace setVariable ["mkk_ptg_targetRows", []];
 missionNamespace setVariable ["mkk_ptg_targetSelection", ""];
+uiNamespace setVariable ["mkk_ptg_targetCrewSideTouched", false];
+[] call FUNC(updateTargetCrewSideDefault);
 uiNamespace setVariable ["mkk_ptg_targetOverlayVisible", false];
 uiNamespace setVariable ["mkk_ptg_rearmOverlayVisible", false];
 uiNamespace setVariable ["mkk_ptg_dashboardVisible", true];

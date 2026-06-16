@@ -12,3 +12,4 @@ if (_className isEqualType controlNull) then {
 };
 if !(_className isEqualType "") then {_className = "";};
 missionNamespace setVariable ["mkk_ptg_targetSelection", _className];
+[] call FUNC(updateTargetCrewSideDefault);
