@@ -11,7 +11,12 @@ private _showGround = _mode isEqualTo "ground";
 private _showAir = _mode isEqualTo "air";
 private _lastMode = uiNamespace getVariable ["mkk_ptg_targetOverlayLastMode", ""];
 if (_mode isNotEqualTo _lastMode) then {
-    uiNamespace setVariable ["mkk_ptg_targetDistance", (["50", "5"] select (_mode isEqualTo "bot"))];
+    private _defaultDistance = switch (_mode) do {
+        case "ground": {"150"};
+        case "air": {"1500"};
+        default {"5"};
+    };
+    uiNamespace setVariable ["mkk_ptg_targetDistance", _defaultDistance];
     uiNamespace setVariable ["mkk_ptg_targetOverlayLastMode", _mode];
 };
 
