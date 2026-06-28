@@ -36,7 +36,7 @@ German.
 техническое имя проекта: `mkk_ptg`;
 префикс сборки: `ptg`;
 `PREFIX` в коде: `ptg`;
-версия из `script_version.hpp`: 1.3.8.0;
+версия из `script_version.hpp`: 1.3.9.0;
 `REQUIRED_VERSION`: 2.20;
 автор: Tarantino.
 

@@ -45,7 +45,7 @@ MKK Proving Ground — это отдельный модульный полиго
 
 техническое имя: `mkk_ptg`;
 префикс сборки: `ptg`;
-версия из `script_version.hpp`: 1.3.8.0;
+версия из `script_version.hpp`: 1.3.9.0;
 минимальная версия Arma 3: 2.20;
 базовая зависимость: CBA.
 
@@ -770,7 +770,7 @@ Russian.
 техническое имя проекта: `mkk_ptg`;
 префикс сборки: `ptg`;
 `PREFIX` в коде: `ptg`;
-версия из `script_version.hpp`: 1.3.8.0;
+версия из `script_version.hpp`: 1.3.9.0;
 `REQUIRED_VERSION`: 2.20;
 автор: Tarantino.
 

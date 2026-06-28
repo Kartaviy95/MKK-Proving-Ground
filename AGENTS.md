@@ -9,7 +9,7 @@
 - Проект: MKK Proving Ground.
 - Техническое имя: `mkk_ptg`.
 - Префикс сборки: `ptg`.
-- Текущая версия из `addons/main/script_version.hpp`: `1.3.8.0`.
+- Текущая версия из `addons/main/script_version.hpp`: `1.3.9.0`.
 - Минимальная версия Arma 3 из `REQUIRED_VERSION`: `2.20`.
 - Базовая зависимость: `CBA_A3` / `cba_main`.
 - Optional ACE-зависимости: `ptg_ace` через `ace_interact_menu`, `ptg_player_ace` через `ace_medical_damage`; оба используют `skipWhenMissingDependencies = 1`.
