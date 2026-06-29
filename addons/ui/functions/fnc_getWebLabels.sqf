@@ -162,7 +162,8 @@ private _labels = [
     ["ammoEmpty", localize "STR_MKK_PTG_AMMO_PARAMS_EMPTY"],
     ["reportEmpty", localize "STR_MKK_PTG_DAMAGE_REPORT_EMPTY"],
     ["explosionNote", localize "STR_MKK_PTG_EXPLOSION_NOTE"],
-    ["height", localize "STR_MKK_PTG_EXPLOSION_HEIGHT"]
+    ["height", localize "STR_MKK_PTG_EXPLOSION_HEIGHT"],
+    ["explosionClearMarkers", localize "STR_MKK_PTG_EXPLOSION_CLEAR_MARKERS"]
 ];
 
 uiNamespace setVariable ["mkk_ptg_webLabelsCache", _labels];

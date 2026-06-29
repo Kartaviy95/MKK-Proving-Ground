@@ -45,6 +45,7 @@ _ctrlCategory lbSetCurSel _selectedCategoryIdx;
 private _ctrlMap = _display displayCtrl 89040;
 _ctrlMap ctrlMapAnimAdd [0, 0.08, getPos player];
 ctrlMapAnimCommit _ctrlMap;
+[_display] call FUNC(initExplosionMapMarkers);
 
 [] call FUNC(refreshExplosionAmmoList);
 [] call FUNC(updateExplosionAmmoInfo);

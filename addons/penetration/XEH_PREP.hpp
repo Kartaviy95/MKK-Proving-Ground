@@ -1,10 +1,17 @@
 PREP(backToDashboard);
+PREP(attachExplosionMarkerMapHandlers);
 PREP(cleanupWebWheelHandlers);
 PREP(collectDamageReport);
 PREP(createTestShot);
 PREP(buildExplosionAmmoCatalog);
+PREP(cleanupExplosionMapMarkers);
+PREP(clearExplosionMarkers);
 PREP(createExplosionAtMapClick);
+PREP(createExplosionMarker);
+PREP(deleteExplosionMarkerAtMapCursor);
+PREP(detachExplosionMarkerMapHandlers);
 PREP(getExplosionAmmoCategory);
+PREP(initExplosionMapMarkers);
 PREP(initExplosionDisplay);
 PREP(initDisplay);
 PREP(initWebDisplay);
