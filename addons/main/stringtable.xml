@@ -631,10 +631,20 @@
             <Russian>Категория</Russian>
             <German>Kategorie</German>
         </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_CLEAR_MARKERS">
+            <English>Clear markers</English>
+            <Russian>Очистить маркеры</Russian>
+            <German>Marker löschen</German>
+        </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_CREATED">
             <English>Projectile created: %1, height %2 m.</English>
             <Russian>Снаряд создан: %1, высота %2 м.</Russian>
             <German>Projektil erstellt: %1, Höhe %2 m.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_CURRENT_LOCATION">
+            <English>You</English>
+            <Russian>Вы</Russian>
+            <German>Du</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_GROUP_ATGM">
             <English>ATGM / Missiles</English>
@@ -670,6 +680,21 @@
             <English>Map Click Target</English>
             <Russian>Точка на карте</Russian>
             <German>Klickziel auf der Karte</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_MARKER">
+            <English>Explosion</English>
+            <Russian>Взрыв</Russian>
+            <German>Explosion</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_MARKERS_CLEARED">
+            <English>Explosion markers cleared.</English>
+            <Russian>Маркеры взрывов очищены.</Russian>
+            <German>Explosionsmarker gelöscht.</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_EXPLOSION_MARKER_DELETED">
+            <English>Explosion marker deleted.</English>
+            <Russian>Маркер взрыва удалён.</Russian>
+            <German>Explosionsmarker gelöscht.</German>
         </Key>
         <Key ID="STR_MKK_PTG_EXPLOSION_NOTE">
             <English>LMB on the map creates the selected projectile above that point and sends it down.</English>

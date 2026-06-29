@@ -97,6 +97,7 @@ switch (_action) do {
     case "explosionHeight": {
         (_display displayCtrl 89031) ctrlSetText _value;
     };
+    case "explosionClearMarkers": {[] call FUNC(clearExplosionMarkers)};
     case "explosionBack": {[] call FUNC(backToDashboard)};
     case "explosionClose": {closeDialog 0};
 };

@@ -3,7 +3,7 @@ class MKK_PTG_ExplosionDisplay {
     movingEnable = 1;
     enableSimulation = 1;
     onLoad = QUOTE(_this call FUNC(initExplosionDisplay));
-    onUnload = "['explosion'] call ptg_penetration_fnc_cleanupWebWheelHandlers; uiNamespace setVariable ['mkk_ptg_explosionDisplay', displayNull]; uiNamespace setVariable ['mkk_ptg_explosionWebControl', controlNull]; uiNamespace setVariable ['mkk_ptg_explosionWebReady', false];";
+    onUnload = "['explosion'] call ptg_penetration_fnc_cleanupWebWheelHandlers; [] call ptg_penetration_fnc_cleanupExplosionMapMarkers; uiNamespace setVariable ['mkk_ptg_explosionDisplay', displayNull]; uiNamespace setVariable ['mkk_ptg_explosionWebControl', controlNull]; uiNamespace setVariable ['mkk_ptg_explosionWebReady', false];";
 
     class controlsBackground {
         class Background: MKK_PTG_RscText {

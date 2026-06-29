@@ -33,6 +33,9 @@ private _projectile = if (_shotResult isEqualType [] && {count _shotResult > 0})
 private _willOpenTrackingCamera = _shotResult isEqualType [] && {count _shotResult > 1} && {_shotResult # 1};
 
 [format [localize "STR_MKK_PTG_EXPLOSION_CREATED", _ammoClass, round _height]] call EFUNC(main,showTimedHint);
+if (!isNull _projectile) then {
+    [_pos2D] call FUNC(createExplosionMarker);
+};
 
 if (!isNull _projectile && {_willOpenTrackingCamera}) then {
     missionNamespace setVariable ["mkk_ptg_explosionRestoreAmmo", _ammoClass];
