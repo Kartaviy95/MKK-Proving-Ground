@@ -14,6 +14,26 @@ class MKK_PTG_MainDisplay {
             w = 0.90;
             h = 0.85;
         };
+
+        class NativeVehicleSearch: MKK_PTG_RscEdit {
+            idc = 88010;
+            x = -10;
+            y = -10;
+            w = 0.001;
+            h = 0.001;
+            text = "";
+            onKeyUp = QUOTE([_this select 0] call FUNC(onNativeSearchKeyUp));
+        };
+
+        class NativeTargetSearch: MKK_PTG_RscEdit {
+            idc = 88311;
+            x = -10;
+            y = -10;
+            w = 0.001;
+            h = 0.001;
+            text = "";
+            onKeyUp = QUOTE([_this select 0] call FUNC(onNativeSearchKeyUp));
+        };
     };
 };
 
