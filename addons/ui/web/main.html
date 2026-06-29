@@ -582,7 +582,8 @@
         }
 
         select,
-        input {
+        input,
+        .native-input-shell {
             width: 100%;
             height: 40px;
             padding: 0 11px;
@@ -593,9 +594,45 @@
         }
 
         select:focus,
-        input:focus {
+        input:focus,
+        .native-input-shell.active {
             border-color: rgba(53, 213, 245, 0.66);
             box-shadow: 0 0 0 2px rgba(53, 213, 245, 0.10);
+        }
+
+        .native-input-shell {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            cursor: text;
+        }
+
+        .native-input-text {
+            min-width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .native-input-shell.active::after {
+            content: "";
+            flex: 0 0 auto;
+            width: 1px;
+            height: 18px;
+            margin-left: 2px;
+            background: rgba(226, 245, 255, 0.95);
+            animation: nativeCaretBlink 1s steps(1, end) infinite;
+        }
+
+        @keyframes nativeCaretBlink {
+            0%,
+            45% {
+                opacity: 1;
+            }
+
+            46%,
+            100% {
+                opacity: 0;
+            }
         }
 
         .segmented {
@@ -1238,6 +1275,7 @@
             var pendingCursor = 0;
             var inputDebounceTimers = {};
             var firstBoot = true;
+            var activeNativeInput = "";
 
             function esc(value) {
                 return String(value == null ? "" : value)
@@ -1287,7 +1325,10 @@
             }
 
             function nativeInput(action, value) {
-                return "<input data-input=\"" + esc(action) + "\" value=\"" + esc(value) + "\">";
+                var active = activeNativeInput === action ? " active" : "";
+                return "<div class=\"native-input-shell" + active + "\" data-input=\"" + esc(action) + "\" tabindex=\"0\" role=\"textbox\">" +
+                    "<span class=\"native-input-text\">" + esc(value) + "</span>" +
+                    "</div>";
             }
 
             function listToOptions(items, action) {
@@ -1937,10 +1978,39 @@
                 return false;
             }
 
+            function setNativeInputActive(action) {
+                activeNativeInput = action || "";
+                if (!app.querySelectorAll) {
+                    return;
+                }
+                var inputs = app.querySelectorAll(".native-input-shell[data-input]");
+                for (var index = 0; index < inputs.length; index += 1) {
+                    inputs[index].classList.toggle("active", inputs[index].getAttribute("data-input") === activeNativeInput);
+                }
+            }
+
+            function requestNativeInputFocus(element) {
+                var target = element && element.closest ? element.closest("[data-input]") : element;
+                var action = target && target.getAttribute ? target.getAttribute("data-input") : "";
+                if (action && action.indexOf("Search") !== -1) {
+                    setNativeInputActive(action);
+                    send("focusNativeInput", action);
+                    return true;
+                }
+                return false;
+            }
+
             app.addEventListener("mouseover", rememberHoveredElement);
             app.addEventListener("mousemove", rememberHoveredElement);
             app.addEventListener("wheel", suppressNativeWheel, false);
             app.addEventListener("mousewheel", suppressNativeWheel, false);
+            app.addEventListener("mousedown", function (event) {
+                if (requestNativeInputFocus(event.target) && event.preventDefault) {
+                    event.preventDefault();
+                    return;
+                }
+                setNativeInputActive("");
+            });
 
             app.addEventListener("mouseout", function (event) {
                 var next = event.relatedTarget;
@@ -1970,6 +2040,8 @@
             });
 
             app.addEventListener("focusin", function (event) {
+                requestNativeInputFocus(event.target);
+
                 var button = event.target.closest("[data-dashboard-hint]");
                 if (button) {
                     showDashboardHint(button.getAttribute("data-dashboard-hint"));

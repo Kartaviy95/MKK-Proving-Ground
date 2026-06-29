@@ -24,6 +24,8 @@ private _action = _request # 0;
 private _value = _request param [1, ""];
 if !(_value isEqualType "") then {_value = str _value};
 
+private _shouldPushState = true;
+
 private _fncSelectData = {
     params ["_idc", "_data"];
     private _ctrl = _display displayCtrl _idc;
@@ -51,6 +53,7 @@ private _fncFocusNativeInput = {
 
 switch (_action) do {
     case "focusNativeInput": {
+        _shouldPushState = false;
         switch (_value) do {
             case "penVehicleSearch": {[88910] call _fncFocusNativeInput};
             case "penAmmoSearch": {[88911] call _fncFocusNativeInput};
@@ -102,7 +105,7 @@ private _activeDisplay = uiNamespace getVariable [
     ["mkk_ptg_penetrationDisplay", "mkk_ptg_explosionDisplay"] select _isExplosion,
     displayNull
 ];
-if !(isNull _activeDisplay) then {
+if (_shouldPushState && {!(isNull _activeDisplay)}) then {
     [_surface] call FUNC(pushWebState);
 };
 true

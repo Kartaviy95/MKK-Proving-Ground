@@ -7,6 +7,13 @@ params ["_display"];
 uiNamespace setVariable ["mkk_ptg_display", _display];
 [_display] call EFUNC(common,applyDisplayScale);
 
+{
+    private _control = _display displayCtrl _x;
+    if !(isNull _control) then {
+        _control ctrlShow false;
+    };
+} forEach [88010, 88311];
+
 private _spawnState = missionNamespace getVariable [
     "mkk_ptg_vehicleSpawnState",
     profileNamespace getVariable ["mkk_ptg_vehicleSpawnState", []]

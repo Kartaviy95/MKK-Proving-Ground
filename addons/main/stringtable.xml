@@ -306,26 +306,6 @@
             <Russian>Экипаж</Russian>
             <German>Besatzung</German>
         </Key>
-        <Key ID="STR_MKK_PTG_CREW_SIDE">
-            <English>Crew Side</English>
-            <Russian>Сторона экипажа</Russian>
-            <German>Besatzungsseite</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_CREW_SIDE_BLUE">
-            <English>BLUE</English>
-            <Russian>BLUE</Russian>
-            <German>BLUE</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_CREW_SIDE_GREEN">
-            <English>GREEN</English>
-            <Russian>GREEN</Russian>
-            <German>GREEN</German>
-        </Key>
-        <Key ID="STR_MKK_PTG_CREW_SIDE_RED">
-            <English>RED</English>
-            <Russian>RED</Russian>
-            <German>RED</German>
-        </Key>
         <Key ID="STR_MKK_PTG_CREW_COMMANDER">
             <English>Commander</English>
             <Russian>Командир</Russian>
@@ -360,6 +340,26 @@
             <English>Loader</English>
             <Russian>Заряжающий</Russian>
             <German>Ladeschütze</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_CREW_SIDE">
+            <English>Crew Side</English>
+            <Russian>Сторона экипажа</Russian>
+            <German>Besatzungsseite</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_CREW_SIDE_BLUE">
+            <English>BLUE</English>
+            <Russian>BLUE</Russian>
+            <German>BLUE</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_CREW_SIDE_GREEN">
+            <English>GREEN</English>
+            <Russian>GREEN</Russian>
+            <German>GREEN</German>
+        </Key>
+        <Key ID="STR_MKK_PTG_CREW_SIDE_RED">
+            <English>RED</English>
+            <Russian>RED</Russian>
+            <German>RED</German>
         </Key>
         <Key ID="STR_MKK_PTG_DAMAGE">
             <English>Damage</English>

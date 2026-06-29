@@ -23,7 +23,33 @@ if !(_value isEqualType "") then {
 
 private _shouldPushState = true;
 
+private _fncFocusNativeInput = {
+    params ["_idc", "_namespaceKey"];
+    private _control = _display displayCtrl _idc;
+    if (isNull _control) exitWith {};
+
+    private _text = uiNamespace getVariable [_namespaceKey, ""];
+    if !(_text isEqualType "") then {
+        _text = "";
+    };
+
+    _control ctrlSetText _text;
+    _control ctrlSetPosition [safeZoneX - safeZoneW, safeZoneY - safeZoneH, 0.001, 0.001];
+    _control ctrlSetFade 1;
+    _control ctrlCommit 0;
+    _control ctrlShow true;
+    _control ctrlSetTextSelection [count _text, 0];
+    ctrlSetFocus _control;
+};
+
 switch (_action) do {
+    case "focusNativeInput": {
+        _shouldPushState = false;
+        switch (_value) do {
+            case "vehicleSearch": {[88010, "mkk_ptg_vehicleSearch"] call _fncFocusNativeInput};
+            case "targetSearch": {[88311, "mkk_ptg_targetSearch"] call _fncFocusNativeInput};
+        };
+    };
     case "close": {
         _shouldPushState = false;
         uiNamespace setVariable ["mkk_ptg_mainDisplayClosing", true];
@@ -138,6 +164,10 @@ switch (_action) do {
     };
     case "vehicleSearch": {
         uiNamespace setVariable ["mkk_ptg_vehicleSearch", _value];
+        private _control = _display displayCtrl 88010;
+        if !(isNull _control) then {
+            _control ctrlSetText _value;
+        };
         _shouldPushState = false;
         ["vehicle"] call FUNC(queueSearchRefresh);
     };
@@ -192,6 +222,10 @@ switch (_action) do {
     };
     case "targetSearch": {
         uiNamespace setVariable ["mkk_ptg_targetSearch", _value];
+        private _control = _display displayCtrl 88311;
+        if !(isNull _control) then {
+            _control ctrlSetText _value;
+        };
         _shouldPushState = false;
         ["target"] call FUNC(queueSearchRefresh);
     };
