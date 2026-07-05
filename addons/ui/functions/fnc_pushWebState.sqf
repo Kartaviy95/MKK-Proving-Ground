@@ -353,6 +353,8 @@ private _settings = [
     _timingSettings
 ];
 
+private _webScale = ([] call EFUNC(common,getHudScale)) # 0;
+
 private _state = [
     "main",
     _labels,
@@ -361,7 +363,8 @@ private _state = [
     _vehicle,
     _targets,
     _rearm,
-    _settings
+    _settings,
+    _webScale
 ];
 private _payload = _browser ctrlWebBrowserAction ["ToBase64", toJSON _state];
 _browser ctrlWebBrowserAction ["ExecJS", format ["window.PTG.receiveBase64(""%1"");", _payload]];

@@ -141,7 +141,8 @@ if (!_isExplosion) then {
     ];
 };
 
-private _state = [_surface, _labels, "", _data];
+private _webScale = ([] call EFUNC(common,getHudScale)) # 0;
+private _state = [_surface, _labels, "", _data, _webScale];
 private _payload = _browser ctrlWebBrowserAction ["ToBase64", toJSON _state];
 _browser ctrlWebBrowserAction ["ExecJS", format ["window.PTG.receiveBase64(""%1"");", _payload]];
 if (_sendLabels) then {

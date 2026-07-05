@@ -21,6 +21,17 @@
             --subtle: #5e7787;
             --radius: 12px;
             --shadow: 0 26px 80px rgba(0, 0, 0, 0.45);
+            --ui-scale: 1;
+            --fs-11: 11px;
+            --fs-12: 12px;
+            --fs-13: 13px;
+            --fs-14: 14px;
+            --fs-15: 15px;
+            --fs-16: 16px;
+            --fs-19: 19px;
+            --fs-20: 20px;
+            --fs-25: 25px;
+            --fs-37: 37px;
         }
 
         * {
@@ -36,6 +47,7 @@
             background: transparent;
             color: var(--text);
             font-family: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
+            font-size: var(--fs-16);
         }
 
         body {
@@ -228,7 +240,7 @@
 
         .eyebrow {
             color: var(--accent);
-            font-size: 11px;
+            font-size: var(--fs-11);
             font-weight: 700;
             letter-spacing: 0.28em;
             text-transform: uppercase;
@@ -237,7 +249,7 @@
 
         .title {
             margin: 0;
-            font-size: clamp(25px, 2.35vw, 37px);
+            font-size: clamp(var(--fs-25), 2.35vw, var(--fs-37));
             line-height: 1.08;
             font-weight: 700;
             letter-spacing: 0.025em;
@@ -249,7 +261,7 @@
             color: var(--muted);
             letter-spacing: 0.11em;
             text-transform: uppercase;
-            font-size: 12px;
+            font-size: var(--fs-12);
         }
 
         .meta {
@@ -258,7 +270,7 @@
             gap: 16px;
             color: var(--muted);
             letter-spacing: 0.08em;
-            font-size: 12px;
+            font-size: var(--fs-12);
             text-transform: uppercase;
             white-space: nowrap;
         }
@@ -300,7 +312,7 @@
         .panel-head h2,
         .panel-head h3 {
             margin: 0;
-            font-size: 15px;
+            font-size: var(--fs-15);
             text-transform: uppercase;
             letter-spacing: 0.13em;
             color: var(--accent-strong);
@@ -309,7 +321,7 @@
         .panel-head p {
             color: var(--muted);
             margin: 8px 0 0;
-            font-size: 13px;
+            font-size: var(--fs-13);
             line-height: 1.38;
         }
 
@@ -403,7 +415,7 @@
 
         .settings-button {
             justify-content: center;
-            font-size: 20px;
+            font-size: var(--fs-20);
             padding: 0;
             color: var(--accent-strong);
             line-height: 1;
@@ -411,7 +423,7 @@
 
         .settings-button span {
             overflow: visible;
-            font-size: 20px;
+            font-size: var(--fs-20);
             line-height: 1;
         }
 
@@ -421,7 +433,7 @@
             border-radius: 8px;
             background: var(--accent-soft);
             color: var(--muted);
-            font-size: 13px;
+            font-size: var(--fs-13);
             line-height: 1.38;
             min-height: 58px;
             flex-shrink: 0;
@@ -444,7 +456,7 @@
             border-radius: 8px;
             background: rgba(7, 16, 24, 0.58);
             color: var(--muted);
-            font-size: 12px;
+            font-size: var(--fs-12);
             line-height: 1.35;
             flex-shrink: 0;
         }
@@ -460,7 +472,7 @@
         .info-title {
             margin-bottom: 7px;
             color: var(--accent-strong);
-            font-size: 11px;
+            font-size: var(--fs-11);
             font-weight: 700;
             letter-spacing: 0.13em;
             line-height: 1.18;
@@ -535,7 +547,7 @@
 
         .timing-title {
             color: var(--accent-strong);
-            font-size: 11px;
+            font-size: var(--fs-11);
             font-weight: 700;
             letter-spacing: 0.13em;
             line-height: 1.16;
@@ -551,7 +563,7 @@
         .timing-actions .action {
             min-height: 34px;
             padding: 6px 9px;
-            font-size: 12px;
+            font-size: var(--fs-12);
         }
 
         .timing-actions .action span {
@@ -577,7 +589,7 @@
             margin-bottom: 7px;
             text-transform: uppercase;
             color: var(--muted);
-            font-size: 11px;
+            font-size: var(--fs-11);
             letter-spacing: 0.12em;
         }
 
@@ -652,7 +664,7 @@
             border-radius: 4px;
             color: var(--muted);
             background: transparent;
-            font-size: 11px;
+            font-size: var(--fs-11);
             letter-spacing: 0.04em;
             text-transform: uppercase;
             overflow: hidden;
@@ -688,7 +700,7 @@
             border-right: 1px solid var(--line);
             padding-right: 12px;
             color: var(--muted);
-            font-size: 12px;
+            font-size: var(--fs-12);
             text-transform: uppercase;
             white-space: nowrap;
         }
@@ -797,7 +809,7 @@
         }
 
         .results-count {
-            font-size: 12px;
+            font-size: var(--fs-12);
             color: var(--accent);
             letter-spacing: 0.08em;
             text-transform: uppercase;
@@ -830,14 +842,14 @@
 
         .result-name {
             display: block;
-            font-size: 14px;
+            font-size: var(--fs-14);
             margin-bottom: 4px;
         }
 
         .result-meta {
             display: block;
             color: var(--muted);
-            font-size: 12px;
+            font-size: var(--fs-12);
             letter-spacing: 0.04em;
         }
 
@@ -862,7 +874,7 @@
         .vehicle-preview .placeholder {
             color: var(--subtle);
             letter-spacing: 0.12em;
-            font-size: 12px;
+            font-size: var(--fs-12);
             text-transform: uppercase;
         }
 
@@ -873,7 +885,7 @@
         }
 
         .detail-name {
-            font-size: 19px;
+            font-size: var(--fs-19);
             margin-bottom: 13px;
             color: var(--text);
         }
@@ -883,14 +895,14 @@
             grid-template-columns: 91px minmax(0, 1fr);
             gap: 8px;
             margin: 7px 0;
-            font-size: 13px;
+            font-size: var(--fs-13);
         }
 
         .property .key {
             color: var(--muted);
             text-transform: uppercase;
             letter-spacing: 0.075em;
-            font-size: 11px;
+            font-size: var(--fs-11);
         }
 
         .property .value {
@@ -944,7 +956,7 @@
             padding: 15px;
             color: var(--muted);
             line-height: 1.45;
-            font-size: 13px;
+            font-size: var(--fs-13);
         }
 
         .modal-backdrop {
@@ -974,7 +986,7 @@
 
         .settings-section h4 {
             margin: 0 0 9px;
-            font-size: 11px;
+            font-size: var(--fs-11);
             color: var(--accent);
             letter-spacing: 0.16em;
             text-transform: uppercase;
@@ -1055,7 +1067,7 @@
             padding: 14px;
             color: var(--muted);
             line-height: 1.52;
-            font-size: 13px;
+            font-size: var(--fs-13);
         }
 
         .ammo-info strong,
@@ -1065,7 +1077,7 @@
 
         .report-title {
             color: var(--accent-strong);
-            font-size: 16px;
+            font-size: var(--fs-16);
             text-transform: uppercase;
             letter-spacing: 0.11em;
             margin-bottom: 12px;
@@ -1199,7 +1211,7 @@
             .dashboard .action {
                 padding-top: 8px;
                 padding-bottom: 8px;
-                font-size: 12px;
+                font-size: var(--fs-12);
             }
 
             .dashboard .size-box {
@@ -1210,7 +1222,7 @@
                 margin: auto 14px 10px;
                 padding: 10px 13px;
                 min-height: 0;
-                font-size: 12px;
+                font-size: var(--fs-12);
             }
 
             .dashboard .dashboard-hover-info {
@@ -1221,7 +1233,7 @@
             .dashboard .keybind-card {
                 margin: auto 14px 10px;
                 padding: 9px 11px;
-                font-size: 11px;
+                font-size: var(--fs-11);
             }
 
             .dashboard .dashboard-info-card {
@@ -1276,6 +1288,7 @@
             var inputDebounceTimers = {};
             var firstBoot = true;
             var activeNativeInput = "";
+            var fontSizeBases = [11, 12, 13, 14, 15, 16, 19, 20, 25, 37];
 
             function esc(value) {
                 return String(value == null ? "" : value)
@@ -1288,6 +1301,23 @@
 
             function l(key) {
                 return labels[key] || "";
+            }
+
+            function applyInterfaceScale(value) {
+                var scale = 1;
+                if (typeof value === "number" || typeof value === "string") {
+                    scale = Number(value);
+                }
+                if (!isFinite(scale)) {
+                    scale = 1;
+                }
+                scale = Math.max(0.75, Math.min(1.35, scale));
+
+                var root = document.documentElement;
+                root.style.setProperty("--ui-scale", scale.toFixed(3));
+                fontSizeBases.forEach(function (size) {
+                    root.style.setProperty("--fs-" + size, (size * scale).toFixed(2) + "px");
+                });
             }
 
             function encodeBase64Utf8(payload) {
@@ -2096,6 +2126,7 @@
             window.PTG = {
                 receive: function (payload) {
                     state = JSON.parse(payload);
+                    applyInterfaceScale(state[state.length - 1]);
                     if ((state[1] || []).length > 0) {
                         labels = {};
                         state[1].forEach(function (pair) {
