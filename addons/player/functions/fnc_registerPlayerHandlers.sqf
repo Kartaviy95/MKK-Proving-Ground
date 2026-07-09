@@ -10,6 +10,19 @@ if !(hasInterface) exitWith {};
         !isNull player
     };
 
+    [] call FUNC(registerAceGodModeHandlers);
+
+    ["vehicle", {
+        params ["_unit"];
+
+        if (
+            _unit isEqualTo player
+            && {missionNamespace getVariable ["mkk_ptg_godModeEnabled", false]}
+        ) then {
+            [_unit, true] call FUNC(applyGodMode);
+        };
+    }, true] call CBA_fnc_addPlayerEventHandler;
+
     [{
         private _currentPlayer = missionNamespace getVariable ["mkk_ptg_playerCurrentUnit", objNull];
 
