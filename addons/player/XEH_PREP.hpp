@@ -1,10 +1,14 @@
 PREP(applyGodMode);
+PREP(applyAceGodMode);
 PREP(applyInfiniteAmmo);
 PREP(blockAceMedicalDamage);
 PREP(handleDamage);
 PREP(handleFiredMan);
+PREP(registerAceGodModeHandlers);
 PREP(registerPlayerHandlers);
 PREP(repairVehicleDamage);
 PREP(refillWeaponMagazine);
+PREP(setVehicleGodMode);
 PREP(toggleGodMode);
 PREP(toggleInfiniteAmmo);
+PREP(updateGodModeVehicle);
