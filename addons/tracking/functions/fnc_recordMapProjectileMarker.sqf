@@ -69,7 +69,7 @@ if (missionNamespace getVariable ["mkk_ptg_mapProjectileMarkerShowAmmo", false])
 
 private _markers = missionNamespace getVariable ["mkk_ptg_mapProjectileMarkers", []];
 _markers pushBack _markerName;
-while {(count _markers) > 40} do {
+while {(count _markers) > 100} do {
     deleteMarkerLocal (_markers deleteAt 0);
 };
 missionNamespace setVariable ["mkk_ptg_mapProjectileMarkers", _markers];
