@@ -259,6 +259,7 @@ switch (_action) do {
     case "setColor": {[parseNumber _value] call FUNC(setTrajectoryColor)};
     case "setWidth": {[parseNumber _value] call FUNC(setTrajectoryWidth)};
     case "markerAmmo": {[] call FUNC(toggleMapProjectileMarkerAmmoSetting)};
+    case "markerLimit": {[_value] call FUNC(setMapProjectileMarkerLimit)};
     case "objectSetting": {[_value] call FUNC(toggleObjectStatusSetting)};
     case "hitpointSetting": {[_value] call FUNC(toggleHitpointInspectorSetting)};
 };

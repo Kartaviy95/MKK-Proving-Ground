@@ -1036,6 +1036,11 @@
             <Russian>Класс ammo на маркере</Russian>
             <German>Munitionsklasse am Marker</German>
         </Key>
+        <Key ID="STR_MKK_PTG_MAP_MARKER_LIMIT">
+            <English>Maximum displayed markers (minimum 40)</English>
+            <Russian>Максимум отображаемых маркеров (минимум 40)</Russian>
+            <German>Maximal angezeigte Marker (mindestens 40)</German>
+        </Key>
         <Key ID="STR_MKK_PTG_MAP_MARKER_AMMO_STATUS">
             <English>Ammo class on marker: %1</English>
             <Russian>Класс ammo на маркере: %1</Russian>

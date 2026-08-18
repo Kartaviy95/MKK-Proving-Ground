@@ -343,6 +343,14 @@ private _inspectorSettings = [
     ["hitpointSetting", "hpFuel", localize "STR_MKK_PTG_HP_FUEL", missionNamespace getVariable ["mkk_ptg_hitpointInspectorHpFuel", false], true],
     ["hitpointSetting", "showVolumes", localize "STR_MKK_PTG_HITPOINT_INSPECTOR_SHOW_VOLUMES", missionNamespace getVariable ["mkk_ptg_hitpointInspectorShowVolumes", false], true]
 ];
+private _mapProjectileMarkerLimit = missionNamespace getVariable [
+    "mkk_ptg_mapProjectileMarkerLimit",
+    profileNamespace getVariable ["mkk_ptg_mapProjectileMarkerLimit", 40]
+];
+if !(_mapProjectileMarkerLimit isEqualType 0) then {
+    _mapProjectileMarkerLimit = 40;
+};
+_mapProjectileMarkerLimit = (round _mapProjectileMarkerLimit) max 40;
 private _settings = [
     _colors,
     _widths,
@@ -350,7 +358,8 @@ private _settings = [
     _objectSettings,
     _inspectorSettings,
     _markerColors,
-    _timingSettings
+    _timingSettings,
+    _mapProjectileMarkerLimit
 ];
 
 private _webScale = ([] call EFUNC(common,getHudScale)) # 0;
