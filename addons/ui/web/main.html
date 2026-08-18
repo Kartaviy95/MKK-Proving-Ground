@@ -1685,7 +1685,10 @@
                     ]);
                 } else if (settingsModal === "markers") {
                     title = l("markerSettings");
-                    inner = settingsSection(l("markers"), [settingButton("markerAmmo", "", l("markerAmmo"), data[2])]);
+                    inner = settingsSection(l("markers"), [
+                        settingButton("markerAmmo", "", l("markerAmmo"), data[2]),
+                        field(l("markerLimit"), "<input type=\"number\" min=\"40\" step=\"1\" data-change=\"markerLimit\" value=\"" + esc(data[7] || 40) + "\">")
+                    ]);
                 } else if (settingsModal === "objectStatus") {
                     title = l("objectSettings");
                     inner = settingsSection(l("objectFields"), data[3].slice(0, 6).map(settingFromArray)) +

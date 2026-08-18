@@ -77,6 +77,7 @@ private _labels = [
     ["markers", localize "STR_MKK_PTG_MAP_PROJECTILE_MARKERS"],
     ["markerSettings", localize "STR_MKK_PTG_MAP_MARKER_SETTINGS"],
     ["markerAmmo", localize "STR_MKK_PTG_MAP_MARKER_AMMO"],
+    ["markerLimit", localize "STR_MKK_PTG_MAP_MARKER_LIMIT"],
     ["objectStatus", localize "STR_MKK_PTG_OBJECT_STATUS_DISPLAY"],
     ["objectSettings", localize "STR_MKK_PTG_OBJECT_STATUS_SETTINGS"],
     ["hitpoints", localize "STR_MKK_PTG_HITPOINT_INSPECTOR"],
