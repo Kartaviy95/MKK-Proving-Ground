@@ -45,18 +45,12 @@ if (_mode isEqualTo "bot") then {
         case independent: {2};
         default {1};
     };
-    private _enemySideId = switch (_playerSideId) do {
-        case 0: {1};
-        case 1: {0};
-        default {0};
-    };
-
     {
         private _className = _x # 0;
         private _displayName = [_x # 1] call EFUNC(common,localizeString);
         private _sideId = _x # 2;
         if (
-            (_sideId isEqualTo _enemySideId)
+            (_sideId isEqualTo _playerSideId)
             && (
                 (_showGround && {_className isKindOf "LandVehicle"})
                 || {_showAir && {_className isKindOf "Air"}}
